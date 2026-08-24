@@ -29,138 +29,311 @@ var o=((a=s[17])==null?void 0:a[0])?Ob(e,e[_b(s[17][0].data)][0]):[];var l=vb(s[
 var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.s.r;c<=n.e.r;++c){i=Ta(c);for(f=n.s.c;f<=n.e.c;++f){r=s[f]+i;t=l?(e[c]||[])[f]:e[r];a="";if(t===undefined)continue;else if(t.F!=null){r=t.F;if(!t.f)continue;a=t.f;if(r.indexOf(":")==-1)r=r+":"+r}if(t.f!=null)a=t.f;else if(t.t=="z")continue;else if(t.t=="n"&&t.v!=null)a=""+t.v;else if(t.t=="b")a=t.v?"TRUE":"FALSE";else if(t.w!==undefined)a="'"+t.w;else if(t.v===undefined)continue;else if(t.t=="s")a="'"+t.v;else a=""+t.v;o[o.length]=r+"="+a}}return o}function xw(e,r,t){var a=t||{};var n=+!a.skipHeader;var i=e||{};var s=0,f=0;if(i&&a.origin!=null){if(typeof a.origin=="number")s=a.origin;else{var o=typeof a.origin=="string"?Oa(a.origin):a.origin;s=o.r;f=o.c}}var l;var c={s:{c:0,r:0},e:{c:f,r:s+r.length-1+n}};if(i["!ref"]){var h=Da(i["!ref"]);c.e.c=Math.max(c.e.c,h.e.c);c.e.r=Math.max(c.e.r,h.e.r);if(s==-1){s=h.e.r+1;c.e.r=s+r.length-1+n}}else{if(s==-1){s=0;c.e.r=r.length-1+n}}var u=a.header||[],d=0;r.forEach(function(e,r){rr(e).forEach(function(t){if((d=u.indexOf(t))==-1)u[d=u.length]=t;var o=e[t];var c="z";var h="";var v=Ra({c:f+d,r:s+r+n});l=Rw(i,v);if(o&&typeof o==="object"&&!(o instanceof Date)){i[v]=o}else{if(typeof o=="number")c="n";else if(typeof o=="boolean")c="b";else if(typeof o=="string")c="s";else if(o instanceof Date){c="d";if(!a.cellDates){c="n";o=fr(o)}h=a.dateNF||X[14]}else if(o===null&&a.nullError){c="e";o=0}if(!l)i[v]=l={t:c,v:o};else{l.t=c;l.v=o;delete l.w;delete l.R;if(h)l.z=h}if(h)l.z=h}})});c.e.c=Math.max(c.e.c,f+u.length-1);var v=Ta(s);if(n)for(d=0;d<u.length;++d)i[ya(d+f)+v]={t:"s",v:u[d]};i["!ref"]=Na(c);return i}function Ow(e,r){return xw(null,e,r)}function Rw(e,r,t){if(typeof r=="string"){if(Array.isArray(e)){var a=Oa(r);if(!e[a.r])e[a.r]=[];return e[a.r][a.c]||(e[a.r][a.c]={t:"z"})}return e[r]||(e[r]={t:"z"})}if(typeof r!="number")return Rw(e,Ra(r));return Rw(e,Ra({r:r,c:t||0}))}function Iw(e,r){if(typeof r=="number"){if(r>=0&&e.SheetNames.length>r)return r;throw new Error("Cannot find sheet # "+r)}else if(typeof r=="string"){var t=e.SheetNames.indexOf(r);if(t>-1)return t;throw new Error("Cannot find sheet name |"+r+"|")}else throw new Error("Cannot find sheet |"+r+"|")}function Nw(){return{SheetNames:[],Sheets:{}}}function Dw(e,r,t,a){var n=1;if(!t)for(;n<=65535;++n,t=undefined)if(e.SheetNames.indexOf(t="Sheet"+n)==-1)break;if(!t||e.SheetNames.length>=65535)throw new Error("Too many worksheets");if(a&&e.SheetNames.indexOf(t)>=0){var i=t.match(/(^.*?)(\d+)$/);n=i&&+i[2]||0;var s=i&&i[1]||t;for(++n;n<=65535;++n)if(e.SheetNames.indexOf(t=s+n)==-1)break}Jp(t);if(e.SheetNames.indexOf(t)>=0)throw new Error("Worksheet with name |"+t+"| already exists!");e.SheetNames.push(t);e.Sheets[t]=r;return t}function Fw(e,r,t){if(!e.Workbook)e.Workbook={};if(!e.Workbook.Sheets)e.Workbook.Sheets=[];var a=Iw(e,r);if(!e.Workbook.Sheets[a])e.Workbook.Sheets[a]={};switch(t){case 0:;case 1:;case 2:break;default:throw new Error("Bad sheet visibility setting "+t);}e.Workbook.Sheets[a].Hidden=t}function Pw(e,r){e.z=r;return e}function Lw(e,r,t){if(!r){delete e.l}else{e.l={Target:r};if(t)e.l.Tooltip=t}return e}function Mw(e,r,t){return Lw(e,"#"+r,t)}function Uw(e,r,t){if(!e.c)e.c=[];e.c.push({t:r,a:t||"SheetJS"})}function Bw(e,r,t,a){var n=typeof r!="string"?r:Da(r);var i=typeof r=="string"?r:Na(r);for(var s=n.s.r;s<=n.e.r;++s)for(var f=n.s.c;f<=n.e.c;++f){var o=Rw(e,s,f);o.t="n";o.F=i;delete o.v;if(s==n.s.r&&f==n.s.c){o.f=t;if(a)o.D=true}}return e}var Ww={encode_col:ya,encode_row:Ta,encode_cell:Ra,encode_range:Na,decode_col:Ca,decode_row:ka,split_cell:xa,decode_cell:Oa,decode_range:Ia,format_cell:Pa,sheet_add_aoa:Ma,sheet_add_json:xw,sheet_add_dom:Gm,aoa_to_sheet:Ua,json_to_sheet:Ow,table_to_sheet:jm,table_to_book:Xm,sheet_to_csv:yw,sheet_to_txt:Sw,sheet_to_json:Aw,sheet_to_html:Vm,sheet_to_formulae:_w,sheet_to_row_object_array:Aw,sheet_get_cell:Rw,book_new:Nw,book_append_sheet:Dw,book_set_sheet_visibility:Fw,cell_set_number_format:Pw,cell_set_hyperlink:Lw,cell_set_internal_link:Mw,cell_add_comment:Uw,sheet_set_array_formula:Bw,consts:{SHEET_VISIBLE:0,SHEET_HIDDEN:1,SHEET_VERY_HIDDEN:2}};var Hw;function zw(e){Hw=e}function Vw(e,r){var t=Hw();var a=r==null?{}:r;if(e==null||e["!ref"]==null){t.push(null);return t}var n=Da(e["!ref"]);var i=a.FS!==undefined?a.FS:",",s=i.charCodeAt(0);var f=a.RS!==undefined?a.RS:"\n",o=f.charCodeAt(0);var l=new RegExp((i=="|"?"\\|":i)+"+$");var c="",h=[];a.dense=Array.isArray(e);var u=a.skipHidden&&e["!cols"]||[];var d=a.skipHidden&&e["!rows"]||[];for(var v=n.s.c;v<=n.e.c;++v)if(!(u[v]||{}).hidden)h[v]=ya(v);var p=n.s.r;var g=false,m=0;t._read=function(){if(!g){g=true;return t.push("\ufeff")}while(p<=n.e.r){++p;if((d[p-1]||{}).hidden)continue;c=Cw(e,n,p-1,h,s,o,i,a);if(c!=null){if(a.strip)c=c.replace(l,"");if(c||a.blankrows!==false)return t.push((m++?f:"")+c)}}return t.push(null)};return t}function Gw(e,r){var t=Hw();var a=r||{};var n=a.header!=null?a.header:Bm;var i=a.footer!=null?a.footer:Wm;t.push(n);var s=Ia(e["!ref"]);a.dense=Array.isArray(e);t.push(zm(e,s,a));var f=s.s.r;var o=false;t._read=function(){if(f>s.e.r){if(!o){o=true;t.push("</table>"+i)}return t.push(null)}while(f<=s.e.r){t.push(Um(e,s,f,a));++f;break}};return t}function jw(e,r){var t=Hw({objectMode:true});if(e==null||e["!ref"]==null){t.push(null);return t}var a={t:"n",v:0},n=0,i=1,s=[],f=0,o="";var l={s:{r:0,c:0},e:{r:0,c:0}};var c=r||{};var h=c.range!=null?c.range:e["!ref"];if(c.header===1)n=1;else if(c.header==="A")n=2;else if(Array.isArray(c.header))n=3;switch(typeof h){case"string":l=Da(h);break;case"number":l=Da(e["!ref"]);l.s.r=h;break;default:l=h;}if(n>0)i=0;var u=Ta(l.s.r);var d=[];var v=0;var p=Array.isArray(e);var g=l.s.r,m=0;var b={};if(p&&!e[g])e[g]=[];var w=c.skipHidden&&e["!cols"]||[];var k=c.skipHidden&&e["!rows"]||[];for(m=l.s.c;m<=l.e.c;++m){if((w[m]||{}).hidden)continue;d[m]=ya(m);a=p?e[g][m]:e[d[m]+u];switch(n){case 1:s[m]=m-l.s.c;break;case 2:s[m]=d[m];break;case 3:s[m]=c.header[m-l.s.c];break;default:if(a==null)a={w:"__EMPTY",t:"s"};o=f=Pa(a,null,c);v=b[f]||0;if(!v)b[f]=1;else{do{o=f+"_"+v++}while(b[o]);b[f]=v;b[o]=1}s[m]=o;}}g=l.s.r+i;t._read=function(){while(g<=l.e.r){if((k[g-1]||{}).hidden)continue;var r=Tw(e,l,g,d,n,s,p,c);++g;if(r.isempty===false||(n===1?c.blankrows!==false:!!c.blankrows)){t.push(r.row);return}}return t.push(null)};return t}var Xw={to_json:jw,to_html:Gw,to_csv:Vw,set_readable:zw};if(typeof vm!=="undefined")e.parse_xlscfb=vm;e.parse_zip=Xb;e.read=iw;e.readFile=sw;e.readFileSync=sw;e.write=gw;e.writeFile=bw;e.writeFileSync=bw;e.writeFileAsync=kw;e.utils=Ww;e.writeXLSX=pw;e.writeFileXLSX=ww;e.SSF=Ve;if(typeof Xw!=="undefined")e.stream=Xw;if(typeof Ke!=="undefined")e.CFB=Ke;if(typeof require!=="undefined"){var $w=undefined;if(($w||{}).Readable)zw($w.Readable)}}if(typeof exports!=="undefined")make_xlsx_lib(exports);else if(typeof module!=="undefined"&&module.exports)make_xlsx_lib(module.exports);else if(typeof define==="function"&&define.amd)define("xlsx",function(){if(!XLSX.version)make_xlsx_lib(XLSX);return XLSX});else make_xlsx_lib(XLSX);if(typeof window!=="undefined"&&!window.XLSX)try{window.XLSX=XLSX}catch(e){}
 
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f4f5f7;
+    --bg-1: #eef2ff;
+    --bg-2: #fdf2f8;
     --card: #ffffff;
-    --border: #e2e4e9;
-    --text: #1f2430;
-    --muted: #6b7280;
-    --accent: #cc2b2b;
-    --accent-dark: #a81f1f;
-    --ok: #1a7f37;
-    --warn: #b45309;
+    --border: #e6e4f0;
+    --text: #211f36;
+    --muted: #6f6c8e;
+    --accent-1: #7c3aed;
+    --accent-2: #ec4899;
+    --accent-grad: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    --ok: #10b981;
+    --ok-dark: #059669;
+    --warn: #f59e0b;
+    --warn-bg: #fffbeb;
+    --danger: #ef4444;
+    --shadow: 0 4px 20px rgba(124, 58, 237, 0.08), 0 1px 3px rgba(33, 31, 54, 0.06);
+    --shadow-lg: 0 12px 32px rgba(124, 58, 237, 0.14), 0 2px 6px rgba(33, 31, 54, 0.08);
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: var(--bg);
+    font-family: 'Inter', -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background:
+      radial-gradient(circle at 10% 0%, var(--bg-1) 0%, transparent 45%),
+      radial-gradient(circle at 90% 15%, var(--bg-2) 0%, transparent 40%),
+      #f7f7fb;
     color: var(--text);
-    padding: 24px 16px 64px;
+    padding: 32px 16px 72px;
+    min-height: 100vh;
   }
-  .wrap { max-width: 760px; margin: 0 auto; }
-  h1 { font-size: 1.5rem; margin-bottom: 4px; }
-  .subtitle { color: var(--muted); margin-bottom: 24px; font-size: 0.95rem; }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  .hero {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .hero .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-grad);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  .subtitle { color: var(--muted); font-size: 1rem; max-width: 520px; margin: 0 auto; line-height: 1.5; }
   .card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 16px;
+    border-radius: 18px;
+    padding: 24px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    transition: box-shadow .2s;
   }
+  .card:hover { box-shadow: var(--shadow-lg); }
   .card h2 {
-    font-size: 1rem;
-    margin: 0 0 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 14px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
   }
   .step-num {
-    background: var(--accent);
+    background: var(--accent-grad);
     color: white;
-    width: 22px; height: 22px;
-    border-radius: 50%;
+    width: 26px; height: 26px;
+    border-radius: 9px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 700;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.35);
   }
   .drop {
-    border: 2px dashed var(--border);
-    border-radius: 10px;
-    padding: 28px 16px;
+    border: 2px dashed #d9d5ec;
+    border-radius: 14px;
+    padding: 32px 16px;
     text-align: center;
     cursor: pointer;
     color: var(--muted);
-    transition: border-color .15s, background .15s;
+    transition: border-color .15s, background .15s, transform .1s;
+    background: linear-gradient(180deg, #fbfaff, #ffffff);
   }
-  .drop:hover, .drop.drag { border-color: var(--accent); background: #fff7f7; }
-  .drop .clip { font-size: 1.8rem; display:block; margin-bottom:6px; }
+  .drop:hover { border-color: var(--accent-1); background: #f7f3ff; }
+  .drop.drag { border-color: var(--accent-1); background: #f2ebff; transform: scale(1.005); }
+  .drop .clip { font-size: 2.2rem; display:block; margin-bottom:8px; filter: drop-shadow(0 2px 4px rgba(124,58,237,.25)); }
+  .drop strong { color: var(--text); }
   input[type=file] { display: none; }
-  select, input[type=text] {
+  .file-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #f5f0ff, #fef1f8);
+    border: 1px solid #e7ddfb;
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .file-chip .icon { font-size: 1.5rem; }
+  .file-chip .name { font-weight: 600; flex: 1; word-break: break-all; }
+  .file-chip .remove-btn {
+    background: white;
+    color: var(--danger);
+    border: 1px solid #fecaca;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background .15s, transform .1s;
+  }
+  .file-chip .remove-btn:hover { background: #fef2f2; transform: scale(1.08); }
+  select, input[type=text], input[type=number] {
     width: 100%;
-    padding: 9px 10px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    padding: 10px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
     font-size: 0.95rem;
     font-family: inherit;
+    background: #fff;
+    color: var(--text);
+    transition: border-color .15s, box-shadow .15s;
   }
-  label { display:block; font-size: 0.85rem; color: var(--muted); margin: 10px 0 4px; }
-  table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.85rem; }
-  th, td { border: 1px solid var(--border); padding: 5px 7px; text-align: left; }
-  th { background: #fafafa; }
-  .row { display:flex; gap: 8px; align-items: stretch; }
-  .row input { flex: 1; }
-  button {
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 9px 16px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    font-family: inherit;
+  select:focus, input:focus {
+    outline: none;
+    border-color: var(--accent-1);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
   }
-  button:hover { background: var(--accent-dark); }
-  button:disabled { background: #d0d2d8; cursor: not-allowed; }
-  button.secondary { background: #eef0f3; color: var(--text); }
-  button.secondary:hover { background: #e2e4e9; }
-  .addr-list { list-style: none; padding: 0; margin: 10px 0 0; }
-  .addr-list li {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 7px 10px; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 6px;
-    font-size: 0.9rem;
-  }
-  .addr-list button { padding: 3px 9px; font-size: 0.8rem; background:#eef0f3; color:var(--text); }
-  .addr-list button:hover { background:#fde2e2; color:var(--accent-dark); }
-  .big-cta { width: 100%; padding: 13px; font-size: 1rem; margin-top: 6px; }
-  .status { font-size: 0.88rem; margin-top: 10px; color: var(--muted); }
-  .status.ok { color: var(--ok); }
-  .status.warn { color: var(--warn); }
-  .result-link {
-    display: block; text-align:center; background: var(--ok); color: white;
-    text-decoration: none; padding: 14px; border-radius: 10px; font-weight: 600;
+  label { display:block; font-size: 0.85rem; color: var(--muted); font-weight: 600; margin: 14px 0 6px; }
+  label:first-child { margin-top: 0; }
+  .field-row { display: flex; gap: 12px; }
+  .field-row > div { flex: 1; }
+  .count-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 10px;
     margin-top: 12px;
   }
-  .result-link:hover { opacity: 0.9; }
-  ol.route { padding-left: 22px; }
-  ol.route li { margin-bottom: 4px; font-size: 0.92rem; }
-  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+  .count-badge.ok { background: #ecfdf5; color: var(--ok-dark); }
+  .count-badge.warn { background: var(--warn-bg); color: #92400e; }
+  .preview-table-wrap {
+    margin-top: 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: auto;
+    max-height: 260px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #f0eef8; white-space: nowrap; }
+  th {
+    background: #faf9ff;
+    position: sticky; top: 0;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+  }
+  th.addr-col, td.addr-col { color: var(--accent-1); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: #fbfaff; }
+  .row { display:flex; gap: 10px; align-items: stretch; }
+  .row input { flex: 1; }
+  button {
+    background: var(--accent-grad);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform .1s, box-shadow .15s, opacity .15s;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
+  }
+  button:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35); }
+  button:active { transform: translateY(0); }
+  button:disabled { background: #dcdae5; color: #9997ab; box-shadow: none; cursor: not-allowed; transform: none; }
+  button.secondary { background: #f3f1fb; color: var(--accent-1); box-shadow: none; }
+  button.secondary:hover { background: #e9e5f9; box-shadow: none; }
+  .addr-list { list-style: none; padding: 0; margin: 12px 0 0; }
+  .addr-list li {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 8px;
+    font-size: 0.9rem;
+    background: #fff;
+  }
+  .addr-list li .addr-text { display: flex; align-items: center; gap: 10px; }
+  .addr-list li .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-grad); flex-shrink: 0; }
+  .addr-list button.remove-btn {
+    background: #f3f1fb; color: var(--accent-1); border: none;
+    padding: 5px 12px; font-size: 0.78rem; border-radius: 8px; box-shadow: none;
+  }
+  .addr-list button.remove-btn:hover { background: #fde2ea; color: var(--danger); box-shadow: none; transform: none; }
+  .big-cta {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.05rem;
+    margin-top: 4px;
+    border-radius: 14px;
+  }
+  .status { font-size: 0.9rem; margin-top: 12px; color: var(--muted); text-align: center; font-weight: 600; }
+  .status.ok { color: var(--ok-dark); }
+  .status.warn { color: #b45309; }
+  .progress-bar-track {
+    width: 100%; height: 8px; background: #efedf8; border-radius: 999px; margin-top: 10px; overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%; background: var(--accent-grad); border-radius: 999px; transition: width .3s ease;
+  }
+  .result-card {
+    background: linear-gradient(160deg, #ffffff, #f4fdf9);
+    border: 1px solid #d3f5e6;
+  }
+  .result-link {
+    display: block; text-align:center; background: linear-gradient(135deg, var(--ok), var(--ok-dark)); color: white;
+    text-decoration: none; padding: 16px; border-radius: 14px; font-weight: 700; font-size: 1.02rem;
+    margin-top: 4px;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+    transition: transform .1s, box-shadow .15s;
+  }
+  .result-link:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4); }
+  ol.route { padding-left: 0; list-style: none; counter-reset: route-counter; margin-top: 10px; }
+  ol.route li {
+    counter-increment: route-counter;
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 12px; margin-bottom: 6px;
+    background: #fff; border: 1px solid var(--border); border-radius: 10px;
+    font-size: 0.9rem;
+  }
+  ol.route li::before {
+    content: counter(route-counter);
+    background: var(--accent-grad); color: white;
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 700; flex-shrink: 0;
+  }
+  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 6px; line-height: 1.4; }
   .hidden { display: none !important; }
-  .pill { display:inline-block; background:#fdeaea; color:var(--accent-dark); border-radius:999px; padding:1px 9px; font-size:0.75rem; margin-left:6px; }
+  .pill { display:inline-block; background:#f3f1fb; color:var(--accent-1); border-radius:999px; padding:2px 10px; font-size:0.72rem; font-weight: 700; margin-left:8px; vertical-align: middle; }
+  .not-found-box { margin-top: 14px; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Оптимизатор маршрута</h1>
-  <p class="subtitle">Загрузите маршрутный лист (Excel) → добавьте адреса вручную при необходимости → получите ссылку на оптимальный маршрут в Яндекс.Картах.</p>
+  <div class="hero">
+    <span class="badge">🗺️ Маршрут за пару кликов</span>
+    <h1>Оптимизатор маршрута</h1>
+    <p class="subtitle">Загрузите маршрутный лист (Excel) → добавьте адреса вручную при необходимости → получите ссылку на оптимальный маршрут в Яндекс.Картах.</p>
+  </div>
 
   <div class="card">
     <h2><span class="step-num">1</span> Загрузите маршрутный лист</h2>
     <div class="drop" id="drop">
       <span class="clip">📎</span>
-      <span id="dropText">Нажмите, чтобы выбрать файл Excel (.xlsx), или перетащите его сюда</span>
+      <span id="dropText">Нажмите, чтобы выбрать файл Excel (<strong>.xlsx</strong>), или перетащите его сюда</span>
+    </div>
+    <div class="file-chip hidden" id="fileChip">
+      <span class="icon">📄</span>
+      <span class="name" id="fileName"></span>
+      <button type="button" class="remove-btn" id="removeFileBtn" title="Удалить файл">✕</button>
     </div>
     <input type="file" id="fileInput" accept=".xlsx,.xls">
 
     <div id="columnPicker" class="hidden">
-      <label for="sheetSelect">Лист в файле</label>
-      <select id="sheetSelect"></select>
+      <div class="field-row">
+        <div>
+          <label for="sheetSelect">Лист в файле</label>
+          <select id="sheetSelect"></select>
+        </div>
+        <div>
+          <label for="headerRowInput">Строка с заголовками</label>
+          <input type="number" id="headerRowInput" min="1" value="1">
+        </div>
+      </div>
       <label for="colSelect">В каком столбце находятся адреса?</label>
       <select id="colSelect"></select>
-      <div id="preview"></div>
+      <div id="countBadge"></div>
+      <div class="preview-table-wrap"><div id="preview"></div></div>
+      <p class="hint">Если адресов не видно — программа могла неверно угадать строку с заголовками (например, сверху есть строка-название). Поправьте номер строки заголовков выше.</p>
     </div>
   </div>
 
@@ -180,19 +353,20 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     <input type="text" id="cityDefault" placeholder="Например: Москва — добавится к каждому адресу для точности поиска">
     <label for="modeSelect">Способ передвижения</label>
     <select id="modeSelect">
-      <option value="auto">На автомобиле</option>
-      <option value="mt">Общественный транспорт</option>
-      <option value="pd">Пешком</option>
+      <option value="auto">🚗 На автомобиле</option>
+      <option value="mt">🚌 Общественный транспорт</option>
+      <option value="pd">🚶 Пешком</option>
     </select>
   </div>
 
   <button id="buildBtn" class="big-cta" disabled>Построить маршрут</button>
   <div class="status" id="status"></div>
+  <div class="progress-bar-track hidden" id="progressTrack"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
 
-  <div class="card hidden" id="resultCard">
-    <h2>Готово</h2>
+  <div class="card result-card hidden" id="resultCard">
+    <h2>✅ Готово</h2>
     <a id="resultLink" class="result-link" href="#" target="_blank" rel="noopener">Открыть маршрут в Яндекс.Картах →</a>
-    <div id="notFoundBox"></div>
+    <div id="notFoundBox" class="not-found-box"></div>
     <p class="hint">Порядок точек маршрута (от старта к финишу):</p>
     <ol class="route" id="routeList"></ol>
   </div>
@@ -201,6 +375,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 <script>
 const state = {
   rows: [],
+  headerRowIndex: 0,
   headerRow: [],
   colIndex: -1,
   manualAddresses: [],
@@ -210,15 +385,22 @@ const state = {
 const dropEl = document.getElementById('drop');
 const dropTextEl = document.getElementById('dropText');
 const fileInput = document.getElementById('fileInput');
+const fileChip = document.getElementById('fileChip');
+const fileNameEl = document.getElementById('fileName');
+const removeFileBtn = document.getElementById('removeFileBtn');
 const columnPicker = document.getElementById('columnPicker');
 const sheetSelect = document.getElementById('sheetSelect');
+const headerRowInput = document.getElementById('headerRowInput');
 const colSelect = document.getElementById('colSelect');
+const countBadge = document.getElementById('countBadge');
 const previewEl = document.getElementById('preview');
 const manualInput = document.getElementById('manualInput');
 const addManualBtn = document.getElementById('addManualBtn');
 const manualList = document.getElementById('manualList');
 const buildBtn = document.getElementById('buildBtn');
 const statusEl = document.getElementById('status');
+const progressTrack = document.getElementById('progressTrack');
+const progressFill = document.getElementById('progressFill');
 const resultCard = document.getElementById('resultCard');
 const resultLink = document.getElementById('resultLink');
 const routeListEl = document.getElementById('routeList');
@@ -238,8 +420,27 @@ fileInput.addEventListener('change', () => {
   if (fileInput.files.length) handleFile(fileInput.files[0]);
 });
 
+removeFileBtn.addEventListener('click', resetFile);
+
+function resetFile() {
+  state.rows = [];
+  state.headerRowIndex = 0;
+  state.headerRow = [];
+  state.colIndex = -1;
+  state.workbook = null;
+  fileInput.value = '';
+  dropEl.classList.remove('hidden');
+  fileChip.classList.add('hidden');
+  columnPicker.classList.add('hidden');
+  previewEl.innerHTML = '';
+  countBadge.innerHTML = '';
+  updateBuildButton();
+}
+
 function handleFile(file) {
-  dropTextEl.textContent = `Файл выбран: ${file.name}`;
+  fileNameEl.textContent = file.name;
+  dropEl.classList.add('hidden');
+  fileChip.classList.remove('hidden');
   const reader = new FileReader();
   reader.onload = (e) => {
     const data = new Uint8Array(e.target.result);
@@ -252,53 +453,99 @@ function handleFile(file) {
     });
     loadSheet(state.workbook.SheetNames[0]);
     columnPicker.classList.remove('hidden');
-    updateBuildButton();
   };
   reader.readAsArrayBuffer(file);
 }
 
 sheetSelect.addEventListener('change', () => loadSheet(sheetSelect.value));
 
+// Guess which row holds the column headers: look for a cell mentioning
+// "адрес", otherwise fall back to the densest row among the first ones —
+// real route sheets often have a title/merged row above the real header.
+function detectHeaderRowIndex(rows) {
+  const scanLimit = Math.min(rows.length, 20);
+  for (let i = 0; i < scanLimit; i++) {
+    if (rows[i].some(cell => /адрес|address/i.test(String(cell)))) return i;
+  }
+  let best = 0, bestCount = -1;
+  for (let i = 0; i < scanLimit; i++) {
+    const count = rows[i].filter(cell => String(cell).trim() !== '').length;
+    if (count > bestCount) { bestCount = count; best = i; }
+  }
+  return best;
+}
+
 function loadSheet(sheetName) {
   const ws = state.workbook.Sheets[sheetName];
   const rows = XLSX.utils.sheet_to_json(ws, { header: 1, defval: '' });
   state.rows = rows;
-  state.headerRow = rows[0] || [];
+  state.headerRowIndex = rows.length ? detectHeaderRowIndex(rows) : 0;
+  headerRowInput.max = Math.max(1, rows.length);
+  headerRowInput.value = state.headerRowIndex + 1;
+  applyHeaderRow();
+}
+
+headerRowInput.addEventListener('change', () => {
+  const idx = Math.min(Math.max(0, Number(headerRowInput.value) - 1), Math.max(0, state.rows.length - 1));
+  state.headerRowIndex = idx;
+  headerRowInput.value = idx + 1;
+  applyHeaderRow();
+});
+
+function applyHeaderRow() {
+  state.headerRow = state.rows[state.headerRowIndex] || [];
   buildColumnSelect();
   renderPreview();
+  updateBuildButton();
 }
 
 function buildColumnSelect() {
+  const prevValue = state.colIndex;
   colSelect.innerHTML = '';
-  let guess = 0;
+  let guess = 0, guessed = false;
   state.headerRow.forEach((h, i) => {
     const opt = document.createElement('option');
     opt.value = i;
     opt.textContent = `${XLSX.utils.encode_col(i)}: ${h || '(без названия)'}`;
     colSelect.appendChild(opt);
-    if (/адрес|address/i.test(String(h))) guess = i;
+    if (!guessed && /адрес|address/i.test(String(h))) { guess = i; guessed = true; }
   });
-  colSelect.value = guess;
-  state.colIndex = guess;
+  const keep = prevValue >= 0 && prevValue < state.headerRow.length;
+  colSelect.value = keep ? prevValue : guess;
+  state.colIndex = Number(colSelect.value);
 }
 
 colSelect.addEventListener('change', () => {
   state.colIndex = Number(colSelect.value);
   renderPreview();
+  updateBuildButton();
 });
 
+function dataRows() {
+  return state.rows.length > state.headerRowIndex + 1 ? state.rows.slice(state.headerRowIndex + 1) : [];
+}
+
+function addressesFromSheet() {
+  return dataRows().map(r => String(r[state.colIndex] ?? '').trim()).filter(Boolean);
+}
+
 function renderPreview() {
-  const rowsToShow = state.rows.slice(0, 6);
-  let html = '<table><tr>';
+  const rows = dataRows().slice(0, 8);
+  let html = '<table><thead><tr>';
   state.headerRow.forEach((h, i) => {
-    html += `<th${i == state.colIndex ? ' style="color:#cc2b2b"' : ''}>${escapeHtml(String(h || XLSX.utils.encode_col(i)))}</th>`;
+    html += `<th class="${i == state.colIndex ? 'addr-col' : ''}">${escapeHtml(String(h || XLSX.utils.encode_col(i)))}</th>`;
   });
-  html += '</tr>';
-  rowsToShow.slice(1).forEach(r => {
-    html += '<tr>' + state.headerRow.map((_, i) => `<td${i == state.colIndex ? ' style="color:#cc2b2b"' : ''}>${escapeHtml(String(r[i] ?? ''))}</td>`).join('') + '</tr>';
+  html += '</tr></thead><tbody>';
+  rows.forEach(r => {
+    html += '<tr>' + state.headerRow.map((_, i) => `<td class="${i == state.colIndex ? 'addr-col' : ''}">${escapeHtml(String(r[i] ?? ''))}</td>`).join('') + '</tr>';
   });
-  html += '</table>';
+  html += '</tbody></table>';
   previewEl.innerHTML = html;
+
+  const found = addressesFromSheet().length;
+  countBadge.innerHTML = found > 0
+    ? `<span class="count-badge ok">✓ Найдено ${found} адрес(ов) в этом столбце</span>`
+    : `<span class="count-badge warn">⚠ Адреса не найдены — проверьте столбец и строку заголовков</span>`;
 }
 
 function escapeHtml(s) {
@@ -321,8 +568,9 @@ function renderManualList() {
   manualList.innerHTML = '';
   state.manualAddresses.forEach((a, i) => {
     const li = document.createElement('li');
-    li.innerHTML = `<span>${escapeHtml(a)}</span>`;
+    li.innerHTML = `<span class="addr-text"><span class="dot"></span>${escapeHtml(a)}</span>`;
     const btn = document.createElement('button');
+    btn.className = 'remove-btn';
     btn.textContent = 'Удалить';
     btn.onclick = () => { state.manualAddresses.splice(i, 1); renderManualList(); updateBuildButton(); };
     li.appendChild(btn);
@@ -331,16 +579,13 @@ function renderManualList() {
 }
 
 function updateBuildButton() {
-  const hasFile = state.rows.length > 1;
+  const hasFile = addressesFromSheet().length > 0;
   const hasManual = state.manualAddresses.length > 0;
   buildBtn.disabled = !(hasFile || hasManual);
 }
 
 function getAllAddresses() {
-  const fromSheet = state.rows.length > 1
-    ? state.rows.slice(1).map(r => String(r[state.colIndex] ?? '').trim()).filter(Boolean)
-    : [];
-  return fromSheet.concat(state.manualAddresses);
+  return addressesFromSheet().concat(state.manualAddresses);
 }
 
 const GEOCODE_CACHE_KEY = 'route_optimizer_geocode_cache_v1';
@@ -435,6 +680,8 @@ buildBtn.addEventListener('click', async () => {
 
   buildBtn.disabled = true;
   resultCard.classList.add('hidden');
+  progressTrack.classList.remove('hidden');
+  progressFill.style.width = '0%';
   const cache = loadCache();
   const points = [];
   const notFound = [];
@@ -442,6 +689,7 @@ buildBtn.addEventListener('click', async () => {
 
   for (let i = 0; i < addresses.length; i++) {
     setStatus(`Определяем координаты: ${i + 1} из ${addresses.length}...`);
+    progressFill.style.width = `${Math.round(((i) / addresses.length) * 100)}%`;
     try {
       const p = await geocode(addresses[i], cache);
       if (p) { points.push(p); validAddresses.push(addresses[i]); }
@@ -451,10 +699,12 @@ buildBtn.addEventListener('click', async () => {
     }
     await new Promise(r => setTimeout(r, 1000));
   }
+  progressFill.style.width = '100%';
 
   if (points.length < 2) {
     setStatus('Не удалось определить координаты хотя бы двух адресов. Проверьте написание адресов.', 'warn');
     buildBtn.disabled = false;
+    progressTrack.classList.add('hidden');
     return;
   }
 
@@ -471,12 +721,13 @@ buildBtn.addEventListener('click', async () => {
   routeListEl.innerHTML = orderedAddresses.map(a => `<li>${escapeHtml(a)}</li>`).join('');
 
   if (notFound.length) {
-    notFoundBox.innerHTML = `<p class="status warn">Не найдены координаты для ${notFound.length} адрес(ов) — они не включены в маршрут:</p><ul class="addr-list">${notFound.map(a => `<li><span>${escapeHtml(a)}</span></li>`).join('')}</ul>`;
+    notFoundBox.innerHTML = `<p class="status warn" style="text-align:left">⚠ Не найдены координаты для ${notFound.length} адрес(ов) — они не включены в маршрут:</p><ul class="addr-list">${notFound.map(a => `<li><span class="addr-text">${escapeHtml(a)}</span></li>`).join('')}</ul>`;
   } else {
     notFoundBox.innerHTML = '';
   }
 
   resultCard.classList.remove('hidden');
+  progressTrack.classList.add('hidden');
   setStatus(`Готово: ${orderedAddresses.length} точек маршрута.`, 'ok');
   buildBtn.disabled = false;
 });
