@@ -8,10 +8,10 @@ from state import load_seen, save_seen
 from telegram_post import send_message
 from translate import translate
 
-FEED_URL = os.environ.get("FEED_URL", "https://www.dlnews.com/rss/")
+FEED_URL = os.environ.get("FEED_URL", "https://protos.com/feed/")
 STATE_FILE = os.environ.get("STATE_FILE", "data/seen_ids.json")
 MAX_ITEMS_PER_RUN = int(os.environ.get("MAX_ITEMS_PER_RUN", "5"))
-SOURCE_NAME = os.environ.get("SOURCE_NAME", "DL News")
+SOURCE_NAME = os.environ.get("SOURCE_NAME", "Protos")
 
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
@@ -42,7 +42,7 @@ def build_message(title_ru, summary_ru, link):
 def main():
     entries = fetch_entries(FEED_URL)
     if not entries:
-        print("No entries found in feed, nothing to do.")
+        print(f"No entries found at FEED_URL={FEED_URL}. Is this a valid RSS feed URL?")
         return
 
     entries = list(reversed(entries))  # oldest first
