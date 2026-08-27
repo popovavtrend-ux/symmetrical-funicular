@@ -8,10 +8,10 @@ from state import load_seen, save_seen
 from telegram_post import send_message
 from translate import translate
 
-FEED_URL = os.environ.get("FEED_URL", "https://unchainedcrypto.com/feed/")
+FEED_URL = os.environ.get("FEED_URL", "https://www.dlnews.com/rss/")
 STATE_FILE = os.environ.get("STATE_FILE", "data/seen_ids.json")
 MAX_ITEMS_PER_RUN = int(os.environ.get("MAX_ITEMS_PER_RUN", "5"))
-SOURCE_NAME = os.environ.get("SOURCE_NAME", "Unchained Crypto")
+SOURCE_NAME = os.environ.get("SOURCE_NAME", "DL News")
 
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
