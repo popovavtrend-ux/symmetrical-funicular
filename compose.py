@@ -28,7 +28,12 @@ def compose_post_via_claude(author, text, url):
 def compose_post_via_translation(author, text, url):
     from deep_translator import GoogleTranslator
 
-    translated = GoogleTranslator(source="en", target="ru").translate(text) if text else ""
+    translated = text
+    if text:
+        try:
+            translated = GoogleTranslator(source="en", target="ru").translate(text)
+        except Exception as e:
+            print(f"Google Translate failed, posting original text: {e}")
     return f"{author} написал(а):\n{translated}"
 
 

@@ -17,6 +17,7 @@ BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
 TAG_RE = re.compile("<[^<]+?>")
+WP_APPEARED_FIRST_RE = re.compile(r"\s*The post .+ appeared first on .+?\.\s*$")
 
 
 def entry_id(entry):
@@ -26,6 +27,7 @@ def entry_id(entry):
 def clean_summary(entry):
     summary = getattr(entry, "summary", "") or ""
     summary = TAG_RE.sub("", summary).strip()
+    summary = WP_APPEARED_FIRST_RE.sub("", summary).strip()
     if len(summary) > 500:
         summary = summary[:497].rsplit(" ", 1)[0] + "..."
     return summary
@@ -67,10 +69,16 @@ def main():
         summary = clean_summary(entry)
         link = entry.link
 
-        title_ru, summary_ru = translate(title, summary)
-        message = build_message(title_ru, summary_ru, link)
+        try:
+            title_ru, summary_ru = translate(title, summary)
+            message = build_message(title_ru, summary_ru, link)
+            send_message(BOT_TOKEN, CHAT_ID, message)
+        except Exception as e:
+            # Don't let one bad entry take down the whole run - the
+            # already-posted entries above must still get committed.
+            print(f"Failed to post entry {link!r}: {e}")
+            continue
 
-        send_message(BOT_TOKEN, CHAT_ID, message)
         seen.add(entry_id(entry))
         save_seen(STATE_FILE, seen)
         print(f"Posted: {title}")
