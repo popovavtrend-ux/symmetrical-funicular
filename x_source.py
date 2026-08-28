@@ -15,6 +15,7 @@ import feedparser
 import requests
 
 TAG_RE = re.compile("<[^<]+?>")
+STATUS_ID_RE = re.compile(r"/status/(\d+)")
 
 DEFAULT_NITTER_INSTANCES = [
     "https://nitter.net",
@@ -42,22 +43,32 @@ def _fetch_via_nitter(username):
         except Exception as e:
             print(f"Nitter instance {instance} failed for @{username}: {e}")
             continue
-        if parsed.bozo and not parsed.entries:
-            continue
         if not parsed.entries:
             continue
 
         posts = []
         for entry in parsed.entries:
+            link = getattr(entry, "link", "") or ""
+            match = STATUS_ID_RE.search(link)
+            if not match:
+                # Not a real tweet permalink - some mirrors return a single
+                # placeholder/error item (e.g. linking back to the feed
+                # itself) instead of failing outright. Skip it.
+                continue
+            status_id = match.group(1)
             posts.append(
                 {
-                    "id": getattr(entry, "id", None) or entry.link,
+                    "id": status_id,
                     "text": _clean_html(getattr(entry, "summary", "") or entry.title),
-                    "url": entry.link.replace(instance, "https://x.com") if instance in entry.link else entry.link,
+                    "url": f"https://x.com/{username}/status/{status_id}",
                     "author": username,
                 }
             )
-        return posts
+        if posts:
+            return posts
+        # This instance responded but had nothing that looked like a real
+        # tweet - try the next mirror instead of reporting a false "no posts".
+        print(f"Nitter instance {instance} returned no valid tweets for @{username}, trying next")
     return []
 
 
