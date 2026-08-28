@@ -55,10 +55,16 @@ def process_account(username, state):
         return
 
     for post in new_posts:
-        post_ru_text = compose_post(username, post["text"], post["url"])
-        message = build_message(post_ru_text, post["url"])
+        try:
+            post_ru_text = compose_post(username, post["text"], post["url"])
+            message = build_message(post_ru_text, post["url"])
+            send_message(BOT_TOKEN, CHAT_ID, message)
+        except Exception as e:
+            # Don't let one bad post take down the whole run - already
+            # posted entries above must still get committed.
+            print(f"@{username}: failed to post {post['id']}: {e}")
+            continue
 
-        send_message(BOT_TOKEN, CHAT_ID, message)
         seen_ids.add(post["id"])
         state[username] = sorted(seen_ids)
         save_state(STATE_FILE, state)
@@ -69,7 +75,11 @@ def process_account(username, state):
 def main():
     state = load_state(STATE_FILE)
     for username in get_accounts():
-        process_account(username, state)
+        try:
+            process_account(username, state)
+        except Exception as e:
+            # One account's failure shouldn't block the rest.
+            print(f"@{username}: unexpected error, skipping: {e}")
 
 
 if __name__ == "__main__":

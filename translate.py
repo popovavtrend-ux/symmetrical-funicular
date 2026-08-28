@@ -26,12 +26,22 @@ def translate_via_claude(title, summary):
     return translated_title, translated_summary
 
 
+def _safe_google_translate(tr, text):
+    if not text:
+        return ""
+    try:
+        return tr.translate(text)
+    except Exception as e:
+        print(f"Google Translate failed for a chunk, keeping original text: {e}")
+        return text
+
+
 def translate_via_google(title, summary):
     from deep_translator import GoogleTranslator
 
     tr = GoogleTranslator(source="en", target="ru")
-    translated_title = tr.translate(title) if title else ""
-    translated_summary = tr.translate(summary) if summary else ""
+    translated_title = _safe_google_translate(tr, title)
+    translated_summary = _safe_google_translate(tr, summary)
     return translated_title, translated_summary
 
 
