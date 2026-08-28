@@ -12,6 +12,7 @@ FEED_URL = os.environ.get("FEED_URL") or "https://protos.com/feed/"
 STATE_FILE = os.environ.get("STATE_FILE") or "data/seen_ids.json"
 MAX_ITEMS_PER_RUN = int(os.environ.get("MAX_ITEMS_PER_RUN") or "5")
 SOURCE_NAME = os.environ.get("SOURCE_NAME") or "Protos"
+SKIP_TRANSLATION = (os.environ.get("SKIP_TRANSLATION") or "").strip().lower() in ("1", "true", "yes")
 
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
@@ -70,7 +71,10 @@ def main():
         link = entry.link
 
         try:
-            title_ru, summary_ru = translate(title, summary)
+            if SKIP_TRANSLATION:
+                title_ru, summary_ru = title, summary
+            else:
+                title_ru, summary_ru = translate(title, summary)
             message = build_message(title_ru, summary_ru, link)
             send_message(BOT_TOKEN, CHAT_ID, message)
         except Exception as e:
