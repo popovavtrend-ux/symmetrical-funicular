@@ -39,7 +39,12 @@ def _fetch_via_nitter(username):
     for instance in _nitter_instances():
         url = f"{instance}/{username}/rss"
         try:
-            parsed = feedparser.parse(url)
+            # feedparser.parse(url) has no timeout and can hang for minutes
+            # on an unreachable mirror; fetch with requests (bounded timeout)
+            # and hand it the raw content instead.
+            resp = requests.get(url, timeout=10)
+            resp.raise_for_status()
+            parsed = feedparser.parse(resp.content)
         except Exception as e:
             print(f"Nitter instance {instance} failed for @{username}: {e}")
             continue
