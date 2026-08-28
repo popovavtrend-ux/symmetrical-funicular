@@ -8,10 +8,14 @@ from state import load_seen, save_seen
 from telegram_post import send_message
 from translate import translate
 
-FEED_URL = os.environ.get("FEED_URL") or "https://protos.com/feed/"
+DEFAULT_FEED_URLS = "https://protos.com/feed/,https://www.dlnews.com/rss/"
+
+FEED_URLS = [u.strip() for u in (os.environ.get("FEED_URL") or DEFAULT_FEED_URLS).split(",") if u.strip()]
 STATE_FILE = os.environ.get("STATE_FILE") or "data/seen_ids.json"
 MAX_ITEMS_PER_RUN = int(os.environ.get("MAX_ITEMS_PER_RUN") or "5")
-SOURCE_NAME = os.environ.get("SOURCE_NAME") or "Protos"
+# Optional: force a single display name for all sources instead of each
+# feed's own <title> (handy for a single-source setup).
+SOURCE_NAME_OVERRIDE = os.environ.get("SOURCE_NAME")
 SKIP_TRANSLATION = (os.environ.get("SKIP_TRANSLATION") or "").strip().lower() in ("1", "true", "yes")
 
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
@@ -34,21 +38,25 @@ def clean_summary(entry):
     return summary
 
 
-def build_message(title_ru, summary_ru, link):
+def build_message(title_ru, summary_ru, link, source_name):
     parts = [f"<b>{html.escape(title_ru)}</b>"]
     if summary_ru:
         parts.append(html.escape(summary_ru))
-    parts.append(f'🔗 <a href="{link}">Читать оригинал ({html.escape(SOURCE_NAME)})</a>')
+    parts.append(f'🔗 <a href="{link}">Читать оригинал ({html.escape(source_name)})</a>')
     return "\n\n".join(parts)
 
 
+def sort_key(entry):
+    return entry.get("published_parsed") or entry.get("updated_parsed") or time.gmtime(0)
+
+
 def main():
-    entries = fetch_entries(FEED_URL)
+    entries = fetch_entries(FEED_URLS)
     if not entries:
-        print(f"No entries found at FEED_URL={FEED_URL}. Is this a valid RSS feed URL?")
+        print(f"No entries found across FEED_URLS={FEED_URLS}. Are these valid RSS feed URLs?")
         return
 
-    entries = list(reversed(entries))  # oldest first
+    entries.sort(key=sort_key)  # oldest first, interleaved across sources
     seen = load_seen(STATE_FILE)
 
     if seen is None:
@@ -69,13 +77,14 @@ def main():
         title = entry.title
         summary = clean_summary(entry)
         link = entry.link
+        source_name = SOURCE_NAME_OVERRIDE or entry.get("_source_name") or "источник"
 
         try:
             if SKIP_TRANSLATION:
                 title_ru, summary_ru = title, summary
             else:
                 title_ru, summary_ru = translate(title, summary)
-            message = build_message(title_ru, summary_ru, link)
+            message = build_message(title_ru, summary_ru, link, source_name)
             send_message(BOT_TOKEN, CHAT_ID, message)
         except Exception as e:
             # Don't let one bad entry take down the whole run - the

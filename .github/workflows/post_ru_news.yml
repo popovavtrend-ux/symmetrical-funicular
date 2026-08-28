@@ -25,8 +25,8 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          FEED_URL: ${{ vars.RU_FEED_URL || 'https://incrypted.com/feed/' }}
-          SOURCE_NAME: ${{ vars.RU_SOURCE_NAME || 'INCRYPTED' }}
+          FEED_URL: ${{ vars.RU_FEED_URL || 'https://incrypted.com/feed/,https://cryptocurrency.tech/feed/' }}
+          SOURCE_NAME: ${{ vars.RU_SOURCE_NAME }}
           STATE_FILE: data/seen_ru_ids.json
           SKIP_TRANSLATION: "true"
         run: python main.py
