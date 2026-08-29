@@ -13,9 +13,6 @@ DEFAULT_FEED_URLS = "https://protos.com/feed/,https://www.dlnews.com/rss/"
 FEED_URLS = [u.strip() for u in (os.environ.get("FEED_URL") or DEFAULT_FEED_URLS).split(",") if u.strip()]
 STATE_FILE = os.environ.get("STATE_FILE") or "data/seen_ids.json"
 MAX_ITEMS_PER_RUN = int(os.environ.get("MAX_ITEMS_PER_RUN") or "5")
-# Optional: force a single display name for all sources instead of each
-# feed's own <title> (handy for a single-source setup).
-SOURCE_NAME_OVERRIDE = os.environ.get("SOURCE_NAME")
 SKIP_TRANSLATION = (os.environ.get("SKIP_TRANSLATION") or "").strip().lower() in ("1", "true", "yes")
 
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
@@ -23,6 +20,8 @@ CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
 TAG_RE = re.compile("<[^<]+?>")
 WP_APPEARED_FIRST_RE = re.compile(r"\s*The post .+ appeared first on .+?\.\s*$")
+
+TELEGRAM_MAX_LEN = 4096
 
 
 def entry_id(entry):
@@ -33,16 +32,24 @@ def clean_summary(entry):
     summary = getattr(entry, "summary", "") or ""
     summary = TAG_RE.sub("", summary).strip()
     summary = WP_APPEARED_FIRST_RE.sub("", summary).strip()
-    if len(summary) > 500:
-        summary = summary[:497].rsplit(" ", 1)[0] + "..."
     return summary
 
 
-def build_message(title_ru, summary_ru, link, source_name):
-    parts = [f"<b>{html.escape(title_ru)}</b>"]
-    if summary_ru:
-        parts.append(html.escape(summary_ru))
-    parts.append(f'🔗 <a href="{link}">Читать оригинал ({html.escape(source_name)})</a>')
+def build_message(title_ru, summary_ru, link):
+    title_html = f"<b>{html.escape(title_ru)}</b>"
+    link_html = f'<a href="{link}">Источник</a>'
+    summary_html = html.escape(summary_ru) if summary_ru else ""
+
+    # Telegram caps messages at 4096 chars - trim only the summary (not the
+    # title or link) if the full article text doesn't fit.
+    budget = TELEGRAM_MAX_LEN - len(f"{title_html}\n\n\n\n{link_html}")
+    if summary_html and len(summary_html) > budget:
+        summary_html = summary_html[: max(0, budget - 3)].rsplit(" ", 1)[0] + "..."
+
+    parts = [title_html]
+    if summary_html:
+        parts.append(summary_html)
+    parts.append(link_html)
     return "\n\n".join(parts)
 
 
@@ -77,14 +84,13 @@ def main():
         title = entry.title
         summary = clean_summary(entry)
         link = entry.link
-        source_name = SOURCE_NAME_OVERRIDE or entry.get("_source_name") or "источник"
 
         try:
             if SKIP_TRANSLATION:
                 title_ru, summary_ru = title, summary
             else:
                 title_ru, summary_ru = translate(title, summary)
-            message = build_message(title_ru, summary_ru, link, source_name)
+            message = build_message(title_ru, summary_ru, link)
             send_message(BOT_TOKEN, CHAT_ID, message)
         except Exception as e:
             # Don't let one bad entry take down the whole run - the

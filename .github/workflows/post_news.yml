@@ -27,7 +27,6 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           FEED_URL: ${{ vars.FEED_URL }}
-          SOURCE_NAME: ${{ vars.SOURCE_NAME }}
         run: python main.py
 
       - name: Commit updated state
