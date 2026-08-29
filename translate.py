@@ -6,11 +6,16 @@ def translate_via_claude(title, summary):
 
     client = anthropic.Anthropic()
     prompt = (
-        "Translate the following crypto news title and summary into natural, "
-        "idiomatic Russian for a Telegram crypto news channel audience. Keep "
-        "crypto terms (Bitcoin, DeFi, token tickers, etc.) as they are commonly "
-        "used in Russian crypto media. Reply with exactly two lines: the "
-        "translated title, then the translated summary (2-3 sentences max).\n\n"
+        "You write an original short news post in Russian for a crypto news "
+        "Telegram channel, based on the article title/summary below (the "
+        "source may already be in Russian, or in English). Rewrite the key "
+        "facts in your own words as a journalist summarizing the news for "
+        "their own audience - do not translate or copy sentences verbatim, "
+        "even if the source is already Russian. Keep crypto terms (Bitcoin, "
+        "DeFi, token tickers, etc.) as commonly used in Russian crypto "
+        "media. Be accurate - do not invent facts, numbers, or quotes that "
+        "aren't in the source. Reply with exactly two lines: the rewritten "
+        "title, then the rewritten summary (2-3 sentences max).\n\n"
         f"Title: {title}\n"
         f"Summary: {summary}"
     )
