@@ -86,7 +86,11 @@ def main():
         link = entry.link
 
         try:
-            if SKIP_TRANSLATION:
+            # SKIP_TRANSLATION only means "post as-is" when there's no
+            # ANTHROPIC_API_KEY to rewrite it into a unique post - once a
+            # key is set, even already-Russian sources get rewritten rather
+            # than copied verbatim.
+            if SKIP_TRANSLATION and not os.environ.get("ANTHROPIC_API_KEY"):
                 title_ru, summary_ru = title, summary
             else:
                 title_ru, summary_ru = translate(title, summary)
