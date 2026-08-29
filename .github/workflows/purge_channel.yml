@@ -1,7 +1,12 @@
 name: Purge channel history
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      max_message_id:
+        description: "Highest message id to attempt deleting"
+        required: false
+        default: "300"
 
 jobs:
   purge:
@@ -20,4 +25,5 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PURGE_MAX_MESSAGE_ID: ${{ inputs.max_message_id }}
         run: python purge_channel.py
