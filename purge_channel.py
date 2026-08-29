@@ -15,13 +15,35 @@ BASE = f"https://api.telegram.org/bot{BOT_TOKEN}"
 MAX_MESSAGE_ID = int(os.environ.get("PURGE_MAX_MESSAGE_ID", "300"))
 
 
+def probe_current_message_id():
+    """Sends a throwaway message to learn the chat's current message_id
+    counter, since deleteMessage on a wrong range otherwise just silently
+    reports everything as not-found."""
+    resp = requests.post(
+        f"{BASE}/sendMessage",
+        data={"chat_id": CHAT_ID, "text": "purge probe (auto-deleted)"},
+        timeout=15,
+    )
+    data = resp.json()
+    if not data.get("ok"):
+        print(f"Probe sendMessage failed: {data}")
+        return None
+    probe_id = data["result"]["message_id"]
+    print(f"Probe message id: {probe_id}")
+    return probe_id
+
+
 def main():
+    probe_id = probe_current_message_id()
+    effective_max = probe_id if probe_id else MAX_MESSAGE_ID
+    print(f"Deleting message ids 1..{effective_max}")
+
     deleted = 0
     not_found = 0
     errors = []
     start = time.monotonic()
 
-    for msg_id in range(1, MAX_MESSAGE_ID + 1):
+    for msg_id in range(1, effective_max + 1):
         req_start = time.monotonic()
         try:
             resp = requests.post(
