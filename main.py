@@ -8,7 +8,13 @@ from state import load_seen, save_seen
 from telegram_post import send_message
 from translate import translate
 
-DEFAULT_FEED_URLS = "https://protos.com/feed/,https://www.dlnews.com/rss/"
+DEFAULT_FEED_URLS = (
+    "https://protos.com/feed/,"
+    "https://www.dlnews.com/rss/,"
+    "https://cryptoslate.com/feed/,"
+    "https://decrypt.co/feed,"
+    "https://beincrypto.com/feed/"
+)
 
 FEED_URLS = [u.strip() for u in (os.environ.get("FEED_URL") or DEFAULT_FEED_URLS).split(",") if u.strip()]
 STATE_FILE = os.environ.get("STATE_FILE") or "data/seen_ids.json"
