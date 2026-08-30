@@ -31,6 +31,7 @@ jobs:
           FEED_URL: ${{ vars.CHANNEL_FEED_URL || 'https://protos.com/feed/,https://www.dlnews.com/rss/,https://cryptoslate.com/feed/,https://decrypt.co/feed,https://beincrypto.com/feed/,https://www.coindesk.com/arc/outboundfeeds/rss/,https://cointelegraph.com/rss,https://bitcoinmagazine.com/feed,https://thedefiant.io/feed' }}
           STATE_FILE: data/seen_ids_channel.json
           CONTENT_STYLE: "new"
+          MAX_ITEMS_PER_RUN: "1"
         run: python main.py
 
       - name: Commit updated state
