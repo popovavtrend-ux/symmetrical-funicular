@@ -32,6 +32,7 @@ jobs:
           STATE_FILE: data/seen_ids_channel.json
           CONTENT_STYLE: "new"
           MAX_ITEMS_PER_RUN: "1"
+          SIGNATURE: "@freshlive101"
         run: python main.py
 
       - name: Commit updated state

@@ -33,6 +33,7 @@ jobs:
           SKIP_TRANSLATION: "true"
           CONTENT_STYLE: "new"
           MAX_ITEMS_PER_RUN: "1"
+          SIGNATURE: "@freshlive101"
         run: python main.py
 
       - name: Commit updated state
