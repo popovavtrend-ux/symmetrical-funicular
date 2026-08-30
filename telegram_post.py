@@ -13,5 +13,6 @@ def send_message(bot_token, chat_id, text):
         },
         timeout=30,
     )
-    resp.raise_for_status()
+    if not resp.ok:
+        raise RuntimeError(f"Telegram API error {resp.status_code}: {resp.text}")
     return resp.json()
