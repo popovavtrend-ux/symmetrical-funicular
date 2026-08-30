@@ -175,12 +175,26 @@ def main():
         )
         entries = [e for e in entries if e.get("_feed_url") not in new_feed_urls]
 
-    entries.sort(key=sort_key)  # oldest first, interleaved across sources
-    new_entries = [e for e in entries if entry_id(e) not in seen][:MAX_ITEMS_PER_RUN]
+    # Newest first - with several active feeds, more can break in one
+    # window than MAX_ITEMS_PER_RUN can post. Prioritizing the newest
+    # keeps the channel caught up on current events instead of always
+    # working through an ever-growing backlog of older stories.
+    entries.sort(key=sort_key, reverse=True)
+    unseen = [e for e in entries if entry_id(e) not in seen]
+    new_entries = unseen[:MAX_ITEMS_PER_RUN]
+    stale_backlog = unseen[MAX_ITEMS_PER_RUN:]
+
+    if stale_backlog:
+        # Mark the rest as seen without posting them - skip the backlog
+        # rather than posting stale news for the next several runs.
+        seen.update(entry_id(e) for e in stale_backlog)
+        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds})
 
     if not new_entries:
         print("No new entries.")
         return
+
+    new_entries.sort(key=sort_key)  # oldest-of-the-batch first, for a readable posting order
 
     for entry in new_entries:
         title = entry.title
