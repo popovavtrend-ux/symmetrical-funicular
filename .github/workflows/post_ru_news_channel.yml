@@ -1,4 +1,4 @@
-name: Post Russian-language crypto news to Telegram
+name: Post Russian-language crypto news to Telegram channel
 
 on:
   schedule:
@@ -23,14 +23,15 @@ jobs:
 
       - name: Run bot
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN_2 }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID_2 }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-          FEED_URL: ${{ vars.RU_FEED_URL || 'https://incrypted.com/feed/,https://cryptocurrency.tech/feed/' }}
-          STATE_FILE: data/seen_ru_ids.json
+          FEED_URL: ${{ vars.CHANNEL_RU_FEED_URL || 'https://incrypted.com/feed/,https://cryptocurrency.tech/feed/,https://forklog.com/feed/,https://ru.beincrypto.com/feed/' }}
+          STATE_FILE: data/seen_ru_ids_channel.json
           SKIP_TRANSLATION: "true"
+          CONTENT_STYLE: "new"
         run: python main.py
 
       - name: Commit updated state
@@ -39,5 +40,5 @@ jobs:
           git config user.name "news-bot"
           git config user.email "news-bot@users.noreply.github.com"
           git add -A data/
-          git diff --cached --quiet || git commit -m "chore: update seen RU news state"
+          git diff --cached --quiet || git commit -m "chore: update seen RU news state (channel)"
           git push
