@@ -1,3 +1,4 @@
+import base64
 import os
 
 import requests
@@ -41,13 +42,60 @@ def guess_image_query(title):
     return "cryptocurrency"
 
 
-def find_stock_image(title):
-    """Look up a free-to-use Pexels photo matching the news topic, instead
-    of hotlinking the source's own copyrighted photo. Returns an image URL,
-    or None if no API key is configured or nothing matches."""
+def describe_image_for_search(image_url):
+    """Privately look at the source's own photo (never republished) and ask
+    Claude to describe its visual subject in a few keywords, so the Pexels
+    search below can find something that actually looks similar - not just
+    topically related by headline keywords."""
+    from anthropic_client import get_client
+
+    try:
+        img_resp = requests.get(image_url, timeout=15)
+        img_resp.raise_for_status()
+        media_type = img_resp.headers.get("Content-Type", "image/jpeg").split(";")[0]
+        image_b64 = base64.b64encode(img_resp.content).decode("ascii")
+
+        client = get_client()
+        resp = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=30,
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "image", "source": {"type": "base64", "media_type": media_type, "data": image_b64}},
+                        {
+                            "type": "text",
+                            "text": (
+                                "Describe the main visual subject of this image in 2-4 English "
+                                "keywords suitable for a stock photo search (e.g. 'bitcoin coin "
+                                "gold', 'stock market red chart', 'bank building exterior'). "
+                                "Reply with just the keywords, nothing else."
+                            ),
+                        },
+                    ],
+                }
+            ],
+        )
+        return resp.content[0].text.strip() or None
+    except Exception as e:
+        print(f"Image description failed for {image_url!r}: {e}")
+        return None
+
+
+def find_stock_image(title, source_image_url=None):
+    """Look up a free-to-use Pexels photo visually matching the news topic,
+    instead of hotlinking the source's own copyrighted photo. Returns an
+    image URL, or None if no API key is configured or nothing matches."""
     if not PEXELS_API_KEY:
         return None
-    query = guess_image_query(title)
+
+    query = None
+    if source_image_url and os.environ.get("ANTHROPIC_API_KEY"):
+        query = describe_image_for_search(source_image_url)
+    if not query:
+        query = guess_image_query(title)
+
     try:
         resp = requests.get(
             PEXELS_SEARCH_URL,
