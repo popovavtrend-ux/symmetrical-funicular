@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 
 from fetch_feed import fetch_entries
 from state import load_state, save_state
+from stock_image import find_stock_image
 from telegram_post import send_message, send_photo
 from translate import translate
 
@@ -27,7 +28,6 @@ CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
 TAG_RE = re.compile("<[^<]+?>")
 WP_APPEARED_FIRST_RE = re.compile(r"\s*The post .+ appeared first on .+?\.\s*$")
-IMG_SRC_RE = re.compile(r'<img[^>]+src=["\']([^"\']+)["\']', re.IGNORECASE)
 
 TELEGRAM_MAX_LEN = 4096
 TELEGRAM_PHOTO_CAPTION_MAX_LEN = 1024
@@ -54,34 +54,6 @@ def clean_summary(entry):
     summary = TAG_RE.sub("", summary).strip()
     summary = WP_APPEARED_FIRST_RE.sub("", summary).strip()
     return summary
-
-
-def extract_image_url(entry):
-    """Pull the article's own image straight from the feed, if it has one."""
-    for thumb in entry.get("media_thumbnail") or []:
-        if thumb.get("url"):
-            return thumb["url"]
-
-    media_content = entry.get("media_content") or []
-    for m in media_content:
-        if (m.get("medium") == "image" or (m.get("type") or "").startswith("image")) and m.get("url"):
-            return m["url"]
-    if media_content and media_content[0].get("url"):
-        return media_content[0]["url"]
-
-    for enc in entry.get("enclosures") or []:
-        if (enc.get("type") or "").startswith("image") and enc.get("href"):
-            return enc["href"]
-
-    raw_html = entry.get("summary") or ""
-    content = entry.get("content") or []
-    if content:
-        raw_html += content[0].get("value") or ""
-    match = IMG_SRC_RE.search(raw_html)
-    if match:
-        return match.group(1)
-
-    return None
 
 
 def get_source_name(entry):
@@ -173,7 +145,7 @@ def main():
         title = entry.title
         summary = clean_summary(entry)
         link = entry.link
-        image_url = extract_image_url(entry)
+        image_url = find_stock_image(title)
         source_name = get_source_name(entry)
 
         try:
