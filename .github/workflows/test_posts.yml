@@ -1,0 +1,36 @@
+name: Post test entries with new format (one-off)
+
+on:
+  workflow_dispatch:
+    inputs:
+      feed_url:
+        description: "Comma-separated feed URLs to pull test entries from"
+        required: true
+        default: "https://protos.com/feed/,https://www.dlnews.com/rss/,https://cryptoslate.com/feed/,https://decrypt.co/feed,https://beincrypto.com/feed/"
+      count:
+        description: "How many test entries to post"
+        required: false
+        default: "2"
+
+jobs:
+  test-post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Post test entries
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
+          FEED_URL: ${{ inputs.feed_url }}
+          TEST_POST_COUNT: ${{ inputs.count }}
+        run: python test_posts.py
