@@ -95,6 +95,7 @@ def find_stock_image(title, source_image_url=None):
         query = describe_image_for_search(source_image_url)
     if not query:
         query = guess_image_query(title)
+    print(f"Pexels query for {title!r}: {query!r}")
 
     try:
         resp = requests.get(
