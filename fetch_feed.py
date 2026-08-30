@@ -25,6 +25,8 @@ def fetch_entries(feed_urls):
             print(f"Feed at {url} returned no entries")
             continue
 
+        for entry in parsed.entries:
+            entry["_feed_url"] = url
         all_entries.extend(parsed.entries)
 
     return all_entries
