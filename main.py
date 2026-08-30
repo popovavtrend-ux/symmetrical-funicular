@@ -2,6 +2,7 @@ import html
 import os
 import re
 import time
+from urllib.parse import urlparse
 
 from fetch_feed import fetch_entries
 from state import load_state, save_state
@@ -31,6 +32,17 @@ IMG_SRC_RE = re.compile(r'<img[^>]+src=["\']([^"\']+)["\']', re.IGNORECASE)
 TELEGRAM_MAX_LEN = 4096
 TELEGRAM_PHOTO_CAPTION_MAX_LEN = 1024
 SIGNATURE = "@cryptocompass_news"
+
+# Human-readable publication names for the source line - naming the source
+# is what makes rewriting/quoting someone else's news legally a citation
+# (e.g. GK RF Art. 1274) rather than an unattributed copy.
+SOURCE_NAMES = {
+    "protos.com": "Protos",
+    "dlnews.com": "DL News",
+    "cryptoslate.com": "CryptoSlate",
+    "decrypt.co": "Decrypt",
+    "beincrypto.com": "BeInCrypto",
+}
 
 
 def entry_id(entry):
@@ -72,33 +84,42 @@ def extract_image_url(entry):
     return None
 
 
+def get_source_name(entry):
+    host = urlparse(entry.get("_feed_url") or "").netloc
+    host = host[4:] if host.startswith("www.") else host
+    return SOURCE_NAMES.get(host, host)
+
+
 def signature_message():
     return f"<b>{html.escape(SIGNATURE)}</b>"
 
 
-def build_caption(title_ru, summary_ru, max_len=TELEGRAM_MAX_LEN):
-    """Title + body only, no signature - a Telegram caption always renders
-    below its photo, so the signature is sent as its own message above the
-    photo instead of being part of this caption."""
+def build_caption(title_ru, summary_ru, source_name=None, max_len=TELEGRAM_MAX_LEN):
+    """Title + body (+ source line) - the caption that renders below the
+    photo, or the whole message body when there's no photo."""
     title_html = f"<b>{html.escape(title_ru)}</b>"
     summary_html = html.escape(summary_ru) if summary_ru else ""
+    source_html = f"<i>По материалам: {html.escape(source_name)}</i>" if source_name else ""
 
-    budget = max_len - len(f"{title_html}\n\n")
+    reserved = len(f"{title_html}\n\n") + (len(f"\n\n{source_html}") if source_html else 0)
+    budget = max_len - reserved
     if summary_html and len(summary_html) > budget:
         summary_html = summary_html[: max(0, budget - 3)].rsplit(" ", 1)[0] + "..."
 
     parts = [title_html]
     if summary_html:
         parts.append(summary_html)
+    if source_html:
+        parts.append(source_html)
     return "\n\n".join(parts)
 
 
-def build_message(title_ru, summary_ru, max_len=TELEGRAM_MAX_LEN):
-    """Signature + title + body in one text message, for the no-image case
-    (and as a photo-send fallback) where there's no separate photo to put
-    the signature above."""
+def build_message(title_ru, summary_ru, source_name=None, max_len=TELEGRAM_MAX_LEN):
+    """Signature + title + body (+ source line) in one text message, for
+    the no-image case (and as a photo-send fallback) where there's no
+    separate photo to put the signature above."""
     header = signature_message()
-    caption = build_caption(title_ru, summary_ru, max_len=max_len - len(f"{header}\n"))
+    caption = build_caption(title_ru, summary_ru, source_name=source_name, max_len=max_len - len(f"{header}\n"))
     return f"{header}\n{caption}"
 
 
@@ -153,6 +174,7 @@ def main():
         summary = clean_summary(entry)
         link = entry.link
         image_url = extract_image_url(entry)
+        source_name = get_source_name(entry)
 
         try:
             # SKIP_TRANSLATION only means "post as-is" when there's no
@@ -168,14 +190,16 @@ def main():
                 # Telegram can't render caption text above its own photo, so
                 # the signature goes as the caption's first line instead -
                 # one message, signature at the top of the text, image above it.
-                caption = build_message(title_ru, summary_ru, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN)
+                caption = build_message(
+                    title_ru, summary_ru, source_name=source_name, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN
+                )
                 try:
                     send_photo(BOT_TOKEN, CHAT_ID, image_url, caption)
                 except Exception as e:
                     print(f"Failed to send photo ({image_url!r}), falling back to text: {e}")
-                    send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru))
+                    send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru, source_name=source_name))
             else:
-                send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru))
+                send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru, source_name=source_name))
         except Exception as e:
             # Don't let one bad entry take down the whole run - the
             # already-posted entries above must still get committed.
