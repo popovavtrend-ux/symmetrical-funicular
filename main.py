@@ -129,7 +129,7 @@ def main():
 
         seen.add(entry_id(entry))
         save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds})
-        print(f"Posted: {title}")
+        print(f"Posted (source title: {title!r}): {title_ru!r}")
         time.sleep(3)
 
 
