@@ -107,21 +107,35 @@ def signature_message():
     return f"<b>{html.escape(SIGNATURE)}</b>"
 
 
+OPINION_MARKER = "\U0001f4ad "  # 💭 - marks where translate.py's opinion paragraph starts
+
+
 def build_caption(title_ru, summary_ru, source_name=None, max_len=TELEGRAM_MAX_LEN):
     """Title + body (+ source line) - the caption that renders below the
-    photo, or the whole message body when there's no photo."""
+    photo, or the whole message body when there's no photo. The opinion
+    paragraph (after the 💭 marker, if present) is italicized to visually
+    set our take apart from the factual context above it."""
     title_html = f"<b>{html.escape(title_ru)}</b>"
-    summary_html = html.escape(summary_ru) if summary_ru else ""
     source_html = f"<i>По материалам: {html.escape(source_name)}</i>" if source_name else ""
 
+    plain_summary = summary_ru or ""
     reserved = len(f"{title_html}\n\n") + (len(f"\n\n{source_html}") if source_html else 0)
     budget = max_len - reserved
-    if summary_html and len(summary_html) > budget:
-        summary_html = summary_html[: max(0, budget - 3)].rsplit(" ", 1)[0] + "..."
+    if plain_summary and len(plain_summary) > budget:
+        plain_summary = plain_summary[: max(0, budget - 3)].rsplit(" ", 1)[0] + "..."
+
+    if OPINION_MARKER in plain_summary:
+        context_part, opinion_part = plain_summary.split(OPINION_MARKER, 1)
+        context_part = context_part.strip()
+        opinion_part = opinion_part.strip()
+    else:
+        context_part, opinion_part = plain_summary, ""
 
     parts = [title_html]
-    if summary_html:
-        parts.append(summary_html)
+    if context_part:
+        parts.append(html.escape(context_part))
+    if opinion_part:
+        parts.append(f"<i>{OPINION_MARKER}{html.escape(opinion_part)}</i>")
     if source_html:
         parts.append(source_html)
     return "\n\n".join(parts)
