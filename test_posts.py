@@ -1,7 +1,8 @@
 import os
 
 from fetch_feed import fetch_entries
-from main import FEED_URLS, build_message, clean_summary, extract_image_url, get_source_name
+from main import FEED_URLS, build_message, clean_summary, get_source_name
+from stock_image import find_stock_image
 from telegram_post import send_message, send_photo
 from translate import translate
 
@@ -14,7 +15,7 @@ entries = fetch_entries(FEED_URLS)[:COUNT]
 for entry in entries:
     title = entry.title
     summary = clean_summary(entry)
-    image_url = extract_image_url(entry)
+    image_url = find_stock_image(title)
     source_name = get_source_name(entry)
     title_ru, summary_ru = translate(title, summary)
 

@@ -31,6 +31,7 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           FEED_URL: ${{ inputs.feed_url }}
           TEST_POST_COUNT: ${{ inputs.count }}
         run: python test_posts.py
