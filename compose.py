@@ -2,9 +2,9 @@ import os
 
 
 def compose_post_via_claude(author, text, url):
-    import anthropic
+    from anthropic_client import get_client
 
-    client = anthropic.Anthropic()
+    client = get_client()
     prompt = (
         "You write short Telegram news posts in Russian for a crypto news "
         "channel, based on a single X (Twitter) post by a known crypto "

@@ -2,9 +2,9 @@ import os
 
 
 def translate_via_claude(title, summary):
-    import anthropic
+    from anthropic_client import get_client
 
-    client = anthropic.Anthropic()
+    client = get_client()
     prompt = (
         "You write an original short news post in Russian for a crypto news "
         "Telegram channel, based on the article title/summary below (the "
