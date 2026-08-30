@@ -21,7 +21,11 @@ def translate_via_claude(title, summary):
         "Context: <1-2 plain sentences stating the news itself - what "
         "happened, in your own words, not a translation>\n"
         "Opinion: <your personal opinion/commentary on it in first person - "
-        "why it matters, what you think it means, 2-3 sentences>\n\n"
+        "why it matters, what you think it means, 2-3 sentences. Sound like "
+        "a real person talking, not a template: do NOT open with 'Я считаю', "
+        "'По-моему' or any other fixed phrase - vary how each post starts "
+        "(a reaction, a comparison, a question, straight commentary, etc.) "
+        "so posts don't all sound the same>\n\n"
         f"Title: {title}\n"
         f"Summary: {summary}"
     )
