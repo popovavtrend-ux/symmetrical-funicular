@@ -42,11 +42,13 @@ def guess_image_query(title):
     return "cryptocurrency"
 
 
-def describe_image_for_search(image_url):
+def describe_image_for_search(image_url, title):
     """Privately look at the source's own photo (never republished) and ask
-    Claude to describe its visual subject in a few keywords, so the Pexels
-    search below can find something that actually looks similar - not just
-    topically related by headline keywords."""
+    Claude to describe a stock-photo search for it - grounded in the news
+    topic, not just the image's literal visual style. Source images are
+    often abstract editorial artwork (neon shapes, gradients, icons), and
+    describing that literally produces a query that matches nothing about
+    the actual story."""
     from anthropic_client import get_client
 
     try:
@@ -67,10 +69,15 @@ def describe_image_for_search(image_url):
                         {
                             "type": "text",
                             "text": (
-                                "Describe the main visual subject of this image in 2-4 English "
-                                "keywords suitable for a stock photo search (e.g. 'bitcoin coin "
-                                "gold', 'stock market red chart', 'bank building exterior'). "
-                                "Reply with just the keywords, nothing else."
+                                f"This image illustrates a crypto/finance news story titled "
+                                f"'{title}'. Give 2-4 English keywords for a stock photo search "
+                                f"that would find a real (non-illustration) photo relevant to "
+                                f"this story - e.g. 'bitcoin coin gold', 'stock market red chart', "
+                                f"'bank building exterior', 'blockchain network digital'. If this "
+                                f"image is abstract or stylized artwork rather than a literal "
+                                f"photo, ignore its abstract style and describe the underlying "
+                                f"financial/crypto subject of the story instead. Reply with just "
+                                f"the keywords, nothing else."
                             ),
                         },
                     ],
@@ -83,20 +90,7 @@ def describe_image_for_search(image_url):
         return None
 
 
-def find_stock_image(title, source_image_url=None):
-    """Look up a free-to-use Pexels photo visually matching the news topic,
-    instead of hotlinking the source's own copyrighted photo. Returns an
-    image URL, or None if no API key is configured or nothing matches."""
-    if not PEXELS_API_KEY:
-        return None
-
-    query = None
-    if source_image_url and os.environ.get("ANTHROPIC_API_KEY"):
-        query = describe_image_for_search(source_image_url)
-    if not query:
-        query = guess_image_query(title)
-    print(f"Pexels query for {title!r}: {query!r}")
-
+def _search_pexels(query):
     try:
         resp = requests.get(
             PEXELS_SEARCH_URL,
@@ -106,9 +100,29 @@ def find_stock_image(title, source_image_url=None):
         )
         resp.raise_for_status()
         photos = resp.json().get("photos") or []
-        if not photos:
-            return None
-        return photos[0]["src"]["large"]
+        return photos[0]["src"]["large"] if photos else None
     except Exception as e:
         print(f"Pexels search failed for {query!r}: {e}")
         return None
+
+
+def find_stock_image(title, source_image_url=None):
+    """Look up a free-to-use Pexels photo visually matching the news topic,
+    instead of hotlinking the source's own copyrighted photo. Returns an
+    image URL, or None if no API key is configured or nothing matches."""
+    if not PEXELS_API_KEY:
+        return None
+
+    fallback_query = guess_image_query(title)
+    query = fallback_query
+    if source_image_url and os.environ.get("ANTHROPIC_API_KEY"):
+        vision_query = describe_image_for_search(source_image_url, title)
+        if vision_query:
+            query = vision_query
+    print(f"Pexels query for {title!r}: {query!r}")
+
+    result = _search_pexels(query)
+    if not result and query != fallback_query:
+        print(f"No Pexels results for {query!r}, retrying with {fallback_query!r}")
+        result = _search_pexels(fallback_query)
+    return result
