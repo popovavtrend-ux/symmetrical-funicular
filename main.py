@@ -5,7 +5,7 @@ import time
 
 from fetch_feed import fetch_entries
 from state import load_state, save_state
-from telegram_post import send_message
+from telegram_post import send_message, send_photo
 from translate import translate
 
 DEFAULT_FEED_URLS = (
@@ -26,8 +26,10 @@ CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
 TAG_RE = re.compile("<[^<]+?>")
 WP_APPEARED_FIRST_RE = re.compile(r"\s*The post .+ appeared first on .+?\.\s*$")
+IMG_SRC_RE = re.compile(r'<img[^>]+src=["\']([^"\']+)["\']', re.IGNORECASE)
 
 TELEGRAM_MAX_LEN = 4096
+TELEGRAM_PHOTO_CAPTION_MAX_LEN = 1024
 
 
 def entry_id(entry):
@@ -41,13 +43,41 @@ def clean_summary(entry):
     return summary
 
 
-def build_message(title_ru, summary_ru):
+def extract_image_url(entry):
+    """Pull the article's own image straight from the feed, if it has one."""
+    for thumb in entry.get("media_thumbnail") or []:
+        if thumb.get("url"):
+            return thumb["url"]
+
+    media_content = entry.get("media_content") or []
+    for m in media_content:
+        if (m.get("medium") == "image" or (m.get("type") or "").startswith("image")) and m.get("url"):
+            return m["url"]
+    if media_content and media_content[0].get("url"):
+        return media_content[0]["url"]
+
+    for enc in entry.get("enclosures") or []:
+        if (enc.get("type") or "").startswith("image") and enc.get("href"):
+            return enc["href"]
+
+    raw_html = entry.get("summary") or ""
+    content = entry.get("content") or []
+    if content:
+        raw_html += content[0].get("value") or ""
+    match = IMG_SRC_RE.search(raw_html)
+    if match:
+        return match.group(1)
+
+    return None
+
+
+def build_message(title_ru, summary_ru, max_len=TELEGRAM_MAX_LEN):
     title_html = f"<b>{html.escape(title_ru)}</b>"
     summary_html = html.escape(summary_ru) if summary_ru else ""
 
-    # Telegram caps messages at 4096 chars - trim only the summary (not the
-    # title) if it doesn't fit.
-    budget = TELEGRAM_MAX_LEN - len(f"{title_html}\n\n")
+    # Trim only the summary (not the title) if it doesn't fit the limit -
+    # 4096 chars for a text message, 1024 for a photo caption.
+    budget = max_len - len(f"{title_html}\n\n")
     if summary_html and len(summary_html) > budget:
         summary_html = summary_html[: max(0, budget - 3)].rsplit(" ", 1)[0] + "..."
 
@@ -107,6 +137,7 @@ def main():
         title = entry.title
         summary = clean_summary(entry)
         link = entry.link
+        image_url = extract_image_url(entry)
 
         try:
             # SKIP_TRANSLATION only means "post as-is" when there's no
@@ -117,8 +148,16 @@ def main():
                 title_ru, summary_ru = title, summary
             else:
                 title_ru, summary_ru = translate(title, summary)
-            message = build_message(title_ru, summary_ru)
-            send_message(BOT_TOKEN, CHAT_ID, message)
+
+            if image_url:
+                caption = build_message(title_ru, summary_ru, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN)
+                try:
+                    send_photo(BOT_TOKEN, CHAT_ID, image_url, caption)
+                except Exception as e:
+                    print(f"Failed to send photo ({image_url!r}), falling back to text: {e}")
+                    send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru))
+            else:
+                send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru))
         except Exception as e:
             # Don't let one bad entry take down the whole run - the
             # already-posted entries above must still get committed.
