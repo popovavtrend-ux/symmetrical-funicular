@@ -8,24 +8,23 @@ from fetch_feed import fetch_entries
 from state import load_state, save_state
 from stock_image import find_stock_image
 from telegram_post import send_message, send_photo
-from translate import translate
+from translate import translate, translate_new
 
 DEFAULT_FEED_URLS = (
     "https://protos.com/feed/,"
     "https://www.dlnews.com/rss/,"
     "https://cryptoslate.com/feed/,"
     "https://decrypt.co/feed,"
-    "https://beincrypto.com/feed/,"
-    "https://www.coindesk.com/arc/outboundfeeds/rss/,"
-    "https://cointelegraph.com/rss,"
-    "https://bitcoinmagazine.com/feed,"
-    "https://thedefiant.io/feed"
+    "https://beincrypto.com/feed/"
 )
 
 FEED_URLS = [u.strip() for u in (os.environ.get("FEED_URL") or DEFAULT_FEED_URLS).split(",") if u.strip()]
 STATE_FILE = os.environ.get("STATE_FILE") or "data/seen_ids.json"
 MAX_ITEMS_PER_RUN = int(os.environ.get("MAX_ITEMS_PER_RUN") or "5")
 SKIP_TRANSLATION = (os.environ.get("SKIP_TRANSLATION") or "").strip().lower() in ("1", "true", "yes")
+# "legacy" = old prompt/rules (the original group pipeline); "new" = the
+# full-rewrite, beginner-friendly, no-financial-advice pipeline (the channel).
+CONTENT_STYLE = (os.environ.get("CONTENT_STYLE") or "legacy").strip().lower()
 
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
@@ -197,6 +196,8 @@ def main():
             # than copied verbatim.
             if SKIP_TRANSLATION and not os.environ.get("ANTHROPIC_API_KEY"):
                 title_ru, summary_ru = title, summary
+            elif CONTENT_STYLE == "new":
+                title_ru, summary_ru = translate_new(title, summary)
             else:
                 title_ru, summary_ru = translate(title, summary)
 
