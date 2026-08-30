@@ -35,7 +35,7 @@ IMG_SRC_RE = re.compile(r'<img[^>]+src=["\']([^"\']+)["\']', re.IGNORECASE)
 
 TELEGRAM_MAX_LEN = 4096
 TELEGRAM_PHOTO_CAPTION_MAX_LEN = 1024
-SIGNATURE = "@cryptocompass_news"
+SIGNATURE = os.environ.get("SIGNATURE") or "@cryptocompass_news"
 
 # Human-readable publication names for the source line - naming the source
 # is what makes rewriting/quoting someone else's news legally a citation
