@@ -165,16 +165,15 @@ def main():
                 title_ru, summary_ru = translate(title, summary)
 
             if image_url:
-                caption = build_caption(title_ru, summary_ru, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN)
+                # Telegram can't render caption text above its own photo, so
+                # the signature goes as the caption's first line instead -
+                # one message, signature at the top of the text, image above it.
+                caption = build_message(title_ru, summary_ru, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN)
                 try:
-                    # Telegram always renders a caption below its photo, so
-                    # the signature is sent as its own message first to
-                    # land above the image.
-                    send_message(BOT_TOKEN, CHAT_ID, signature_message())
                     send_photo(BOT_TOKEN, CHAT_ID, image_url, caption)
                 except Exception as e:
                     print(f"Failed to send photo ({image_url!r}), falling back to text: {e}")
-                    send_message(BOT_TOKEN, CHAT_ID, build_caption(title_ru, summary_ru))
+                    send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru))
             else:
                 send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru))
         except Exception as e:
