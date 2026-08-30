@@ -111,6 +111,51 @@ def translate_via_claude_new(title, summary):
     return _parse_response(resp.content[0].text.strip())
 
 
+def explain_topic(topic):
+    """Write a standalone educational post about a crypto/finance concept -
+    not tied to any news story. Same beginner-friendly, no-financial-advice
+    voice as translate_via_claude_new."""
+    from anthropic_client import get_client
+
+    client = get_client()
+    prompt = (
+        "You are the editor of a Russian-language crypto/finance educational "
+        "Telegram channel for a broad general audience - readers with zero "
+        "background, from a schoolkid to a pensioner. Write a short "
+        f"educational post in Russian explaining this concept: '{topic}'. "
+        "Explain it in the simplest possible way, using a simple real-world "
+        "analogy if it helps, as if teaching someone who has never heard the "
+        "term before. Do not assume any prior crypto/finance knowledge. Be "
+        "accurate - do not invent facts or numbers.\n\n"
+        "This is purely educational, NOT financial advice: never suggest "
+        "buying, investing, or that using/owning this makes financial "
+        "sense - describe only what it is and how it works.\n\n"
+        "Reply in exactly this format, and nothing else:\n"
+        "Title: <a short catchy title>\n"
+        "Explanation: <the full explanation in simple Russian, 4-6 "
+        "sentences, with an analogy if it helps>"
+    )
+    resp = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=500,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    text = resp.content[0].text.strip()
+
+    title_m = re.search(r"Title:\s*(.+)", text)
+    explanation_m = re.search(r"Explanation:\s*(.+)", text, re.DOTALL)
+
+    if title_m:
+        title = title_m.group(1).strip()
+        explanation = explanation_m.group(1).strip() if explanation_m else ""
+    else:
+        lines = text.split("\n", 1)
+        title = lines[0].strip()
+        explanation = lines[1].strip() if len(lines) > 1 else ""
+
+    return title, explanation
+
+
 def _safe_google_translate(tr, text):
     if not text:
         return ""
