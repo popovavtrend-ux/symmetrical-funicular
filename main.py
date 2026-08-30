@@ -15,7 +15,11 @@ DEFAULT_FEED_URLS = (
     "https://www.dlnews.com/rss/,"
     "https://cryptoslate.com/feed/,"
     "https://decrypt.co/feed,"
-    "https://beincrypto.com/feed/"
+    "https://beincrypto.com/feed/,"
+    "https://www.coindesk.com/arc/outboundfeeds/rss/,"
+    "https://cointelegraph.com/rss,"
+    "https://bitcoinmagazine.com/feed,"
+    "https://thedefiant.io/feed"
 )
 
 FEED_URLS = [u.strip() for u in (os.environ.get("FEED_URL") or DEFAULT_FEED_URLS).split(",") if u.strip()]
@@ -43,6 +47,14 @@ SOURCE_NAMES = {
     "cryptoslate.com": "CryptoSlate",
     "decrypt.co": "Decrypt",
     "beincrypto.com": "BeInCrypto",
+    "coindesk.com": "CoinDesk",
+    "cointelegraph.com": "Cointelegraph",
+    "bitcoinmagazine.com": "Bitcoin Magazine",
+    "thedefiant.io": "The Defiant",
+    "forklog.com": "Forklog",
+    "ru.beincrypto.com": "BeInCrypto",
+    "incrypted.com": "Incrypted",
+    "cryptocurrency.tech": "Cryptocurrency.Tech",
 }
 
 
