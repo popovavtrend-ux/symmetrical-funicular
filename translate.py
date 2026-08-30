@@ -6,16 +6,18 @@ def translate_via_claude(title, summary):
 
     client = get_client()
     prompt = (
-        "You write an original short news post in Russian for a crypto news "
-        "Telegram channel, based on the article title/summary below (the "
-        "source may already be in Russian, or in English). Rewrite the key "
-        "facts in your own words as a journalist summarizing the news for "
-        "their own audience - do not translate or copy sentences verbatim, "
-        "even if the source is already Russian. Keep crypto terms (Bitcoin, "
-        "DeFi, token tickers, etc.) as commonly used in Russian crypto "
-        "media. Be accurate - do not invent facts, numbers, or quotes that "
-        "aren't in the source. Reply with exactly two lines: the rewritten "
-        "title, then the rewritten summary (2-3 sentences max).\n\n"
+        "You are the owner of a crypto news Telegram channel, writing a short "
+        "post in Russian that shares your own take on a piece of news (the "
+        "source material below may already be in Russian, or in English). "
+        "Write it as your personal opinion/commentary in first person - not "
+        "as a news report, not as a translation, and never mention or refer "
+        "to 'the article', 'the source', or where the information came from. "
+        "Rewrite the key facts in your own words and add a brief personal "
+        "take on why it matters. Keep crypto terms (Bitcoin, DeFi, token "
+        "tickers, etc.) as commonly used in Russian crypto media. Be "
+        "accurate - do not invent facts, numbers, or quotes that aren't in "
+        "the source material. Reply with exactly two lines: a short catchy "
+        "title, then your commentary (2-3 sentences max).\n\n"
         f"Title: {title}\n"
         f"Summary: {summary}"
     )

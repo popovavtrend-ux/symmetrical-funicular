@@ -41,21 +41,19 @@ def clean_summary(entry):
     return summary
 
 
-def build_message(title_ru, summary_ru, link):
+def build_message(title_ru, summary_ru):
     title_html = f"<b>{html.escape(title_ru)}</b>"
-    link_html = f'<a href="{link}">Источник</a>'
     summary_html = html.escape(summary_ru) if summary_ru else ""
 
     # Telegram caps messages at 4096 chars - trim only the summary (not the
-    # title or link) if the full article text doesn't fit.
-    budget = TELEGRAM_MAX_LEN - len(f"{title_html}\n\n\n\n{link_html}")
+    # title) if it doesn't fit.
+    budget = TELEGRAM_MAX_LEN - len(f"{title_html}\n\n")
     if summary_html and len(summary_html) > budget:
         summary_html = summary_html[: max(0, budget - 3)].rsplit(" ", 1)[0] + "..."
 
     parts = [title_html]
     if summary_html:
         parts.append(summary_html)
-    parts.append(link_html)
     return "\n\n".join(parts)
 
 
@@ -119,7 +117,7 @@ def main():
                 title_ru, summary_ru = title, summary
             else:
                 title_ru, summary_ru = translate(title, summary)
-            message = build_message(title_ru, summary_ru, link)
+            message = build_message(title_ru, summary_ru)
             send_message(BOT_TOKEN, CHAT_ID, message)
         except Exception as e:
             # Don't let one bad entry take down the whole run - the
