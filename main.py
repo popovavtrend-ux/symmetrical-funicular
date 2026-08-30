@@ -4,7 +4,7 @@ import re
 import time
 
 from fetch_feed import fetch_entries
-from state import load_seen, save_seen
+from state import load_state, save_state
 from telegram_post import send_message
 from translate import translate
 
@@ -69,17 +69,36 @@ def main():
         print(f"No entries found across FEED_URLS={FEED_URLS}. Are these valid RSS feed URLs?")
         return
 
-    entries.sort(key=sort_key)  # oldest first, interleaved across sources
-    seen = load_seen(STATE_FILE)
+    state = load_state(STATE_FILE)
 
-    if seen is None:
+    if state is None:
         # First run: seed state without posting, so we don't dump the whole
         # archive into the channel at once.
         seen = {entry_id(e) for e in entries}
-        save_seen(STATE_FILE, seen)
+        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": set(FEED_URLS)})
         print(f"First run: seeded {len(seen)} existing entries, no messages posted.")
         return
 
+    seen = state["seen_ids"]
+    seeded_feeds = state["seeded_feeds"]
+
+    # A feed URL added to FEED_URLS after the first run has never been
+    # seeded - without this, all of its current entries would look "new"
+    # and get dumped into the channel at once, regardless of how old they
+    # actually are. Seed it silently instead, same as the first run.
+    new_feed_urls = [u for u in FEED_URLS if u not in seeded_feeds]
+    if new_feed_urls:
+        newly_seeded = [e for e in entries if e.get("_feed_url") in new_feed_urls]
+        seen.update(entry_id(e) for e in newly_seeded)
+        seeded_feeds.update(new_feed_urls)
+        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds})
+        print(
+            f"Seeded {len(newly_seeded)} existing entries from newly added feed(s) "
+            f"{new_feed_urls}, no messages posted for them."
+        )
+        entries = [e for e in entries if e.get("_feed_url") not in new_feed_urls]
+
+    entries.sort(key=sort_key)  # oldest first, interleaved across sources
     new_entries = [e for e in entries if entry_id(e) not in seen][:MAX_ITEMS_PER_RUN]
 
     if not new_entries:
@@ -109,7 +128,7 @@ def main():
             continue
 
         seen.add(entry_id(entry))
-        save_seen(STATE_FILE, seen)
+        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds})
         print(f"Posted: {title}")
         time.sleep(3)
 
