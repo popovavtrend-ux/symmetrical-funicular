@@ -30,7 +30,7 @@ IMG_SRC_RE = re.compile(r'<img[^>]+src=["\']([^"\']+)["\']', re.IGNORECASE)
 
 TELEGRAM_MAX_LEN = 4096
 TELEGRAM_PHOTO_CAPTION_MAX_LEN = 1024
-SIGNATURE = "— @cryptocompass_news"
+SIGNATURE = "@cryptocompass_news"
 
 
 def entry_id(entry):
@@ -73,21 +73,23 @@ def extract_image_url(entry):
 
 
 def build_message(title_ru, summary_ru, max_len=TELEGRAM_MAX_LEN):
+    signature_html = f"<b>{html.escape(SIGNATURE)}</b>"
     title_html = f"<b>{html.escape(title_ru)}</b>"
     summary_html = html.escape(summary_ru) if summary_ru else ""
-    signature_html = f"<i>{html.escape(SIGNATURE)}</i>"
 
-    # Trim only the summary (not the title or signature) if it doesn't fit
-    # the limit - 4096 chars for a text message, 1024 for a photo caption.
-    # The signature must always stay visible so every post is attributed.
-    budget = max_len - len(f"{title_html}\n\n") - len(f"\n\n{signature_html}")
+    # The signature sits as a byline right above the title (like an author
+    # name above a headline), not a footer - it must always stay visible.
+    header = f"{signature_html}\n{title_html}"
+
+    # Trim only the summary (not the header) if it doesn't fit the limit -
+    # 4096 chars for a text message, 1024 for a photo caption.
+    budget = max_len - len(f"{header}\n\n")
     if summary_html and len(summary_html) > budget:
         summary_html = summary_html[: max(0, budget - 3)].rsplit(" ", 1)[0] + "..."
 
-    parts = [title_html]
+    parts = [header]
     if summary_html:
         parts.append(summary_html)
-    parts.append(signature_html)
     return "\n\n".join(parts)
 
 
