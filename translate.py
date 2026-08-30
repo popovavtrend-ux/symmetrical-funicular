@@ -7,31 +7,45 @@ def translate_via_claude(title, summary):
 
     client = get_client()
     prompt = (
-        "You are the owner of a crypto news Telegram channel, writing a short "
-        "post in Russian about a piece of news (the source material below may "
-        "already be in Russian, or in English). Never mention or refer to "
-        "'the article', 'the source', or where the information came from. "
-        "Keep crypto terms (Bitcoin, DeFi, token tickers, etc.) as commonly "
-        "used in Russian crypto media. Be accurate - do not invent facts, "
-        "numbers, or quotes that aren't in the source material. Write in "
-        "short, plain sentences so the post is easy to scan on a phone "
-        "screen - avoid long, dense run-on sentences.\n\n"
+        "You are the editor of a Russian-language crypto news AND education "
+        "Telegram channel for a broad general audience - write for readers "
+        "with no finance or tech background at all, from a schoolkid to a "
+        "pensioner. Do a full, thorough rewrite in your own words and your "
+        "own structure - do not just swap synonyms or lightly reword "
+        "sentences, genuinely re-explain the story so it reads as original "
+        "writing, not a paraphrase (the source material below may already "
+        "be in Russian, or in English). Never mention or refer to 'the "
+        "article', 'the source', or where the information came from.\n\n"
+        "Write in very simple, plain Russian - short sentences, no jargon. "
+        "If you must use a crypto/finance term (Bitcoin, DeFi, staking, a "
+        "ticker, etc.), briefly explain what it means in plain words right "
+        "where it first appears, as if to someone who has never heard of "
+        "it before. Be accurate - do not invent facts, numbers, or quotes "
+        "that aren't in the source material.\n\n"
+        "This is strictly NOT financial advice: never suggest buying, "
+        "selling, holding, or investing; never predict prices or call "
+        "something a good/bad investment; never use phrases like 'стоит "
+        "купить', 'выгодно', 'не упустите шанс'. Explain what happened and "
+        "why it matters as information, not as a recommendation.\n\n"
         "Reply in exactly this format, and nothing else:\n"
         "Title: <a short catchy title>\n"
-        "Context: <1-2 plain sentences stating the news itself - what "
-        "happened, in your own words, not a translation>\n"
-        "Opinion: <your personal opinion/commentary on it in first person - "
-        "why it matters, what you think it means, 2-3 sentences. Sound like "
-        "a real person talking, not a template: do NOT open with 'Я считаю', "
-        "'По-моему' or any other fixed phrase - vary how each post starts "
-        "(a reaction, a comparison, a question, straight commentary, etc.) "
-        "so posts don't all sound the same>\n\n"
+        "Context: <explain what happened and why, in your own words, in "
+        "enough detail that a complete beginner understands it - 2-4 plain "
+        "sentences, explaining any term you use>\n"
+        "Opinion: <your own perspective on why this matters or what it "
+        "helps readers understand about crypto in general, in first "
+        "person, 2-3 sentences - explanation/context, never a buy/sell "
+        "recommendation. Sound like a real person talking, not a template: "
+        "do NOT open with 'Я считаю', 'По-моему' or any other fixed phrase "
+        "- vary how each post starts (a reaction, a comparison, a "
+        "question, straight commentary, etc.) so posts don't all sound "
+        "the same>\n\n"
         f"Title: {title}\n"
         f"Summary: {summary}"
     )
     resp = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=500,
+        max_tokens=700,
         messages=[{"role": "user", "content": prompt}],
     )
     text = resp.content[0].text.strip()
