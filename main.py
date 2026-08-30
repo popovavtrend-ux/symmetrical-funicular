@@ -72,25 +72,34 @@ def extract_image_url(entry):
     return None
 
 
-def build_message(title_ru, summary_ru, max_len=TELEGRAM_MAX_LEN):
-    signature_html = f"<b>{html.escape(SIGNATURE)}</b>"
+def signature_message():
+    return f"<b>{html.escape(SIGNATURE)}</b>"
+
+
+def build_caption(title_ru, summary_ru, max_len=TELEGRAM_MAX_LEN):
+    """Title + body only, no signature - a Telegram caption always renders
+    below its photo, so the signature is sent as its own message above the
+    photo instead of being part of this caption."""
     title_html = f"<b>{html.escape(title_ru)}</b>"
     summary_html = html.escape(summary_ru) if summary_ru else ""
 
-    # The signature sits as a byline right above the title (like an author
-    # name above a headline), not a footer - it must always stay visible.
-    header = f"{signature_html}\n{title_html}"
-
-    # Trim only the summary (not the header) if it doesn't fit the limit -
-    # 4096 chars for a text message, 1024 for a photo caption.
-    budget = max_len - len(f"{header}\n\n")
+    budget = max_len - len(f"{title_html}\n\n")
     if summary_html and len(summary_html) > budget:
         summary_html = summary_html[: max(0, budget - 3)].rsplit(" ", 1)[0] + "..."
 
-    parts = [header]
+    parts = [title_html]
     if summary_html:
         parts.append(summary_html)
     return "\n\n".join(parts)
+
+
+def build_message(title_ru, summary_ru, max_len=TELEGRAM_MAX_LEN):
+    """Signature + title + body in one text message, for the no-image case
+    (and as a photo-send fallback) where there's no separate photo to put
+    the signature above."""
+    header = signature_message()
+    caption = build_caption(title_ru, summary_ru, max_len=max_len - len(f"{header}\n"))
+    return f"{header}\n{caption}"
 
 
 def sort_key(entry):
@@ -156,12 +165,16 @@ def main():
                 title_ru, summary_ru = translate(title, summary)
 
             if image_url:
-                caption = build_message(title_ru, summary_ru, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN)
+                caption = build_caption(title_ru, summary_ru, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN)
                 try:
+                    # Telegram always renders a caption below its photo, so
+                    # the signature is sent as its own message first to
+                    # land above the image.
+                    send_message(BOT_TOKEN, CHAT_ID, signature_message())
                     send_photo(BOT_TOKEN, CHAT_ID, image_url, caption)
                 except Exception as e:
                     print(f"Failed to send photo ({image_url!r}), falling back to text: {e}")
-                    send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru))
+                    send_message(BOT_TOKEN, CHAT_ID, build_caption(title_ru, summary_ru))
             else:
                 send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru))
         except Exception as e:
