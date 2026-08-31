@@ -18,6 +18,14 @@ from corp_chat_config import (
     SECONDARY_EXTRA_DELAY_SEC,
     team_roster_text,
 )
+from corp_chat_access import (
+    grant_access,
+    has_access,
+    looks_like_grant,
+    register_access_request,
+    register_file_message,
+    resolve_reply_target,
+)
 from corp_chat_files import build_html, build_pptx, build_xlsx, extract_attachment
 from corp_chat_routing import route_message
 from telegram_chat import download_file_bytes, get_me, get_updates, send_document, send_text
@@ -59,6 +67,13 @@ SYSTEM_PROMPT_TEMPLATE = (
     "что сейчас этого нет с собой / нет доступа, и что нужно уточнить у "
     "{authority} — либо попроси прислать нужный документ в чат, чтобы "
     "посчитать уже по нему.\n\n"
+    "Файл, который кто-то присылает в этот чат, принадлежит именно ему — "
+    "остальные (включая тебя) не открывают и не пересказывают его содержимое "
+    "без явного \"да, доступ даю\" от приславшего в ответ на просьбу. Если "
+    "видишь в переписке, что кто-то просит доступ к чужому файлу, а хозяин "
+    "файла ещё не подтвердил — не пересказывай, что в файле, и не работай "
+    "с ним; по-человечески скажи, что это не твой файл и решать не тебе, "
+    "ждём подтверждения от того, кто его прислал.\n\n"
     "История переписки в чате (от старых сообщений к новым):\n{history}"
 )
 
@@ -83,6 +98,10 @@ def load_corp_state(path):
         "history": data.get("history", []),
         "pending": data.get("pending", []),
         "uploads": data.get("uploads", {}),
+        "file_owners": data.get("file_owners", {}),
+        "file_messages": data.get("file_messages", {}),
+        "access_requests": data.get("access_requests", {}),
+        "grants": data.get("grants", {}),
     }
 
 
@@ -219,8 +238,19 @@ def main():
     bot_ids = {p["bot_id"] for p in personas}
     roster_text = team_roster_text(personas)
 
+    empty_state = {
+        "last_update_id": 0,
+        "history": [],
+        "pending": [],
+        "uploads": {},
+        "file_owners": {},
+        "file_messages": {},
+        "access_requests": {},
+        "grants": {},
+    }
+
     is_first_run = not os.path.exists(STATE_FILE)
-    state = load_corp_state(STATE_FILE) or {"last_update_id": 0, "history": [], "pending": [], "uploads": {}}
+    state = load_corp_state(STATE_FILE) or empty_state
 
     # Any persona bot with privacy mode disabled can read the group's
     # updates - we just need one of them to poll with.
@@ -231,7 +261,7 @@ def main():
     if is_first_run:
         if updates:
             max_update_id = max(u["update_id"] for u in updates)
-            save_corp_state(STATE_FILE, {"last_update_id": max_update_id, "history": [], "pending": [], "uploads": {}})
+            save_corp_state(STATE_FILE, {**empty_state, "last_update_id": max_update_id})
             print(f"First run: seeded update_id={max_update_id}, no replies sent.")
         else:
             print("First run: no updates yet, nothing to seed.")
@@ -240,6 +270,10 @@ def main():
     history = state["history"]
     pending = state["pending"]
     uploads = state["uploads"]
+    file_owners = state["file_owners"]
+    file_messages = state["file_messages"]
+    access_requests = state["access_requests"]
+    grants = state["grants"]
     max_update_id = state["last_update_id"]
 
     # 1) Send whatever scheduled replies have come due since the last poll.
@@ -290,6 +324,12 @@ def main():
         sender_key = str(sender.get("id"))
         text = message.get("text") or message.get("caption")
         attachments = message_attachments(message)
+        reply_to = message.get("reply_to_message") or {}
+        reply_to_id = str(reply_to["message_id"]) if reply_to.get("message_id") else None
+
+        # Whoever sends a file owns it, regardless of whether this message
+        # ends up buffered or answered right away.
+        register_file_message(file_owners, file_messages, message["message_id"], attachments, sender_key, sender_name)
 
         if attachments and not text:
             # A bare upload with no instruction yet - hold onto it and wait
@@ -308,7 +348,22 @@ def main():
         buffered = [u for u in uploads.pop(sender_key, []) if now - u["ts"] < UPLOAD_BUFFER_TTL_SEC]
         all_attachments = buffered + attachments
 
-        reply_to = message.get("reply_to_message") or {}
+        # Replying to someone else's file: either you already have access
+        # (attach it), you're the owner replying in your own thread (always
+        # allowed, and a "да, доступ даю"-style reply unlocks it for whoever
+        # asked), or you don't have access yet (blocked - and this message
+        # itself becomes the recorded request).
+        foreign_atts, foreign_owner = resolve_reply_target(reply_to_id, file_messages, access_requests, file_owners)
+        if foreign_atts and foreign_owner:
+            if foreign_owner == sender_key:
+                if looks_like_grant(text, reply_is_direct_request=reply_to_id in access_requests):
+                    grant_access(grants, access_requests, sender_key, foreign_atts, reply_to_id)
+                all_attachments = all_attachments + foreign_atts
+            elif has_access(grants, foreign_owner, sender_key, foreign_atts):
+                all_attachments = all_attachments + foreign_atts
+            else:
+                register_access_request(access_requests, message["message_id"], foreign_atts, sender_key, foreign_owner)
+
         reply_to_bot_id = (reply_to.get("from") or {}).get("id")
         targets = find_targets(text, reply_to_bot_id, personas, roster_text, history, attachments=all_attachments)
 
@@ -332,6 +387,10 @@ def main():
             "history": history[-HISTORY_LIMIT:],
             "pending": pending,
             "uploads": uploads,
+            "file_owners": file_owners,
+            "file_messages": file_messages,
+            "access_requests": access_requests,
+            "grants": grants,
         },
     )
 
