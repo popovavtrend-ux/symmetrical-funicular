@@ -3,9 +3,10 @@ import os
 import random
 import time
 
-from corp_chat_ai import generate_reply
+from corp_chat_ai import generate_file_task_result, generate_reply
 from corp_chat_config import (
     CHAT_ID,
+    CLAUDE_DEFAULT_MODEL,
     COMPANY_DESCRIPTION,
     HISTORY_LIMIT,
     MAX_REPLY_DELAY_SEC,
@@ -16,11 +17,19 @@ from corp_chat_config import (
     SECONDARY_EXTRA_DELAY_SEC,
     team_roster_text,
 )
+from corp_chat_files import build_html, build_pptx, build_xlsx, extract_attachment
 from corp_chat_routing import route_message
-from telegram_chat import get_me, get_updates, send_text
+from telegram_chat import download_file_bytes, get_me, get_updates, send_document, send_text
 
 STATE_FILE = os.environ.get("CORP_CHAT_STATE_FILE") or "data/corp_chat_state.json"
 TELEGRAM_MAX_LEN = 4096
+
+# How long an uploaded file with no accompanying instruction waits around
+# for a follow-up message ("сделай на основе этого...") before being
+# forgotten. We only ever keep file_ids (cheap), never the file bytes
+# themselves, across runs - so this is safe to persist in git-tracked state.
+UPLOAD_BUFFER_TTL_SEC = int(os.environ.get("CORP_CHAT_UPLOAD_TTL_SEC") or str(20 * 60))
+MAX_BUFFERED_UPLOADS = 6
 
 SYSTEM_PROMPT_TEMPLATE = (
     "Ты — {name}, сотрудник компании. {company}\n\n"
@@ -41,6 +50,16 @@ SYSTEM_PROMPT_TEMPLATE = (
     "История переписки в чате (от старых сообщений к новым):\n{history}"
 )
 
+FILE_TASK_SYSTEM_SUFFIX = (
+    "\n\nСейчас тебе также прислали файл(ы) с конкретной задачей (сводная "
+    "таблица, заполнить/пересчитать таблицу или коммерческое предложение, "
+    "презентация, html-страница и т.п.) — файлы приложены ниже. Выполни "
+    "задачу и верни результат через инструмент deliver_result: если по "
+    "задаче нужен файл — kind='table' (таблица/сводная/пересчёт, уйдёт как "
+    "xlsx), 'html' (html-файл) или 'slides' (презентация, уйдёт как pptx); "
+    "если файл не нужен — kind='none' и просто ответь текстом."
+)
+
 
 def load_corp_state(path):
     if not os.path.exists(path):
@@ -51,6 +70,7 @@ def load_corp_state(path):
         "last_update_id": data.get("last_update_id", 0),
         "history": data.get("history", []),
         "pending": data.get("pending", []),
+        "uploads": data.get("uploads", {}),
     }
 
 
@@ -79,7 +99,19 @@ def compute_due_at(now, priority):
     return now + base
 
 
-def find_targets(text, reply_to_bot_id, personas, roster_text, history):
+def message_attachments(message):
+    atts = []
+    doc = message.get("document")
+    if doc:
+        atts.append({"file_id": doc["file_id"], "file_name": doc.get("file_name") or "file", "mime_type": doc.get("mime_type") or ""})
+    photos = message.get("photo")
+    if photos:
+        best = photos[-1]  # Telegram lists photo sizes smallest first
+        atts.append({"file_id": best["file_id"], "file_name": "photo.jpg", "mime_type": "image/jpeg"})
+    return atts
+
+
+def find_targets(text, reply_to_bot_id, personas, roster_text, history, attachments=None):
     # An explicit @mention or a reply-to-bot always wins over automatic
     # routing - if you address someone directly, they answer, full stop.
     if reply_to_bot_id is not None:
@@ -90,8 +122,13 @@ def find_targets(text, reply_to_bot_id, personas, roster_text, history):
     mentioned = [(p["key"], "primary") for p in personas if p["username"] and f"@{p['username']}" in lowered]
     if mentioned:
         return mentioned
+
+    routing_text = text or ""
+    if attachments:
+        names = ", ".join(a.get("file_name") or "файл" for a in attachments)
+        routing_text += f"\n[К сообщению приложены файлы: {names}]"
     return route_message(
-        COMPANY_DESCRIPTION, roster_text, format_history(history[-15:]), text, ROUTING_PROVIDER, ROUTING_MODEL
+        COMPANY_DESCRIPTION, roster_text, format_history(history[-15:]), routing_text, ROUTING_PROVIDER, ROUTING_MODEL
     )
 
 
@@ -112,6 +149,47 @@ def build_reply(persona, roster_text, history):
     return reply[:TELEGRAM_MAX_LEN]
 
 
+def build_file_task_reply(persona, item, roster_text, history):
+    downloaded = []
+    for att in item["attachments"]:
+        try:
+            file_bytes = download_file_bytes(persona["token"], att["file_id"])
+            downloaded.append(extract_attachment(file_bytes, att.get("file_name"), att.get("mime_type")))
+        except Exception as e:
+            downloaded.append({"kind": "unsupported", "text": f"(не удалось скачать файл {att.get('file_name')}: {e})"})
+
+    system_prompt = (
+        SYSTEM_PROMPT_TEMPLATE.format(
+            name=persona["display_name"],
+            company=COMPANY_DESCRIPTION,
+            role=persona["role_description"],
+            roster=roster_text,
+            history=format_history(history[-HISTORY_LIMIT:]),
+        )
+        + FILE_TASK_SYSTEM_SUFFIX
+    )
+    result = generate_file_task_result(CLAUDE_DEFAULT_MODEL, system_prompt, item.get("instruction"), downloaded)
+    message_text = (result.get("message") or "Готово.")[:TELEGRAM_MAX_LEN]
+    output = result.get("output") or {"kind": "none"}
+    kind = output.get("kind")
+
+    if kind == "table":
+        filename = _with_ext(output.get("filename"), "result.xlsx", ".xlsx")
+        return message_text, (filename, build_xlsx(output.get("table") or {}))
+    if kind == "html":
+        filename = _with_ext(output.get("filename"), "result.html", ".html")
+        return message_text, (filename, build_html(output.get("html")))
+    if kind == "slides":
+        filename = _with_ext(output.get("filename"), "result.pptx", ".pptx")
+        return message_text, (filename, build_pptx(output.get("slides") or []))
+    return message_text, None
+
+
+def _with_ext(filename, default, ext):
+    filename = (filename or default).strip()
+    return filename if filename.lower().endswith(ext) else filename + ext
+
+
 def main():
     personas = [p for p in (resolve_persona_runtime(p) for p in PERSONAS) if p]
     if not personas:
@@ -128,7 +206,7 @@ def main():
     roster_text = team_roster_text(personas)
 
     is_first_run = not os.path.exists(STATE_FILE)
-    state = load_corp_state(STATE_FILE) or {"last_update_id": 0, "history": [], "pending": []}
+    state = load_corp_state(STATE_FILE) or {"last_update_id": 0, "history": [], "pending": [], "uploads": {}}
 
     # Any persona bot with privacy mode disabled can read the group's
     # updates - we just need one of them to poll with.
@@ -139,7 +217,7 @@ def main():
     if is_first_run:
         if updates:
             max_update_id = max(u["update_id"] for u in updates)
-            save_corp_state(STATE_FILE, {"last_update_id": max_update_id, "history": [], "pending": []})
+            save_corp_state(STATE_FILE, {"last_update_id": max_update_id, "history": [], "pending": [], "uploads": {}})
             print(f"First run: seeded update_id={max_update_id}, no replies sent.")
         else:
             print("First run: no updates yet, nothing to seed.")
@@ -147,6 +225,7 @@ def main():
 
     history = state["history"]
     pending = state["pending"]
+    uploads = state["uploads"]
     max_update_id = state["last_update_id"]
 
     # 1) Send whatever scheduled replies have come due since the last poll.
@@ -163,9 +242,19 @@ def main():
         if not persona:
             continue
         try:
-            reply = build_reply(persona, roster_text, history)
-            send_text(persona["token"], CHAT_ID, reply)
-            history.append({"name": persona["display_name"], "text": reply})
+            if item.get("attachments"):
+                reply_text, output_file = build_file_task_reply(persona, item, roster_text, history)
+                if output_file:
+                    filename, file_bytes = output_file
+                    send_document(persona["token"], CHAT_ID, filename, file_bytes, caption=reply_text)
+                    history.append({"name": persona["display_name"], "text": f"{reply_text} [файл: {filename}]"})
+                else:
+                    send_text(persona["token"], CHAT_ID, reply_text)
+                    history.append({"name": persona["display_name"], "text": reply_text})
+            else:
+                reply = build_reply(persona, roster_text, history)
+                send_text(persona["token"], CHAT_ID, reply)
+                history.append({"name": persona["display_name"], "text": reply})
             time.sleep(random.uniform(1, 3))
         except Exception as e:
             print(f"Failed to send scheduled reply from {persona['display_name']}: {e}")
@@ -179,19 +268,35 @@ def main():
             continue
         if str(message.get("chat", {}).get("id")) != str(CHAT_ID):
             continue
-        text = message.get("text")
-        if not text:
-            continue
         sender = message.get("from", {})
         if sender.get("id") in bot_ids:
             continue  # our own personas don't reply to each other
 
         sender_name = sender.get("first_name") or sender.get("username") or "Коллега"
+        sender_key = str(sender.get("id"))
+        text = message.get("text") or message.get("caption")
+        attachments = message_attachments(message)
+
+        if attachments and not text:
+            # A bare upload with no instruction yet - hold onto it and wait
+            # for the follow-up message that says what to do with it.
+            bucket = [u for u in uploads.get(sender_key, []) if now - u["ts"] < UPLOAD_BUFFER_TTL_SEC]
+            bucket.extend({**a, "ts": now} for a in attachments)
+            uploads[sender_key] = bucket[-MAX_BUFFERED_UPLOADS:]
+            history.append({"name": sender_name, "text": "[прислал(а) файл]"})
+            continue
+
+        if not text:
+            continue  # nothing to react to (e.g. a sticker)
+
         history.append({"name": sender_name, "text": text})
+
+        buffered = [u for u in uploads.pop(sender_key, []) if now - u["ts"] < UPLOAD_BUFFER_TTL_SEC]
+        all_attachments = buffered + attachments
 
         reply_to = message.get("reply_to_message") or {}
         reply_to_bot_id = (reply_to.get("from") or {}).get("id")
-        targets = find_targets(text, reply_to_bot_id, personas, roster_text, history)
+        targets = find_targets(text, reply_to_bot_id, personas, roster_text, history, attachments=all_attachments)
 
         for key, priority in targets:
             if key not in personas_by_key:
@@ -201,12 +306,19 @@ def main():
                     "persona_key": key,
                     "priority": priority,
                     "due_at": compute_due_at(time.time(), priority),
+                    "attachments": all_attachments or None,
+                    "instruction": text if all_attachments else None,
                 }
             )
 
     save_corp_state(
         STATE_FILE,
-        {"last_update_id": max_update_id, "history": history[-HISTORY_LIMIT:], "pending": pending},
+        {
+            "last_update_id": max_update_id,
+            "history": history[-HISTORY_LIMIT:],
+            "pending": pending,
+            "uploads": uploads,
+        },
     )
 
 

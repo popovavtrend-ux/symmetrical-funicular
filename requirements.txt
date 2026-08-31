@@ -3,3 +3,6 @@ requests
 deep-translator
 anthropic
 matplotlib
+openpyxl
+python-docx
+python-pptx
