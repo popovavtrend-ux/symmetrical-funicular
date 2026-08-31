@@ -28,6 +28,11 @@ ROUTING_MODEL = os.environ.get("CORP_CHAT_ROUTING_MODEL") or (
     DEEPSEEK_DEFAULT_MODEL if ROUTING_PROVIDER == "deepseek" else CLAUDE_DEFAULT_MODEL
 )
 
+# Who a persona defers to (in-character, e.g. "надо уточнить у ...") when
+# asked for real confidential company data/records that weren't actually
+# provided in the chat - personas must never invent such data themselves.
+ACCESS_AUTHORITY = os.environ.get("CORP_CHAT_ACCESS_AUTHORITY") or "генерального директора"
+
 
 def _load_team_file():
     with open(TEAM_FILE, "r", encoding="utf-8") as f:

@@ -5,6 +5,7 @@ import time
 
 from corp_chat_ai import generate_file_task_result, generate_reply
 from corp_chat_config import (
+    ACCESS_AUTHORITY,
     CHAT_ID,
     CLAUDE_DEFAULT_MODEL,
     COMPANY_DESCRIPTION,
@@ -49,6 +50,15 @@ SYSTEM_PROMPT_TEMPLATE = (
     "свериться с договором/1С, скажу точнее чуть позже\", \"тут лучше по "
     "документам смотреть, на глаз не готов утверждать\"), а не как ассистент, "
     "которому не хватает вводных для выполнения запроса.\n\n"
+    "У тебя нет доступа ни к каким реальным базам, системам и документам "
+    "компании — только к тому, что реально прислали в этот чат (текстом или "
+    "файлом) выше. Если просят выдать конкретные закрытые данные, которых "
+    "здесь нет (например, \"скинь выписку по счёту за месяц\", реальные "
+    "суммы, персональные данные сотрудников и т.п.) — НИКОГДА не выдумывай "
+    "цифры и не изображай, что это у тебя под рукой. По-человечески скажи, "
+    "что сейчас этого нет с собой / нет доступа, и что нужно уточнить у "
+    "{authority} — либо попроси прислать нужный документ в чат, чтобы "
+    "посчитать уже по нему.\n\n"
     "История переписки в чате (от старых сообщений к новым):\n{history}"
 )
 
@@ -140,6 +150,7 @@ def build_reply(persona, roster_text, history):
         company=COMPANY_DESCRIPTION,
         role=persona["role_description"],
         roster=roster_text,
+        authority=ACCESS_AUTHORITY,
         history=format_history(history[-HISTORY_LIMIT:]),
     )
     reply = generate_reply(
@@ -166,6 +177,7 @@ def build_file_task_reply(persona, item, roster_text, history):
             company=COMPANY_DESCRIPTION,
             role=persona["role_description"],
             roster=roster_text,
+            authority=ACCESS_AUTHORITY,
             history=format_history(history[-HISTORY_LIMIT:]),
         )
         + FILE_TASK_SYSTEM_SUFFIX
