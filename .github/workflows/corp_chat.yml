@@ -24,15 +24,22 @@ jobs:
       - name: Poll chat and reply
         env:
           TELEGRAM_CHAT_ID_CORP: ${{ secrets.TELEGRAM_CHAT_ID_CORP }}
+          # One secret per team.json entry - only the roles that have a
+          # token set here actually get a bot in the chat, the rest are
+          # silently skipped. Add a new role by adding a block to team.json
+          # + a matching secret here, no code changes needed.
           TELEGRAM_BOT_TOKEN_LAWYER: ${{ secrets.TELEGRAM_BOT_TOKEN_LAWYER }}
           TELEGRAM_BOT_TOKEN_ACCOUNTANT: ${{ secrets.TELEGRAM_BOT_TOKEN_ACCOUNTANT }}
+          TELEGRAM_BOT_TOKEN_EXEC_DIRECTOR: ${{ secrets.TELEGRAM_BOT_TOKEN_EXEC_DIRECTOR }}
+          TELEGRAM_BOT_TOKEN_LOGIST: ${{ secrets.TELEGRAM_BOT_TOKEN_LOGIST }}
+          TELEGRAM_BOT_TOKEN_CLIENT_MANAGER: ${{ secrets.TELEGRAM_BOT_TOKEN_CLIENT_MANAGER }}
+          TELEGRAM_BOT_TOKEN_SALES_HEAD: ${{ secrets.TELEGRAM_BOT_TOKEN_SALES_HEAD }}
+          TELEGRAM_BOT_TOKEN_SALES_MANAGER: ${{ secrets.TELEGRAM_BOT_TOKEN_SALES_MANAGER }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-          LAWYER_NAME: ${{ vars.LAWYER_NAME }}
-          ACCOUNTANT_NAME: ${{ vars.ACCOUNTANT_NAME }}
-          LAWYER_PROVIDER: ${{ vars.LAWYER_PROVIDER }}
-          ACCOUNTANT_PROVIDER: ${{ vars.ACCOUNTANT_PROVIDER }}
+          CORP_CHAT_MIN_DELAY_SEC: ${{ vars.CORP_CHAT_MIN_DELAY_SEC }}
+          CORP_CHAT_MAX_DELAY_SEC: ${{ vars.CORP_CHAT_MAX_DELAY_SEC }}
         run: python corp_chat.py
 
       - name: Commit updated state

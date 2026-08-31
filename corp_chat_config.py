@@ -1,3 +1,4 @@
+import json
 import os
 
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID_CORP") or os.environ.get("TELEGRAM_CHAT_ID")
@@ -5,39 +6,54 @@ CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID_CORP") or os.environ.get("TELEGRAM_CH
 CLAUDE_DEFAULT_MODEL = "claude-haiku-4-5-20251001"
 DEEPSEEK_DEFAULT_MODEL = "deepseek-chat"
 
+# The team roster lives in a plain JSON file (not code) so adding/renaming
+# people later is just editing team.json + adding a bot token secret, no
+# code changes.
+TEAM_FILE = os.environ.get("CORP_CHAT_TEAM_FILE") or "team.json"
+
 # How many recent chat lines (both human and persona messages) get fed back
 # to each persona as context for its reply.
 HISTORY_LIMIT = int(os.environ.get("CORP_CHAT_HISTORY_LIMIT") or "40")
 
+# Reply timing: each scheduled reply gets a random delay in this range so
+# the chat doesn't feel like an instant bot. A "secondary" commenter (someone
+# adding their two cents after the main responder) gets extra delay on top.
+MIN_REPLY_DELAY_SEC = int(os.environ.get("CORP_CHAT_MIN_DELAY_SEC") or "60")
+MAX_REPLY_DELAY_SEC = int(os.environ.get("CORP_CHAT_MAX_DELAY_SEC") or "1800")
+SECONDARY_EXTRA_DELAY_SEC = int(os.environ.get("CORP_CHAT_SECONDARY_EXTRA_DELAY_SEC") or "600")
 
-def _persona(key, default_name, default_role, token_env):
+# Which model decides *who* on the team should answer a given message.
+ROUTING_PROVIDER = (os.environ.get("CORP_CHAT_ROUTING_PROVIDER") or "anthropic").strip().lower()
+ROUTING_MODEL = os.environ.get("CORP_CHAT_ROUTING_MODEL") or (
+    DEEPSEEK_DEFAULT_MODEL if ROUTING_PROVIDER == "deepseek" else CLAUDE_DEFAULT_MODEL
+)
+
+
+def _load_team_file():
+    with open(TEAM_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _persona(entry):
+    key = entry["key"]
     provider = (os.environ.get(f"{key.upper()}_PROVIDER") or "anthropic").strip().lower()
     default_model = DEEPSEEK_DEFAULT_MODEL if provider == "deepseek" else CLAUDE_DEFAULT_MODEL
     return {
         "key": key,
-        "display_name": os.environ.get(f"{key.upper()}_NAME") or default_name,
-        "token_env": token_env,
+        "display_name": os.environ.get(f"{key.upper()}_NAME") or entry["name"],
+        "token_env": entry["token_env"],
         "provider": provider,
         "model": os.environ.get(f"{key.upper()}_MODEL") or default_model,
-        "role_description": os.environ.get(f"{key.upper()}_ROLE") or default_role,
+        "role_description": os.environ.get(f"{key.upper()}_ROLE") or entry["role"],
     }
 
 
-# Names are placeholders (env-overridable) - the user said they'd pick real
-# names later, so nothing here is hardcoded into the prompts/messages.
-PERSONAS = [
-    _persona(
-        "lawyer",
-        "Юрист",
-        "корпоративный юрист компании: договорное право, корпоративные вопросы, "
-        "трудовые споры, претензионная работа",
-        "TELEGRAM_BOT_TOKEN_LAWYER",
-    ),
-    _persona(
-        "accountant",
-        "Главный бухгалтер",
-        "главный бухгалтер компании: налоги, бухгалтерская и налоговая отчётность, "
-        "расчёты с сотрудниками и контрагентами, финансовая дисциплина",
-        "TELEGRAM_BOT_TOKEN_ACCOUNTANT",
-    ),
-]
+_team_data = _load_team_file()
+COMPANY_DESCRIPTION = os.environ.get("CORP_CHAT_COMPANY_DESCRIPTION") or _team_data.get("company_description") or ""
+PERSONAS = [_persona(e) for e in _team_data["team"]]
+
+
+def team_roster_text(personas):
+    """personas: only the ones actually wired up (have a bot token) -
+    keeps the routing model from picking a colleague who can't reply."""
+    return "\n".join(f"- {p['display_name']}: {p['role_description']}" for p in personas) or "(команда пуста)"
