@@ -1,4 +1,6 @@
+import difflib
 import html
+import json
 import os
 import re
 import time
@@ -25,6 +27,11 @@ STATE_FILE = os.environ.get("STATE_FILE") or "data/seen_ids.json"
 # across unrelated posts - separate per pipeline since each has its own
 # STATE_FILE.
 IMAGE_HISTORY_FILE = os.environ.get("IMAGE_HISTORY_FILE") or STATE_FILE.replace(".json", "") + "_images.json"
+# Tracks recently-posted titles so near-identical coverage of the same
+# event from different feeds doesn't read as duplicate news.
+TITLE_HISTORY_FILE = os.environ.get("TITLE_HISTORY_FILE") or STATE_FILE.replace(".json", "") + "_titles.json"
+TITLE_HISTORY_LIMIT = 30
+TITLE_SIMILARITY_THRESHOLD = 0.6
 MAX_ITEMS_PER_RUN = int(os.environ.get("MAX_ITEMS_PER_RUN") or "5")
 SKIP_TRANSLATION = (os.environ.get("SKIP_TRANSLATION") or "").strip().lower() in ("1", "true", "yes")
 # "legacy" = old prompt/rules (the original group pipeline); "new" = the
@@ -173,6 +180,34 @@ def is_digest_or_roundup(title):
     return title.count("!") >= 2
 
 
+def load_recent_titles(path):
+    if not os.path.exists(path):
+        return []
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
+
+
+def save_recent_titles(path, titles):
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(titles[-TITLE_HISTORY_LIMIT:], f, ensure_ascii=False, indent=2)
+
+
+def is_near_duplicate_title(title, recent_titles):
+    """Different feeds often cover the same underlying event within the
+    same window - same story, different GUID, so the normal seen_ids dedup
+    never catches it. A high title-similarity match means it's very
+    likely the same news, not a coincidence."""
+    lowered = title.lower()
+    return any(
+        difflib.SequenceMatcher(None, lowered, rt.lower()).ratio() > TITLE_SIMILARITY_THRESHOLD
+        for rt in recent_titles
+    )
+
+
 def main():
     entries = fetch_entries(FEED_URLS)
     if not entries:
@@ -222,6 +257,28 @@ def main():
     # working through an ever-growing backlog of older stories.
     entries.sort(key=sort_key, reverse=True)
     unseen = [e for e in entries if entry_id(e) not in seen]
+
+    # Different feeds often cover the same event independently - each has
+    # its own GUID, so seen_ids alone never catches it. Filter those out
+    # against both recent posts and each other before picking what to post,
+    # so the channel doesn't read the same story twice under two headlines.
+    recent_titles = load_recent_titles(TITLE_HISTORY_FILE)
+    fresh_unseen, duplicate_titled = [], []
+    for e in unseen:
+        if is_near_duplicate_title(e.title, recent_titles):
+            duplicate_titled.append(e)
+        else:
+            fresh_unseen.append(e)
+            recent_titles.append(e.title)
+    unseen = fresh_unseen
+    if fresh_unseen:
+        save_recent_titles(TITLE_HISTORY_FILE, recent_titles)
+
+    if duplicate_titled:
+        seen.update(entry_id(e) for e in duplicate_titled)
+        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds})
+        print(f"Skipped {len(duplicate_titled)} entr{'y' if len(duplicate_titled) == 1 else 'ies'} covering already-posted news.")
+
     new_entries = unseen[:MAX_ITEMS_PER_RUN]
     stale_backlog = unseen[MAX_ITEMS_PER_RUN:]
 
