@@ -154,10 +154,32 @@ def sort_key(entry):
     return entry.get("published_parsed") or entry.get("updated_parsed") or time.gmtime(0)
 
 
+DIGEST_KEYWORDS = ("digest", "roundup", "recap", "week in review")
+
+
+def is_digest_or_roundup(title):
+    """Roundup articles (e.g. Decrypt's "Hodler's Digest") bundle several
+    separately-reported, often already-days-old stories under one headline.
+    Forcing one through the single-story rewrite produces a post that reads
+    like a mash-up of stale news rather than one fresh event."""
+    lowered = title.lower()
+    if any(kw in lowered for kw in DIGEST_KEYWORDS):
+        return True
+    return title.count("!") >= 2
+
+
 def main():
     entries = fetch_entries(FEED_URLS)
     if not entries:
         print(f"No entries found across FEED_URLS={FEED_URLS}. Are these valid RSS feed URLs?")
+        return
+
+    digest_count = sum(1 for e in entries if is_digest_or_roundup(e.title))
+    if digest_count:
+        entries = [e for e in entries if not is_digest_or_roundup(e.title)]
+        print(f"Skipped {digest_count} digest/roundup entr{'y' if digest_count == 1 else 'ies'}.")
+    if not entries:
+        print("No entries left after filtering out digest/roundup articles.")
         return
 
     state = load_state(STATE_FILE)
