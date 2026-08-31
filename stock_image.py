@@ -7,6 +7,13 @@ import requests
 PEXELS_API_KEY = os.environ.get("PEXELS_API_KEY")
 PEXELS_SEARCH_URL = "https://api.pexels.com/v1/search"
 
+# Optional second source - widens the candidate pool so the anti-repeat
+# logic below has more to pick from before it's forced to reuse a photo.
+# Inactive (silently skipped) unless UNSPLASH_ACCESS_KEY is set; get a free
+# one at unsplash.com/developers.
+UNSPLASH_ACCESS_KEY = os.environ.get("UNSPLASH_ACCESS_KEY")
+UNSPLASH_SEARCH_URL = "https://api.unsplash.com/search/photos"
+
 # Maps a keyword that might appear in a headline (English, or transliterated
 # Russian for the RU-language feeds) to the query term Pexels actually has
 # good stock photos for.
@@ -113,6 +120,8 @@ def _save_recent_images(history_path, urls):
 
 
 def _search_pexels(query, per_page=10):
+    if not PEXELS_API_KEY:
+        return []
     try:
         resp = requests.get(
             PEXELS_SEARCH_URL,
@@ -128,17 +137,38 @@ def _search_pexels(query, per_page=10):
         return []
 
 
+def _search_unsplash(query, per_page=10):
+    if not UNSPLASH_ACCESS_KEY:
+        return []
+    try:
+        resp = requests.get(
+            UNSPLASH_SEARCH_URL,
+            params={"query": query, "per_page": per_page, "orientation": "landscape"},
+            headers={"Authorization": f"Client-ID {UNSPLASH_ACCESS_KEY}"},
+            timeout=15,
+        )
+        resp.raise_for_status()
+        results = resp.json().get("results") or []
+        return [r["urls"]["regular"] for r in results if r.get("urls", {}).get("regular")]
+    except Exception as e:
+        print(f"Unsplash search failed for {query!r}: {e}")
+        return []
+
+
 def find_stock_image(title, source_image_url=None, history_path=None):
-    """Look up a free-to-use Pexels photo visually matching the news topic,
-    instead of hotlinking the source's own copyrighted photo. Returns an
-    image URL, or None if no API key is configured or nothing matches.
+    """Look up a free-to-use stock photo (Pexels, plus Unsplash if
+    configured) visually matching the news topic, instead of hotlinking
+    the source's own copyrighted photo. Returns an image URL, or None if
+    no API key is configured or nothing matches.
 
     A search for a single top result is deterministic - similar-sounding
     queries across unrelated stories (e.g. several different "bitcoin"
     headlines) tend to converge on the same handful of popular stock
-    photos. history_path, if given, tracks recently-used photo URLs so a
-    fresh one gets picked instead of repeating."""
-    if not PEXELS_API_KEY:
+    photos. Pooling two sources widens how many distinct photos are even
+    available for a given query, and history_path, if given, tracks
+    recently-used photo URLs so a fresh one gets picked instead of
+    repeating."""
+    if not PEXELS_API_KEY and not UNSPLASH_ACCESS_KEY:
         return None
 
     fallback_query = guess_image_query(title)
@@ -147,13 +177,13 @@ def find_stock_image(title, source_image_url=None, history_path=None):
         vision_query = describe_image_for_search(source_image_url, title)
         if vision_query:
             query = vision_query
-    print(f"Pexels query for {title!r}: {query!r}")
+    print(f"Stock photo query for {title!r}: {query!r}")
 
     recent = set(_load_recent_images(history_path))
-    candidates = _search_pexels(query)
+    candidates = _search_pexels(query) + _search_unsplash(query)
     if not candidates and query != fallback_query:
-        print(f"No Pexels results for {query!r}, retrying with {fallback_query!r}")
-        candidates = _search_pexels(fallback_query)
+        print(f"No results for {query!r}, retrying with {fallback_query!r}")
+        candidates = _search_pexels(fallback_query) + _search_unsplash(fallback_query)
     if not candidates:
         return None
 
