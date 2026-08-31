@@ -33,3 +33,22 @@ def send_photo(bot_token, chat_id, photo_url, caption):
     if not resp.ok:
         raise RuntimeError(f"Telegram API error {resp.status_code}: {resp.text}")
     return resp.json()
+
+
+def send_photo_bytes(bot_token, chat_id, photo_bytes, filename, caption):
+    """Like send_photo, but for an image we generated ourselves (e.g. a
+    rendered chart) rather than one hosted at a URL."""
+    url = f"https://api.telegram.org/bot{bot_token}/sendPhoto"
+    resp = requests.post(
+        url,
+        data={
+            "chat_id": chat_id,
+            "caption": caption,
+            "parse_mode": "HTML",
+        },
+        files={"photo": (filename, photo_bytes, "image/png")},
+        timeout=30,
+    )
+    if not resp.ok:
+        raise RuntimeError(f"Telegram API error {resp.status_code}: {resp.text}")
+    return resp.json()

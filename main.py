@@ -5,9 +5,10 @@ import time
 from urllib.parse import urlparse
 
 from fetch_feed import fetch_entries
+from price_chart import generate_price_chart
 from state import load_state, save_state
 from stock_image import find_stock_image
-from telegram_post import send_message, send_photo
+from telegram_post import send_message, send_photo, send_photo_bytes
 from translate import translate, translate_new
 
 DEFAULT_FEED_URLS = (
@@ -236,7 +237,6 @@ def main():
         title = entry.title
         summary = clean_summary(entry)
         link = entry.link
-        image_url = find_stock_image(title, source_image_url=extract_source_image_url(entry))
         source_name = get_source_name(entry)
 
         try:
@@ -251,20 +251,33 @@ def main():
             else:
                 title_ru, summary_ru = translate(title, summary)
 
-            if image_url:
-                # Telegram can't render caption text above its own photo, so
-                # the signature goes as the caption's first line instead -
-                # one message, signature at the top of the text, image above it.
-                caption = build_message(
-                    title_ru, summary_ru, source_name=source_name, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN
-                )
+            # Telegram can't render caption text above its own photo, so the
+            # signature goes as the caption's first line instead - one
+            # message, signature at the top of the text, image above it.
+            caption = build_message(
+                title_ru, summary_ru, source_name=source_name, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN
+            )
+
+            # A named coin gets its actual price chart rather than an
+            # illustrative stock photo that only looks like one.
+            price_chart = generate_price_chart(title)
+            if price_chart:
                 try:
-                    send_photo(BOT_TOKEN, CHAT_ID, image_url, caption)
+                    send_photo_bytes(BOT_TOKEN, CHAT_ID, price_chart, "chart.png", caption)
                 except Exception as e:
-                    print(f"Failed to send photo ({image_url!r}), falling back to text: {e}")
+                    print(f"Failed to send price chart, falling back: {e}")
+                    price_chart = None
+
+            if not price_chart:
+                image_url = find_stock_image(title, source_image_url=extract_source_image_url(entry))
+                if image_url:
+                    try:
+                        send_photo(BOT_TOKEN, CHAT_ID, image_url, caption)
+                    except Exception as e:
+                        print(f"Failed to send photo ({image_url!r}), falling back to text: {e}")
+                        send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru, source_name=source_name))
+                else:
                     send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru, source_name=source_name))
-            else:
-                send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru, source_name=source_name))
         except Exception as e:
             # Don't let one bad entry take down the whole run - the
             # already-posted entries above must still get committed.
