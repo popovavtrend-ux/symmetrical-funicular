@@ -21,6 +21,10 @@ DEFAULT_FEED_URLS = (
 
 FEED_URLS = [u.strip() for u in (os.environ.get("FEED_URL") or DEFAULT_FEED_URLS).split(",") if u.strip()]
 STATE_FILE = os.environ.get("STATE_FILE") or "data/seen_ids.json"
+# Tracks recently-used stock photos so this pipeline doesn't repeat one
+# across unrelated posts - separate per pipeline since each has its own
+# STATE_FILE.
+IMAGE_HISTORY_FILE = os.environ.get("IMAGE_HISTORY_FILE") or STATE_FILE.replace(".json", "") + "_images.json"
 MAX_ITEMS_PER_RUN = int(os.environ.get("MAX_ITEMS_PER_RUN") or "5")
 SKIP_TRANSLATION = (os.environ.get("SKIP_TRANSLATION") or "").strip().lower() in ("1", "true", "yes")
 # "legacy" = old prompt/rules (the original group pipeline); "new" = the
@@ -269,7 +273,9 @@ def main():
                     price_chart = None
 
             if not price_chart:
-                image_url = find_stock_image(title, source_image_url=extract_source_image_url(entry))
+                image_url = find_stock_image(
+                    title, source_image_url=extract_source_image_url(entry), history_path=IMAGE_HISTORY_FILE
+                )
                 if image_url:
                     try:
                         send_photo(BOT_TOKEN, CHAT_ID, image_url, caption)

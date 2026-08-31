@@ -8,6 +8,7 @@ from telegram_post import send_message, send_photo
 from translate import explain_topic
 
 STATE_FILE = os.environ.get("EDUCATION_STATE_FILE") or "data/education_state.json"
+IMAGE_HISTORY_FILE = STATE_FILE.replace(".json", "") + "_images.json"
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
@@ -40,7 +41,7 @@ def main():
     topic = next_topic(posted_topics)
 
     title, explanation = explain_topic(topic)
-    image_url = find_stock_image(title)
+    image_url = find_stock_image(title, history_path=IMAGE_HISTORY_FILE)
 
     if image_url:
         caption = build_message(title, explanation, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN)

@@ -1,4 +1,5 @@
 import base64
+import json
 import os
 
 import requests
@@ -90,26 +91,53 @@ def describe_image_for_search(image_url, title):
         return None
 
 
-def _search_pexels(query):
+RECENT_IMAGES_LIMIT = 40
+
+
+def _load_recent_images(history_path):
+    if not history_path or not os.path.exists(history_path):
+        return []
+    try:
+        with open(history_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return []
+
+
+def _save_recent_images(history_path, urls):
+    if not history_path:
+        return
+    os.makedirs(os.path.dirname(history_path) or ".", exist_ok=True)
+    with open(history_path, "w", encoding="utf-8") as f:
+        json.dump(urls[-RECENT_IMAGES_LIMIT:], f, ensure_ascii=False, indent=2)
+
+
+def _search_pexels(query, per_page=10):
     try:
         resp = requests.get(
             PEXELS_SEARCH_URL,
-            params={"query": query, "per_page": 1, "orientation": "landscape"},
+            params={"query": query, "per_page": per_page, "orientation": "landscape"},
             headers={"Authorization": PEXELS_API_KEY},
             timeout=15,
         )
         resp.raise_for_status()
         photos = resp.json().get("photos") or []
-        return photos[0]["src"]["large"] if photos else None
+        return [p["src"]["large"] for p in photos]
     except Exception as e:
         print(f"Pexels search failed for {query!r}: {e}")
-        return None
+        return []
 
 
-def find_stock_image(title, source_image_url=None):
+def find_stock_image(title, source_image_url=None, history_path=None):
     """Look up a free-to-use Pexels photo visually matching the news topic,
     instead of hotlinking the source's own copyrighted photo. Returns an
-    image URL, or None if no API key is configured or nothing matches."""
+    image URL, or None if no API key is configured or nothing matches.
+
+    A search for a single top result is deterministic - similar-sounding
+    queries across unrelated stories (e.g. several different "bitcoin"
+    headlines) tend to converge on the same handful of popular stock
+    photos. history_path, if given, tracks recently-used photo URLs so a
+    fresh one gets picked instead of repeating."""
     if not PEXELS_API_KEY:
         return None
 
@@ -121,8 +149,16 @@ def find_stock_image(title, source_image_url=None):
             query = vision_query
     print(f"Pexels query for {title!r}: {query!r}")
 
-    result = _search_pexels(query)
-    if not result and query != fallback_query:
+    recent = set(_load_recent_images(history_path))
+    candidates = _search_pexels(query)
+    if not candidates and query != fallback_query:
         print(f"No Pexels results for {query!r}, retrying with {fallback_query!r}")
-        result = _search_pexels(fallback_query)
+        candidates = _search_pexels(fallback_query)
+    if not candidates:
+        return None
+
+    result = next((c for c in candidates if c not in recent), candidates[0])
+
+    if history_path:
+        _save_recent_images(history_path, [*_load_recent_images(history_path), result])
     return result
