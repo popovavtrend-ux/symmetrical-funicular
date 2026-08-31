@@ -38,7 +38,14 @@ def process_account(username, state):
         print(f"@{username}: no posts fetched (feed empty or unavailable).")
         return
 
-    posts = list(reversed(posts))  # oldest first
+    # Newest first - status IDs are Snowflake-style and increase
+    # monotonically with time, so sorting by ID doubles as sorting by
+    # posting time without needing to parse any date field. With several
+    # active accounts, more can post in one window than
+    # MAX_ITEMS_PER_ACCOUNT can post - prioritizing the newest keeps the
+    # channel caught up on current posts instead of always working
+    # through an ever-growing backlog of older ones.
+    posts.sort(key=lambda p: int(p["id"]), reverse=True)
     seen_ids = set(state.get(username, []))
 
     if username not in state:
@@ -49,10 +56,22 @@ def process_account(username, state):
         print(f"@{username}: first run, seeded {len(posts)} posts, nothing posted.")
         return
 
-    new_posts = [p for p in posts if p["id"] not in seen_ids][:MAX_ITEMS_PER_ACCOUNT]
+    unseen = [p for p in posts if p["id"] not in seen_ids]
+    new_posts = unseen[:MAX_ITEMS_PER_ACCOUNT]
+    stale_backlog = unseen[MAX_ITEMS_PER_ACCOUNT:]
+
+    if stale_backlog:
+        # Mark the rest as seen without posting them - skip the backlog
+        # rather than posting stale tweets for the next several runs.
+        seen_ids.update(p["id"] for p in stale_backlog)
+        state[username] = sorted(seen_ids)
+        save_state(STATE_FILE, state)
+
     if not new_posts:
         print(f"@{username}: no new posts.")
         return
+
+    new_posts.sort(key=lambda p: int(p["id"]))  # oldest-of-the-batch first, for a readable posting order
 
     for post in new_posts:
         try:
