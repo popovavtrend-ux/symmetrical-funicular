@@ -26,7 +26,7 @@ def _parse_response(text):
 def translate_via_claude(title, summary):
     """Old-rules rewrite - used by the original group pipeline. Personal
     opinion in first person, concise, no financial-advice guardrails."""
-    from anthropic_client import get_client
+    from anthropic_client import extract_text, get_client
 
     client = get_client()
     prompt = (
@@ -58,16 +58,16 @@ def translate_via_claude(title, summary):
     )
     resp = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=500,
+        max_tokens=800,
         messages=[{"role": "user", "content": prompt}],
     )
-    return _parse_response(resp.content[0].text.strip())
+    return _parse_response(extract_text(resp).strip())
 
 
 def translate_via_claude_new(title, summary):
     """New-rules rewrite - used by the new channel pipeline. Full, thorough
     rewrite for a total-beginner audience, no financial advice."""
-    from anthropic_client import get_client
+    from anthropic_client import extract_text, get_client
 
     client = get_client()
     prompt = (
@@ -113,17 +113,17 @@ def translate_via_claude_new(title, summary):
     )
     resp = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=700,
+        max_tokens=1000,
         messages=[{"role": "user", "content": prompt}],
     )
-    return _parse_response(resp.content[0].text.strip())
+    return _parse_response(extract_text(resp).strip())
 
 
 def explain_topic(topic):
     """Write a standalone educational post about a crypto/finance concept -
     not tied to any news story. Same beginner-friendly, no-financial-advice
     voice as translate_via_claude_new."""
-    from anthropic_client import get_client
+    from anthropic_client import extract_text, get_client
 
     client = get_client()
     prompt = (
@@ -145,10 +145,10 @@ def explain_topic(topic):
     )
     resp = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=500,
+        max_tokens=800,
         messages=[{"role": "user", "content": prompt}],
     )
-    text = resp.content[0].text.strip()
+    text = extract_text(resp).strip()
 
     title_m = re.search(r"Title:\s*(.+)", text)
     explanation_m = re.search(r"Explanation:\s*(.+)", text, re.DOTALL)

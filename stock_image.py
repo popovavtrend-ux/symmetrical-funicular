@@ -57,7 +57,7 @@ def describe_image_for_search(image_url, title):
     often abstract editorial artwork (neon shapes, gradients, icons), and
     describing that literally produces a query that matches nothing about
     the actual story."""
-    from anthropic_client import get_client
+    from anthropic_client import extract_text, get_client
 
     try:
         img_resp = requests.get(image_url, timeout=15)
@@ -68,7 +68,7 @@ def describe_image_for_search(image_url, title):
         client = get_client()
         resp = client.messages.create(
             model="claude-haiku-4-5-20251001",
-            max_tokens=30,
+            max_tokens=200,
             messages=[
                 {
                     "role": "user",
@@ -92,7 +92,7 @@ def describe_image_for_search(image_url, title):
                 }
             ],
         )
-        return resp.content[0].text.strip() or None
+        return extract_text(resp).strip() or None
     except Exception as e:
         print(f"Image description failed for {image_url!r}: {e}")
         return None

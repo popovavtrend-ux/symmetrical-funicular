@@ -2,7 +2,7 @@ import os
 
 
 def compose_post_via_claude(author, text, url):
-    from anthropic_client import get_client
+    from anthropic_client import extract_text, get_client
 
     client = get_client()
     prompt = (
@@ -19,10 +19,10 @@ def compose_post_via_claude(author, text, url):
     )
     resp = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=400,
+        max_tokens=700,
         messages=[{"role": "user", "content": prompt}],
     )
-    return resp.content[0].text.strip()
+    return extract_text(resp).strip()
 
 
 def compose_post_via_translation(author, text, url):
