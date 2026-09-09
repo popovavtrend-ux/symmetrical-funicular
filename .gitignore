@@ -1,3 +1,5 @@
 __pycache__/
 *.pyc
 .env
+delivery_route/cache/*.json
+!delivery_route/cache/.gitkeep
