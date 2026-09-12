@@ -1,8 +1,12 @@
 name: Post translated X (Twitter) updates to Telegram
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
+  # Disabled: the free Nitter mirrors this falls back to (no paid
+  # X_BEARER_TOKEN configured) are all dead/blocked, so every run posts
+  # nothing while still burning Actions minutes every 15 minutes. Trigger
+  # manually if X_BEARER_TOKEN gets configured or a mirror comes back.
+  # schedule:
+  #   - cron: "*/15 * * * *"
   workflow_dispatch: {}
 
 concurrency:
