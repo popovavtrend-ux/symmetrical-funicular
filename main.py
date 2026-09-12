@@ -11,7 +11,7 @@ from price_chart import generate_price_chart
 from state import load_state, save_state
 from stock_image import find_stock_image
 from telegram_post import send_message, send_photo, send_photo_bytes
-from translate import translate, translate_new
+from translate import translate
 
 DEFAULT_FEED_URLS = (
     "https://protos.com/feed/,"
@@ -34,9 +34,6 @@ TITLE_HISTORY_LIMIT = 30
 TITLE_SIMILARITY_THRESHOLD = 0.6
 MAX_ITEMS_PER_RUN = int(os.environ.get("MAX_ITEMS_PER_RUN") or "5")
 SKIP_TRANSLATION = (os.environ.get("SKIP_TRANSLATION") or "").strip().lower() in ("1", "true", "yes")
-# "legacy" = old prompt/rules (the original group pipeline); "new" = the
-# full-rewrite, beginner-friendly, no-financial-advice pipeline (the channel).
-CONTENT_STYLE = (os.environ.get("CONTENT_STYLE") or "legacy").strip().lower()
 
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
 CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
@@ -47,7 +44,7 @@ IMG_SRC_RE = re.compile(r'<img[^>]+src=["\']([^"\']+)["\']', re.IGNORECASE)
 
 TELEGRAM_MAX_LEN = 4096
 TELEGRAM_PHOTO_CAPTION_MAX_LEN = 1024
-SIGNATURE = os.environ.get("SIGNATURE") or "@cryptocompass_news"
+SIGNATURE = os.environ.get("SIGNATURE") or "@freshlive101"
 
 # Human-readable publication names for the source line - naming the source
 # is what makes rewriting/quoting someone else's news legally a citation
@@ -315,8 +312,6 @@ def main():
             # than copied verbatim.
             if SKIP_TRANSLATION and not os.environ.get("ANTHROPIC_API_KEY"):
                 title_ru, summary_ru = title, summary
-            elif CONTENT_STYLE == "new":
-                title_ru, summary_ru = translate_new(title, summary)
             else:
                 title_ru, summary_ru = translate(title, summary)
 
