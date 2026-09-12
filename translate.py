@@ -23,8 +23,51 @@ def _parse_response(text):
     return translated_title, translated_summary
 
 
-def translate_via_claude(title, summary):
-    """Full, thorough rewrite for a total-beginner audience, no financial advice."""
+def translate_via_claude_opinion(title, summary):
+    """Personal-opinion rewrite in first person, concise, no financial-advice
+    guardrails - alternates with translate_via_claude_explainer so FreshLive
+    posts don't all read like the same template."""
+    from anthropic_client import extract_text, get_client
+
+    client = get_client()
+    prompt = (
+        "You are the owner of a crypto news Telegram channel, writing a short "
+        "post in Russian about a piece of news (the source material below may "
+        "already be in Russian, or in English). Never mention or refer to "
+        "'the article', 'the source', or where the information came from. "
+        "Keep crypto terms (Bitcoin, DeFi, token tickers, etc.) as commonly "
+        "used in Russian crypto media. Be accurate - do not invent facts, "
+        "numbers, or quotes that aren't in the source material. Write in "
+        "short, plain sentences so the post is easy to scan on a phone "
+        "screen - avoid long, dense run-on sentences.\n\n"
+        "Reply in exactly this format, and nothing else:\n"
+        "Title: <a short catchy title>\n"
+        "Context: <1-2 plain sentences stating the news itself - what "
+        "happened, in your own words, not a translation>\n"
+        "Opinion: <your personal opinion/commentary on it in first person - "
+        "why it matters, what you think it means, 2-3 sentences. Sound like "
+        "a real person talking, not a template: do NOT open with 'Я считаю', "
+        "'По-моему' or any other fixed phrase - vary how each post starts "
+        "(a reaction, a comparison, a question, straight commentary, etc.) "
+        "so posts don't all sound the same. Also vary your word choice "
+        "*within* the paragraph, not just the opening - don't lean on "
+        "'это' or any other single word as a crutch every sentence; use "
+        "the range of Russian phrasing (referring back to the specific "
+        "thing by name, a synonym, restructuring the sentence, etc.)>\n\n"
+        f"Title: {title}\n"
+        f"Summary: {summary}"
+    )
+    resp = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=800,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return _parse_response(extract_text(resp).strip())
+
+
+def translate_via_claude_explainer(title, summary):
+    """Full, thorough rewrite for a total-beginner audience, no financial
+    advice - alternates with translate_via_claude_opinion."""
     from anthropic_client import extract_text, get_client
 
     client = get_client()
@@ -80,7 +123,7 @@ def translate_via_claude(title, summary):
 def explain_topic(topic):
     """Write a standalone educational post about a crypto/finance concept -
     not tied to any news story. Same beginner-friendly, no-financial-advice
-    voice as translate_via_claude_new."""
+    voice as translate_via_claude_explainer."""
     from anthropic_client import extract_text, get_client
 
     client = get_client()
@@ -141,10 +184,18 @@ def translate_via_google(title, summary):
     return translated_title, translated_summary
 
 
-def translate(title, summary):
+STYLES = ("opinion", "explainer")
+
+
+def translate(title, summary, style="explainer"):
+    """style picks the voice for this one post - "opinion" (personal take,
+    first person, no beginner explanations) or "explainer" (full beginner
+    rewrite, no financial advice). Callers alternate between the two across
+    posts so the channel doesn't read as one repetitive template."""
+    claude_fn = translate_via_claude_opinion if style == "opinion" else translate_via_claude_explainer
     if os.environ.get("ANTHROPIC_API_KEY"):
         try:
-            return translate_via_claude(title, summary)
+            return claude_fn(title, summary)
         except Exception as e:
             print(f"Claude translation failed, falling back to Google Translate: {e}")
     return translate_via_google(title, summary)
