@@ -1026,6 +1026,7 @@
     "https://cryptoslate.com/?p=561927",
     "https://cryptoslate.com/?p=561940",
     "https://cryptoslate.com/?p=561972",
+    "https://cryptoslate.com/?p=562008",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=373351",
     "https://decrypt.co/?p=376662",
@@ -1481,5 +1482,6 @@
     "https://thedefiant.io/feed",
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
-  ]
+  ],
+  "last_style": "opinion"
 }
