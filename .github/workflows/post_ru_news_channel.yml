@@ -35,7 +35,6 @@ jobs:
           FEED_URL: ${{ vars.CHANNEL_RU_FEED_URL || 'https://incrypted.com/feed/,https://cryptocurrency.tech/feed/,https://forklog.com/feed/,https://ru.beincrypto.com/feed/' }}
           STATE_FILE: data/seen_ru_ids_channel.json
           SKIP_TRANSLATION: "true"
-          CONTENT_STYLE: "new"
           MAX_ITEMS_PER_RUN: "1"
           SIGNATURE: "@freshlive101"
         run: python main.py

@@ -24,49 +24,7 @@ def _parse_response(text):
 
 
 def translate_via_claude(title, summary):
-    """Old-rules rewrite - used by the original group pipeline. Personal
-    opinion in first person, concise, no financial-advice guardrails."""
-    from anthropic_client import extract_text, get_client
-
-    client = get_client()
-    prompt = (
-        "You are the owner of a crypto news Telegram channel, writing a short "
-        "post in Russian about a piece of news (the source material below may "
-        "already be in Russian, or in English). Never mention or refer to "
-        "'the article', 'the source', or where the information came from. "
-        "Keep crypto terms (Bitcoin, DeFi, token tickers, etc.) as commonly "
-        "used in Russian crypto media. Be accurate - do not invent facts, "
-        "numbers, or quotes that aren't in the source material. Write in "
-        "short, plain sentences so the post is easy to scan on a phone "
-        "screen - avoid long, dense run-on sentences.\n\n"
-        "Reply in exactly this format, and nothing else:\n"
-        "Title: <a short catchy title>\n"
-        "Context: <1-2 plain sentences stating the news itself - what "
-        "happened, in your own words, not a translation>\n"
-        "Opinion: <your personal opinion/commentary on it in first person - "
-        "why it matters, what you think it means, 2-3 sentences. Sound like "
-        "a real person talking, not a template: do NOT open with 'Я считаю', "
-        "'По-моему' or any other fixed phrase - vary how each post starts "
-        "(a reaction, a comparison, a question, straight commentary, etc.) "
-        "so posts don't all sound the same. Also vary your word choice "
-        "*within* the paragraph, not just the opening - don't lean on "
-        "'это' or any other single word as a crutch every sentence; use "
-        "the range of Russian phrasing (referring back to the specific "
-        "thing by name, a synonym, restructuring the sentence, etc.)>\n\n"
-        f"Title: {title}\n"
-        f"Summary: {summary}"
-    )
-    resp = client.messages.create(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=800,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    return _parse_response(extract_text(resp).strip())
-
-
-def translate_via_claude_new(title, summary):
-    """New-rules rewrite - used by the new channel pipeline. Full, thorough
-    rewrite for a total-beginner audience, no financial advice."""
+    """Full, thorough rewrite for a total-beginner audience, no financial advice."""
     from anthropic_client import extract_text, get_client
 
     client = get_client()
@@ -187,15 +145,6 @@ def translate(title, summary):
     if os.environ.get("ANTHROPIC_API_KEY"):
         try:
             return translate_via_claude(title, summary)
-        except Exception as e:
-            print(f"Claude translation failed, falling back to Google Translate: {e}")
-    return translate_via_google(title, summary)
-
-
-def translate_new(title, summary):
-    if os.environ.get("ANTHROPIC_API_KEY"):
-        try:
-            return translate_via_claude_new(title, summary)
         except Exception as e:
             print(f"Claude translation failed, falling back to Google Translate: {e}")
     return translate_via_google(title, summary)
