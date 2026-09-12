@@ -44,6 +44,7 @@
     "33c5b204-eef6-4d38-9f16-a77c122a8e04",
     "37669fc0-6327-4285-bfa7-1bdfefdc41f8",
     "38050134-0534-4b08-9203-f038043a1bf6",
+    "39b243fb-8950-44d1-8f77-3586983765ee",
     "3a212fef-d8c9-46ec-8c73-de64f9ed5ffe",
     "3afa213d-cb87-40d7-b3d0-cea58cd5905e",
     "3c83e467-b1df-4b09-baa1-7cae3a12e7b7",
@@ -566,9 +567,12 @@
     "https://beincrypto.com/?p=865845",
     "https://beincrypto.com/?p=865846",
     "https://beincrypto.com/?p=865891",
+    "https://beincrypto.com/?p=865894",
+    "https://beincrypto.com/?p=865899",
     "https://beincrypto.com/?p=865902",
     "https://beincrypto.com/?p=865942",
     "https://beincrypto.com/?p=865948",
+    "https://beincrypto.com/?p=865970",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1029,6 +1033,7 @@
     "https://cryptoslate.com/?p=561721",
     "https://cryptoslate.com/?p=561733",
     "https://cryptoslate.com/?p=561742",
+    "https://cryptoslate.com/?p=561816",
     "https://cryptoslate.com/?p=561927",
     "https://cryptoslate.com/?p=561940",
     "https://cryptoslate.com/?p=561972",
@@ -1220,6 +1225,7 @@
     "https://decrypt.co/?p=377973",
     "https://decrypt.co/?p=377982",
     "https://decrypt.co/?p=377990",
+    "https://decrypt.co/?p=377998",
     "https://decrypt.co/?p=378081",
     "https://decrypt.co/?p=378094",
     "https://decrypt.co/videos/interviews/0y90noNs/a16z-raise-15b-jerome-powell-vs-trump-crypto-remains-flat-special-guest-dudas",
@@ -1489,5 +1495,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
