@@ -11,7 +11,7 @@ from price_chart import generate_price_chart
 from state import load_state, save_state
 from stock_image import find_stock_image
 from telegram_post import send_message, send_photo, send_photo_bytes
-from translate import translate
+from translate import STYLES, translate
 
 DEFAULT_FEED_URLS = (
     "https://protos.com/feed/,"
@@ -201,6 +201,13 @@ def save_recent_titles(path, titles):
         json.dump(titles[-TITLE_HISTORY_LIMIT:], f, ensure_ascii=False, indent=2)
 
 
+def next_style(last_style):
+    """Alternates between the two rewrite voices post-to-post (opinion,
+    explainer, opinion, ...) so the channel doesn't read as one repetitive
+    template. Starts with STYLES[0] when there's no history yet."""
+    return STYLES[0] if last_style != STYLES[0] else STYLES[1]
+
+
 def is_near_duplicate_title(title, recent_titles):
     """Different feeds often cover the same underlying event within the
     same window - same story, different GUID, so the normal seen_ids dedup
@@ -233,12 +240,13 @@ def main():
         # First run: seed state without posting, so we don't dump the whole
         # archive into the channel at once.
         seen = {entry_id(e) for e in entries}
-        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": set(FEED_URLS)})
+        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": set(FEED_URLS), "last_style": None})
         print(f"First run: seeded {len(seen)} existing entries, no messages posted.")
         return
 
     seen = state["seen_ids"]
     seeded_feeds = state["seeded_feeds"]
+    last_style = state["last_style"]
 
     # A feed URL added to FEED_URLS after the first run has never been
     # seeded - without this, all of its current entries would look "new"
@@ -249,7 +257,7 @@ def main():
         newly_seeded = [e for e in entries if e.get("_feed_url") in new_feed_urls]
         seen.update(entry_id(e) for e in newly_seeded)
         seeded_feeds.update(new_feed_urls)
-        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds})
+        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds, "last_style": last_style})
         print(
             f"Seeded {len(newly_seeded)} existing entries from newly added feed(s) "
             f"{new_feed_urls}, no messages posted for them."
@@ -281,7 +289,7 @@ def main():
 
     if duplicate_titled:
         seen.update(entry_id(e) for e in duplicate_titled)
-        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds})
+        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds, "last_style": last_style})
         print(f"Skipped {len(duplicate_titled)} entr{'y' if len(duplicate_titled) == 1 else 'ies'} covering already-posted news.")
 
     new_entries = unseen[:MAX_ITEMS_PER_RUN]
@@ -291,7 +299,7 @@ def main():
         # Mark the rest as seen without posting them - skip the backlog
         # rather than posting stale news for the next several runs.
         seen.update(entry_id(e) for e in stale_backlog)
-        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds})
+        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds, "last_style": last_style})
 
     if not new_entries:
         print("No new entries.")
@@ -312,8 +320,10 @@ def main():
             # than copied verbatim.
             if SKIP_TRANSLATION and not os.environ.get("ANTHROPIC_API_KEY"):
                 title_ru, summary_ru = title, summary
+                picked_style = last_style
             else:
-                title_ru, summary_ru = translate(title, summary)
+                picked_style = next_style(last_style)
+                title_ru, summary_ru = translate(title, summary, style=picked_style)
 
             # Telegram can't render caption text above its own photo, so the
             # signature goes as the caption's first line instead - one
@@ -368,8 +378,9 @@ def main():
             continue
 
         seen.add(entry_id(entry))
-        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds})
-        print(f"Posted (source title: {title!r}): {title_ru!r}")
+        last_style = picked_style
+        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds, "last_style": last_style})
+        print(f"Posted (style: {picked_style!r}, source title: {title!r}): {title_ru!r}")
         time.sleep(3)
 
 

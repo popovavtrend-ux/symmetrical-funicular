@@ -5,17 +5,22 @@ import os
 def load_state(path):
     """Returns None if this is the very first run (no state file yet).
 
-    Otherwise returns {"seen_ids": set(...), "seeded_feeds": set(...)}.
-    Transparently upgrades the old flat-list format (a JSON array of ids,
-    with no per-feed seeding tracking).
+    Otherwise returns {"seen_ids": set(...), "seeded_feeds": set(...),
+    "last_style": str or None}. Transparently upgrades the old flat-list
+    format (a JSON array of ids, with no per-feed seeding tracking) and the
+    old format with no last_style (pre-dates style alternation).
     """
     if not os.path.exists(path):
         return None
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
     if isinstance(data, list):
-        return {"seen_ids": set(data), "seeded_feeds": set()}
-    return {"seen_ids": set(data["seen_ids"]), "seeded_feeds": set(data["seeded_feeds"])}
+        return {"seen_ids": set(data), "seeded_feeds": set(), "last_style": None}
+    return {
+        "seen_ids": set(data["seen_ids"]),
+        "seeded_feeds": set(data["seeded_feeds"]),
+        "last_style": data.get("last_style"),
+    }
 
 
 def save_state(path, state):
@@ -25,6 +30,7 @@ def save_state(path, state):
             {
                 "seen_ids": sorted(state["seen_ids"]),
                 "seeded_feeds": sorted(state["seeded_feeds"]),
+                "last_style": state.get("last_style"),
             },
             f,
             ensure_ascii=False,
