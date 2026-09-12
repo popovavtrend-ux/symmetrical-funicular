@@ -524,6 +524,7 @@
     "https://incrypted.com/?p=396410",
     "https://incrypted.com/?p=396420",
     "https://incrypted.com/?p=396428",
+    "https://incrypted.com/?p=396441",
     "https://incrypted.com/?p=396463",
     "https://incrypted.com/?p=396472",
     "https://ru.beincrypto.com/?p=393050",
@@ -747,5 +748,6 @@
     "https://forklog.com/feed/",
     "https://incrypted.com/feed/",
     "https://ru.beincrypto.com/feed/"
-  ]
+  ],
+  "last_style": "opinion"
 }
