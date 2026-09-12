@@ -122,20 +122,23 @@ def signature_message():
 OPINION_MARKER = "\U0001f4ad "  # 💭 - marks where translate.py's opinion paragraph starts
 
 
-def build_caption(title_ru, summary_ru, source_name=None, max_len=TELEGRAM_MAX_LEN):
+def build_caption(title_ru, summary_ru, source_name=None, max_len=None):
     """Title + body (+ source line) - the caption that renders below the
     photo, or the whole message body when there's no photo. The opinion
     paragraph (after the 💭 marker, if present) is italicized to visually
-    set our take apart from the factual context above it."""
+    set our take apart from the factual context above it.
+
+    max_len is only a last-resort safety cap, checked against the final
+    already-escaped text - callers that can send the full text as a
+    separate message instead (see main()'s photo-caption handling) should
+    leave it unset, so a normal-length post never gets cut off just to
+    fit under a tighter budget like Telegram's 1024-char photo caption
+    limit.
+    """
     title_html = f"<b>{html.escape(title_ru)}</b>"
     source_html = f"<i>По материалам: {html.escape(source_name)}</i>" if source_name else ""
 
     plain_summary = summary_ru or ""
-    reserved = len(f"{title_html}\n\n") + (len(f"\n\n{source_html}") if source_html else 0)
-    budget = max_len - reserved
-    if plain_summary and len(plain_summary) > budget:
-        plain_summary = plain_summary[: max(0, budget - 3)].rsplit(" ", 1)[0] + "..."
-
     if OPINION_MARKER in plain_summary:
         context_part, opinion_part = plain_summary.split(OPINION_MARKER, 1)
         context_part = context_part.strip()
@@ -150,15 +153,20 @@ def build_caption(title_ru, summary_ru, source_name=None, max_len=TELEGRAM_MAX_L
         parts.append(f"<i>{OPINION_MARKER}{html.escape(opinion_part)}</i>")
     if source_html:
         parts.append(source_html)
-    return "\n\n".join(parts)
+    text = "\n\n".join(parts)
+
+    if max_len is not None and len(text) > max_len:
+        text = text[: max(0, max_len - 1)].rsplit(" ", 1)[0] + "…"
+    return text
 
 
-def build_message(title_ru, summary_ru, source_name=None, max_len=TELEGRAM_MAX_LEN):
+def build_message(title_ru, summary_ru, source_name=None, max_len=None):
     """Signature + title + body (+ source line) in one text message, for
     the no-image case (and as a photo-send fallback) where there's no
     separate photo to put the signature above."""
     header = signature_message()
-    caption = build_caption(title_ru, summary_ru, source_name=source_name, max_len=max_len - len(f"{header}\n"))
+    body_max_len = max_len - len(f"{header}\n") if max_len is not None else None
+    caption = build_caption(title_ru, summary_ru, source_name=source_name, max_len=body_max_len)
     return f"{header}\n{caption}"
 
 
@@ -315,16 +323,32 @@ def main():
             # Telegram can't render caption text above its own photo, so the
             # signature goes as the caption's first line instead - one
             # message, signature at the top of the text, image above it.
-            caption = build_message(
-                title_ru, summary_ru, source_name=source_name, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN
-            )
+            # A photo caption is capped at 1024 chars by Telegram itself -
+            # when the full post doesn't fit, send the photo uncaptioned
+            # and follow it with the full text as its own message instead
+            # of cutting the post short just to fit under the photo.
+            full_message = build_message(title_ru, summary_ru, source_name=source_name, max_len=TELEGRAM_MAX_LEN)
+            fits_as_caption = len(full_message) <= TELEGRAM_PHOTO_CAPTION_MAX_LEN
+            photo_caption = full_message if fits_as_caption else ""
+
+            def send_full_text_if_needed():
+                if fits_as_caption:
+                    return
+                try:
+                    send_message(BOT_TOKEN, CHAT_ID, full_message)
+                except Exception as e:
+                    # The photo already went out - don't let a follow-up
+                    # failure look like the whole entry failed to post
+                    # (that would repost the photo again next run).
+                    print(f"Photo sent, but failed to send follow-up full text: {e}")
 
             # A named coin gets its actual price chart rather than an
             # illustrative stock photo that only looks like one.
             price_chart = generate_price_chart(title)
             if price_chart:
                 try:
-                    send_photo_bytes(BOT_TOKEN, CHAT_ID, price_chart, "chart.png", caption)
+                    send_photo_bytes(BOT_TOKEN, CHAT_ID, price_chart, "chart.png", photo_caption)
+                    send_full_text_if_needed()
                 except Exception as e:
                     print(f"Failed to send price chart, falling back: {e}")
                     price_chart = None
@@ -335,12 +359,13 @@ def main():
                 )
                 if image_url:
                     try:
-                        send_photo(BOT_TOKEN, CHAT_ID, image_url, caption)
+                        send_photo(BOT_TOKEN, CHAT_ID, image_url, photo_caption)
+                        send_full_text_if_needed()
                     except Exception as e:
                         print(f"Failed to send photo ({image_url!r}), falling back to text: {e}")
-                        send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru, source_name=source_name))
+                        send_message(BOT_TOKEN, CHAT_ID, full_message)
                 else:
-                    send_message(BOT_TOKEN, CHAT_ID, build_message(title_ru, summary_ru, source_name=source_name))
+                    send_message(BOT_TOKEN, CHAT_ID, full_message)
         except Exception as e:
             # Don't let one bad entry take down the whole run - the
             # already-posted entries above must still get committed.

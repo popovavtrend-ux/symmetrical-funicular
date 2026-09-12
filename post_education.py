@@ -43,15 +43,23 @@ def main():
     title, explanation = explain_topic(topic)
     image_url = find_stock_image(title, history_path=IMAGE_HISTORY_FILE)
 
+    full_message = build_message(title, explanation)
+    fits_as_caption = len(full_message) <= TELEGRAM_PHOTO_CAPTION_MAX_LEN
+
     if image_url:
-        caption = build_message(title, explanation, max_len=TELEGRAM_PHOTO_CAPTION_MAX_LEN)
         try:
-            send_photo(BOT_TOKEN, CHAT_ID, image_url, caption)
+            # When the explanation doesn't fit Telegram's 1024-char photo
+            # caption limit, send the photo uncaptioned and follow it with
+            # the full text as its own message, instead of cutting it short
+            # just to fit under the photo.
+            send_photo(BOT_TOKEN, CHAT_ID, image_url, full_message if fits_as_caption else "")
+            if not fits_as_caption:
+                send_message(BOT_TOKEN, CHAT_ID, full_message)
         except Exception as e:
             print(f"Failed to send photo ({image_url!r}), falling back to text: {e}")
-            send_message(BOT_TOKEN, CHAT_ID, build_message(title, explanation))
+            send_message(BOT_TOKEN, CHAT_ID, full_message)
     else:
-        send_message(BOT_TOKEN, CHAT_ID, build_message(title, explanation))
+        send_message(BOT_TOKEN, CHAT_ID, full_message)
 
     if topic in posted_topics:
         posted_topics = [topic]  # cycled back to the start - restart the list
