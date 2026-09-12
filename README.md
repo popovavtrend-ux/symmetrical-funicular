@@ -6,9 +6,7 @@
    [DL News](https://www.dlnews.com), см. ниже почему);
 2. берёт новости из нескольких RSS-лент русскоязычных крипто-СМИ и постит
    как есть, без перевода (по умолчанию — [INCRYPTED](https://incrypted.com)
-   и [Криптовалюта.Tech](https://cryptocurrency.tech));
-3. отслеживает посты в X (Twitter) известных людей из крипто-мира и пишет по
-   ним короткие новостные посты на русском.
+   и [Криптовалюта.Tech](https://cryptocurrency.tech)).
 
 Источников для каждого языка может быть сколько угодно — `FEED_URL`/
 `RU_FEED_URL` принимают список через запятую.
@@ -55,24 +53,6 @@ Unchained Crypto, Forklog, РБК Крипто, Bits.media и т.п.) уже а�
   Источники задаются через `RU_FEED_URL` (по умолчанию — INCRYPTED +
   Криптовалюта.Tech).
 
-### Посты из X (Twitter) → Telegram
-
-- `x_accounts.py` — список отслеживаемых аккаунтов (по умолчанию: Vitalik
-  Buterin, CZ, Michael Saylor, Anthony Pompliano, Arthur Hayes, Brian
-  Armstrong, Balaji Srinivasan, Wu Blockchain). Меняется через `X_ACCOUNTS`.
-- `x_source.py` — получает последние посты аккаунта. Если задан
-  `X_BEARER_TOKEN` — через официальный X API (платный, но надёжный,
-  от $200/мес за Basic-тариф). Иначе — через публичные Nitter-зеркала
-  (бесплатно, но нестабильно: зеркала регулярно падают/блокируются, чтение
-  чужих постов через них не одобрено правилами X, поэтому в какой-то момент
-  это может просто перестать работать — тогда потребуется платный API).
-- `compose.py` — не просто переводит, а составляет короткий новостной пост на
-  русском по мотивам твита (через Claude, если задан `ANTHROPIC_API_KEY`;
-  иначе — просто перевод текста).
-- `data/seen_tweets.json` — хранит id уже опубликованных постов по каждому
-  аккаунту.
-- `.github/workflows/post_tweets.yml` — запускает бота каждые 15 минут.
-
 Все боты при первом запуске на новом источнике/аккаунте только "сидируют"
 текущее состояние без публикации — чтобы не завалить канал всем архивом сразу.
 Нюанс: у новостных ботов "сидирование" привязано к файлу состояния целиком, а
@@ -99,15 +79,9 @@ Unchained Crypto, Forklog, РБК Крипто, Bits.media и т.п.) уже а�
      `https://protos.com/feed/,https://www.dlnews.com/rss/`)
    - `RU_FEED_URL` — то же самое, список русскоязычных RSS через запятую
      (по умолчанию `https://incrypted.com/feed/,https://cryptocurrency.tech/feed/`)
-   - `X_ACCOUNTS` — список аккаунтов X через запятую (по умолчанию — список
-     в `x_accounts.py`)
-   - `NITTER_INSTANCES` — свои Nitter-зеркала через запятую, если дефолтные
-     не работают
-6. Для мониторинга X при желании добавьте secret `X_BEARER_TOKEN` (официальный
-   платный API — надёжнее, чем бесплатные Nitter-зеркала).
-7. Запустите все три workflow вручную (вкладка Actions → выбрать workflow →
+6. Запустите оба workflow вручную (вкладка Actions → выбрать workflow →
    Run workflow) для первого "посева" состояния, дальше они тикают сами
-   (новости и рус. новости — каждые 30 минут, посты из X — каждые 15 минут).
+   (каждые 30 минут).
 
 ## Локальный запуск
 
@@ -117,7 +91,6 @@ export TELEGRAM_BOT_TOKEN=...
 export TELEGRAM_CHAT_ID=@your_channel
 python main.py          # англоязычные новости с переводом (Protos + DL News)
 SKIP_TRANSLATION=true FEED_URL=https://incrypted.com/feed/,https://cryptocurrency.tech/feed/ STATE_FILE=data/seen_ru_ids.json python main.py  # рус. новости без перевода
-python post_tweets.py   # посты из X
 ```
 
 ## Важно про авторские права
