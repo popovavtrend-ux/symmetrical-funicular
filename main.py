@@ -44,6 +44,12 @@ CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
 TAG_RE = re.compile("<[^<]+?>")
 WP_APPEARED_FIRST_RE = re.compile(r"\s*The post .+ appeared first on .+?\.\s*$")
+# Russian WordPress feeds append the same boilerplate in Russian instead -
+# "Сообщение <title> появилось/появились сначала на <site>." - plus a
+# "Read more" teaser right before it that's just a feed artifact, not part
+# of the actual news text.
+WP_APPEARED_FIRST_RU_RE = re.compile(r"\s*Сообщение .+ появил(?:ся|ась|ось|ись) сначала на .+?\.\s*$")
+READ_MORE_RU_RE = re.compile(r"\s*Читай(?:те)? дальше,?\s*\[?…\]?\.?\s*", re.IGNORECASE)
 IMG_SRC_RE = re.compile(r'<img[^>]+src=["\']([^"\']+)["\']', re.IGNORECASE)
 
 TELEGRAM_MAX_LEN = 4096
@@ -77,7 +83,16 @@ def entry_id(entry):
 def clean_summary(entry):
     summary = getattr(entry, "summary", "") or ""
     summary = TAG_RE.sub("", summary).strip()
+    # Some feeds double-encode entities (e.g. "&amp;#1059;" in the raw XML,
+    # which feedparser only unescapes one layer of, leaving a literal
+    # "&#1059;" in the text) - unescape before the boilerplate regexes below
+    # so an entity-encoded "…" (e.g. "&#8230;") is recognized as one, and so
+    # nothing reaches Claude or Telegram as garbled numeric character
+    # references instead of the actual character.
+    summary = html.unescape(summary)
     summary = WP_APPEARED_FIRST_RE.sub("", summary).strip()
+    summary = WP_APPEARED_FIRST_RU_RE.sub("", summary).strip()
+    summary = READ_MORE_RU_RE.sub(" ", summary).strip()
     return summary
 
 
@@ -198,6 +213,17 @@ def is_digest_or_roundup(title):
     return title.count("!") >= 2
 
 
+# Recurring self-promotional posts some sources publish about their own
+# paid tier/newsletter, not third-party news - e.g. Incrypted's monthly
+# "Incrypted Plus - отчёт/отчет за <month>" recap. Rewriting these produces
+# a post advertising the source's own subscription as if it were news.
+SELF_PROMO_TITLE_PREFIXES = ("incrypted plus",)
+
+
+def is_self_promo(title):
+    return title.strip().lower().startswith(SELF_PROMO_TITLE_PREFIXES)
+
+
 def load_recent_titles(path):
     if not os.path.exists(path):
         return []
@@ -243,8 +269,14 @@ def main():
     if digest_count:
         entries = [e for e in entries if not is_digest_or_roundup(e.title)]
         print(f"Skipped {digest_count} digest/roundup entr{'y' if digest_count == 1 else 'ies'}.")
+
+    self_promo_count = sum(1 for e in entries if is_self_promo(e.title))
+    if self_promo_count:
+        entries = [e for e in entries if not is_self_promo(e.title)]
+        print(f"Skipped {self_promo_count} self-promotional entr{'y' if self_promo_count == 1 else 'ies'}.")
+
     if not entries:
-        print("No entries left after filtering out digest/roundup articles.")
+        print("No entries left after filtering out digest/roundup/self-promo articles.")
         return
 
     state = load_state(STATE_FILE)
