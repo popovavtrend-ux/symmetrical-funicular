@@ -12,6 +12,8 @@ MODEL_CANDIDATES = (
     "claude-haiku-4-5-20251001",
     "claude-haiku-4-5",
     "claude-3-5-haiku-20241022",
+    "claude-sonnet-5",
+    "claude-3-5-sonnet-20241022",
 )
 
 
@@ -24,6 +26,14 @@ def _create_message(client, **kwargs):
             if "Unsupported model" not in str(e):
                 raise
             last_error = e
+    # Every candidate above was rejected outright - log what the account
+    # actually has access to, so the next occurrence of this is a five
+    # second fix instead of another round of guessing model ID strings.
+    try:
+        available = [m.id for m in client.models.list().data]
+        print(f"All candidate models unsupported; models.list() reports: {available}")
+    except Exception as list_err:
+        print(f"All candidate models unsupported, and could not list available models either: {list_err}")
     raise last_error
 
 
