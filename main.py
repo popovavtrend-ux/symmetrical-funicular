@@ -32,6 +32,10 @@ IMAGE_HISTORY_FILE = os.environ.get("IMAGE_HISTORY_FILE") or STATE_FILE.replace(
 TITLE_HISTORY_FILE = os.environ.get("TITLE_HISTORY_FILE") or STATE_FILE.replace(".json", "") + "_titles.json"
 TITLE_HISTORY_LIMIT = 30
 TITLE_SIMILARITY_THRESHOLD = 0.6
+# Below this, a summary is too thin for a safe rewrite (see main()'s
+# thin_content filter) - not a measured threshold, just "clearly more than
+# a bare headline or boilerplate".
+MIN_SUMMARY_LEN = 40
 MAX_ITEMS_PER_RUN = int(os.environ.get("MAX_ITEMS_PER_RUN") or "5")
 SKIP_TRANSLATION = (os.environ.get("SKIP_TRANSLATION") or "").strip().lower() in ("1", "true", "yes")
 
@@ -291,6 +295,17 @@ def main():
         seen.update(entry_id(e) for e in duplicate_titled)
         save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds, "last_style": last_style})
         print(f"Skipped {len(duplicate_titled)} entr{'y' if len(duplicate_titled) == 1 else 'ies'} covering already-posted news.")
+
+    # A near-empty summary gives the rewrite nothing real to work from - it
+    # either gets refused (the model reports it has no source material) or
+    # risks padding the gap with invented specifics to hit the requested
+    # length. Skip these rather than force a rewrite from a bare title.
+    thin_content = [e for e in unseen if len(clean_summary(e)) < MIN_SUMMARY_LEN]
+    unseen = [e for e in unseen if len(clean_summary(e)) >= MIN_SUMMARY_LEN]
+    if thin_content:
+        seen.update(entry_id(e) for e in thin_content)
+        save_state(STATE_FILE, {"seen_ids": seen, "seeded_feeds": seeded_feeds, "last_style": last_style})
+        print(f"Skipped {len(thin_content)} entr{'y' if len(thin_content) == 1 else 'ies'} with too little content to rewrite safely.")
 
     new_entries = unseen[:MAX_ITEMS_PER_RUN]
     stale_backlog = unseen[MAX_ITEMS_PER_RUN:]
