@@ -1,6 +1,32 @@
 import os
 import re
 
+# The Claude model available through ANTHROPIC_BASE_URL has shifted under
+# us before without any change on our side - a model ID that posted fine
+# all morning started getting rejected outright with "Unsupported model"
+# a few hours later, which silently took down every single rewrite (and
+# the Google Translate fallback has its own daily rate limit, so it
+# doesn't reliably cover for it). Try a few IDs, newest first, instead of
+# hard-failing the whole rewrite over one deprecated snapshot.
+MODEL_CANDIDATES = (
+    "claude-haiku-4-5-20251001",
+    "claude-haiku-4-5",
+    "claude-3-5-haiku-20241022",
+)
+
+
+def _create_message(client, **kwargs):
+    last_error = None
+    for model in MODEL_CANDIDATES:
+        try:
+            return client.messages.create(model=model, **kwargs)
+        except Exception as e:
+            if "Unsupported model" not in str(e):
+                raise
+            last_error = e
+    raise last_error
+
+
 # Telegram's HTML parse mode has no list tag - a plain "- " at the start of
 # each line renders as a readable bulleted line on its own, so that's what
 # every prompt below is told to use when a post has 3+ distinct items to
@@ -70,11 +96,7 @@ def translate_via_claude_opinion(title, summary):
         f"Title: {title}\n"
         f"Summary: {summary}"
     )
-    resp = client.messages.create(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=800,
-        messages=[{"role": "user", "content": prompt}],
-    )
+    resp = _create_message(client, max_tokens=800, messages=[{"role": "user", "content": prompt}])
     return _parse_response(extract_text(resp).strip())
 
 
@@ -125,11 +147,7 @@ def translate_via_claude_explainer(title, summary):
         f"Title: {title}\n"
         f"Summary: {summary}"
     )
-    resp = client.messages.create(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=1000,
-        messages=[{"role": "user", "content": prompt}],
-    )
+    resp = _create_message(client, max_tokens=1000, messages=[{"role": "user", "content": prompt}])
     return _parse_response(extract_text(resp).strip())
 
 
@@ -157,11 +175,7 @@ def explain_topic(topic):
         "Explanation: <the full explanation in simple Russian, 4-6 "
         "sentences, with an analogy if it helps>"
     )
-    resp = client.messages.create(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=800,
-        messages=[{"role": "user", "content": prompt}],
-    )
+    resp = _create_message(client, max_tokens=800, messages=[{"role": "user", "content": prompt}])
     text = extract_text(resp).strip()
 
     title_m = re.search(r"Title:\s*(.+)", text)
