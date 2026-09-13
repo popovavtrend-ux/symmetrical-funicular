@@ -1,6 +1,18 @@
 import os
 import re
 
+# Telegram's HTML parse mode has no list tag - a plain "- " at the start of
+# each line renders as a readable bulleted line on its own, so that's what
+# every prompt below is told to use when a post has 3+ distinct items to
+# enumerate (dates, numbers, names) instead of cramming them into one
+# run-on sentence.
+BULLET_LIST_HINT = (
+    "If the news involves 3 or more distinct items worth listing separately "
+    "(e.g. several numbers, dates, names, or events), put those on their "
+    "own lines as a bullet list, each line starting with '- '. Don't force "
+    "a list where there's nothing to enumerate - most posts won't need one."
+)
+
 
 def _parse_response(text):
     title_m = re.search(r"Title:\s*(.+)", text)
@@ -40,7 +52,7 @@ def translate_via_claude_opinion(title, summary):
         "media. Be accurate - do not invent facts, numbers, or quotes that "
         "aren't in the source material. Write in short, plain sentences so "
         "the post is easy to scan on a phone screen - avoid long, dense "
-        "run-on sentences.\n\n"
+        f"run-on sentences. {BULLET_LIST_HINT}\n\n"
         "Reply in exactly this format, and nothing else:\n"
         "Title: <a short catchy title>\n"
         "Context: <1-2 plain sentences stating the news itself - what "
@@ -92,7 +104,7 @@ def translate_via_claude_explainer(title, summary):
         "selling, holding, or investing; never predict prices or call "
         "something a good/bad investment; never use phrases like 'стоит "
         "купить', 'выгодно', 'не упустите шанс'. Explain what happened and "
-        "why it matters as information, not as a recommendation.\n\n"
+        f"why it matters as information, not as a recommendation. {BULLET_LIST_HINT}\n\n"
         "Reply in exactly this format, and nothing else:\n"
         "Title: <a short catchy title>\n"
         "Context: <explain what happened and why, in your own words, in "
@@ -139,7 +151,7 @@ def explain_topic(topic):
         "accurate - do not invent facts or numbers.\n\n"
         "This is purely educational, NOT financial advice: never suggest "
         "buying, investing, or that using/owning this makes financial "
-        "sense - describe only what it is and how it works.\n\n"
+        f"sense - describe only what it is and how it works. {BULLET_LIST_HINT}\n\n"
         "Reply in exactly this format, and nothing else:\n"
         "Title: <a short catchy title>\n"
         "Explanation: <the full explanation in simple Russian, 4-6 "

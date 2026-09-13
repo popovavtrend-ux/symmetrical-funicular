@@ -123,11 +123,13 @@ def signature_message():
 OPINION_MARKER = "\U0001f4ad "  # 💭 - marks where translate.py's opinion paragraph starts
 
 
-def build_caption(title_ru, summary_ru, source_name=None, max_len=None):
+def build_caption(title_ru, summary_ru, source_name=None, source_link=None, max_len=None):
     """Title + body (+ source line) - the caption that renders below the
     photo, or the whole message body when there's no photo. The opinion
     paragraph (after the 💭 marker, if present) is italicized to visually
-    set our take apart from the factual context above it.
+    set our take apart from the factual context above it. The source line
+    is a clickable inline link to the original article when source_link is
+    given, rather than plain unlinked text.
 
     max_len is only a last-resort safety cap, checked against the final
     already-escaped text - callers that can send the full text as a
@@ -137,7 +139,12 @@ def build_caption(title_ru, summary_ru, source_name=None, max_len=None):
     limit.
     """
     title_html = f"<b>{html.escape(title_ru)}</b>"
-    source_html = f"<i>По материалам: {html.escape(source_name)}</i>" if source_name else ""
+    if source_name and source_link:
+        source_html = f'<i>По материалам: <a href="{html.escape(source_link)}">{html.escape(source_name)}</a></i>'
+    elif source_name:
+        source_html = f"<i>По материалам: {html.escape(source_name)}</i>"
+    else:
+        source_html = ""
 
     plain_summary = summary_ru or ""
     if OPINION_MARKER in plain_summary:
@@ -161,13 +168,15 @@ def build_caption(title_ru, summary_ru, source_name=None, max_len=None):
     return text
 
 
-def build_message(title_ru, summary_ru, source_name=None, max_len=None):
+def build_message(title_ru, summary_ru, source_name=None, source_link=None, max_len=None):
     """Signature + title + body (+ source line) in one text message, for
     the no-image case (and as a photo-send fallback) where there's no
     separate photo to put the signature above."""
     header = signature_message()
     body_max_len = max_len - len(f"{header}\n") if max_len is not None else None
-    caption = build_caption(title_ru, summary_ru, source_name=source_name, max_len=body_max_len)
+    caption = build_caption(
+        title_ru, summary_ru, source_name=source_name, source_link=source_link, max_len=body_max_len
+    )
     return f"{header}\n{caption}"
 
 
@@ -347,7 +356,9 @@ def main():
             # when the full post doesn't fit, send the photo uncaptioned
             # and follow it with the full text as its own message instead
             # of cutting the post short just to fit under the photo.
-            full_message = build_message(title_ru, summary_ru, source_name=source_name, max_len=TELEGRAM_MAX_LEN)
+            full_message = build_message(
+                title_ru, summary_ru, source_name=source_name, source_link=link, max_len=TELEGRAM_MAX_LEN
+            )
             fits_as_caption = len(full_message) <= TELEGRAM_PHOTO_CAPTION_MAX_LEN
             photo_caption = full_message if fits_as_caption else ""
 
