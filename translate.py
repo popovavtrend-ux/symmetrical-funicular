@@ -186,16 +186,38 @@ def translate_via_google(title, summary):
 
 STYLES = ("opinion", "explainer")
 
+CYRILLIC_RE = re.compile(r"[а-яёА-ЯЁ]")
+
+
+def _looks_russian(title, summary):
+    return bool(CYRILLIC_RE.search(f"{title} {summary}"))
+
 
 def translate(title, summary, style="explainer"):
     """style picks the voice for this one post - "opinion" (personal take,
     first person, no beginner explanations) or "explainer" (full beginner
     rewrite, no financial advice). Callers alternate between the two across
-    posts so the channel doesn't read as one repetitive template."""
+    posts so the channel doesn't read as one repetitive template.
+
+    Both Claude and the Google Translate fallback occasionally return the
+    source text unchanged (Claude ignoring the "write in Russian"
+    instruction; deep-translator swallowing its own errors and handing back
+    the original) with no exception raised - silently posting the source
+    language instead of failing loudly. Checking for actual Cyrillic output
+    catches that so the caller can skip/retry the entry instead of
+    publishing an English post.
+    """
     claude_fn = translate_via_claude_opinion if style == "opinion" else translate_via_claude_explainer
     if os.environ.get("ANTHROPIC_API_KEY"):
         try:
-            return claude_fn(title, summary)
+            title_ru, summary_ru = claude_fn(title, summary)
+            if _looks_russian(title_ru, summary_ru):
+                return title_ru, summary_ru
+            print("Claude translation returned no Russian text, falling back to Google Translate")
         except Exception as e:
             print(f"Claude translation failed, falling back to Google Translate: {e}")
-    return translate_via_google(title, summary)
+
+    title_ru, summary_ru = translate_via_google(title, summary)
+    if not _looks_russian(title_ru, summary_ru):
+        raise RuntimeError("Translation produced no Russian text (Claude and Google Translate both failed)")
+    return title_ru, summary_ru
