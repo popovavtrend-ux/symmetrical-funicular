@@ -126,6 +126,7 @@
     "https://cryptocurrency.tech/?p=123930",
     "https://cryptocurrency.tech/?p=123936",
     "https://cryptocurrency.tech/?p=123938",
+    "https://cryptocurrency.tech/?p=123940",
     "https://forklog.com/?p=286911",
     "https://forklog.com/?p=287306",
     "https://forklog.com/?p=287324",
@@ -400,6 +401,10 @@
     "https://forklog.com/?p=288379",
     "https://forklog.com/?p=288382",
     "https://forklog.com/?p=288384",
+    "https://forklog.com/?p=288386",
+    "https://forklog.com/?p=288389",
+    "https://forklog.com/?p=288397",
+    "https://forklog.com/?p=288399",
     "https://incrypted.com/?p=150294",
     "https://incrypted.com/?p=260142",
     "https://incrypted.com/?p=311031",
@@ -554,6 +559,8 @@
     "https://incrypted.com/?p=396550",
     "https://incrypted.com/?p=396557",
     "https://incrypted.com/?p=396566",
+    "https://incrypted.com/?p=396600",
+    "https://incrypted.com/?p=396609",
     "https://ru.beincrypto.com/?p=393050",
     "https://ru.beincrypto.com/?p=393057",
     "https://ru.beincrypto.com/?p=393060",
@@ -759,6 +766,8 @@
     "https://ru.beincrypto.com/?p=395397",
     "https://ru.beincrypto.com/?p=395418",
     "https://ru.beincrypto.com/?p=395419",
+    "https://ru.beincrypto.com/?p=395458",
+    "https://ru.beincrypto.com/?p=395466",
     "https://ru.beincrypto.com/?p=395491",
     "https://ru.beincrypto.com/?p=395497",
     "https://ru.beincrypto.com/amc-stock-roste-na-fone-spora-s-robinhood/",
@@ -786,5 +795,5 @@
     "https://incrypted.com/feed/",
     "https://ru.beincrypto.com/feed/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
