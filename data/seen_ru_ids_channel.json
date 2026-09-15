@@ -146,6 +146,8 @@
     "https://cryptocurrency.tech/?p=123987",
     "https://cryptocurrency.tech/?p=123990",
     "https://cryptocurrency.tech/?p=123992",
+    "https://cryptocurrency.tech/?p=123994",
+    "https://cryptocurrency.tech/?p=124001",
     "https://forklog.com/?p=286911",
     "https://forklog.com/?p=287306",
     "https://forklog.com/?p=287324",
@@ -459,6 +461,7 @@
     "https://forklog.com/?p=288524",
     "https://forklog.com/?p=288531",
     "https://forklog.com/?p=288532",
+    "https://forklog.com/?p=288541",
     "https://forklog.com/?p=288542",
     "https://forklog.com/?p=288546",
     "https://forklog.com/?p=288552",
@@ -872,7 +875,9 @@
     "https://ru.beincrypto.com/?p=395645",
     "https://ru.beincrypto.com/?p=395657",
     "https://ru.beincrypto.com/?p=395658",
+    "https://ru.beincrypto.com/?p=395659",
     "https://ru.beincrypto.com/?p=395660",
+    "https://ru.beincrypto.com/?p=395661",
     "https://ru.beincrypto.com/?p=395670",
     "https://ru.beincrypto.com/?p=395671",
     "https://ru.beincrypto.com/?p=395699",
@@ -893,6 +898,7 @@
     "https://ru.beincrypto.com/nvidia-rekordiruet-pribyli-akcii-snizhayutsya/",
     "https://ru.beincrypto.com/paypal-stock-falls-stripe-advent-cancel-buyout/",
     "https://ru.beincrypto.com/revolut-utecshka-dannyh-cherez-falshivyj-zapros-vladelca-vlasti/",
+    "https://ru.beincrypto.com/robinhood-insayder-treiding-hyperliquid-obvinenie-engineerov/",
     "https://ru.beincrypto.com/sbf-supreme-court-ftx-fraud-petition/",
     "https://ru.beincrypto.com/ssha-cpi-gold-bitcoin-reaktsiya/",
     "https://ru.beincrypto.com/trezor-utec-uteemail-utebreach-phishing/"
@@ -903,5 +909,5 @@
     "https://incrypted.com/feed/",
     "https://ru.beincrypto.com/feed/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
