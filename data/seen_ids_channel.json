@@ -114,6 +114,7 @@
     "748ffaae-cf8c-4aa7-92d1-b7f3abf520be",
     "75d6cf83-4805-4c7d-85aa-1394cc504129",
     "7760b9b7-78fb-454d-aa29-8782a67dac1c",
+    "78ca3b91-c983-4ab2-a0b7-7a9959e99e28",
     "796b5c89-4d27-40a6-b0a4-e8d60ff4be0e",
     "79e3eb77-1d65-40d7-8a6c-bba5c92bd263",
     "7aa790a5-8bdd-4bf0-b88f-b070fca5eb71",
@@ -151,6 +152,7 @@
     "9ab2f9f0-402b-43e2-80af-445e4523818c",
     "9b0358fe-ef3d-4e4c-a791-c869be683485",
     "9c3d0678-25f6-447f-a313-437f74891cb5",
+    "9ce678d1-0577-4847-b046-89efc6291b92",
     "9d40a18a-972c-4258-a755-e0b478df5981",
     "9d9de2e6-821e-44fe-89cb-83be1590c656",
     "9f697010-b149-42d6-a2e0-2e25c26b4956",
@@ -223,6 +225,7 @@
     "e4d98b4c-e23e-4efd-a270-193655773ac8",
     "e52f03fe-9a41-47af-aaad-f231377c90c5",
     "e54fe816-e71a-4e4d-abcb-0fb8d2584f00",
+    "e65deafa-e0a6-41d8-8478-86131ab3eb87",
     "e8b51689-e9d7-48ed-8e46-ace450e6b2d5",
     "e92a8b02-8e79-4045-8f33-8859d1b4d6cc",
     "e9b5da25-3a36-4760-8ddd-bba20b682f5b",
@@ -653,6 +656,8 @@
     "https://beincrypto.com/?p=866374",
     "https://beincrypto.com/?p=866381",
     "https://beincrypto.com/?p=866416",
+    "https://beincrypto.com/?p=866423",
+    "https://beincrypto.com/?p=866436",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1180,11 +1185,13 @@
     "https://cryptoslate.com/?p=562265",
     "https://cryptoslate.com/?p=562280",
     "https://cryptoslate.com/?p=562290",
+    "https://cryptoslate.com/?p=562295",
     "https://cryptoslate.com/?p=562313",
     "https://cryptoslate.com/?p=562325",
     "https://cryptoslate.com/?p=562330",
     "https://cryptoslate.com/?p=562350",
     "https://cryptoslate.com/?p=562499",
+    "https://cryptoslate.com/?p=562503",
     "https://cryptoslate.com/?p=562565",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=373351",
@@ -1675,5 +1682,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
