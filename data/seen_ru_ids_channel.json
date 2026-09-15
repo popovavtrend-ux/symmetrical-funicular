@@ -137,6 +137,7 @@
     "https://cryptocurrency.tech/?p=123964",
     "https://cryptocurrency.tech/?p=123968",
     "https://cryptocurrency.tech/?p=123971",
+    "https://cryptocurrency.tech/?p=123973",
     "https://forklog.com/?p=286911",
     "https://forklog.com/?p=287306",
     "https://forklog.com/?p=287324",
@@ -431,6 +432,10 @@
     "https://forklog.com/?p=288471",
     "https://forklog.com/?p=288476",
     "https://forklog.com/?p=288478",
+    "https://forklog.com/?p=288482",
+    "https://forklog.com/?p=288484",
+    "https://forklog.com/?p=288486",
+    "https://forklog.com/?p=288488",
     "https://incrypted.com/?p=150294",
     "https://incrypted.com/?p=260142",
     "https://incrypted.com/?p=311031",
@@ -844,5 +849,5 @@
     "https://incrypted.com/feed/",
     "https://ru.beincrypto.com/feed/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
