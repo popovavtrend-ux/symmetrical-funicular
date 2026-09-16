@@ -212,6 +212,7 @@
     "badaab49-10fc-4905-8abd-8643ec38af0c",
     "bbd31537-0f44-40bd-8b4d-975efdce998f",
     "bc221e41-f2eb-4337-86b6-1b02950889b6",
+    "be2b0f1b-2c5e-4c6f-b300-5d89cdf926dc",
     "bf02cc92-6648-4f6d-b285-3de91340040e",
     "bf29c3af-e8dd-4685-bb2f-05a9afe03f75",
     "c01369ee-3741-4357-8476-75e343f63da9",
@@ -721,7 +722,11 @@
     "https://beincrypto.com/?p=866678",
     "https://beincrypto.com/?p=866691",
     "https://beincrypto.com/?p=866693",
+    "https://beincrypto.com/?p=866701",
     "https://beincrypto.com/?p=866705",
+    "https://beincrypto.com/?p=866712",
+    "https://beincrypto.com/?p=866729",
+    "https://beincrypto.com/?p=866731",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -864,6 +869,7 @@
     "https://cointelegraph.com/news/binance-adds-11-us-listed-etfs-to-wealth-management-offering",
     "https://cointelegraph.com/news/binance-adds-options-on-1000-us-stocks-and-etfs-in-tradfi-expansion",
     "https://cointelegraph.com/news/bis-paper-finds-major-gap-in-bitcoin-onchain-transfer-estimates",
+    "https://cointelegraph.com/news/bitcoin-etfs-shed-450m-in-biggest-outflow-since-june",
     "https://cointelegraph.com/news/bitcoin-suisse-to-shift-up-to-half-of-swiss-jobs-abroad",
     "https://cointelegraph.com/news/bitfinex-tokenized-strategy-metaplanet-notes",
     "https://cointelegraph.com/news/bitgo-nydig-trading-arm-acquisition",
@@ -988,6 +994,7 @@
     "https://cointelegraph.com/news/revolut-says-customer-data-exposed-through-fake-government-email",
     "https://cointelegraph.com/news/robinhood-ceo-issuer-veto-tokenized-stocks",
     "https://cointelegraph.com/news/robinhood-chain-160m-annual-fees-2028-bernstein",
+    "https://cointelegraph.com/news/robinhood-engineers-hyperliquid-listing-trades-charges",
     "https://cointelegraph.com/news/robinhood-takes-stakes-in-cryptocom-ogcom-in-prediction-markets-deal",
     "https://cointelegraph.com/news/robinhoods-crypto-volume-rebounds-august",
     "https://cointelegraph.com/news/russia-sber-bank-bitcoin-ether-usdt-crypto-loans",
@@ -1308,6 +1315,7 @@
     "https://cryptoslate.com/?p=562771",
     "https://cryptoslate.com/?p=562806",
     "https://cryptoslate.com/?p=562820",
+    "https://cryptoslate.com/?p=562839",
     "https://cryptoslate.com/?p=562846",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=373351",
@@ -1827,5 +1835,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
