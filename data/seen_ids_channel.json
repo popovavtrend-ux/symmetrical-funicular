@@ -111,6 +111,7 @@
     "6649add7-a671-48e5-b74f-e54456a3d733",
     "67880df7-920d-4c7c-852d-b12f449d5bd0",
     "68a4ce6d-ff55-4c86-8148-e94d97209cb2",
+    "6981de2f-a960-4908-9798-98802b3eb2c4",
     "6a71229a-3c63-4487-84f9-9765d20eacb3",
     "6c7de980-ff9a-4a3b-a6c4-6a0109bee2bf",
     "6c9a58c0-a3cc-4d4f-b791-185ac46fec1f",
@@ -147,6 +148,7 @@
     "88f55305-9afa-473a-b855-02115fdc1560",
     "8a2dd2d7-8030-4323-a806-fd06f0be4392",
     "8b59dcc1-0449-4d71-91e9-78e7bdcba2b3",
+    "8bcfbaa3-89cd-42ff-af6e-c385101ec7ce",
     "8cbe20a6-56ef-484f-adbd-ff88f2fa2168",
     "8d303925-0854-4fed-a2b0-2683876c1de6",
     "8d6840dd-94de-4dcb-862f-8f08358155d5",
@@ -716,8 +718,10 @@
     "https://beincrypto.com/?p=866657",
     "https://beincrypto.com/?p=866667",
     "https://beincrypto.com/?p=866674",
+    "https://beincrypto.com/?p=866678",
     "https://beincrypto.com/?p=866691",
     "https://beincrypto.com/?p=866693",
+    "https://beincrypto.com/?p=866705",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -897,6 +901,7 @@
     "https://cointelegraph.com/news/crypto-biz-bitcoin-miners-strategy-strive-bitmine-stablecoins",
     "https://cointelegraph.com/news/crypto-biz-bitcoin-rally-crypto-stocks-circle-strategy-solana",
     "https://cointelegraph.com/news/crypto-industry-sec-novel-etf-restrictions",
+    "https://cointelegraph.com/news/crypto-industry-turns-to-us-regulators-after-clarity-setback",
     "https://cointelegraph.com/news/crypto-pac-protect-progress-spending-massachusetts-primary",
     "https://cointelegraph.com/news/dbs-citi-first-weekend-tokenized-deposit-swift",
     "https://cointelegraph.com/news/democrats-push-back-on-gops-final-clarity-offer-with-counterproposal",
@@ -1822,5 +1827,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
