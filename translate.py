@@ -1,42 +1,6 @@
 import os
 import re
 
-# The Claude model available through ANTHROPIC_BASE_URL has shifted under
-# us before without any change on our side - a model ID that posted fine
-# all morning started getting rejected outright with "Unsupported model"
-# a few hours later, which silently took down every single rewrite (and
-# the Google Translate fallback has its own daily rate limit, so it
-# doesn't reliably cover for it). Try a few IDs, newest first, instead of
-# hard-failing the whole rewrite over one deprecated snapshot.
-MODEL_CANDIDATES = (
-    "claude-haiku-4-5-20251001",
-    "claude-haiku-4-5",
-    "claude-3-5-haiku-20241022",
-    "claude-sonnet-5",
-    "claude-3-5-sonnet-20241022",
-)
-
-
-def _create_message(client, **kwargs):
-    last_error = None
-    for model in MODEL_CANDIDATES:
-        try:
-            return client.messages.create(model=model, **kwargs)
-        except Exception as e:
-            if "Unsupported model" not in str(e):
-                raise
-            last_error = e
-    # Every candidate above was rejected outright - log what the account
-    # actually has access to, so the next occurrence of this is a five
-    # second fix instead of another round of guessing model ID strings.
-    try:
-        available = [m.id for m in client.models.list().data]
-        print(f"All candidate models unsupported; models.list() reports: {available}")
-    except Exception as list_err:
-        print(f"All candidate models unsupported, and could not list available models either: {list_err}")
-    raise last_error
-
-
 # Telegram's HTML parse mode has no list tag - a plain "- " at the start of
 # each line renders as a readable bulleted line on its own, so that's what
 # every prompt below is told to use when a post has 3+ distinct items to
@@ -75,7 +39,7 @@ def translate_via_claude_opinion(title, summary):
     """Personal-opinion rewrite in first person, concise, no financial-advice
     guardrails - alternates with translate_via_claude_explainer so FreshLive
     posts don't all read like the same template."""
-    from anthropic_client import extract_text, get_client
+    from anthropic_client import create_message, extract_text, get_client
 
     client = get_client()
     prompt = (
@@ -106,14 +70,14 @@ def translate_via_claude_opinion(title, summary):
         f"Title: {title}\n"
         f"Summary: {summary}"
     )
-    resp = _create_message(client, max_tokens=800, messages=[{"role": "user", "content": prompt}])
+    resp = create_message(client, max_tokens=800, messages=[{"role": "user", "content": prompt}])
     return _parse_response(extract_text(resp).strip())
 
 
 def translate_via_claude_explainer(title, summary):
     """Full, thorough rewrite for a total-beginner audience, no financial
     advice - alternates with translate_via_claude_opinion."""
-    from anthropic_client import extract_text, get_client
+    from anthropic_client import create_message, extract_text, get_client
 
     client = get_client()
     prompt = (
@@ -157,7 +121,7 @@ def translate_via_claude_explainer(title, summary):
         f"Title: {title}\n"
         f"Summary: {summary}"
     )
-    resp = _create_message(client, max_tokens=1000, messages=[{"role": "user", "content": prompt}])
+    resp = create_message(client, max_tokens=1000, messages=[{"role": "user", "content": prompt}])
     return _parse_response(extract_text(resp).strip())
 
 
@@ -165,7 +129,7 @@ def explain_topic(topic):
     """Write a standalone educational post about a crypto/finance concept -
     not tied to any news story. Same beginner-friendly, no-financial-advice
     voice as translate_via_claude_explainer."""
-    from anthropic_client import extract_text, get_client
+    from anthropic_client import create_message, extract_text, get_client
 
     client = get_client()
     prompt = (
@@ -185,7 +149,7 @@ def explain_topic(topic):
         "Explanation: <the full explanation in simple Russian, 4-6 "
         "sentences, with an analogy if it helps>"
     )
-    resp = _create_message(client, max_tokens=800, messages=[{"role": "user", "content": prompt}])
+    resp = create_message(client, max_tokens=800, messages=[{"role": "user", "content": prompt}])
     text = extract_text(resp).strip()
 
     title_m = re.search(r"Title:\s*(.+)", text)

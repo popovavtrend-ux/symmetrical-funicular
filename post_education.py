@@ -41,7 +41,7 @@ def main():
     topic = next_topic(posted_topics)
 
     title, explanation = explain_topic(topic)
-    image_url = find_stock_image(title, history_path=IMAGE_HISTORY_FILE)
+    image_url = find_stock_image(title, summary=explanation, history_path=IMAGE_HISTORY_FILE)
 
     full_message = build_message(title, explanation)
     fits_as_caption = len(full_message) <= TELEGRAM_PHOTO_CAPTION_MAX_LEN

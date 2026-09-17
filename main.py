@@ -418,7 +418,10 @@ def main():
 
             if not price_chart:
                 image_url = find_stock_image(
-                    title, source_image_url=extract_source_image_url(entry), history_path=IMAGE_HISTORY_FILE
+                    title,
+                    summary=summary,
+                    source_image_url=extract_source_image_url(entry),
+                    history_path=IMAGE_HISTORY_FILE,
                 )
                 if image_url:
                     try:
