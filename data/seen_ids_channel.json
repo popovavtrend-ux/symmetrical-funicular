@@ -123,6 +123,7 @@
     "68a4ce6d-ff55-4c86-8148-e94d97209cb2",
     "6981de2f-a960-4908-9798-98802b3eb2c4",
     "6a71229a-3c63-4487-84f9-9765d20eacb3",
+    "6aafa13d-e731-4c23-9fce-5a2fc36c8b00",
     "6c7de980-ff9a-4a3b-a6c4-6a0109bee2bf",
     "6c933e83-0819-4827-8027-5158a1657303",
     "6c9a58c0-a3cc-4d4f-b791-185ac46fec1f",
@@ -159,6 +160,7 @@
     "83d1fd19-d1f7-4e3c-9a83-27a4fe2de51b",
     "8535f9c5-7982-4123-92a9-97ccc56e3a5f",
     "85fd1271-b977-449d-a5f9-165390dab35d",
+    "879185aa-9211-4a4d-bd5c-d6c331e35c36",
     "88f55305-9afa-473a-b855-02115fdc1560",
     "8a2dd2d7-8030-4323-a806-fd06f0be4392",
     "8b59dcc1-0449-4d71-91e9-78e7bdcba2b3",
@@ -789,6 +791,8 @@
     "https://beincrypto.com/?p=866980",
     "https://beincrypto.com/?p=866982",
     "https://beincrypto.com/?p=866989",
+    "https://beincrypto.com/?p=867006",
+    "https://beincrypto.com/?p=867028",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1427,6 +1431,7 @@
     "https://cryptoslate.com/?p=563099",
     "https://cryptoslate.com/?p=563148",
     "https://cryptoslate.com/?p=563158",
+    "https://cryptoslate.com/?p=563176",
     "https://cryptoslate.com/?p=563178",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=373351",
@@ -1979,5 +1984,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
