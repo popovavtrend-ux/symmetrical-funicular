@@ -407,7 +407,7 @@ def main():
 
             # A named coin gets its actual price chart rather than an
             # illustrative stock photo that only looks like one.
-            price_chart = generate_price_chart(title)
+            price_chart = generate_price_chart(title, summary=summary)
             if price_chart:
                 try:
                     send_photo_bytes(BOT_TOKEN, CHAT_ID, price_chart, "chart.png", photo_caption)
