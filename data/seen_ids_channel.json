@@ -1080,6 +1080,7 @@
     "https://cointelegraph.com/news/north-korea-using-foreign-talent-to-help-infiltrate-us-companies-report",
     "https://cointelegraph.com/news/nvidia-buys-hugging-face-12-9-billion-ai-software",
     "https://cointelegraph.com/news/nvidia-considers-10b-investment-in-anthropic-record-ipo-reuters",
+    "https://cointelegraph.com/news/onchain-malware-writes-surge-420-north-korea-iran-chainalysis",
     "https://cointelegraph.com/news/ondo-urges-sec-cftc-bring-us-stock-perpetuals-onshore",
     "https://cointelegraph.com/news/onekey-transaction-replacement-attack-old-version-ledger",
     "https://cointelegraph.com/news/openai-discloses-6-new-cases-of-misaligned-ai-behavior",
@@ -1699,6 +1700,8 @@
     "https://decrypt.co/?p=378448",
     "https://decrypt.co/?p=378449",
     "https://decrypt.co/?p=378457",
+    "https://decrypt.co/?p=378460",
+    "https://decrypt.co/?p=378462",
     "https://decrypt.co/videos/interviews/0y90noNs/a16z-raise-15b-jerome-powell-vs-trump-crypto-remains-flat-special-guest-dudas",
     "https://decrypt.co/videos/interviews/50vopyFa/the-white-whale-up-10x-in-a-week-lighter-tge-saylor-buys-109m-btc",
     "https://decrypt.co/videos/interviews/72tPnqPX/zec-rebounds-11-trump-says-he-wont-pardon-sam-bankman-fried-florida-revisits-its-strategic-bitcoin-reserve",
@@ -2009,5 +2012,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
