@@ -112,6 +112,7 @@
     "5fbf26f1-d14f-404e-a716-5f6d4c427497",
     "5fc01376-dd40-4306-96bf-a34649f054bd",
     "609a9c18-ed15-470e-b7eb-47c251cc611f",
+    "611bcb04-49f2-4703-af94-6136aff114cb",
     "61aa4d63-3c77-48d8-b4bb-2418a8ea491f",
     "61f20afd-dbca-4443-ac7f-0af4b409b177",
     "638fcf95-9988-4613-819a-bceddcec5a6e",
@@ -792,7 +793,10 @@
     "https://beincrypto.com/?p=866982",
     "https://beincrypto.com/?p=866989",
     "https://beincrypto.com/?p=867006",
+    "https://beincrypto.com/?p=867017",
     "https://beincrypto.com/?p=867028",
+    "https://beincrypto.com/?p=867031",
+    "https://beincrypto.com/?p=867054",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -918,6 +922,7 @@
     "https://cointelegraph.com/markets/bitcoin-short-term-holders-hit-30-day-profit-streak-as-bull-market-odds-improve-cryptoquant",
     "https://cointelegraph.com/markets/bitcoin-sopr-metric-sees-longest-profit-run-of-2026-as-new-analysis-challenges-bear-market",
     "https://cointelegraph.com/markets/bitcoin-spikes-toward-80k-as-us-cpi-data-delivers-new-22-year-high-in-bond-yields",
+    "https://cointelegraph.com/markets/bitcoin-treasuries-buy-just-59k-btc-in-three-months-as-paper-losses-linger",
     "https://cointelegraph.com/markets/bitcoins-apparent-demand-turns-negative-price-struggles-with-77k",
     "https://cointelegraph.com/markets/blackrock-bitcoin-etf-inflow-rebound",
     "https://cointelegraph.com/markets/clarity-act-vote-meets-fed-rate-hike-five-things-to-know-in-bitcoin-this-week",
@@ -1080,6 +1085,7 @@
     "https://cointelegraph.com/news/remixpoint-dumps-altcoins-1506-btc-sole-crypto-bet",
     "https://cointelegraph.com/news/revised-clarity-act-targets-non-decentralized-defi-operators",
     "https://cointelegraph.com/news/revolut-attackers-threaten-daily-customer-data-leaks",
+    "https://cointelegraph.com/news/revolut-data-breach-monero-ransom-no-direct-contact",
     "https://cointelegraph.com/news/revolut-openreserve-occ-approval-national-bank-crypto-plan",
     "https://cointelegraph.com/news/revolut-says-customer-data-exposed-through-fake-government-email",
     "https://cointelegraph.com/news/robinhood-ceo-issuer-veto-tokenized-stocks",
@@ -1099,6 +1105,7 @@
     "https://cointelegraph.com/news/solana-record-263k-tokens-issued",
     "https://cointelegraph.com/news/solana-transaction-size-limit-4096-bytes-upgrade",
     "https://cointelegraph.com/news/solana-validators-approve-proposal-to-accelerate-sol-disinflation",
+    "https://cointelegraph.com/news/south-korea-polymarket-users-prosecutors-gambling-probe",
     "https://cointelegraph.com/news/south-korean-regulators-tokenized-securities-roadmap",
     "https://cointelegraph.com/news/sp-global-leads-110m-kaiko-funding-round-as-wall-street-eyes-tokenized-markets",
     "https://cointelegraph.com/news/stablecoins-not-credible-payments-scale-bis-chief",
@@ -1433,6 +1440,7 @@
     "https://cryptoslate.com/?p=563158",
     "https://cryptoslate.com/?p=563176",
     "https://cryptoslate.com/?p=563178",
+    "https://cryptoslate.com/?p=563212",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=373351",
     "https://decrypt.co/?p=376662",
@@ -1984,5 +1992,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
