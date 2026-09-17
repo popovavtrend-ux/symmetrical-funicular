@@ -775,6 +775,8 @@
     "https://beincrypto.com/?p=866918",
     "https://beincrypto.com/?p=866922",
     "https://beincrypto.com/?p=866928",
+    "https://beincrypto.com/?p=866939",
+    "https://beincrypto.com/?p=866943",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1405,6 +1407,7 @@
     "https://cryptoslate.com/?p=563030",
     "https://cryptoslate.com/?p=563070",
     "https://cryptoslate.com/?p=563080",
+    "https://cryptoslate.com/?p=563099",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=373351",
     "https://decrypt.co/?p=376662",
@@ -1883,6 +1886,7 @@
     "https://thedefiant.io/news/markets/bitcoin-holds-77000-after-weak-adp-hiring-print",
     "https://thedefiant.io/news/markets/bitcoin-reaches-79-500-as-2-75-billion-liquidation-claim-lacks-detail",
     "https://thedefiant.io/news/markets/bitcoin-retakes-80000-after-waller-signals-a-hold",
+    "https://thedefiant.io/news/markets/bitcoin-round-trips-fed-rate-increase-zcash-sep-16-2026",
     "https://thedefiant.io/news/markets/bitcoin-stalls-a-cent-below-usd80-000-as-altcoins-give-back-weekend-gains",
     "https://thedefiant.io/news/markets/bitcoin-tops-68k-as-short-liquidations-hit-1-7-billion",
     "https://thedefiant.io/news/markets/brent-tops-106-hike-odds-reach-64-crypto-sells-off-sep-10-2026",
@@ -1955,5 +1959,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
