@@ -974,6 +974,7 @@
     "https://bitcoinmagazine.com/?p=55014",
     "https://bitcoinmagazine.com/?p=55018",
     "https://bitcoinmagazine.com/?p=55024",
+    "https://bitcoinmagazine.com/?p=55027",
     "https://cointelegraph.com/magazine/10-of-the-greatest-unsolved-crypto-mysteries",
     "https://cointelegraph.com/magazine/bitcoin-treasuries-can-outperform-btc-but-is-it-a-risk-worth-taking",
     "https://cointelegraph.com/magazine/bitcoins-new-quantum-defenses-189m-sol-cancelled-hodlers-digest",
@@ -1589,6 +1590,8 @@
     "https://cryptoslate.com/?p=563608",
     "https://cryptoslate.com/?p=563610",
     "https://cryptoslate.com/?p=563617",
+    "https://cryptoslate.com/?p=563633",
+    "https://cryptoslate.com/?p=563635",
     "https://cryptoslate.com/?p=563757",
     "https://cryptoslate.com/?p=563770",
     "https://cryptoslate.com/?p=563819",
@@ -1863,6 +1866,7 @@
     "https://decrypt.co/?p=378641",
     "https://decrypt.co/?p=378664",
     "https://decrypt.co/?p=378667",
+    "https://decrypt.co/?p=378681",
     "https://decrypt.co/videos/interviews/0y90noNs/a16z-raise-15b-jerome-powell-vs-trump-crypto-remains-flat-special-guest-dudas",
     "https://decrypt.co/videos/interviews/50vopyFa/the-white-whale-up-10x-in-a-week-lighter-tge-saylor-buys-109m-btc",
     "https://decrypt.co/videos/interviews/72tPnqPX/zec-rebounds-11-trump-says-he-wont-pardon-sam-bankman-fried-florida-revisits-its-strategic-bitcoin-reserve",
@@ -2131,6 +2135,7 @@
     "https://thedefiant.io/news/nfts-and-web3/unstoppable-skips-icann-round-refunds-web3-domains",
     "https://thedefiant.io/news/people/kamino-names-michael-weisz-ceo-for-us-and-institutional-expansion",
     "https://thedefiant.io/news/regulation/ark-sec-tokenized-share-class-venture-fund",
+    "https://thedefiant.io/news/regulation/cftc-files-crypto-market-rulemaking-with-white-house-at-prerule-stage",
     "https://thedefiant.io/news/regulation/cftc-sues-goliath-ventures-over-alleged-397m-defi-liquidity-pool-ponzi",
     "https://thedefiant.io/news/regulation/clarity-act-revised-text-five-days-before-cloture-vote",
     "https://thedefiant.io/news/regulation/crypto-industry-points-to-sec-and-cftc-after-clarity-setback",
@@ -2160,6 +2165,7 @@
     "https://thedefiant.io/news/tokens/hunter-biden-confirms-laptop-memecoin-launch-sept-9",
     "https://thedefiant.io/news/tokens/hunter-biden-laptop-falls-99-percent-three-hours-trump-valuation",
     "https://thedefiant.io/news/tokens/money-mushroom-moved-a-nasdaq-penny-stock-but-its-tokenized-stock-is-a-memecoin-too",
+    "https://thedefiant.io/news/tokens/polygon-prepares-permissionless-burn-of-100-million-pol",
     "https://thedefiant.io/news/tradfi-and-fintech/amc-s-ceo-told-robinhood-to-halt-its-stock-token-robinhood-told-him-to-send-lawyers",
     "https://thedefiant.io/news/tradfi-and-fintech/bar-a-mobile-plans-stellar-wallet-with-wirex-and-crossmint",
     "https://thedefiant.io/news/tradfi-and-fintech/bitget-wallet-integrates-reality-tokenized-us-stocks-rtokens",
@@ -2194,5 +2200,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
