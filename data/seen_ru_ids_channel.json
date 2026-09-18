@@ -173,6 +173,7 @@
     "https://cryptocurrency.tech/?p=124075",
     "https://cryptocurrency.tech/?p=124078",
     "https://cryptocurrency.tech/?p=124085",
+    "https://cryptocurrency.tech/?p=124091",
     "https://forklog.com/?p=286911",
     "https://forklog.com/?p=287306",
     "https://forklog.com/?p=287324",
@@ -540,6 +541,10 @@
     "https://forklog.com/?p=288759",
     "https://forklog.com/?p=288761",
     "https://forklog.com/?p=288765",
+    "https://forklog.com/?p=288768",
+    "https://forklog.com/?p=288770",
+    "https://forklog.com/?p=288778",
+    "https://forklog.com/?p=288785",
     "https://incrypted.com/?p=150294",
     "https://incrypted.com/?p=260142",
     "https://incrypted.com/?p=311031",
@@ -755,6 +760,10 @@
     "https://incrypted.com/?p=397286",
     "https://incrypted.com/?p=397297",
     "https://incrypted.com/?p=397301",
+    "https://incrypted.com/?p=397317",
+    "https://incrypted.com/?p=397325",
+    "https://incrypted.com/?p=397330",
+    "https://incrypted.com/?p=397344",
     "https://incrypted.com/?p=84819",
     "https://ru.beincrypto.com/?p=393050",
     "https://ru.beincrypto.com/?p=393057",
@@ -1020,6 +1029,8 @@
     "https://ru.beincrypto.com/?p=395938",
     "https://ru.beincrypto.com/?p=395939",
     "https://ru.beincrypto.com/?p=395956",
+    "https://ru.beincrypto.com/?p=395985",
+    "https://ru.beincrypto.com/?p=396026",
     "https://ru.beincrypto.com/amc-stock-roste-na-fone-spora-s-robinhood/",
     "https://ru.beincrypto.com/bitcoin-gold-snizhenie-na-fone-prognozov-po-zarplate-v-ssha/",
     "https://ru.beincrypto.com/bitwise-dogecoin-etf-liquidation/",
@@ -1050,5 +1061,5 @@
     "https://incrypted.com/feed/",
     "https://ru.beincrypto.com/feed/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
