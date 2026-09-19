@@ -122,14 +122,16 @@ def check_us_indices(state):
 def check_ru_stocks(state):
     alerts = []
     try:
-        prices = fetch_all_moex_stock_prices()
+        stocks = fetch_all_moex_stock_prices()
     except Exception as e:
         print(f"RU stock prices failed: {e}")
         return alerts
-    for secid, price in prices.items():
+    for secid, info in stocks.items():
+        price = info["price"]
         pct = check_threshold(state, f"stock:{secid}", price, STOCK_THRESHOLD_PCT)
         if pct is not None:
-            alerts.append(f"{arrow(pct)} #{secid} {pct:+.1f}% с прошлой проверки, сейчас {price:,.2f} ₽")
+            label = f"#{secid} ({info['name']})" if info["name"] != secid else f"#{secid}"
+            alerts.append(f"{arrow(pct)} {label} {pct:+.1f}% с прошлой проверки, сейчас {price:,.2f} ₽")
     return alerts
 
 

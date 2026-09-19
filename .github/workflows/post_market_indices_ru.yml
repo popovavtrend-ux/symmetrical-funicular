@@ -2,9 +2,10 @@ name: Post daily Russian indices update to Telegram channel
 
 on:
   schedule:
-    # 05:12 UTC = 08:12 MSK - offset from the other market posts so they
-    # don't all hit Telegram in the same second
-    - cron: "12 5 * * *"
+    # 05:12 UTC = 08:12 MSK, weekdays only - offset from the other market
+    # posts so they don't all hit Telegram in the same second; MOEX is
+    # shut Sat/Sun so there's nothing new to report then
+    - cron: "12 5 * * 1-5"
   workflow_dispatch: {}
 
 concurrency:

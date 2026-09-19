@@ -388,19 +388,31 @@ def fetch_fmp_movers(url, count=MOVERS_COUNT):
 
 
 def fetch_all_moex_stock_prices():
-    """Returns {secid: last_price} for every liquid RU stock (TQBR board) -
-    used by the anomaly watcher, which needs every instrument's current
-    price to compare against its own tracked reference, not just the top
-    few movers the daily digest shows."""
+    """Returns {secid: {"price": ..., "name": ...}} for every liquid RU
+    stock (TQBR board) - used by the anomaly watcher, which needs every
+    instrument's current price to compare against its own tracked
+    reference, not just the top few movers the daily digest shows."""
     resp = requests.get(MOEX_SHARES_URL, params={"iss.meta": "off"}, timeout=15)
     resp.raise_for_status()
-    market_table = resp.json()["marketdata"]
+    payload = resp.json()
+
+    securities_table = payload["securities"]
+    sec_cols = securities_table["columns"]
+    secid_idx = sec_cols.index("SECID")
+    shortname_idx = sec_cols.index("SHORTNAME") if "SHORTNAME" in sec_cols else secid_idx
+    names = {row[secid_idx]: row[shortname_idx] for row in securities_table["data"]}
+
+    market_table = payload["marketdata"]
     m_cols = market_table["columns"]
-    secid_idx = m_cols.index("SECID")
+    m_secid_idx = m_cols.index("SECID")
     last_idx = m_cols.index("LAST") if "LAST" in m_cols else None
     if last_idx is None:
         return {}
-    return {row[secid_idx]: row[last_idx] for row in market_table["data"] if row[last_idx] is not None}
+    return {
+        row[m_secid_idx]: {"price": row[last_idx], "name": names.get(row[m_secid_idx], row[m_secid_idx])}
+        for row in market_table["data"]
+        if row[last_idx] is not None
+    }
 
 
 def fetch_moex_stock_movers(count=MOVERS_COUNT):
@@ -411,7 +423,8 @@ def fetch_moex_stock_movers(count=MOVERS_COUNT):
     securities_table = payload["securities"]
     sec_cols = securities_table["columns"]
     secid_idx = sec_cols.index("SECID")
-    names = {row[secid_idx]: row[secid_idx] for row in securities_table["data"]}
+    shortname_idx = sec_cols.index("SHORTNAME") if "SHORTNAME" in sec_cols else secid_idx
+    names = {row[secid_idx]: row[shortname_idx] for row in securities_table["data"]}
 
     market_table = payload["marketdata"]
     m_cols = market_table["columns"]
@@ -424,6 +437,7 @@ def fetch_moex_stock_movers(count=MOVERS_COUNT):
     movers = [
         {
             "secid": row[m_secid_idx],
+            "name": names.get(row[m_secid_idx], row[m_secid_idx]),
             "last": row[last_idx] if last_idx is not None else None,
             "pct": row[pct_idx],
         }
@@ -433,6 +447,12 @@ def fetch_moex_stock_movers(count=MOVERS_COUNT):
     return top_movers(movers, key=lambda m: m["pct"], count=count)
 
 
+def _stock_label(secid, name):
+    """'#SECID (Название)' - skip the parenthetical when the API gave us
+    back the ticker itself as the name (no real name available)."""
+    return f"#{secid} ({name})" if name and name != secid else f"#{secid}"
+
+
 def build_stocks_section():
     lines = []
     try:
@@ -440,12 +460,12 @@ def build_stocks_section():
         if gainers:
             lines.append("📈 <b>Лидеры роста акций (Россия)</b>")
             for m in gainers:
-                lines.append(f"🟢 #{m['secid']} {m['pct']:+.1f}%")
+                lines.append(f"🟢 {_stock_label(m['secid'], m['name'])} {m['pct']:+.1f}%")
         if losers:
             lines.append("")
             lines.append("📉 <b>Лидеры падения акций (Россия)</b>")
             for m in losers:
-                lines.append(f"🔴 #{m['secid']} {m['pct']:+.1f}%")
+                lines.append(f"🔴 {_stock_label(m['secid'], m['name'])} {m['pct']:+.1f}%")
     except Exception as e:
         print(f"Russian stock movers failed: {e}")
 
@@ -456,7 +476,7 @@ def build_stocks_section():
                 lines.append("")
                 lines.append("📈 <b>Лидеры роста акций (мир)</b>")
                 for m in gainers:
-                    lines.append(f"🟢 #{m['symbol']} {m['changesPercentage']:+.1f}%")
+                    lines.append(f"🟢 {_stock_label(m['symbol'], m.get('name'))} {m['changesPercentage']:+.1f}%")
         except Exception as e:
             print(f"World stock gainers failed: {e}")
         try:
@@ -465,7 +485,7 @@ def build_stocks_section():
                 lines.append("")
                 lines.append("📉 <b>Лидеры падения акций (мир)</b>")
                 for m in losers:
-                    lines.append(f"🔴 #{m['symbol']} {m['changesPercentage']:+.1f}%")
+                    lines.append(f"🔴 {_stock_label(m['symbol'], m.get('name'))} {m['changesPercentage']:+.1f}%")
         except Exception as e:
             print(f"World stock losers failed: {e}")
 
@@ -500,3 +520,15 @@ def moex_session_open(now_msk=None):
 def us_session_open(now_msk=None):
     now_msk = now_msk or datetime.now(MSK)
     return is_weekday(now_msk) and _in_session(now_msk, US_SESSION)
+
+
+def is_trading_day_msk(now_msk=None):
+    """Weekend guard for the daily digest posts (currency/metals/indices/
+    stocks) - MOEX and US markets are both shut Sat/Sun, so a Saturday-
+    morning post would just repeat Friday's numbers with a stale or zero %
+    change. Crypto trades every day, so its digest doesn't use this."""
+    now_msk = now_msk or datetime.now(MSK)
+    return is_weekday(now_msk)
+
+
+GREETING = "Доброе утро! Обзор рынка"

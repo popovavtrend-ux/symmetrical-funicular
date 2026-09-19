@@ -5,7 +5,7 @@ actual fetching/formatting logic shared with the other market posts."""
 import os
 
 from main import signature_message
-from market_data import build_crypto_section
+from market_data import GREETING, build_crypto_section
 from telegram_post import send_message
 
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
@@ -13,7 +13,7 @@ CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
 
 
 def build_message():
-    parts = [signature_message(), "💰 <b>Крипторынок</b>"]
+    parts = [signature_message(), GREETING, "💰 <b>Крипторынок</b>"]
     lines = build_crypto_section()
     if not lines:
         return None

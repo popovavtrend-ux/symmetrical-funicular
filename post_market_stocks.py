@@ -5,7 +5,7 @@ market_data.py."""
 import os
 
 from main import signature_message
-from market_data import FMP_API_KEY, build_stocks_section
+from market_data import FMP_API_KEY, GREETING, build_stocks_section, is_trading_day_msk
 from telegram_post import send_message
 
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
@@ -16,7 +16,7 @@ def build_message():
     lines = build_stocks_section()
     if not lines:
         return None
-    parts = [signature_message(), "📈 <b>Акции</b>", "\n".join(lines)]
+    parts = [signature_message(), GREETING, "📈 <b>Акции</b>", "\n".join(lines)]
     sources = ["MOEX"]
     if FMP_API_KEY:
         sources.append("Financial Modeling Prep")
@@ -25,6 +25,9 @@ def build_message():
 
 
 def main():
+    if not is_trading_day_msk():
+        print("Weekend - markets are closed, skipping post.")
+        return
     message = build_message()
     if not message:
         print("Stocks section unavailable, skipping post.")
