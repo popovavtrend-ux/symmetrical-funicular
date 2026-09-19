@@ -1,0 +1,33 @@
+name: Post daily stock movers update to Telegram channel
+
+on:
+  schedule:
+    # 05:15 UTC = 08:15 MSK - offset from the other market posts so they
+    # don't all hit Telegram in the same second
+    - cron: "15 5 * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN_2 }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID_2 }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          SIGNATURE: "@freshlive101"
+        run: python post_market_stocks.py

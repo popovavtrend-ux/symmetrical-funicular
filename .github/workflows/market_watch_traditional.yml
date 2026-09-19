@@ -1,0 +1,56 @@
+name: Watch traditional markets for sudden moves
+
+on:
+  schedule:
+    # 07,09,11,13,15,17,19 UTC = 10,12,14,16,18,20,22 MSK, weekdays only -
+    # every 2 hours from MOEX's open to well past the US close, since
+    # exchanges are shut the rest of the time anyway
+    - cron: "0 7,9,11,13,15,17,19 * * 1-5"
+  workflow_dispatch: {}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run watcher
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN_2 }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID_2 }}
+          SIGNATURE: "@freshlive101"
+        run: python market_watch_traditional.py
+
+      - name: Commit updated state
+        if: always()
+        run: |
+          git config user.name "market-watch-bot"
+          git config user.email "market-watch-bot@users.noreply.github.com"
+          git add -A data/
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "chore: update traditional markets watch state"
+          for i in 1 2 3 4 5; do
+            git push && exit 0
+            echo "Push rejected (another workflow pushed first) - retrying $i/5"
+            git fetch origin main
+            git rebase origin/main
+            sleep $((RANDOM % 5 + 1))
+          done
+          echo "::error::Failed to push updated state after 5 retries"
+          exit 1
