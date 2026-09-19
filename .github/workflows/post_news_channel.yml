@@ -34,7 +34,7 @@ jobs:
           PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
-          FEED_URL: ${{ vars.CHANNEL_FEED_URL || 'https://protos.com/feed/,https://www.dlnews.com/rss/,https://cryptoslate.com/feed/,https://decrypt.co/feed,https://beincrypto.com/feed/,https://www.coindesk.com/arc/outboundfeeds/rss/,https://cointelegraph.com/rss,https://bitcoinmagazine.com/feed,https://thedefiant.io/feed' }}
+          FEED_URL: ${{ vars.CHANNEL_FEED_URL || 'https://protos.com/feed/,https://www.dlnews.com/rss/,https://cryptoslate.com/feed/,https://decrypt.co/feed,https://beincrypto.com/feed/,https://www.coindesk.com/arc/outboundfeeds/rss/,https://cointelegraph.com/rss,https://bitcoinmagazine.com/feed,https://thedefiant.io/feed,https://www.a16z.news/feed' }}
           STATE_FILE: data/seen_ids_channel.json
           MAX_ITEMS_PER_RUN: "1"
           SIGNATURE: "@freshlive101"
