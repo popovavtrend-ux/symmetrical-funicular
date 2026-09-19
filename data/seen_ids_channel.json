@@ -185,6 +185,7 @@
     "879185aa-9211-4a4d-bd5c-d6c331e35c36",
     "88f55305-9afa-473a-b855-02115fdc1560",
     "8a2dd2d7-8030-4323-a806-fd06f0be4392",
+    "8a999b17-721f-4ccf-8f87-e782a37d1f3c",
     "8ab1a7d4-4272-441c-9a8c-1efe30a498c9",
     "8b59dcc1-0449-4d71-91e9-78e7bdcba2b3",
     "8bcfbaa3-89cd-42ff-af6e-c385101ec7ce",
@@ -194,6 +195,7 @@
     "8d6840dd-94de-4dcb-862f-8f08358155d5",
     "8d69683f-9fcb-49de-af4f-38d592a57cf5",
     "8d7530ef-1f53-48b6-87a9-1e3bb2d9135d",
+    "8e58bc27-3008-4540-a510-8be2b0148241",
     "8e8abd43-f7ba-4803-acfc-0a22f136aaf2",
     "90af9591-05c0-40e7-b842-afd4828e9b96",
     "9141fc76-89e7-4f12-b379-c9eca3f0d919",
@@ -339,6 +341,7 @@
     "fe02b3c3-008b-43b7-8453-16bc78813038",
     "fec19120-9745-457a-bfb5-31f97220e444",
     "fee118ef-31af-4127-ba4c-4f4eff5cc245",
+    "ff3bb4f6-46a0-464f-90d5-29c5d4d34ef7",
     "https://beincrypto.com/?p=455799",
     "https://beincrypto.com/?p=511648",
     "https://beincrypto.com/?p=862036",
@@ -889,6 +892,8 @@
     "https://beincrypto.com/?p=867444",
     "https://beincrypto.com/?p=867447",
     "https://beincrypto.com/?p=867455",
+    "https://beincrypto.com/?p=867460",
+    "https://beincrypto.com/?p=867465",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1616,6 +1621,7 @@
     "https://cryptoslate.com/?p=564005",
     "https://cryptoslate.com/?p=564019",
     "https://cryptoslate.com/?p=564095",
+    "https://cryptoslate.com/?p=564117",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
     "https://decrypt.co/?p=373351",
@@ -1885,6 +1891,7 @@
     "https://decrypt.co/?p=378641",
     "https://decrypt.co/?p=378664",
     "https://decrypt.co/?p=378667",
+    "https://decrypt.co/?p=378674",
     "https://decrypt.co/?p=378681",
     "https://decrypt.co/videos/interviews/0y90noNs/a16z-raise-15b-jerome-powell-vs-trump-crypto-remains-flat-special-guest-dudas",
     "https://decrypt.co/videos/interviews/50vopyFa/the-white-whale-up-10x-in-a-week-lighter-tge-saylor-buys-109m-btc",
@@ -2219,5 +2226,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
