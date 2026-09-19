@@ -13,6 +13,7 @@ one API being down (most likely MOEX or FMP) shouldn't take down the
 whole post, it should just be a shorter post that day."""
 
 import os
+import urllib.request
 from datetime import datetime, timedelta
 from xml.etree import ElementTree
 
@@ -231,12 +232,16 @@ def fetch_stooq_change(symbol):
     """Returns (last_close, pct_change_vs_prior_close) from Stooq's daily
     history CSV, or None if there isn't enough history in the response.
 
-    Built as a literal URL rather than requests' params= dict - Stooq's
-    endpoint 404s on a percent-encoded '^' (params= encodes it to %5E),
-    it only accepts the raw character in the query string."""
-    resp = requests.get(f"{STOOQ_DAILY_URL}?s={symbol}&i=d", timeout=15)
-    resp.raise_for_status()
-    rows = [r for r in resp.text.strip().splitlines() if r and not r.startswith("Date")]
+    Uses urllib directly instead of requests - requests always re-quotes
+    the URL through its own normalization (requote_uri), which percent-
+    encodes '^' to %5E regardless of whether it came from a params= dict
+    or a literal f-string; confirmed live, both 404 the same way against
+    Stooq's endpoint. urllib.request sends the URL as given, so the raw
+    '^' Stooq actually expects reaches it unchanged."""
+    req = urllib.request.Request(f"{STOOQ_DAILY_URL}?s={symbol}&i=d", headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        text = resp.read().decode("utf-8")
+    rows = [r for r in text.strip().splitlines() if r and not r.startswith("Date")]
     if len(rows) < 2:
         return None
     prev_close = float(rows[-2].split(",")[4])
