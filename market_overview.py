@@ -12,6 +12,7 @@ Each section is independent and fails on its own (logged, not raised) -
 one API being down (most likely MOEX or FMP) shouldn't take down the
 whole post, it should just be a shorter post that day."""
 
+import json
 import os
 import urllib.request
 from datetime import datetime, timedelta
@@ -221,33 +222,30 @@ def build_metals_section():
 
 # ---------------------------------------------------------------- Indices --
 
-STOOQ_DAILY_URL = "https://stooq.com/q/d/l/"
-US_INDICES = (("^spx", "S&P 500"), ("^dji", "Dow Jones"), ("^ndq", "Nasdaq"))
+YAHOO_CHART_URL = "https://query1.finance.yahoo.com/v8/finance/chart/{symbol}"
+US_INDICES = (("%5EGSPC", "S&P 500"), ("%5EDJI", "Dow Jones"), ("%5EIXIC", "Nasdaq"))
 
 MOEX_INDEX_URL = "https://iss.moex.com/iss/engines/stock/markets/index/securities/{id}.json"
 RU_INDICES = (("IMOEX", "IMOEX"), ("RTSI", "RTS"))
 
 
-def fetch_stooq_change(symbol):
-    """Returns (last_close, pct_change_vs_prior_close) from Stooq's daily
-    history CSV, or None if there isn't enough history in the response.
-
-    Uses urllib directly instead of requests - requests always re-quotes
-    the URL through its own normalization (requote_uri), which percent-
-    encodes '^' to %5E regardless of whether it came from a params= dict
-    or a literal f-string; confirmed live, both 404 the same way against
-    Stooq's endpoint. urllib.request sends the URL as given, so the raw
-    '^' Stooq actually expects reaches it unchanged."""
-    req = urllib.request.Request(f"{STOOQ_DAILY_URL}?s={symbol}&i=d", headers={"User-Agent": "Mozilla/5.0"})
+def fetch_yahoo_index_change(symbol):
+    """Returns (last_price, pct_change_vs_prior_close) from Yahoo Finance's
+    public chart endpoint, or None if the response doesn't have both
+    figures. Tried Stooq's bulk CSV download first - it actively blocks
+    non-browser requests with an obfuscated JS challenge page instead of
+    404ing or erroring cleanly, confirmed live, so it's not usable here."""
+    url = YAHOO_CHART_URL.format(symbol=symbol)
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=15) as resp:
-        text = resp.read().decode("utf-8")
-    rows = [r for r in text.strip().splitlines() if r and not r.startswith("Date")]
-    if len(rows) < 2:
+        data = json.loads(resp.read().decode("utf-8"))
+    meta = data["chart"]["result"][0]["meta"]
+    price = meta.get("regularMarketPrice")
+    prev_close = meta.get("chartPreviousClose") or meta.get("previousClose")
+    if price is None or not prev_close:
         return None
-    prev_close = float(rows[-2].split(",")[4])
-    last_close = float(rows[-1].split(",")[4])
-    pct = (last_close - prev_close) / prev_close * 100 if prev_close else 0
-    return last_close, pct
+    pct = (price - prev_close) / prev_close * 100
+    return price, pct
 
 
 def _iss_row_dict(table):
@@ -273,12 +271,12 @@ def build_indices_section():
     lines = []
     for symbol, label in US_INDICES:
         try:
-            result = fetch_stooq_change(symbol)
+            result = fetch_yahoo_index_change(symbol)
             if result:
                 value, pct = result
                 lines.append(f"{label} ~ {value:,.0f} ({pct:+.1f}%)")
         except Exception as e:
-            print(f"Index {label} (Stooq) failed: {e}")
+            print(f"Index {label} (Yahoo) failed: {e}")
 
     for index_id, label in RU_INDICES:
         try:
