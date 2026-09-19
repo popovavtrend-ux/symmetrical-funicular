@@ -884,6 +884,7 @@
     "https://beincrypto.com/?p=867417",
     "https://beincrypto.com/?p=867437",
     "https://beincrypto.com/?p=867441",
+    "https://beincrypto.com/?p=867444",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1122,6 +1123,7 @@
     "https://cointelegraph.com/news/doublezero-adds-kalshi-election-market-data-ahead-of-us-midterms",
     "https://cointelegraph.com/news/dragonflys-qureshi-end-zcash-dev-fund-2028",
     "https://cointelegraph.com/news/dtcpay-25m-series-a-sbi-stablecoin-payments",
+    "https://cointelegraph.com/news/dtcpay-welcomes-sbi-group-as-strategic-investor-extending-series-a-to-25m",
     "https://cointelegraph.com/news/ecb-online-merchants-2027-digital-euro-pilot",
     "https://cointelegraph.com/news/el-salvador-bitcoin-private-donations-imf",
     "https://cointelegraph.com/news/esma-warns-growing-crypto-ties-could-amplify-risks-to-traditional-finance",
@@ -1606,6 +1608,7 @@
     "https://cryptoslate.com/?p=563915",
     "https://cryptoslate.com/?p=563919",
     "https://cryptoslate.com/?p=563930",
+    "https://cryptoslate.com/?p=564019",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
     "https://decrypt.co/?p=373351",
@@ -2209,5 +2212,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
