@@ -49,6 +49,7 @@
     "24b20253-8e5e-4314-b739-cf198b0d7887",
     "26719a24-0467-43d9-a51f-7ec134d29bad",
     "291bbc52-ba9f-4f7d-b8c9-8c199315e0ad",
+    "2a1f8e18-6be2-4dec-9ebd-5a1a173e2c9b",
     "2a26fb98-9e5f-4792-bb0a-50080e0aec49",
     "2a9dba72-fa94-45aa-b17c-5d1e198121ad",
     "2b844be0-08fe-48dd-877b-2612b2f49d7f",
@@ -302,6 +303,7 @@
     "e4d98b4c-e23e-4efd-a270-193655773ac8",
     "e52f03fe-9a41-47af-aaad-f231377c90c5",
     "e54fe816-e71a-4e4d-abcb-0fb8d2584f00",
+    "e58861d0-15eb-4953-ae90-f5c6d01ced34",
     "e65deafa-e0a6-41d8-8478-86131ab3eb87",
     "e8b51689-e9d7-48ed-8e46-ace450e6b2d5",
     "e92a8b02-8e79-4045-8f33-8859d1b4d6cc",
@@ -885,6 +887,8 @@
     "https://beincrypto.com/?p=867437",
     "https://beincrypto.com/?p=867441",
     "https://beincrypto.com/?p=867444",
+    "https://beincrypto.com/?p=867447",
+    "https://beincrypto.com/?p=867455",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1059,6 +1063,7 @@
     "https://cointelegraph.com/news/australia-warns-unlicensed-crypto-firms-of-fines-up-to-10-of-annual-turnover",
     "https://cointelegraph.com/news/balancer-eyes-wind-down-after-restructuring-fails-revive-revenue",
     "https://cointelegraph.com/news/banks-double-eu-mica-crypto-register-esma",
+    "https://cointelegraph.com/news/bastion-wins-conditional-occ-approval-for-national-trust-bank-charter",
     "https://cointelegraph.com/news/bernstein-aggressive-rulemaking-sec-cftc-clarity-act",
     "https://cointelegraph.com/news/binance-adds-11-us-listed-etfs-to-wealth-management-offering",
     "https://cointelegraph.com/news/binance-adds-options-on-1000-us-stocks-and-etfs-in-tradfi-expansion",
@@ -1608,7 +1613,9 @@
     "https://cryptoslate.com/?p=563915",
     "https://cryptoslate.com/?p=563919",
     "https://cryptoslate.com/?p=563930",
+    "https://cryptoslate.com/?p=564005",
     "https://cryptoslate.com/?p=564019",
+    "https://cryptoslate.com/?p=564095",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
     "https://decrypt.co/?p=373351",
@@ -2212,5 +2219,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
