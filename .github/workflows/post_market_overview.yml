@@ -27,5 +27,6 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN_2 }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID_2 }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
           SIGNATURE: "@freshlive101"
         run: python market_overview.py
