@@ -229,8 +229,12 @@ RU_INDICES = (("IMOEX", "IMOEX"), ("RTSI", "RTS"))
 
 def fetch_stooq_change(symbol):
     """Returns (last_close, pct_change_vs_prior_close) from Stooq's daily
-    history CSV, or None if there isn't enough history in the response."""
-    resp = requests.get(STOOQ_DAILY_URL, params={"s": symbol, "i": "d"}, timeout=15)
+    history CSV, or None if there isn't enough history in the response.
+
+    Built as a literal URL rather than requests' params= dict - Stooq's
+    endpoint 404s on a percent-encoded '^' (params= encodes it to %5E),
+    it only accepts the raw character in the query string."""
+    resp = requests.get(f"{STOOQ_DAILY_URL}?s={symbol}&i=d", timeout=15)
     resp.raise_for_status()
     rows = [r for r in resp.text.strip().splitlines() if r and not r.startswith("Date")]
     if len(rows) < 2:
