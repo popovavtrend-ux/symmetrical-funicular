@@ -13,6 +13,20 @@ BULLET_LIST_HINT = (
     "a list where there's nothing to enumerate - most posts won't need one."
 )
 
+# Telegram auto-links "#word" as a clickable hashtag with no markup needed -
+# tagging named entities gives readers a way to browse the channel by
+# topic/ticker, the way Context: capturing concrete specifics gives them
+# something worth browsing for.
+HASHTAG_HINT = (
+    "The first time you mention a specific coin, ticker, company, or named "
+    "regulator/organization (e.g. Bitcoin, SEC, Coinbase, an ETF name), "
+    "turn it into a Telegram hashtag by prefixing it with '#' (e.g. "
+    "'#Bitcoin', '#SEC', '#Coinbase') - this is how readers browse the "
+    "channel by topic. Only tag real named entities, not generic words "
+    "like 'рынок' or 'крипта', and don't tag the same entity twice in one "
+    "post."
+)
+
 
 def _parse_response(text):
     title_m = re.search(r"Title:\s*(.+)", text)
@@ -55,8 +69,12 @@ def translate_via_claude_opinion(title, summary):
         f"run-on sentences. {BULLET_LIST_HINT}\n\n"
         "Reply in exactly this format, and nothing else:\n"
         "Title: <a short catchy title>\n"
-        "Context: <1-2 plain sentences stating the news itself - what "
-        "happened, in your own words, not a translation>\n"
+        "Context: <state the news itself, in your own words, not a "
+        "translation - cover every concrete specific from the source "
+        "(numbers, names, dates, dollar amounts, what exactly happened), "
+        "not just the general gist. Don't compress it down to a vague "
+        "summary just to keep it short - use as many plain sentences as "
+        f"the actual specifics need, typically 2-4. {HASHTAG_HINT}>\n"
         "Opinion: <a brief first-person commentary on it - why it matters, "
         "what it means, 2-3 sentences, in a natural conversational tone: "
         "do NOT open with 'Я считаю', "
@@ -104,8 +122,12 @@ def translate_via_claude_explainer(title, summary):
         "Reply in exactly this format, and nothing else:\n"
         "Title: <a short catchy title>\n"
         "Context: <explain what happened and why, in your own words, in "
-        "enough detail that a complete beginner understands it - 2-4 plain "
-        "sentences, explaining any term you use>\n"
+        "enough detail that a complete beginner understands it - cover "
+        "every concrete specific from the source (numbers, names, dates, "
+        "dollar amounts), not just the general gist, and explain any term "
+        "you use. Don't compress it down to a vague summary just to keep "
+        "it short - use as many plain sentences as the actual specifics "
+        f"need, typically 3-5. {HASHTAG_HINT}>\n"
         "Opinion: <your own perspective on why this matters or what it "
         "helps readers understand about crypto in general, in first "
         "person, 2-3 sentences - explanation/context, never a buy/sell "
