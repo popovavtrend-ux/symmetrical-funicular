@@ -905,6 +905,7 @@
     "https://beincrypto.com/?p=867519",
     "https://beincrypto.com/?p=867528",
     "https://beincrypto.com/?p=867537",
+    "https://beincrypto.com/?p=867551",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1000,6 +1001,11 @@
     "https://bitcoinmagazine.com/?p=55018",
     "https://bitcoinmagazine.com/?p=55024",
     "https://bitcoinmagazine.com/?p=55027",
+    "https://bitcoinmagazine.com/?p=55030",
+    "https://bitcoinmagazine.com/?p=55033",
+    "https://bitcoinmagazine.com/?p=55036",
+    "https://bitcoinmagazine.com/?p=55042",
+    "https://bitcoinmagazine.com/?p=55045",
     "https://cointelegraph.com/magazine/10-of-the-greatest-unsolved-crypto-mysteries",
     "https://cointelegraph.com/magazine/bitcoin-treasuries-can-outperform-btc-but-is-it-a-risk-worth-taking",
     "https://cointelegraph.com/magazine/bitcoins-new-quantum-defenses-189m-sol-cancelled-hodlers-digest",
@@ -1650,6 +1656,7 @@
     "https://cryptoslate.com/?p=564119",
     "https://cryptoslate.com/?p=564122",
     "https://cryptoslate.com/?p=564126",
+    "https://cryptoslate.com/?p=564268",
     "https://cryptoslate.com/?p=564318",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
@@ -1925,6 +1932,7 @@
     "https://decrypt.co/?p=378681",
     "https://decrypt.co/?p=378686",
     "https://decrypt.co/?p=378688",
+    "https://decrypt.co/?p=378695",
     "https://decrypt.co/videos/interviews/0y90noNs/a16z-raise-15b-jerome-powell-vs-trump-crypto-remains-flat-special-guest-dudas",
     "https://decrypt.co/videos/interviews/50vopyFa/the-white-whale-up-10x-in-a-week-lighter-tge-saylor-buys-109m-btc",
     "https://decrypt.co/videos/interviews/72tPnqPX/zec-rebounds-11-trump-says-he-wont-pardon-sam-bankman-fried-florida-revisits-its-strategic-bitcoin-reserve",
@@ -2279,5 +2287,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
