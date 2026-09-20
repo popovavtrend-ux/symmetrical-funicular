@@ -58,6 +58,7 @@
     "2d5b57ff-774f-4c59-a40b-ba59f4739d82",
     "2df95d50-44e0-4057-a280-3d6055ad985a",
     "2efd3d89-00fe-4c22-9da0-589b83e6bb91",
+    "2fa40f0a-0ec7-47a1-a78f-2c40fc9727de",
     "3061deed-302b-4ec3-8e01-ad3d64590871",
     "30fa8896-3b72-4445-b950-7c42746d9511",
     "3119e9ab-be4b-4786-84c2-2129568d3848",
@@ -197,6 +198,7 @@
     "8d7530ef-1f53-48b6-87a9-1e3bb2d9135d",
     "8e58bc27-3008-4540-a510-8be2b0148241",
     "8e8abd43-f7ba-4803-acfc-0a22f136aaf2",
+    "8f30bfdc-d65d-43bf-ad75-3d8859dde468",
     "90af9591-05c0-40e7-b842-afd4828e9b96",
     "9141fc76-89e7-4f12-b379-c9eca3f0d919",
     "91b0c24d-ab89-4ff1-886c-15f663715fad",
@@ -901,6 +903,8 @@
     "https://beincrypto.com/?p=867511",
     "https://beincrypto.com/?p=867517",
     "https://beincrypto.com/?p=867519",
+    "https://beincrypto.com/?p=867528",
+    "https://beincrypto.com/?p=867537",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1279,6 +1283,7 @@
     "https://cointelegraph.com/news/trm-labs-doubles-valuation-to-2b-in-series-c-expansion",
     "https://cointelegraph.com/news/trump-jr-linked-fund-invest-300m-polymarket-1b-round",
     "https://cointelegraph.com/news/trump-linked-account-list-gold-token-crash",
+    "https://cointelegraph.com/news/trump-says-us-will-form-ai-force-and-appoint-ai-czar-reports",
     "https://cointelegraph.com/news/uk-crime-agency-froze-premier-league-crypto-partner-sorare",
     "https://cointelegraph.com/news/uk-fca-sets-crypto-authorization-guidance-ahead-of-september-application-window",
     "https://cointelegraph.com/news/uk-fca-weighs-fund-rules-exemption-for-tokenized-gold-ft",
@@ -1568,6 +1573,7 @@
     "https://cryptoslate.com/?p=562745",
     "https://cryptoslate.com/?p=562746",
     "https://cryptoslate.com/?p=562747",
+    "https://cryptoslate.com/?p=562748",
     "https://cryptoslate.com/?p=562750",
     "https://cryptoslate.com/?p=562763",
     "https://cryptoslate.com/?p=562771",
@@ -1644,6 +1650,7 @@
     "https://cryptoslate.com/?p=564119",
     "https://cryptoslate.com/?p=564122",
     "https://cryptoslate.com/?p=564126",
+    "https://cryptoslate.com/?p=564318",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
     "https://decrypt.co/?p=373351",
@@ -2272,5 +2279,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
