@@ -101,6 +101,7 @@
     "4e86bdee-de20-42e5-a50d-d11c552c5d71",
     "4ebc4cb9-abb0-46c9-8dad-098dc9833d7d",
     "4f028fa6-7547-4d3f-a19e-660275c8eac5",
+    "4f23dcc6-9b15-467a-ac58-345c84cfaced",
     "4f2c69f7-7eda-4fa6-a7b7-891efbac870a",
     "4fe76e9f-34df-4d7e-a9ee-1442c9394479",
     "5001a2d2-a1d0-41b4-8488-bdc2fc16a995",
@@ -905,7 +906,9 @@
     "https://beincrypto.com/?p=867519",
     "https://beincrypto.com/?p=867528",
     "https://beincrypto.com/?p=867537",
+    "https://beincrypto.com/?p=867546",
     "https://beincrypto.com/?p=867551",
+    "https://beincrypto.com/?p=867557",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1640,6 +1643,7 @@
     "https://cryptoslate.com/?p=563635",
     "https://cryptoslate.com/?p=563757",
     "https://cryptoslate.com/?p=563770",
+    "https://cryptoslate.com/?p=563816",
     "https://cryptoslate.com/?p=563817",
     "https://cryptoslate.com/?p=563819",
     "https://cryptoslate.com/?p=563820",
@@ -1933,6 +1937,7 @@
     "https://decrypt.co/?p=378686",
     "https://decrypt.co/?p=378688",
     "https://decrypt.co/?p=378695",
+    "https://decrypt.co/?p=378697",
     "https://decrypt.co/videos/interviews/0y90noNs/a16z-raise-15b-jerome-powell-vs-trump-crypto-remains-flat-special-guest-dudas",
     "https://decrypt.co/videos/interviews/50vopyFa/the-white-whale-up-10x-in-a-week-lighter-tge-saylor-buys-109m-btc",
     "https://decrypt.co/videos/interviews/72tPnqPX/zec-rebounds-11-trump-says-he-wont-pardon-sam-bankman-fried-florida-revisits-its-strategic-bitcoin-reserve",
@@ -2287,5 +2292,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
