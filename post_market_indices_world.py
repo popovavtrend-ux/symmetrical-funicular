@@ -4,7 +4,7 @@ Finance. See market_data.py."""
 import os
 
 from main import signature_message
-from market_data import GREETING, US_INDICES, arrow, fetch_yahoo_index_change, is_trading_day_msk
+from market_data import US_INDICES, arrow, fetch_yahoo_index_change, is_trading_day_msk
 from telegram_post import send_message
 
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
@@ -28,7 +28,7 @@ def build_message():
     lines = build_section()
     if not lines:
         return None
-    parts = [signature_message(), GREETING, "\n".join(lines)]
+    parts = [signature_message(), "\n".join(lines)]
     parts.append("<i>Данные: Yahoo Finance · это не инвестиционная рекомендация</i>")
     return "\n\n".join(parts).strip()
 

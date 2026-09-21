@@ -5,7 +5,7 @@ found for those two). See market_data.py."""
 import os
 
 from main import signature_message
-from market_data import GREETING, build_metals_section, is_trading_day_msk
+from market_data import build_metals_section, is_trading_day_msk
 from telegram_post import send_message
 
 BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
@@ -16,7 +16,7 @@ def build_message():
     lines = build_metals_section()
     if not lines:
         return None
-    parts = [signature_message(), GREETING, "\n".join(lines)]
+    parts = [signature_message(), "\n".join(lines)]
     parts.append("<i>Данные: MOEX, ЦБ РФ · это не инвестиционная рекомендация</i>")
     return "\n\n".join(parts).strip()
 
