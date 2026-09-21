@@ -28,6 +28,7 @@
     "1543efa9-6ca5-4e2d-94f4-885619b87b4f",
     "16e61a70-de7a-40aa-a1c8-55745c978340",
     "1714fe94-5177-41bc-806a-579b17621b44",
+    "1a0aa861-2332-411c-bf4a-569926f54b4c",
     "1a69f590-afbb-44f3-9374-3a0d0e834101",
     "1a8ede8c-f834-4774-8af2-9b1b9d2d877c",
     "1c1e88d1-3a35-4529-972e-baa4a2d1d377",
@@ -214,6 +215,7 @@
     "96a05f58-df73-4770-a5a8-ddf1b51e9061",
     "9803fc55-c00e-47b7-b51a-0f87b4292cfb",
     "99743527-a3bd-4cff-ae47-aaf819321e2a",
+    "99d78461-a199-4a26-9875-7cead1e1eca9",
     "9a928b56-149a-488b-bdd2-4870a3f7ddfd",
     "9ab2f9f0-402b-43e2-80af-445e4523818c",
     "9b0358fe-ef3d-4e4c-a791-c869be683485",
@@ -913,6 +915,10 @@
     "https://beincrypto.com/?p=867589",
     "https://beincrypto.com/?p=867597",
     "https://beincrypto.com/?p=867607",
+    "https://beincrypto.com/?p=867612",
+    "https://beincrypto.com/?p=867614",
+    "https://beincrypto.com/?p=867617",
+    "https://beincrypto.com/?p=867636",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -2302,5 +2308,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
