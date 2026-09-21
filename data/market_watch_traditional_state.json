@@ -1,6 +1,6 @@
 {
-  "currency:USD000UTSTOM": 84.9325,
-  "currency:CNYRUB_TOM": 12.61,
+  "currency:USD000UTSTOM": 83.9775,
+  "currency:CNYRUB_TOM": 12.479,
   "metal:GLDRUB_TOM": 11847,
   "metal:SLVRUB_TOM": 177,
   "index:IMOEX": 2278.06,
@@ -259,7 +259,7 @@
   "stock:RU000A100EQ2": 12.75,
   "stock:RU000A100WZ5": 1410,
   "stock:RU000A101NK4": 738,
-  "stock:RU000A101UY0": 1800,
+  "stock:RU000A101UY0": 1505,
   "stock:RU000A1022Z1": 7852,
   "stock:RU000A103B62": 1359.5,
   "stock:RU000A104172": 1581,
@@ -382,7 +382,7 @@
   "stock:VJGZP": 1186,
   "stock:VKCO": 112.15,
   "stock:VLHZ": 131.8,
-  "stock:VRSB": 260.5,
+  "stock:VRSB": 274,
   "stock:VRSBP": 123.2,
   "stock:VSEH": 69.27,
   "stock:VSMO": 22820,
@@ -445,5 +445,7 @@
   "stock:XHEDGE": 269.05,
   "index:%5EGSPC": 7650.5,
   "index:%5EDJI": 51682.64,
-  "index:%5EIXIC": 26522.545
+  "index:%5EIXIC": 26926.877,
+  "stock:RU000A0ZZCD8": 3060,
+  "stock:XNIRUM": 1050
 }
