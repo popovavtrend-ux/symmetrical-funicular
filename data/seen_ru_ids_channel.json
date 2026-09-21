@@ -190,6 +190,8 @@
     "https://cryptocurrency.tech/?p=124141",
     "https://cryptocurrency.tech/?p=124144",
     "https://cryptocurrency.tech/?p=124148",
+    "https://cryptocurrency.tech/?p=124151",
+    "https://cryptocurrency.tech/?p=124158",
     "https://forklog.com/?p=286911",
     "https://forklog.com/?p=287306",
     "https://forklog.com/?p=287324",
@@ -605,7 +607,14 @@
     "https://forklog.com/?p=288966",
     "https://forklog.com/?p=288968",
     "https://forklog.com/?p=288975",
+    "https://forklog.com/?p=288977",
     "https://forklog.com/?p=288979",
+    "https://forklog.com/?p=288981",
+    "https://forklog.com/?p=288990",
+    "https://forklog.com/?p=288993",
+    "https://forklog.com/?p=288996",
+    "https://forklog.com/?p=289000",
+    "https://forklog.com/?p=289005",
     "https://incrypted.com/?p=150294",
     "https://incrypted.com/?p=260142",
     "https://incrypted.com/?p=311031",
@@ -851,6 +860,9 @@
     "https://incrypted.com/?p=397670",
     "https://incrypted.com/?p=397686",
     "https://incrypted.com/?p=397703",
+    "https://incrypted.com/?p=397749",
+    "https://incrypted.com/?p=397773",
+    "https://incrypted.com/?p=397779",
     "https://incrypted.com/?p=84819",
     "https://incrypted.com/?p=98278",
     "https://ru.beincrypto.com/?p=393050",
@@ -1142,6 +1154,8 @@
     "https://ru.beincrypto.com/?p=396216",
     "https://ru.beincrypto.com/?p=396218",
     "https://ru.beincrypto.com/?p=396254",
+    "https://ru.beincrypto.com/?p=396255",
+    "https://ru.beincrypto.com/?p=396256",
     "https://ru.beincrypto.com/ai-aktrisa-tilly-norwood-piers-morgan-glitch/",
     "https://ru.beincrypto.com/amc-stock-roste-na-fone-spora-s-robinhood/",
     "https://ru.beincrypto.com/bitcoin-gold-snizhenie-na-fone-prognozov-po-zarplate-v-ssha/",
@@ -1166,6 +1180,7 @@
     "https://ru.beincrypto.com/robinhood-insayder-treiding-hyperliquid-obvinenie-engineerov/",
     "https://ru.beincrypto.com/sbf-supreme-court-ftx-fraud-petition/",
     "https://ru.beincrypto.com/ssha-cpi-gold-bitcoin-reaktsiya/",
+    "https://ru.beincrypto.com/strategiya-950-bitcoin-pokupka-i-strc-obratnyj-vykup/",
     "https://ru.beincrypto.com/trezor-utec-uteemail-utebreach-phishing/"
   ],
   "seeded_feeds": [
@@ -1174,5 +1189,5 @@
     "https://incrypted.com/feed/",
     "https://ru.beincrypto.com/feed/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
