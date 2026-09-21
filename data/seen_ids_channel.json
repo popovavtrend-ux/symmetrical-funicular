@@ -918,7 +918,9 @@
     "https://beincrypto.com/?p=867612",
     "https://beincrypto.com/?p=867614",
     "https://beincrypto.com/?p=867617",
+    "https://beincrypto.com/?p=867625",
     "https://beincrypto.com/?p=867636",
+    "https://beincrypto.com/?p=867646",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1062,6 +1064,7 @@
     "https://cointelegraph.com/markets/bitcoin-hits-81k-as-us-bond-yields-rebound-on-global-oil-woes",
     "https://cointelegraph.com/markets/bitcoin-passes-79k-oil-prices-cool-on-trump-iran-war-hints",
     "https://cointelegraph.com/markets/bitcoin-price-falls-to-756k-september-low-as-global-bonds-hit-multidecade-highs",
+    "https://cointelegraph.com/markets/bitcoin-reclaims-50-week-moving-average-is-the-bear-market-over",
     "https://cointelegraph.com/markets/bitcoin-reclaims-810-dxy-falls-amid-continuing-suspected-yen-intervention",
     "https://cointelegraph.com/markets/bitcoin-remains-flat-as-global-bond-bear-market-rages-on",
     "https://cointelegraph.com/markets/bitcoin-sell-side-risk-returns-rare-lows-fade",
@@ -1188,6 +1191,7 @@
     "https://cointelegraph.com/news/gemini-singapore-mpi-license-crypto-services",
     "https://cointelegraph.com/news/german-finance-ministry-25-crypto-tax-2028",
     "https://cointelegraph.com/news/grayscales-zcash-etf-files-for-3-for-1-forward-share-split",
+    "https://cointelegraph.com/news/hana-bank-euroclear-blockchain-100m-bond",
     "https://cointelegraph.com/news/harmony-proposes-shutting-down-layer-1-migrating-one-to-ethereum",
     "https://cointelegraph.com/news/hashkey-dtcc-first-asian-crypto-service-provider",
     "https://cointelegraph.com/news/hong-kong-jails-former-banker-over-16b-false-credit-cryptocurrency-bribes-report",
@@ -2308,5 +2312,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
