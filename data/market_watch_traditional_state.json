@@ -162,7 +162,7 @@
   "stock:LSRG": 504,
   "stock:LVHK": 19.15,
   "stock:MAGE": 2.83,
-  "stock:MAGEP": 2.44,
+  "stock:MAGEP": 2.645,
   "stock:MAGN": 21.27,
   "stock:MBNK": 931.5,
   "stock:MDMG": 1303.3,
@@ -403,7 +403,7 @@
   "stock:YAKG": 34,
   "stock:YDEX": 3706,
   "stock:YKEN": 0.469,
-  "stock:YKENP": 0.321,
+  "stock:YKENP": 0.339,
   "stock:YRSB": 660,
   "stock:YRSBP": 186,
   "stock:YUAN": 132.3,
@@ -439,5 +439,11 @@
   "stock:RU000A109QR5": 3250,
   "stock:RU000A10A489": 835,
   "stock:RU000A10BT42": 1242.2,
-  "stock:XSBORA": 6880
+  "stock:XSBORA": 6880,
+  "stock:BNDB": 1330.7,
+  "stock:RU000A105RJ8": 1595,
+  "stock:XHEDGE": 269.05,
+  "index:%5EGSPC": 7650.5,
+  "index:%5EDJI": 51682.64,
+  "index:%5EIXIC": 26522.545
 }
