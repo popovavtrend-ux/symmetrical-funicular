@@ -1013,6 +1013,7 @@
     "https://bitcoinmagazine.com/?p=55036",
     "https://bitcoinmagazine.com/?p=55042",
     "https://bitcoinmagazine.com/?p=55045",
+    "https://bitcoinmagazine.com/?p=55050",
     "https://cointelegraph.com/magazine/10-of-the-greatest-unsolved-crypto-mysteries",
     "https://cointelegraph.com/magazine/bitcoin-treasuries-can-outperform-btc-but-is-it-a-risk-worth-taking",
     "https://cointelegraph.com/magazine/bitcoins-new-quantum-defenses-189m-sol-cancelled-hodlers-digest",
@@ -1226,6 +1227,7 @@
     "https://cointelegraph.com/news/new-jersey-supreme-court-kalshi-prediction-markets-cftc",
     "https://cointelegraph.com/news/new-york-plattsburgh-crypto-mining-ai-ban",
     "https://cointelegraph.com/news/north-korea-using-foreign-talent-to-help-infiltrate-us-companies-report",
+    "https://cointelegraph.com/news/north-korean-fake-recruiters-infect-30k-devices-steal-107m-in-crypto",
     "https://cointelegraph.com/news/nvidia-buys-hugging-face-12-9-billion-ai-software",
     "https://cointelegraph.com/news/nvidia-considers-10b-investment-in-anthropic-record-ipo-reuters",
     "https://cointelegraph.com/news/ogcom-cleared-sec-stock-futures-cryptocom-ceo",
@@ -2300,5 +2302,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
