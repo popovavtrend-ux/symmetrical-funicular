@@ -90,7 +90,7 @@
   "stock:EQMX": 124.6,
   "stock:ESGE": 66.03,
   "stock:ETLN": 19.5,
-  "stock:EUTR": 23,
+  "stock:EUTR": 21.75,
   "stock:EVRZ": 49.1,
   "stock:FEES": 0.04934,
   "stock:FESH": 59.43,
@@ -431,5 +431,13 @@
   "stock:SILA": 112.55,
   "stock:WILD": 914.8,
   "stock:XAVIUM": 964,
-  "stock:XIPKSV": 10850
+  "stock:XIPKSV": 10850,
+  "stock:RU000A0ZZMN6": 3910,
+  "stock:RU000A107RE5": 100000,
+  "stock:RU000A108ZB2": 136800,
+  "stock:RU000A109G79": 3150,
+  "stock:RU000A109QR5": 3250,
+  "stock:RU000A10A489": 835,
+  "stock:RU000A10BT42": 1242.2,
+  "stock:XSBORA": 6880
 }
