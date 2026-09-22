@@ -402,7 +402,7 @@
   "stock:XXXXXX": 880.3,
   "stock:YAKG": 34,
   "stock:YDEX": 3706,
-  "stock:YKEN": 0.456,
+  "stock:YKEN": 0.425,
   "stock:YKENP": 0.293,
   "stock:YRSB": 660,
   "stock:YRSBP": 186,
@@ -454,5 +454,9 @@
   "stock:RU000A105GY0": 101500,
   "stock:RU000A107860": 1349,
   "stock:XCREDI": 900,
-  "stock:RU000A0HGNH4": 9778
+  "stock:RU000A0HGNH4": 9778,
+  "stock:RU000A0JPMD2": 10044,
+  "stock:RU000A0JWCE7": 1345,
+  "stock:RU000A106LC4": 1000,
+  "stock:RU000A10CKQ9": 126200
 }
