@@ -1,43 +1,25 @@
 {
-  "metal:GLDRUB_TOM": {
-    "label": "Золото",
-    "pct": -2.2368532117835738,
-    "category": "драгоценный металл",
-    "attempts": 2
-  },
-  "metal:SLVRUB_TOM": {
-    "label": "Серебро",
-    "pct": -2.6553672316384116,
-    "category": "драгоценный металл",
-    "attempts": 2
-  },
   "stock:ARSA": {
     "label": "#ARSA (Арсагера)",
     "pct": -5.486284289276802,
     "category": "акция Арсагера",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:DVEC": {
     "label": "#DVEC (ДЭК ао)",
     "pct": -17.085904129093503,
     "category": "акция ДЭК ао",
-    "attempts": 1
-  },
-  "stock:IGST": {
-    "label": "#IGST (Ижсталь2ао)",
-    "pct": 6.63265306122449,
-    "category": "акция Ижсталь2ао",
     "attempts": 2
   },
   "stock:KCHE": {
     "label": "#KCHE (КамчатЭ ао)",
     "pct": -30.14354066985646,
     "category": "акция КамчатЭ ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KCHEP": {
     "label": "#KCHEP (КамчатЭ ап)",
-    "pct": -22.033898305084758,
+    "pct": 5.652173913043494,
     "category": "акция КамчатЭ ап",
     "attempts": 1
   },
@@ -45,65 +27,29 @@
     "label": "#MAGEP (МагадЭн ап)",
     "pct": -17.073170731707325,
     "category": "акция МагадЭн ап",
-    "attempts": 1
-  },
-  "stock:MGTSP": {
-    "label": "#MGTSP (МГТС-4ап)",
-    "pct": 8.950086058519794,
-    "category": "акция МГТС-4ап",
     "attempts": 2
   },
   "stock:RU000A109G79": {
     "label": "#RU000A109G79 (ПИФГРИНФЛО)",
-    "pct": -16.19047619047619,
+    "pct": 13.636363636363635,
     "category": "акция ПИФГРИНФЛО",
-    "attempts": 2
-  },
-  "stock:SAGO": {
-    "label": "#SAGO (СамарЭн-ао)",
-    "pct": 6.791569086651056,
-    "category": "акция СамарЭн-ао",
-    "attempts": 2
+    "attempts": 1
   },
   "stock:SLEN": {
     "label": "#SLEN (Сахэнер ао)",
     "pct": -18.07692307692308,
     "category": "акция Сахэнер ао",
-    "attempts": 1
-  },
-  "stock:TGKBP": {
-    "label": "#TGKBP (ТГК-2 ап)",
-    "pct": 8.10419681620839,
-    "category": "акция ТГК-2 ап",
-    "attempts": 2
-  },
-  "stock:URKZ": {
-    "label": "#URKZ (УрКузница)",
-    "pct": -10.696761530912664,
-    "category": "акция УрКузница",
-    "attempts": 2
-  },
-  "stock:VEON-RX": {
-    "label": "#VEON-RX (VEON)",
-    "pct": 5.222734254992329,
-    "category": "акция VEON",
     "attempts": 2
   },
   "stock:VSYD": {
     "label": "#VSYD (ВыбСудЗ ао)",
     "pct": 10.65989847715736,
     "category": "акция ВыбСудЗ ао",
-    "attempts": 1
-  },
-  "stock:VSYDP": {
-    "label": "#VSYDP (ВыбСудЗ ап)",
-    "pct": 9.16030534351145,
-    "category": "акция ВыбСудЗ ап",
     "attempts": 2
   },
   "stock:YKEN": {
     "label": "#YKEN (Якутскэнрг)",
-    "pct": -17.850287907869486,
+    "pct": 6.542056074766362,
     "category": "акция Якутскэнрг",
     "attempts": 1
   },
@@ -111,36 +57,48 @@
     "label": "#YKENP (Якутскэн-п)",
     "pct": -20.3804347826087,
     "category": "акция Якутскэн-п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MAGE": {
     "label": "#MAGE (МагадЭн ао)",
     "pct": -11.307420494699656,
     "category": "акция МагадЭн ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MISBP": {
     "label": "#MISBP (ТНСэМаЭл-п)",
     "pct": 5.095541401273882,
     "category": "акция ТНСэМаЭл-п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RTSBP": {
     "label": "#RTSBP (ТНСэнРст-п)",
     "pct": -6.525285481239811,
     "category": "акция ТНСэнРст-п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A10BBS6": {
     "label": "#RU000A10BBS6 (ПАРУС-НиНо)",
     "pct": 5.2781740370898715,
     "category": "акция ПАРУС-НиНо",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:TNSE": {
     "label": "#TNSE (ТНСэнрг ао)",
     "pct": 5.240174672489083,
     "category": "акция ТНСэнрг ао",
+    "attempts": 2
+  },
+  "stock:RU000A101UY0": {
+    "label": "#RU000A101UY0 (ОПИФ MM)",
+    "pct": 18.93687707641196,
+    "category": "акция ОПИФ MM",
+    "attempts": 1
+  },
+  "stock:VRSB": {
+    "label": "#VRSB (ТНСэнВорон)",
+    "pct": -8.02919708029197,
+    "category": "акция ТНСэнВорон",
     "attempts": 1
   }
 }
