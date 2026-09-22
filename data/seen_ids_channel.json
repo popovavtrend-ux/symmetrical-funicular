@@ -29,6 +29,7 @@
     "1543efa9-6ca5-4e2d-94f4-885619b87b4f",
     "16e61a70-de7a-40aa-a1c8-55745c978340",
     "1714fe94-5177-41bc-806a-579b17621b44",
+    "178605b8-2854-4867-a431-9313d749d6bb",
     "1a0aa861-2332-411c-bf4a-569926f54b4c",
     "1a69f590-afbb-44f3-9374-3a0d0e834101",
     "1a8ede8c-f834-4774-8af2-9b1b9d2d877c",
@@ -337,6 +338,7 @@
     "e9b5da25-3a36-4760-8ddd-bba20b682f5b",
     "e9c732f4-07d5-4017-b8c7-31d8b2327f62",
     "e9df1363-474d-4487-bb8e-f65566c2b566",
+    "e9fa3e6e-11dc-41c5-aa34-c7c606c492f9",
     "ea6b9dff-a0f8-453c-96de-56c0d7cb925a",
     "ea94f6db-7cc1-470b-be97-b578b5dbf342",
     "eb778519-5a5e-48ce-b5fa-fc4dfb736e06",
@@ -975,6 +977,7 @@
     "https://beincrypto.com/?p=867858",
     "https://beincrypto.com/?p=867864",
     "https://beincrypto.com/?p=867869",
+    "https://beincrypto.com/?p=867888",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1114,6 +1117,7 @@
     "https://cointelegraph.com/markets/bitcoin-cycle-bottom-58k-james-check",
     "https://cointelegraph.com/markets/bitcoin-dips-fed-warsh-dismisses-recent-low-inflation-prints",
     "https://cointelegraph.com/markets/bitcoin-etf-best-month-2026-btc-up-25-august",
+    "https://cointelegraph.com/markets/bitcoin-etf-biggest-inflow-october-2025",
     "https://cointelegraph.com/markets/bitcoin-etf-draw-731-million-highest-january-btc-80k",
     "https://cointelegraph.com/markets/bitcoin-etf-end-9-day-inflow-streak-btc-below-78k",
     "https://cointelegraph.com/markets/bitcoin-etf-inflows-3-8-billion-strongest-three-week-run-2026",
@@ -1160,6 +1164,7 @@
     "https://cointelegraph.com/news/amc-ceo-criticizes-robinhoods-tokenized-stock",
     "https://cointelegraph.com/news/anchorage-digital-adds-institutional-access-to-frgmnts-fusd-stablecoin",
     "https://cointelegraph.com/news/anchorage-digital-brings-tokenized-uranium-custody-to-federally-chartered-crypto-bank",
+    "https://cointelegraph.com/news/animoca-currenc-merger-delaying-nasdaq-debut",
     "https://cointelegraph.com/news/anthropic-chief-urges-slowdown-in-ai-development-to-safer-pace",
     "https://cointelegraph.com/news/anthropic-tabs-accenture-as-embedded-evaluator-to-help-with-ai-slowdown-proposal",
     "https://cointelegraph.com/news/arya-ag-tests-tokenized-grain-receipts-avalanche",
@@ -1779,6 +1784,7 @@
     "https://cryptoslate.com/?p=564699",
     "https://cryptoslate.com/?p=564703",
     "https://cryptoslate.com/?p=564717",
+    "https://cryptoslate.com/?p=564720",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
     "https://decrypt.co/?p=373351",
@@ -2437,5 +2443,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
