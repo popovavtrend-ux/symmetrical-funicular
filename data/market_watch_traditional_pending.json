@@ -1,0 +1,116 @@
+{
+  "metal:GLDRUB_TOM": {
+    "label": "Золото",
+    "pct": -2.2368532117835738,
+    "category": "драгоценный металл",
+    "attempts": 1
+  },
+  "metal:SLVRUB_TOM": {
+    "label": "Серебро",
+    "pct": -2.6553672316384116,
+    "category": "драгоценный металл",
+    "attempts": 1
+  },
+  "stock:ARSA": {
+    "label": "#ARSA (Арсагера)",
+    "pct": 16.231884057971,
+    "category": "акция Арсагера",
+    "attempts": 1
+  },
+  "stock:DVEC": {
+    "label": "#DVEC (ДЭК ао)",
+    "pct": 8.051282051282065,
+    "category": "акция ДЭК ао",
+    "attempts": 1
+  },
+  "stock:IGST": {
+    "label": "#IGST (Ижсталь2ао)",
+    "pct": 6.63265306122449,
+    "category": "акция Ижсталь2ао",
+    "attempts": 1
+  },
+  "stock:KCHE": {
+    "label": "#KCHE (КамчатЭ ао)",
+    "pct": 21.865889212827973,
+    "category": "акция КамчатЭ ао",
+    "attempts": 1
+  },
+  "stock:KCHEP": {
+    "label": "#KCHEP (КамчатЭ ап)",
+    "pct": 12.167300380228149,
+    "category": "акция КамчатЭ ап",
+    "attempts": 1
+  },
+  "stock:MAGEP": {
+    "label": "#MAGEP (МагадЭн ап)",
+    "pct": 8.50661625708885,
+    "category": "акция МагадЭн ап",
+    "attempts": 1
+  },
+  "stock:MGTSP": {
+    "label": "#MGTSP (МГТС-4ап)",
+    "pct": 8.950086058519794,
+    "category": "акция МГТС-4ап",
+    "attempts": 1
+  },
+  "stock:RU000A109G79": {
+    "label": "#RU000A109G79 (ПИФГРИНФЛО)",
+    "pct": -16.19047619047619,
+    "category": "акция ПИФГРИНФЛО",
+    "attempts": 1
+  },
+  "stock:SAGO": {
+    "label": "#SAGO (СамарЭн-ао)",
+    "pct": 6.791569086651056,
+    "category": "акция СамарЭн-ао",
+    "attempts": 1
+  },
+  "stock:SLEN": {
+    "label": "#SLEN (Сахэнер ао)",
+    "pct": 9.859154929577468,
+    "category": "акция Сахэнер ао",
+    "attempts": 1
+  },
+  "stock:TGKBP": {
+    "label": "#TGKBP (ТГК-2 ап)",
+    "pct": 8.10419681620839,
+    "category": "акция ТГК-2 ап",
+    "attempts": 1
+  },
+  "stock:URKZ": {
+    "label": "#URKZ (УрКузница)",
+    "pct": -10.696761530912664,
+    "category": "акция УрКузница",
+    "attempts": 1
+  },
+  "stock:VEON-RX": {
+    "label": "#VEON-RX (VEON)",
+    "pct": 5.222734254992329,
+    "category": "акция VEON",
+    "attempts": 1
+  },
+  "stock:VSYD": {
+    "label": "#VSYD (ВыбСудЗ ао)",
+    "pct": 8.83977900552486,
+    "category": "акция ВыбСудЗ ао",
+    "attempts": 1
+  },
+  "stock:VSYDP": {
+    "label": "#VSYDP (ВыбСудЗ ап)",
+    "pct": 9.16030534351145,
+    "category": "акция ВыбСудЗ ап",
+    "attempts": 1
+  },
+  "stock:YKEN": {
+    "label": "#YKEN (Якутскэнрг)",
+    "pct": 11.087420042643933,
+    "category": "акция Якутскэнрг",
+    "attempts": 1
+  },
+  "stock:YKENP": {
+    "label": "#YKENP (Якутскэн-п)",
+    "pct": 8.554572271386421,
+    "category": "акция Якутскэн-п",
+    "attempts": 1
+  }
+}
