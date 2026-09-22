@@ -10,6 +10,7 @@
     "05a1c24a-d77c-46e8-a8e5-4c72bafd8c97",
     "0890e71d-9304-4a8f-80a1-6a64253afdb5",
     "08b4ed97-e33b-462c-b114-9388e8c33249",
+    "090b7181-5cff-434b-aec9-98ce18e173fa",
     "091ead47-c8fc-4862-9330-36e5e1982345",
     "095cc163-38fa-4b4c-b3cb-feba4f24f597",
     "09877d81-377a-4858-9775-7af0ef5a4753",
@@ -232,6 +233,7 @@
     "9ce678d1-0577-4847-b046-89efc6291b92",
     "9d40a18a-972c-4258-a755-e0b478df5981",
     "9d9de2e6-821e-44fe-89cb-83be1590c656",
+    "9edbaaa4-df04-48f6-a080-fa24798ace78",
     "9f697010-b149-42d6-a2e0-2e25c26b4956",
     "9fc5e963-9276-4991-bf7d-08cae1bbe707",
     "9ff82f36-11cf-4129-8728-448cc35fc53b",
@@ -246,6 +248,7 @@
     "a5ef938c-0c36-499f-a3b4-cbf731135356",
     "a68c0429-679c-4e28-b5c4-697b656aea09",
     "a72c73d8-eb4c-4e3d-9bc0-7490831d85f3",
+    "a862c9b5-b9ba-4e03-ad89-f741048cf060",
     "a93d0f83-f233-4cb1-a697-857b80483621",
     "a952a82c-4cbf-4654-8daf-d5219c9df9bf",
     "a9da6545-a214-45af-8a20-641cd4f536c7",
@@ -971,6 +974,7 @@
     "https://beincrypto.com/?p=867856",
     "https://beincrypto.com/?p=867858",
     "https://beincrypto.com/?p=867864",
+    "https://beincrypto.com/?p=867869",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1162,6 +1166,7 @@
     "https://cointelegraph.com/news/asia-digital-asset-custody-deals-ripple-coincheck",
     "https://cointelegraph.com/news/australia-removes-45-crypto-remittance-registrations",
     "https://cointelegraph.com/news/australia-warns-unlicensed-crypto-firms-of-fines-up-to-10-of-annual-turnover",
+    "https://cointelegraph.com/news/australian-40-year-economic-outlook-recognizes-ai-revolution-omits-crypto",
     "https://cointelegraph.com/news/balancer-eyes-wind-down-after-restructuring-fails-revive-revenue",
     "https://cointelegraph.com/news/bank-korea-won-settlement-pilot",
     "https://cointelegraph.com/news/banks-double-eu-mica-crypto-register-esma",
@@ -1773,6 +1778,7 @@
     "https://cryptoslate.com/?p=564695",
     "https://cryptoslate.com/?p=564699",
     "https://cryptoslate.com/?p=564703",
+    "https://cryptoslate.com/?p=564717",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
     "https://decrypt.co/?p=373351",
@@ -2431,5 +2437,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
