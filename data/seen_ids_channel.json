@@ -966,6 +966,11 @@
     "https://beincrypto.com/?p=867829",
     "https://beincrypto.com/?p=867831",
     "https://beincrypto.com/?p=867835",
+    "https://beincrypto.com/?p=867846",
+    "https://beincrypto.com/?p=867851",
+    "https://beincrypto.com/?p=867856",
+    "https://beincrypto.com/?p=867858",
+    "https://beincrypto.com/?p=867864",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1221,9 +1226,11 @@
     "https://cointelegraph.com/news/crypto-pac-protect-progress-spending-massachusetts-primary",
     "https://cointelegraph.com/news/crypto-stocks-rebound-after-clarity-selloff-as-us-regulators-move-ahead",
     "https://cointelegraph.com/news/dbs-citi-first-weekend-tokenized-deposit-swift",
+    "https://cointelegraph.com/news/decentralized-prediction-market-trueo-to-move-from-base-to-ethereum",
     "https://cointelegraph.com/news/democrats-push-back-on-gops-final-clarity-offer-with-counterproposal",
     "https://cointelegraph.com/news/deutsche-bank-regulatory-nod-institutional-crypto-custody",
     "https://cointelegraph.com/news/doj-61m-usdt-forfeiture-iranian-oil",
+    "https://cointelegraph.com/news/doj-probing-binance-over-alleged-iran-sanction-violations-bloomberg",
     "https://cointelegraph.com/news/donald-trump-crypto-investors-losses-public-citizen",
     "https://cointelegraph.com/news/doublezero-adds-kalshi-election-market-data-ahead-of-us-midterms",
     "https://cointelegraph.com/news/dragonflys-qureshi-end-zcash-dev-fund-2028",
@@ -1269,6 +1276,7 @@
     "https://cointelegraph.com/news/italy-government-email-breach-revolut-data-leak",
     "https://cointelegraph.com/news/italys-central-bank-orders-sanctions-screening-for-crypto-transfers",
     "https://cointelegraph.com/news/japanese-regulator-tax-exemption-trust-type-stablecoins-2027",
+    "https://cointelegraph.com/news/kakao-pay-kakaobank-fireblocks-stablecoin-infrastructure",
     "https://cointelegraph.com/news/kalshi-bans-politicians-insider-trading-bets-manipulation",
     "https://cointelegraph.com/news/kalshi-cftc-greenlight-regulated-wti-oil-perpetuals",
     "https://cointelegraph.com/news/kalshi-joins-coinbase-with-filing-for-us-stock-perpetual-futures",
@@ -1763,6 +1771,7 @@
     "https://cryptoslate.com/?p=564641",
     "https://cryptoslate.com/?p=564652",
     "https://cryptoslate.com/?p=564695",
+    "https://cryptoslate.com/?p=564699",
     "https://cryptoslate.com/?p=564703",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
@@ -2422,5 +2431,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
