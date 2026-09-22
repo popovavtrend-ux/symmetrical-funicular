@@ -1,104 +1,68 @@
 {
-  "stock:ARSA": {
-    "label": "#ARSA (Арсагера)",
-    "pct": -5.486284289276802,
-    "category": "акция Арсагера",
-    "attempts": 2
-  },
-  "stock:DVEC": {
-    "label": "#DVEC (ДЭК ао)",
-    "pct": -17.085904129093503,
-    "category": "акция ДЭК ао",
-    "attempts": 2
-  },
-  "stock:KCHE": {
-    "label": "#KCHE (КамчатЭ ао)",
-    "pct": -30.14354066985646,
-    "category": "акция КамчатЭ ао",
-    "attempts": 2
-  },
   "stock:KCHEP": {
     "label": "#KCHEP (КамчатЭ ап)",
-    "pct": 5.652173913043494,
+    "pct": -5.349794238683141,
     "category": "акция КамчатЭ ап",
     "attempts": 1
   },
-  "stock:MAGEP": {
-    "label": "#MAGEP (МагадЭн ап)",
-    "pct": -17.073170731707325,
-    "category": "акция МагадЭн ап",
-    "attempts": 2
-  },
   "stock:RU000A109G79": {
     "label": "#RU000A109G79 (ПИФГРИНФЛО)",
-    "pct": 13.636363636363635,
+    "pct": -10.0,
     "category": "акция ПИФГРИНФЛО",
     "attempts": 1
-  },
-  "stock:SLEN": {
-    "label": "#SLEN (Сахэнер ао)",
-    "pct": -18.07692307692308,
-    "category": "акция Сахэнер ао",
-    "attempts": 2
-  },
-  "stock:VSYD": {
-    "label": "#VSYD (ВыбСудЗ ао)",
-    "pct": 10.65989847715736,
-    "category": "акция ВыбСудЗ ао",
-    "attempts": 2
   },
   "stock:YKEN": {
     "label": "#YKEN (Якутскэнрг)",
     "pct": 6.542056074766362,
     "category": "акция Якутскэнрг",
-    "attempts": 1
-  },
-  "stock:YKENP": {
-    "label": "#YKENP (Якутскэн-п)",
-    "pct": -20.3804347826087,
-    "category": "акция Якутскэн-п",
-    "attempts": 2
-  },
-  "stock:MAGE": {
-    "label": "#MAGE (МагадЭн ао)",
-    "pct": -11.307420494699656,
-    "category": "акция МагадЭн ао",
-    "attempts": 2
-  },
-  "stock:MISBP": {
-    "label": "#MISBP (ТНСэМаЭл-п)",
-    "pct": 5.095541401273882,
-    "category": "акция ТНСэМаЭл-п",
-    "attempts": 2
-  },
-  "stock:RTSBP": {
-    "label": "#RTSBP (ТНСэнРст-п)",
-    "pct": -6.525285481239811,
-    "category": "акция ТНСэнРст-п",
-    "attempts": 2
-  },
-  "stock:RU000A10BBS6": {
-    "label": "#RU000A10BBS6 (ПАРУС-НиНо)",
-    "pct": 5.2781740370898715,
-    "category": "акция ПАРУС-НиНо",
-    "attempts": 2
-  },
-  "stock:TNSE": {
-    "label": "#TNSE (ТНСэнрг ао)",
-    "pct": 5.240174672489083,
-    "category": "акция ТНСэнрг ао",
     "attempts": 2
   },
   "stock:RU000A101UY0": {
     "label": "#RU000A101UY0 (ОПИФ MM)",
     "pct": 18.93687707641196,
     "category": "акция ОПИФ MM",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VRSB": {
     "label": "#VRSB (ТНСэнВорон)",
     "pct": -8.02919708029197,
     "category": "акция ТНСэнВорон",
+    "attempts": 2
+  },
+  "stock:ASSB": {
+    "label": "#ASSB (АстрЭнСб)",
+    "pct": -6.428571428571418,
+    "category": "акция АстрЭнСб",
+    "attempts": 1
+  },
+  "stock:HYDR": {
+    "label": "#HYDR (РусГидро)",
+    "pct": 5.858310626703003,
+    "category": "акция РусГидро",
+    "attempts": 1
+  },
+  "stock:KROT": {
+    "label": "#KROT (КрасОкт-ао)",
+    "pct": 5.648535564853557,
+    "category": "акция КрасОкт-ао",
+    "attempts": 1
+  },
+  "stock:KROTP": {
+    "label": "#KROTP (КрасОкт-1п)",
+    "pct": 10.187110187110187,
+    "category": "акция КрасОкт-1п",
+    "attempts": 1
+  },
+  "stock:RU000A0JXP78": {
+    "label": "#RU000A0JXP78 (ЗПИФДОМ.РФ)",
+    "pct": -6.764705882352941,
+    "category": "акция ЗПИФДОМ.РФ",
+    "attempts": 1
+  },
+  "stock:RU000A103B62": {
+    "label": "#RU000A103B62 (РенДохПРО)",
+    "pct": 6.068407502758367,
+    "category": "акция РенДохПРО",
     "attempts": 1
   }
 }
