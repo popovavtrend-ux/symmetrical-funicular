@@ -963,6 +963,9 @@
     "https://beincrypto.com/?p=867809",
     "https://beincrypto.com/?p=867817",
     "https://beincrypto.com/?p=867825",
+    "https://beincrypto.com/?p=867829",
+    "https://beincrypto.com/?p=867831",
+    "https://beincrypto.com/?p=867835",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -1759,6 +1762,7 @@
     "https://cryptoslate.com/?p=564580",
     "https://cryptoslate.com/?p=564641",
     "https://cryptoslate.com/?p=564652",
+    "https://cryptoslate.com/?p=564695",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
     "https://decrypt.co/?p=373351",
@@ -2050,6 +2054,8 @@
     "https://decrypt.co/?p=378874",
     "https://decrypt.co/?p=378877",
     "https://decrypt.co/?p=378889",
+    "https://decrypt.co/?p=378891",
+    "https://decrypt.co/?p=378900",
     "https://decrypt.co/videos/interviews/0y90noNs/a16z-raise-15b-jerome-powell-vs-trump-crypto-remains-flat-special-guest-dudas",
     "https://decrypt.co/videos/interviews/50vopyFa/the-white-whale-up-10x-in-a-week-lighter-tge-saylor-buys-109m-btc",
     "https://decrypt.co/videos/interviews/72tPnqPX/zec-rebounds-11-trump-says-he-wont-pardon-sam-bankman-fried-florida-revisits-its-strategic-bitcoin-reserve",
@@ -2415,5 +2421,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
