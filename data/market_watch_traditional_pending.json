@@ -1,116 +1,50 @@
 {
-  "currency:USD000UTSTOM": {
-    "label": "USD/RUB",
-    "pct": 1.1818641898127387,
-    "category": "валютная пара",
-    "attempts": 2
-  },
-  "metal:SLVRUB_TOM": {
-    "label": "Серебро",
-    "pct": 2.350551363900164,
-    "category": "драгоценный металл",
-    "attempts": 2
-  },
-  "stock:GAZP": {
-    "label": "#GAZP (ГАЗПРОМ ао)",
-    "pct": 5.862854775222702,
-    "category": "акция ГАЗПРОМ ао",
-    "attempts": 2
-  },
-  "stock:MAGE": {
-    "label": "#MAGE (МагадЭн ао)",
-    "pct": 9.163346613545835,
-    "category": "акция МагадЭн ао",
-    "attempts": 2
-  },
-  "stock:OMZZP": {
-    "label": "#OMZZP (ОМЗ-ап)",
-    "pct": 8.23045267489712,
-    "category": "акция ОМЗ-ап",
-    "attempts": 2
-  },
-  "stock:OZON": {
-    "label": "#OZON (Озон)",
-    "pct": 6.222304283604136,
-    "category": "акция Озон",
-    "attempts": 2
-  },
-  "stock:RTSBP": {
-    "label": "#RTSBP (ТНСэнРст-п)",
-    "pct": 7.504363001745208,
-    "category": "акция ТНСэнРст-п",
-    "attempts": 2
-  },
-  "stock:VSYD": {
-    "label": "#VSYD (ВыбСудЗ ао)",
-    "pct": 9.63302752293578,
-    "category": "акция ВыбСудЗ ао",
-    "attempts": 2
-  },
-  "stock:VSYDP": {
-    "label": "#VSYDP (ВыбСудЗ ап)",
-    "pct": 21.678321678321677,
-    "category": "акция ВыбСудЗ ап",
-    "attempts": 2
-  },
-  "stock:YKEN": {
-    "label": "#YKEN (Якутскэнрг)",
-    "pct": 6.352941176470594,
-    "category": "акция Якутскэнрг",
-    "attempts": 2
-  },
-  "stock:YKENP": {
-    "label": "#YKENP (Якутскэн-п)",
-    "pct": 6.484641638225262,
-    "category": "акция Якутскэн-п",
-    "attempts": 2
-  },
   "stock:CBOM": {
     "label": "#CBOM (МКБ ао)",
     "pct": -6.099360550909978,
     "category": "акция МКБ ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:EVRZ": {
     "label": "#EVRZ (ЕВРАЗ)",
     "pct": 6.211812627291236,
     "category": "акция ЕВРАЗ",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KROTP": {
     "label": "#KROTP (КрасОкт-1п)",
     "pct": -6.60377358490566,
     "category": "акция КрасОкт-1п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MFGSP": {
     "label": "#MFGSP (Мегион-ап)",
     "pct": -8.0,
     "category": "акция Мегион-ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A107RE5": {
     "label": "#RU000A107RE5 (ПИФ Коллек)",
     "pct": -10.0,
     "category": "акция ПИФ Коллек",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A109GQ8": {
     "label": "#RU000A109GQ8 (ПИФСкладК2)",
     "pct": 13.91484942886812,
     "category": "акция ПИФСкладК2",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:TGKBP": {
     "label": "#TGKBP (ТГК-2 ап)",
     "pct": -5.354752342704152,
     "category": "акция ТГК-2 ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VGSBP": {
     "label": "#VGSBP (ВолгЭнСб-п)",
     "pct": 5.829596412556056,
     "category": "акция ВолгЭнСб-п",
-    "attempts": 1
+    "attempts": 2
   }
 }
