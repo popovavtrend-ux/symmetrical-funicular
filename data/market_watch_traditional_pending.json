@@ -1,1 +1,68 @@
-{}
+{
+  "currency:USD000UTSTOM": {
+    "label": "USD/RUB",
+    "pct": 1.1818641898127387,
+    "category": "валютная пара",
+    "attempts": 1
+  },
+  "metal:SLVRUB_TOM": {
+    "label": "Серебро",
+    "pct": 2.350551363900164,
+    "category": "драгоценный металл",
+    "attempts": 1
+  },
+  "stock:GAZP": {
+    "label": "#GAZP (ГАЗПРОМ ао)",
+    "pct": 5.862854775222702,
+    "category": "акция ГАЗПРОМ ао",
+    "attempts": 1
+  },
+  "stock:MAGE": {
+    "label": "#MAGE (МагадЭн ао)",
+    "pct": 9.163346613545835,
+    "category": "акция МагадЭн ао",
+    "attempts": 1
+  },
+  "stock:OMZZP": {
+    "label": "#OMZZP (ОМЗ-ап)",
+    "pct": 8.23045267489712,
+    "category": "акция ОМЗ-ап",
+    "attempts": 1
+  },
+  "stock:OZON": {
+    "label": "#OZON (Озон)",
+    "pct": 6.222304283604136,
+    "category": "акция Озон",
+    "attempts": 1
+  },
+  "stock:RTSBP": {
+    "label": "#RTSBP (ТНСэнРст-п)",
+    "pct": 7.504363001745208,
+    "category": "акция ТНСэнРст-п",
+    "attempts": 1
+  },
+  "stock:VSYD": {
+    "label": "#VSYD (ВыбСудЗ ао)",
+    "pct": 9.63302752293578,
+    "category": "акция ВыбСудЗ ао",
+    "attempts": 1
+  },
+  "stock:VSYDP": {
+    "label": "#VSYDP (ВыбСудЗ ап)",
+    "pct": 21.678321678321677,
+    "category": "акция ВыбСудЗ ап",
+    "attempts": 1
+  },
+  "stock:YKEN": {
+    "label": "#YKEN (Якутскэнрг)",
+    "pct": 6.352941176470594,
+    "category": "акция Якутскэнрг",
+    "attempts": 1
+  },
+  "stock:YKENP": {
+    "label": "#YKENP (Якутскэн-п)",
+    "pct": 6.484641638225262,
+    "category": "акция Якутскэн-п",
+    "attempts": 1
+  }
+}
