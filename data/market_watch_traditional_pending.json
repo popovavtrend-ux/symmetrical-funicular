@@ -3,126 +3,126 @@
     "label": "CNY/RUB",
     "pct": 1.4584501963298373,
     "category": "валютная пара",
-    "attempts": 1
+    "attempts": 2
   },
   "metal:SLVRUB_TOM": {
     "label": "Серебро",
     "pct": -3.34561950666289,
     "category": "драгоценный металл",
-    "attempts": 1
+    "attempts": 2
   },
   "index:IMOEX": {
     "label": "IMOEX",
     "pct": 1.501716372703091,
     "category": "биржевой индекс",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:CNTL": {
     "label": "#CNTL (Телеграф)",
     "pct": 9.629629629629644,
     "category": "акция Телеграф",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:CNTLP": {
     "label": "#CNTLP (Телеграф-п)",
     "pct": 12.268518518518503,
     "category": "акция Телеграф-п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:GMKN": {
     "label": "#GMKN (ГМКНорНик)",
     "pct": -8.19571865443426,
     "category": "акция ГМКНорНик",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KLVZ": {
     "label": "#KLVZ (Кристалл)",
     "pct": 11.811023622047243,
     "category": "акция Кристалл",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MFGSP": {
     "label": "#MFGSP (Мегион-ап)",
     "pct": 5.6521739130434785,
     "category": "акция Мегион-ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:NNSB": {
     "label": "#NNSB (ТНСэнНН ао)",
     "pct": -7.958477508650519,
     "category": "акция ТНСэнНН ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RBCM": {
     "label": "#RBCM (ГК РБК ао)",
     "pct": 5.622489959839356,
     "category": "акция ГК РБК ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A101UY0": {
     "label": "#RU000A101UY0 (ОПИФ MM)",
     "pct": -10.614525139664805,
     "category": "акция ОПИФ MM",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A1022Z1": {
     "label": "#RU000A1022Z1 (ПАРУС-ОЗН)",
     "pct": 5.22159959246052,
     "category": "акция ПАРУС-ОЗН",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A1027E5": {
     "label": "#RU000A1027E5 (ЗПИФ ВДО)",
     "pct": 5.729877216916781,
     "category": "акция ЗПИФ ВДО",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A109G79": {
     "label": "#RU000A109G79 (ПИФГРИНФЛО)",
     "pct": 10.0,
     "category": "акция ПИФГРИНФЛО",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A109GQ8": {
     "label": "#RU000A109GQ8 (ПИФСкладК2)",
     "pct": -8.113035551504103,
     "category": "акция ПИФСкладК2",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A10CKQ9": {
     "label": "#RU000A10CKQ9 (АлфаКомНед)",
     "pct": -8.082408874801903,
     "category": "акция АлфаКомНед",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:SAGO": {
     "label": "#SAGO (СамарЭн-ао)",
     "pct": -7.456140350877191,
     "category": "акция СамарЭн-ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:UKUZ": {
     "label": "#UKUZ (ЮжКузб. ао)",
     "pct": 16.117216117216117,
     "category": "акция ЮжКузб. ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VSYD": {
     "label": "#VSYD (ВыбСудЗ ао)",
     "pct": -9.623430962343097,
     "category": "акция ВыбСудЗ ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VSYDP": {
     "label": "#VSYDP (ВыбСудЗ ап)",
     "pct": -9.770114942528735,
     "category": "акция ВыбСудЗ ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:ZILL": {
     "label": "#ZILL (ЗИЛ ао)",
     "pct": 5.321507760532151,
     "category": "акция ЗИЛ ао",
-    "attempts": 1
+    "attempts": 2
   }
 }
