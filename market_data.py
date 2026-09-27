@@ -531,4 +531,8 @@ def is_trading_day_msk(now_msk=None):
     return is_weekday(now_msk)
 
 
-GREETING = "Доброе утро! Обзор рынка"
+def greeting(now_msk=None):
+    """GitHub's cron scheduler can start the 08:00 post hours late, so only
+    say good morning when it actually is morning."""
+    now_msk = now_msk or datetime.now(MSK)
+    return "Доброе утро! Обзор рынка" if now_msk.hour < 12 else "Обзор рынка"
