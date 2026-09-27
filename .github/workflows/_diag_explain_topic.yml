@@ -1,0 +1,34 @@
+name: Diagnostic - test explain_topic on specific topics
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Test explain_topic on the stuck topic and a control topic
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
+        run: |
+          python3 -c "
+          from translate import explain_topic
+
+          for topic in ['Что такое стейкинг', 'Что такое NFT', 'Что такое майнинг']:
+              print('---', topic, '---')
+              try:
+                  title, explanation = explain_topic(topic)
+                  print('OK title:', title)
+              except Exception as e:
+                  print('FAILED:', type(e).__name__, str(e))
+          "
