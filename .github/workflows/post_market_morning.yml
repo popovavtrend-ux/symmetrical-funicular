@@ -1,12 +1,13 @@
-name: Post educational explainer to Telegram channel
+name: Post morning market digest to Telegram channel
 
 on:
-  # Primary trigger: an external scheduler dispatches this at 13:00 MSK,
+  # Primary trigger: an external scheduler dispatches this at 08:00 MSK,
   # because GitHub's own cron has been starting it 4-5 hours late.
   workflow_dispatch: {}
   schedule:
-    # Fallback only - daily_guard.py makes this a no-op if it already ran.
-    - cron: "0 10 * * *"
+    # Fallback only - if the external trigger didn't fire, post late rather
+    # than not at all. daily_guard.py makes this a no-op when it already ran.
+    - cron: "0 5 * * *"
 
 concurrency:
   group: ${{ github.workflow }}
@@ -28,23 +29,25 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run bot
+      - name: Post the six market posts
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN_2 }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID_2 }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
-          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
-          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
-          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
           SIGNATURE: "@freshlive101"
         run: |
-          if python daily_guard.py done education; then
-            echo "Education post already published today, skipping."
+          if python daily_guard.py done market_morning; then
+            echo "Morning digest already posted today, skipping."
             exit 0
           fi
-          python post_education.py
-          python daily_guard.py mark education
+          # One post failing (e.g. MOEX down) shouldn't stop the rest; the
+          # non-crypto scripts skip themselves on weekends.
+          for script in post_market_crypto post_market_currency post_market_metals \
+                        post_market_indices_world post_market_indices_ru post_market_stocks; do
+            python "$script.py" || echo "::warning::$script failed"
+            sleep 10
+          done
+          python daily_guard.py mark market_morning
 
       - name: Commit updated state
         if: always()
@@ -55,7 +58,7 @@ jobs:
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "chore: update education state"
+          git commit -m "chore: update daily post guard"
           for i in 1 2 3 4 5; do
             git push && exit 0
             echo "Push rejected (another workflow pushed first) - retrying $i/5"
