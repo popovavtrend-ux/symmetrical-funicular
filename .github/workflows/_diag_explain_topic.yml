@@ -16,19 +16,35 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Test explain_topic on the stuck topic and a control topic
+      - name: Test explain_topic, translate_via_claude, and a bare call
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           ANTHROPIC_BASE_URL: ${{ secrets.ANTHROPIC_BASE_URL }}
         run: |
           python3 -c "
-          from translate import explain_topic
+          print('=== bare create_message, no tools, trivial prompt ===')
+          from anthropic_client import create_message, extract_text, get_client
+          try:
+              client = get_client()
+              resp = create_message(client, max_tokens=50, messages=[{'role': 'user', 'content': 'Say hello in Russian.'}])
+              print('OK:', extract_text(resp))
+          except Exception as e:
+              print('FAILED:', type(e).__name__, str(e))
 
-          for topic in ['Что такое стейкинг', 'Что такое NFT', 'Что такое майнинг']:
-              print('---', topic, '---')
-              try:
-                  title, explanation = explain_topic(topic)
-                  print('OK title:', title)
-              except Exception as e:
-                  print('FAILED:', type(e).__name__, str(e))
+          print('=== translate_via_claude_explainer (news pipeline path) ===')
+          from translate import translate_via_claude_explainer
+          try:
+              title, summary = translate_via_claude_explainer('Bitcoin hits new high', 'Bitcoin price reached a new all-time high today amid strong institutional demand.')
+              print('OK title:', title)
+          except Exception as e:
+              print('FAILED:', type(e).__name__, str(e))
+
+          print('=== explain_topic (education pipeline path) ===')
+          from translate import explain_topic
+          try:
+              title, explanation = explain_topic('Что такое NFT')
+              print('OK title:', title)
+          except Exception as e:
+              print('FAILED:', type(e).__name__, str(e))
           "
+
