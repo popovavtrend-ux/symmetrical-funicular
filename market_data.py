@@ -14,6 +14,7 @@ watchers) decide how to degrade: a digest section skips itself and logs,
 a watcher just skips that instrument this tick."""
 
 import json
+import math
 import os
 import urllib.request
 from datetime import datetime, timedelta, timezone
@@ -37,10 +38,35 @@ def format_usd(value):
     return f"${value:,.0f}"
 
 
-def format_price(value):
+def _amount(value):
+    """Enough decimals that a sub-cent coin or penny stock doesn't round to 0
+    (0.00001234 stays 0.00001234, not 0.0000)."""
     if value >= 1:
-        return f"${value:,.2f}"
-    return f"${value:.4f}"
+        return f"{value:,.2f}"
+    if value <= 0:
+        return f"{value:.4f}"
+    decimals = min(10, max(4, 3 - math.floor(math.log10(value))))
+    return f"{value:.{decimals}f}"
+
+
+def format_price(value):
+    return f"${_amount(value)}"
+
+
+def format_rub(value):
+    return f"{_amount(value)} ₽"
+
+
+def _ticker_label(ticker, name):
+    """'#TICKER (Название)' - skip the parenthetical when the API gave us
+    back the ticker itself as the name (no real name available)."""
+    return f"#{ticker} ({name})" if name and name != ticker else f"#{ticker}"
+
+
+def mover_line(emoji, ticker, name, pct, price_text=None):
+    """One instrument per line: ticker (name), % change, then the price."""
+    line = f"{emoji} {_ticker_label(ticker, name)} {pct:+.1f}%"
+    return f"{line} — {price_text}" if price_text else line
 
 
 def pct_from_prev(last, prev):
@@ -143,20 +169,26 @@ def build_crypto_section():
         for coin in (btc, eth):
             if coin:
                 pct = coin["price_change_percentage_24h"]
-                lines.append(f"{arrow(pct)} #{coin['symbol'].upper()} {format_price(coin['current_price'])} ({pct:+.1f}%)")
+                lines.append(_coin_line(arrow(pct), coin))
 
     gainers, losers = top_movers(markets, key=lambda m: m["price_change_percentage_24h"])
     if gainers:
         lines.append("")
         lines.append("📈 <b>Лидеры роста крипты за сутки</b>")
         for m in gainers:
-            lines.append(f"🟢 #{m['symbol'].upper()} {m['price_change_percentage_24h']:+.1f}%")
+            lines.append(_coin_line("🟢", m))
     if losers:
         lines.append("")
         lines.append("📉 <b>Лидеры падения крипты за сутки</b>")
         for m in losers:
-            lines.append(f"🔴 #{m['symbol'].upper()} {m['price_change_percentage_24h']:+.1f}%")
+            lines.append(_coin_line("🔴", m))
     return lines
+
+
+def _coin_line(emoji, coin):
+    price = coin.get("current_price")
+    price_text = format_price(price) if price is not None else None
+    return mover_line(emoji, coin["symbol"].upper(), coin.get("name"), coin["price_change_percentage_24h"], price_text)
 
 
 # ------------------------------------------------------------- MOEX ISS --
@@ -447,10 +479,14 @@ def fetch_moex_stock_movers(count=MOVERS_COUNT):
     return top_movers(movers, key=lambda m: m["pct"], count=count)
 
 
-def _stock_label(secid, name):
-    """'#SECID (Название)' - skip the parenthetical when the API gave us
-    back the ticker itself as the name (no real name available)."""
-    return f"#{secid} ({name})" if name and name != secid else f"#{secid}"
+def _ru_stock_line(emoji, m):
+    price_text = format_rub(m["last"]) if m.get("last") is not None else None
+    return mover_line(emoji, m["secid"], m["name"], m["pct"], price_text)
+
+
+def _world_stock_line(emoji, m):
+    price_text = format_price(m["price"]) if m.get("price") is not None else None
+    return mover_line(emoji, m["symbol"], m.get("name"), m["changesPercentage"], price_text)
 
 
 def build_stocks_section():
@@ -460,12 +496,12 @@ def build_stocks_section():
         if gainers:
             lines.append("📈 <b>Лидеры роста акций (Россия)</b>")
             for m in gainers:
-                lines.append(f"🟢 {_stock_label(m['secid'], m['name'])} {m['pct']:+.1f}%")
+                lines.append(_ru_stock_line("🟢", m))
         if losers:
             lines.append("")
             lines.append("📉 <b>Лидеры падения акций (Россия)</b>")
             for m in losers:
-                lines.append(f"🔴 {_stock_label(m['secid'], m['name'])} {m['pct']:+.1f}%")
+                lines.append(_ru_stock_line("🔴", m))
     except Exception as e:
         print(f"Russian stock movers failed: {e}")
 
@@ -476,7 +512,7 @@ def build_stocks_section():
                 lines.append("")
                 lines.append("📈 <b>Лидеры роста акций (мир)</b>")
                 for m in gainers:
-                    lines.append(f"🟢 {_stock_label(m['symbol'], m.get('name'))} {m['changesPercentage']:+.1f}%")
+                    lines.append(_world_stock_line("🟢", m))
         except Exception as e:
             print(f"World stock gainers failed: {e}")
         try:
@@ -485,7 +521,7 @@ def build_stocks_section():
                 lines.append("")
                 lines.append("📉 <b>Лидеры падения акций (мир)</b>")
                 for m in losers:
-                    lines.append(f"🔴 {_stock_label(m['symbol'], m.get('name'))} {m['changesPercentage']:+.1f}%")
+                    lines.append(_world_stock_line("🔴", m))
         except Exception as e:
             print(f"World stock losers failed: {e}")
 
