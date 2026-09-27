@@ -779,6 +779,7 @@
     "https://forklog.com/?p=289424",
     "https://forklog.com/?p=289428",
     "https://forklog.com/?p=289431",
+    "https://forklog.com/?p=289435",
     "https://incrypted.com/?p=150294",
     "https://incrypted.com/?p=260142",
     "https://incrypted.com/?p=310236",
@@ -1510,6 +1511,7 @@
     "https://ru.beincrypto.com/?p=397086",
     "https://ru.beincrypto.com/?p=397088",
     "https://ru.beincrypto.com/?p=397133",
+    "https://ru.beincrypto.com/?p=397134",
     "https://ru.beincrypto.com/?p=397135",
     "https://ru.beincrypto.com/?p=397148",
     "https://ru.beincrypto.com/?p=397168",
@@ -1551,5 +1553,5 @@
     "https://incrypted.com/feed/",
     "https://ru.beincrypto.com/feed/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
