@@ -10,15 +10,33 @@ jobs:
       - run: |
           python3 - <<'EOF'
           import json, urllib.request
-          for secid in ["USD000UTSTOM", "EUR_RUB__TOM", "CNYRUB_TOM", "GLDRUB_TOM", "SLVRUB_TOM"]:
-              url = f"https://iss.moex.com/iss/engines/currency/markets/selt/securities/{secid}.json?iss.meta=off"
-              data = json.load(urllib.request.urlopen(url, timeout=20))
-              md, sec = data["marketdata"], data["securities"]
-              print(f"=== {secid}: {len(md['data'])} marketdata rows")
-              for row in md["data"]:
-                  d = dict(zip(md["columns"], row))
-                  print("  MD", {k: d.get(k) for k in ("BOARDID", "LAST", "LASTTOPREVPRICE", "WAPRICE", "MARKETPRICE", "CHANGE", "UPDATETIME", "TRADINGSTATUS")})
-              for row in sec["data"]:
-                  d = dict(zip(sec["columns"], row))
-                  print("  SEC", {k: d.get(k) for k in ("BOARDID", "PREVPRICE", "PREVWAPRICE", "PREVDATE")})
+          from collections import Counter
+
+          def get(url):
+              return json.load(urllib.request.urlopen(url, timeout=20))
+
+          data = get("https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities.json?iss.meta=off")
+          md = data["marketdata"]
+          rows = [dict(zip(md["columns"], r)) for r in md["data"]]
+          print("TQBR rows:", len(rows))
+          print("  LAST not None:", sum(1 for r in rows if r.get("LAST") is not None))
+          print("  TRADINGSTATUS:", Counter(r.get("TRADINGSTATUS") for r in rows))
+          print("  LASTTOPREVPRICE nonzero:", sum(1 for r in rows if r.get("LASTTOPREVPRICE")))
+          for r in rows:
+              if r["SECID"] in ("SBER", "GAZP", "LKOH"):
+                  print("  ", {k: r.get(k) for k in ("SECID", "LAST", "LASTTOPREVPRICE", "UPDATETIME", "TRADINGSTATUS")})
+
+          for idx in ("IMOEX", "RTSI"):
+              d = get(f"https://iss.moex.com/iss/engines/stock/markets/index/securities/{idx}.json?iss.meta=off")
+              md = d["marketdata"]
+              for r in md["data"]:
+                  r = dict(zip(md["columns"], r))
+                  print(idx, {k: r.get(k) for k in ("BOARDID", "CURRENTVALUE", "LASTVALUE", "LASTTOPREVPRICE", "UPDATETIME", "TRADINGSESSION")})
+
+          h = get("https://iss.moex.com/iss/history/engines/currency/markets/selt/boards/CETS/securities/CNYRUB_TOM.json?iss.meta=off&from=2026-09-15")
+          hs = h["history"]
+          cols = hs["columns"]
+          print("history cols:", cols)
+          for r in hs["data"][-3:]:
+              print("  ", dict(zip(cols, r)))
           EOF
