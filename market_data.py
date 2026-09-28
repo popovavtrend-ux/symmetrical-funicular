@@ -309,16 +309,58 @@ def fetch_currency_rate(secid):
     return last, pct, delta_from_pct(last, pct)
 
 
+# EUR/RUB has had zero trades on MOEX (sanctions) - its history is all
+# zeros - so any pair MOEX can't price falls back to the Bank of Russia's
+# official daily rate, labeled as such, instead of vanishing from the post.
+CBR_DYNAMIC_URL = "https://www.cbr.ru/scripts/XML_dynamic.asp"
+CBR_CURRENCY_IDS = {"USD": "R01235", "EUR": "R01239", "CNY": "R01375"}
+
+
+def fetch_cbr_currency_history(label, days=10):
+    """[(date, rub_per_unit), ...] oldest first. The CBR publishes the next
+    day's rate in advance, so the window runs to tomorrow."""
+    today = datetime.now(MSK)
+    params = {
+        "date_req1": (today - timedelta(days=days)).strftime("%d/%m/%Y"),
+        "date_req2": (today + timedelta(days=1)).strftime("%d/%m/%Y"),
+        "VAL_NM_RQ": CBR_CURRENCY_IDS[label],
+    }
+    resp = requests.get(CBR_DYNAMIC_URL, params=params, timeout=15)
+    resp.raise_for_status()
+    points = []
+    for rec in ElementTree.fromstring(resp.content).findall("Record"):
+        nominal = float(rec.findtext("Nominal").replace(",", "."))
+        value = float(rec.findtext("Value").replace(",", "."))
+        points.append((datetime.strptime(rec.get("Date"), "%d.%m.%Y"), value / nominal))
+    return sorted(points)
+
+
+def _cbr_currency_line(label):
+    points = fetch_cbr_currency_history(label)
+    if len(points) < 2:
+        return f"{label} {points[-1][1]:.2f} ₽ (ЦБ РФ)" if points else None
+    (_, prev), (_, last) = points[-2], points[-1]
+    pct = pct_from_prev(last, prev)
+    return f"{arrow(pct)} {label} {last:.2f} ₽ ({last - prev:+.2f} ₽, {pct:+.1f}%, ЦБ РФ)"
+
+
 def build_currency_section():
     lines = ["💵 <b>Курс рубля</b> (MOEX)"]
     for secid, label in CURRENCY_INSTRUMENTS:
         try:
             quote = moex_quote("currency", "selt", secid, board="CETS")
         except Exception as e:
-            print(f"Currency {label} failed: {e}")
-            continue
+            print(f"Currency {label} (MOEX) failed: {e}")
+            quote = None
         if quote:
             lines.append(_quote_line(label, quote, lambda v: f"{v:.2f} ₽", lambda d: f"{d:+.2f} ₽"))
+            continue
+        try:
+            line = _cbr_currency_line(label)
+            if line:
+                lines.append(line)
+        except Exception as e:
+            print(f"Currency {label} (CBR) failed: {e}")
     return lines if len(lines) > 1 else []
 
 
