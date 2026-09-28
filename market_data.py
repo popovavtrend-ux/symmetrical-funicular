@@ -217,13 +217,67 @@ def fetch_moex_security(engine, market, secid, board=None):
 
 
 def _moex_last_and_pct(marketdata):
+    # Indices carry both CURRENTVALUE (now) and LASTVALUE (previous close);
+    # the current one has to win.
     last = next(
-        (marketdata[k] for k in ("LAST", "LASTVALUE", "CURRENTVALUE") if marketdata.get(k) is not None), None
+        (marketdata[k] for k in ("LAST", "CURRENTVALUE", "LASTVALUE") if marketdata.get(k) is not None), None
     )
     pct = marketdata.get("LASTTOPREVPRICE")
     if last is None:
         return None
     return last, pct
+
+
+MOEX_HISTORY_URL = "https://iss.moex.com/iss/history/engines/{engine}/markets/{market}/{path}/{id}.json"
+
+
+def fetch_moex_closes(engine, market, secid, board=None, days=14):
+    """[(trade_date 'YYYY-MM-DD', close), ...] oldest first - completed
+    trading sessions only, from MOEX's daily history."""
+    path = f"boards/{board}/securities" if board else "securities"
+    url = MOEX_HISTORY_URL.format(engine=engine, market=market, path=path, id=secid)
+    date_from = (datetime.now(MSK) - timedelta(days=days)).strftime("%Y-%m-%d")
+    resp = requests.get(url, params={"iss.meta": "off", "from": date_from}, timeout=15)
+    resp.raise_for_status()
+    hist = resp.json()["history"]
+    rows = [dict(zip(hist["columns"], r)) for r in hist["data"]]
+    return [(r["TRADEDATE"], r["CLOSE"]) for r in rows if r.get("CLOSE") is not None]
+
+
+def moex_quote(engine, market, secid, board=None):
+    """Price and % change for the morning digest, which runs before some MOEX
+    sessions open: at 08:00 MSK the currency market (and gold/silver on it)
+    has no live price at all, and indices have a value but no % change.
+
+    Returns {"price", "pct", "close_date"} or None. Live price when trading;
+    otherwise the last session's close and its change vs the session before,
+    with close_date ('DD.MM') set so the post can say which day it is."""
+    live = _moex_last_and_pct(fetch_moex_security(engine, market, secid, board=board))
+    if live and live[1] is not None:
+        return {"price": live[0], "pct": live[1], "close_date": None}
+
+    closes = fetch_moex_closes(engine, market, secid, board=board)
+    today = datetime.now(MSK).strftime("%Y-%m-%d")
+    past = [c for c in closes if c[0] < today]
+    if live:
+        pct = pct_from_prev(live[0], past[-1][1]) if past else None
+        return {"price": live[0], "pct": pct, "close_date": None}
+    if len(closes) >= 2:
+        (_, prev), (date, last) = closes[-2], closes[-1]
+        return {"price": last, "pct": pct_from_prev(last, prev), "close_date": f"{date[8:10]}.{date[5:7]}"}
+    return None
+
+
+def _quote_line(label, quote, price_fmt, delta_fmt):
+    """'🔴 USD 84.70 ₽ (-0.35 ₽, -0.4%)', plus ', закрытие 25.09' when the
+    market hasn't opened yet today."""
+    price, pct = quote["price"], quote["pct"]
+    if pct is None:
+        return f"{label} {price_fmt(price)}"
+    extras = [delta_fmt(delta_from_pct(price, pct)), f"{pct:+.1f}%"]
+    if quote["close_date"]:
+        extras.append(f"закрытие {quote['close_date']}")
+    return f"{arrow(pct)} {label} {price_fmt(price)} ({', '.join(extras)})"
 
 
 # --------------------------------------------------------------- Currency --
@@ -252,17 +306,12 @@ def build_currency_section():
     lines = ["💵 <b>Курс рубля</b> (MOEX)"]
     for secid, label in CURRENCY_INSTRUMENTS:
         try:
-            result = fetch_currency_rate(secid)
+            quote = moex_quote("currency", "selt", secid, board="CETS")
         except Exception as e:
             print(f"Currency {label} failed: {e}")
             continue
-        if not result:
-            continue
-        rate, pct, delta = result
-        if pct is None:
-            lines.append(f"{label} {rate:.2f} ₽")
-        else:
-            lines.append(f"{arrow(pct)} {label} {rate:.2f} ₽ ({delta:+.2f} ₽, {pct:+.1f}%)")
+        if quote:
+            lines.append(_quote_line(label, quote, lambda v: f"{v:.2f} ₽", lambda d: f"{d:+.2f} ₽"))
     return lines if len(lines) > 1 else []
 
 
@@ -316,17 +365,16 @@ def build_metals_section():
     lines = ["🥇 <b>Металлы</b>"]
     for secid, label in METAL_INSTRUMENTS:
         try:
-            result = fetch_metal_rate(secid)
+            quote = moex_quote("currency", "selt", secid, board="CETS")
         except Exception as e:
             print(f"Metal {label} (MOEX) failed: {e}")
             continue
-        if not result:
-            continue
-        rate, pct, delta = result
-        if pct is None:
-            lines.append(f"{label} {rate:,.0f} ₽/г")
-        else:
-            lines.append(f"{arrow(pct)} {label} {rate:,.0f} ₽/г ({delta:+.0f} ₽, {pct:+.1f}%)")
+        if quote:
+            # Silver is ~170 ₽/g - whole rubles would hide its daily moves.
+            decimals = 0 if quote["price"] >= 1000 else 2
+            lines.append(
+                _quote_line(label, quote, lambda v: f"{v:,.{decimals}f} ₽/г", lambda d: f"{d:+.{decimals}f} ₽")
+            )
 
     try:
         history = fetch_cbr_metal_history()
