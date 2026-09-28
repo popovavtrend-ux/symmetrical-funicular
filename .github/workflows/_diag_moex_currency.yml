@@ -18,8 +18,9 @@ jobs:
           TELEGRAM_CHAT_ID: x
         run: |
           python3 -c "
-          import market_data as md, post_market_indices_ru as ru
-          print('\n'.join(md.build_currency_section())); print('---')
-          print('\n'.join(md.build_metals_section())); print('---')
-          print('\n'.join(ru.build_section()))
+          import json, urllib.request
+          h = json.load(urllib.request.urlopen('https://iss.moex.com/iss/history/engines/currency/markets/selt/boards/CETS/securities/EUR_RUB__TOM.json?iss.meta=off&from=2026-09-20'))['history']
+          for r in h['data']: print('EUR hist', dict(zip(h['columns'], r)))
+          import market_data as md
+          print('\n'.join(md.build_currency_section()))
           "

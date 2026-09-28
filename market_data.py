@@ -241,7 +241,14 @@ def fetch_moex_closes(engine, market, secid, board=None, days=14):
     resp.raise_for_status()
     hist = resp.json()["history"]
     rows = [dict(zip(hist["columns"], r)) for r in hist["data"]]
-    return [(r["TRADEDATE"], r["CLOSE"]) for r in rows if r.get("CLOSE") is not None]
+    # Thinly traded pairs (EUR/RUB) can log CLOSE as 0 for a day; fall back
+    # to the day's weighted average, and drop the day if that's empty too.
+    closes = []
+    for r in rows:
+        price = r.get("CLOSE") or r.get("WAPRICE")
+        if price and price > 0:
+            closes.append((r["TRADEDATE"], price))
+    return closes
 
 
 def moex_quote(engine, market, secid, board=None):
