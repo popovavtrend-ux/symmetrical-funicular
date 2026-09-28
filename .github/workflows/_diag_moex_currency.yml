@@ -1,0 +1,24 @@
+name: Diagnostic - MOEX currency/metal market data
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          python3 - <<'EOF'
+          import json, urllib.request
+          for secid in ["USD000UTSTOM", "EUR_RUB__TOM", "CNYRUB_TOM", "GLDRUB_TOM", "SLVRUB_TOM"]:
+              url = f"https://iss.moex.com/iss/engines/currency/markets/selt/securities/{secid}.json?iss.meta=off"
+              data = json.load(urllib.request.urlopen(url, timeout=20))
+              md, sec = data["marketdata"], data["securities"]
+              print(f"=== {secid}: {len(md['data'])} marketdata rows")
+              for row in md["data"]:
+                  d = dict(zip(md["columns"], row))
+                  print("  MD", {k: d.get(k) for k in ("BOARDID", "LAST", "LASTTOPREVPRICE", "WAPRICE", "MARKETPRICE", "CHANGE", "UPDATETIME", "TRADINGSTATUS")})
+              for row in sec["data"]:
+                  d = dict(zip(sec["columns"], row))
+                  print("  SEC", {k: d.get(k) for k in ("BOARDID", "PREVPRICE", "PREVWAPRICE", "PREVDATE")})
+          EOF
