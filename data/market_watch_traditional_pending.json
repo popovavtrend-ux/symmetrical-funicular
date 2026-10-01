@@ -3,126 +3,126 @@
     "label": "#UNAC (iАвиастКао)",
     "pct": 6.947890818858553,
     "category": "акция iАвиастКао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:XHOUSE": {
     "label": "#XHOUSE (ЗПИФ ИНВНД)",
     "pct": -7.901907356948229,
     "category": "акция ЗПИФ ИНВНД",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:AMGL": {
     "label": "#AMGL (AMGL ETF)",
     "pct": -5.064194008559197,
     "category": "акция AMGL ETF",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:BRZL": {
     "label": "#BRZL (БурЗолото)",
     "pct": -8.193979933110368,
     "category": "акция БурЗолото",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:CNTL": {
     "label": "#CNTL (Телеграф)",
     "pct": -5.40540540540541,
     "category": "акция Телеграф",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:IRKT": {
     "label": "#IRKT (Яковлев-3)",
     "pct": 6.413043478260868,
     "category": "акция Яковлев-3",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KROTP": {
     "label": "#KROTP (КрасОкт-1п)",
     "pct": 11.313131313131313,
     "category": "акция КрасОкт-1п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:LVHK": {
     "label": "#LVHK (Левенгук)",
     "pct": 5.221932114882507,
     "category": "акция Левенгук",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:NKSH": {
     "label": "#NKSH (Нижкамшина)",
     "pct": -7.091172214182333,
     "category": "акция Нижкамшина",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:OMZZP": {
     "label": "#OMZZP (ОМЗ-ап)",
     "pct": -5.7034220532319395,
     "category": "акция ОМЗ-ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:OZON": {
     "label": "#OZON (Озон)",
     "pct": 8.204415087780289,
     "category": "акция Озон",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A107RE5": {
     "label": "#RU000A107RE5 (ПИФ Коллек)",
     "pct": 11.11111111111111,
     "category": "акция ПИФ Коллек",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A109G79": {
     "label": "#RU000A109G79 (ПИФГРИНФЛО)",
     "pct": 13.846153846153847,
     "category": "акция ПИФГРИНФЛО",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:SLEN": {
     "label": "#SLEN (Сахэнер ао)",
     "pct": 7.042253521126764,
     "category": "акция Сахэнер ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:UKUZ": {
     "label": "#UKUZ (ЮжКузб. ао)",
     "pct": -5.993690851735016,
     "category": "акция ЮжКузб. ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VEON-RX": {
     "label": "#VEON-RX (VEON)",
     "pct": 7.0072992700729895,
     "category": "акция VEON",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VGSBP": {
     "label": "#VGSBP (ВолгЭнСб-п)",
     "pct": -9.322033898305095,
     "category": "акция ВолгЭнСб-п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:WTCMP": {
     "label": "#WTCMP (ЦМТ ап)",
     "pct": -5.3110773899848205,
     "category": "акция ЦМТ ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:WUSH": {
     "label": "#WUSH (iВУШХолднг)",
     "pct": -6.766500277315599,
     "category": "акция iВУШХолднг",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:X5": {
     "label": "#X5 (КЦ ИКС 5)",
     "pct": 8.088441085922195,
     "category": "акция КЦ ИКС 5",
-    "attempts": 1
+    "attempts": 2
   },
   "index:%5EDJI": {
     "label": "Dow Jones",
     "pct": -1.6334885369632741,
     "category": "биржевой индекс США",
-    "attempts": 1
+    "attempts": 2
   }
 }
