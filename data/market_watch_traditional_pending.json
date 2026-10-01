@@ -1,164 +1,128 @@
 {
-  "stock:ARSA": {
-    "label": "#ARSA (Арсагера)",
-    "pct": 11.942257217847759,
-    "category": "акция Арсагера",
-    "attempts": 2
-  },
-  "stock:RU000A101UY0": {
-    "label": "#RU000A101UY0 (ОПИФ MM)",
-    "pct": 23.28767123287671,
-    "category": "акция ОПИФ MM",
-    "attempts": 2
-  },
-  "stock:URKZ": {
-    "label": "#URKZ (УрКузница)",
-    "pct": -6.309751434034412,
-    "category": "акция УрКузница",
-    "attempts": 2
-  },
-  "currency:USD000UTSTOM": {
-    "label": "USD/RUB",
-    "pct": -1.8477109568082775,
-    "category": "валютная пара",
-    "attempts": 2
-  },
-  "currency:CNYRUB_TOM": {
-    "label": "CNY/RUB",
-    "pct": -1.0985937999360762,
-    "category": "валютная пара",
-    "attempts": 2
-  },
-  "stock:AFKS": {
-    "label": "#AFKS (Система ао)",
-    "pct": -5.2277716794731095,
-    "category": "акция Система ао",
-    "attempts": 2
-  },
-  "stock:DVEC": {
-    "label": "#DVEC (ДЭК ао)",
-    "pct": -8.414424728105324,
-    "category": "акция ДЭК ао",
-    "attempts": 2
-  },
-  "stock:IGSTP": {
-    "label": "#IGSTP (Ижсталь ап)",
-    "pct": 5.084745762711865,
-    "category": "акция Ижсталь ап",
-    "attempts": 2
-  },
-  "stock:KAZT": {
-    "label": "#KAZT (Куйбазот)",
-    "pct": -6.246317030053032,
-    "category": "акция Куйбазот",
-    "attempts": 2
-  },
-  "stock:KCHE": {
-    "label": "#KCHE (КамчатЭ ао)",
-    "pct": -7.812499999999989,
-    "category": "акция КамчатЭ ао",
-    "attempts": 2
-  },
-  "stock:KFBA": {
-    "label": "#KFBA (ИНГРАД ао)",
-    "pct": -5.88235294117647,
-    "category": "акция ИНГРАД ао",
-    "attempts": 2
-  },
-  "stock:KZOSP": {
-    "label": "#KZOSP (ОргСинт ап)",
-    "pct": -5.9399877526025655,
-    "category": "акция ОргСинт ап",
-    "attempts": 2
-  },
-  "stock:LSRG": {
-    "label": "#LSRG (ЛСР ао)",
-    "pct": -5.63492063492063,
-    "category": "акция ЛСР ао",
-    "attempts": 2
-  },
-  "stock:MGTSP": {
-    "label": "#MGTSP (МГТС-4ап)",
-    "pct": -6.003159557661927,
-    "category": "акция МГТС-4ап",
-    "attempts": 2
-  },
-  "stock:MISB": {
-    "label": "#MISB (ТНСэнМарЭл)",
-    "pct": 5.967078189300409,
-    "category": "акция ТНСэнМарЭл",
-    "attempts": 2
-  },
-  "stock:MTSS": {
-    "label": "#MTSS (МТС-ао)",
-    "pct": -5.221339387060152,
-    "category": "акция МТС-ао",
-    "attempts": 2
-  },
-  "stock:NAUK": {
-    "label": "#NAUK (iНПОНаука)",
-    "pct": 9.397590361445783,
-    "category": "акция iНПОНаука",
-    "attempts": 2
-  },
-  "stock:OKEY": {
-    "label": "#OKEY (OKEY-гдр)",
-    "pct": -6.274664561957379,
-    "category": "акция OKEY-гдр",
-    "attempts": 2
-  },
-  "stock:RASP": {
-    "label": "#RASP (Распадская)",
-    "pct": -5.06912442396313,
-    "category": "акция Распадская",
-    "attempts": 2
-  },
-  "stock:RTSBP": {
-    "label": "#RTSBP (ТНСэнРст-п)",
-    "pct": 6.818181818181825,
-    "category": "акция ТНСэнРст-п",
-    "attempts": 2
-  },
-  "stock:RU000A0JUR61": {
-    "label": "#RU000A0JUR61 (ПИФ КОНСЕР)",
-    "pct": 7.792207792207792,
-    "category": "акция ПИФ КОНСЕР",
-    "attempts": 2
-  },
-  "stock:RU000A108TT7": {
-    "label": "#RU000A108TT7 (БКСДивАкци)",
-    "pct": -6.1661433057379496,
-    "category": "акция БКСДивАкци",
-    "attempts": 2
-  },
-  "stock:RU000A108VR7": {
-    "label": "#RU000A108VR7 (ПАРУС-МАКС)",
-    "pct": 5.489614243323442,
-    "category": "акция ПАРУС-МАКС",
-    "attempts": 2
-  },
-  "stock:SMLT": {
-    "label": "#SMLT (Самолет ао)",
-    "pct": -9.090909090909083,
-    "category": "акция Самолет ао",
-    "attempts": 2
-  },
   "stock:UNAC": {
     "label": "#UNAC (iАвиастКао)",
-    "pct": 7.038512616201865,
+    "pct": 6.947890818858553,
     "category": "акция iАвиастКао",
-    "attempts": 2
-  },
-  "stock:VSYD": {
-    "label": "#VSYD (ВыбСудЗ ао)",
-    "pct": -5.263157894736842,
-    "category": "акция ВыбСудЗ ао",
-    "attempts": 2
+    "attempts": 1
   },
   "stock:XHOUSE": {
     "label": "#XHOUSE (ЗПИФ ИНВНД)",
-    "pct": 8.902077151335313,
+    "pct": -7.901907356948229,
     "category": "акция ЗПИФ ИНВНД",
-    "attempts": 2
+    "attempts": 1
+  },
+  "stock:AMGL": {
+    "label": "#AMGL (AMGL ETF)",
+    "pct": -5.064194008559197,
+    "category": "акция AMGL ETF",
+    "attempts": 1
+  },
+  "stock:BRZL": {
+    "label": "#BRZL (БурЗолото)",
+    "pct": -8.193979933110368,
+    "category": "акция БурЗолото",
+    "attempts": 1
+  },
+  "stock:CNTL": {
+    "label": "#CNTL (Телеграф)",
+    "pct": -5.40540540540541,
+    "category": "акция Телеграф",
+    "attempts": 1
+  },
+  "stock:IRKT": {
+    "label": "#IRKT (Яковлев-3)",
+    "pct": 6.413043478260868,
+    "category": "акция Яковлев-3",
+    "attempts": 1
+  },
+  "stock:KROTP": {
+    "label": "#KROTP (КрасОкт-1п)",
+    "pct": 11.313131313131313,
+    "category": "акция КрасОкт-1п",
+    "attempts": 1
+  },
+  "stock:LVHK": {
+    "label": "#LVHK (Левенгук)",
+    "pct": 5.221932114882507,
+    "category": "акция Левенгук",
+    "attempts": 1
+  },
+  "stock:NKSH": {
+    "label": "#NKSH (Нижкамшина)",
+    "pct": -7.091172214182333,
+    "category": "акция Нижкамшина",
+    "attempts": 1
+  },
+  "stock:OMZZP": {
+    "label": "#OMZZP (ОМЗ-ап)",
+    "pct": -5.7034220532319395,
+    "category": "акция ОМЗ-ап",
+    "attempts": 1
+  },
+  "stock:OZON": {
+    "label": "#OZON (Озон)",
+    "pct": 8.204415087780289,
+    "category": "акция Озон",
+    "attempts": 1
+  },
+  "stock:RU000A107RE5": {
+    "label": "#RU000A107RE5 (ПИФ Коллек)",
+    "pct": 11.11111111111111,
+    "category": "акция ПИФ Коллек",
+    "attempts": 1
+  },
+  "stock:RU000A109G79": {
+    "label": "#RU000A109G79 (ПИФГРИНФЛО)",
+    "pct": 13.846153846153847,
+    "category": "акция ПИФГРИНФЛО",
+    "attempts": 1
+  },
+  "stock:SLEN": {
+    "label": "#SLEN (Сахэнер ао)",
+    "pct": 7.042253521126764,
+    "category": "акция Сахэнер ао",
+    "attempts": 1
+  },
+  "stock:UKUZ": {
+    "label": "#UKUZ (ЮжКузб. ао)",
+    "pct": -5.993690851735016,
+    "category": "акция ЮжКузб. ао",
+    "attempts": 1
+  },
+  "stock:VEON-RX": {
+    "label": "#VEON-RX (VEON)",
+    "pct": 7.0072992700729895,
+    "category": "акция VEON",
+    "attempts": 1
+  },
+  "stock:VGSBP": {
+    "label": "#VGSBP (ВолгЭнСб-п)",
+    "pct": -9.322033898305095,
+    "category": "акция ВолгЭнСб-п",
+    "attempts": 1
+  },
+  "stock:WTCMP": {
+    "label": "#WTCMP (ЦМТ ап)",
+    "pct": -5.3110773899848205,
+    "category": "акция ЦМТ ап",
+    "attempts": 1
+  },
+  "stock:WUSH": {
+    "label": "#WUSH (iВУШХолднг)",
+    "pct": -6.766500277315599,
+    "category": "акция iВУШХолднг",
+    "attempts": 1
+  },
+  "stock:X5": {
+    "label": "#X5 (КЦ ИКС 5)",
+    "pct": 8.088441085922195,
+    "category": "акция КЦ ИКС 5",
+    "attempts": 1
+  },
+  "index:%5EDJI": {
+    "label": "Dow Jones",
+    "pct": -1.6334885369632741,
+    "category": "биржевой индекс США",
+    "attempts": 1
   }
 }
