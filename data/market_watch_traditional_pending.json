@@ -3,90 +3,90 @@
     "label": "#BRZL (БурЗолото)",
     "pct": 6.193078324225866,
     "category": "акция БурЗолото",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A107RE5": {
     "label": "#RU000A107RE5 (ПИФ Коллек)",
     "pct": -10.0,
     "category": "акция ПИФ Коллек",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:BSPBP": {
     "label": "#BSPBP (БСП ап)",
     "pct": -5.571847507331374,
     "category": "акция БСП ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:GAZAP": {
     "label": "#GAZAP (ГАЗ ап)",
     "pct": 5.288461538461538,
     "category": "акция ГАЗ ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:GAZP": {
     "label": "#GAZP (ГАЗПРОМ ао)",
     "pct": -6.536203522504899,
     "category": "акция ГАЗПРОМ ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KOGK": {
     "label": "#KOGK (КоршГОК ао)",
     "pct": 6.133333333333338,
     "category": "акция КоршГОК ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KRSB": {
     "label": "#KRSB (Красэсб ао)",
     "pct": 7.361963190184056,
     "category": "акция Красэсб ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:LIFE": {
     "label": "#LIFE (Фармсинтез)",
     "pct": -5.810397553516817,
     "category": "акция Фармсинтез",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MRKU": {
     "label": "#MRKU (Россети Ур)",
     "pct": 5.506679700228077,
     "category": "акция Россети Ур",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MSNG": {
     "label": "#MSNG (+МосЭнерго)",
     "pct": -5.351292318893331,
     "category": "акция +МосЭнерго",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A104M43": {
     "label": "#RU000A104M43 (ПИФ Аленка)",
     "pct": -5.188679245283019,
     "category": "акция ПИФ Аленка",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A108VR7": {
     "label": "#RU000A108VR7 (ПАРУС-МАКС)",
     "pct": -5.414908579465542,
     "category": "акция ПАРУС-МАКС",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:SNGS": {
     "label": "#SNGS (Сургнфгз)",
     "pct": -5.130626377085298,
     "category": "акция Сургнфгз",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:TNSE": {
     "label": "#TNSE (ТНСэнрг ао)",
     "pct": -5.670816044260028,
     "category": "акция ТНСэнрг ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VGSB": {
     "label": "#VGSB (ВолгЭнСб)",
     "pct": -5.044510385756685,
     "category": "акция ВолгЭнСб",
-    "attempts": 1
+    "attempts": 2
   }
 }
