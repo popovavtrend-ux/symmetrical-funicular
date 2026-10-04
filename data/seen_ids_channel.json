@@ -250,6 +250,7 @@
     "787670e7-c4ca-4cae-a965-5c31ed240774",
     "78ca3b91-c983-4ab2-a0b7-7a9959e99e28",
     "796b5c89-4d27-40a6-b0a4-e8d60ff4be0e",
+    "79d90858-f028-4475-9654-37a0304d3528",
     "79e3eb77-1d65-40d7-8a6c-bba5c92bd263",
     "7aa790a5-8bdd-4bf0-b88f-b070fca5eb71",
     "7c14c777-a31e-4013-98fb-3e74ea43c4a0",
@@ -1440,6 +1441,7 @@
     "https://beincrypto.com/?p=870488",
     "https://beincrypto.com/?p=870504",
     "https://beincrypto.com/?p=870517",
+    "https://beincrypto.com/?p=870534",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -2112,6 +2114,7 @@
     "https://cointelegraph.com/news/trump-jr-linked-fund-invest-300m-polymarket-1b-round",
     "https://cointelegraph.com/news/trump-linked-account-list-gold-token-crash",
     "https://cointelegraph.com/news/trump-says-us-will-form-ai-force-and-appoint-ai-czar-reports",
+    "https://cointelegraph.com/news/trump-taps-jay-clayton-to-lead-new-super-intelligence-force",
     "https://cointelegraph.com/news/uk-crime-agency-froze-premier-league-crypto-partner-sorare",
     "https://cointelegraph.com/news/uk-fca-sets-crypto-authorization-guidance-ahead-of-september-application-window",
     "https://cointelegraph.com/news/uk-fca-weighs-fund-rules-exemption-for-tokenized-gold-ft",
@@ -2715,6 +2718,10 @@
     "https://cryptoslate.com/?p=568541",
     "https://cryptoslate.com/?p=568545",
     "https://cryptoslate.com/?p=568549",
+    "https://cryptoslate.com/?p=568597",
+    "https://cryptoslate.com/?p=568603",
+    "https://cryptoslate.com/?p=568638",
+    "https://cryptoslate.com/?p=568774",
     "https://cryptoslate.com/?p=568776",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
@@ -3151,7 +3158,10 @@
     "https://decrypt.co/?p=380001",
     "https://decrypt.co/?p=380002",
     "https://decrypt.co/?p=380005",
+    "https://decrypt.co/?p=380007",
     "https://decrypt.co/?p=380014",
+    "https://decrypt.co/?p=380017",
+    "https://decrypt.co/?p=380019",
     "https://decrypt.co/videos/interviews/0y90noNs/a16z-raise-15b-jerome-powell-vs-trump-crypto-remains-flat-special-guest-dudas",
     "https://decrypt.co/videos/interviews/50vopyFa/the-white-whale-up-10x-in-a-week-lighter-tge-saylor-buys-109m-btc",
     "https://decrypt.co/videos/interviews/72tPnqPX/zec-rebounds-11-trump-says-he-wont-pardon-sam-bankman-fried-florida-revisits-its-strategic-bitcoin-reserve",
@@ -3723,5 +3733,5 @@
     "https://www.coindesk.com/arc/outboundfeeds/rss/",
     "https://www.dlnews.com/rss/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
