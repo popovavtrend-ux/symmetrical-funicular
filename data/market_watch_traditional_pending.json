@@ -3,168 +3,168 @@
     "label": "#VGSB (ВолгЭнСб)",
     "pct": -6.562500000000004,
     "category": "акция ВолгЭнСб",
-    "attempts": 1
+    "attempts": 2
   },
   "currency:USD000UTSTOM": {
     "label": "USD/RUB",
     "pct": 2.886690647482013,
     "category": "валютная пара",
-    "attempts": 1
+    "attempts": 2
   },
   "currency:CNYRUB_TOM": {
     "label": "CNY/RUB",
     "pct": 2.8476794441975937,
     "category": "валютная пара",
-    "attempts": 1
+    "attempts": 2
   },
   "index:IMOEX": {
     "label": "IMOEX",
     "pct": 2.6918866695325865,
     "category": "биржевой индекс",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:ARSA": {
     "label": "#ARSA (Арсагера)",
     "pct": -9.730363423212184,
     "category": "акция Арсагера",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:CHMF": {
     "label": "#CHMF (СевСт-ао)",
     "pct": 8.118433619866284,
     "category": "акция СевСт-ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:DVEC": {
     "label": "#DVEC (ДЭК ао)",
     "pct": 5.874999999999991,
     "category": "акция ДЭК ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:GCHE": {
     "label": "#GCHE (ЧеркизГ-ао)",
     "pct": 7.148960410139561,
     "category": "акция ЧеркизГ-ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KCHE": {
     "label": "#KCHE (КамчатЭ ао)",
     "pct": -5.649717514124299,
     "category": "акция КамчатЭ ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KCHEP": {
     "label": "#KCHEP (КамчатЭ ап)",
     "pct": -6.54205607476636,
     "category": "акция КамчатЭ ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KROTP": {
     "label": "#KROTP (КрасОкт-1п)",
     "pct": -6.352087114337568,
     "category": "акция КрасОкт-1п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:LKOH": {
     "label": "#LKOH (ЛУКОЙЛ)",
     "pct": 5.259660115826451,
     "category": "акция ЛУКОЙЛ",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MAGE": {
     "label": "#MAGE (МагадЭн ао)",
     "pct": 8.108108108108107,
     "category": "акция МагадЭн ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MRKP": {
     "label": "#MRKP (РСетиЦП ао)",
     "pct": 8.596386738137781,
     "category": "акция РСетиЦП ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MRKV": {
     "label": "#MRKV (РсетВол ао)",
     "pct": 10.809412981639516,
     "category": "акция РсетВол ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MSRS": {
     "label": "#MSRS (РСетиМР ао)",
     "pct": 5.412289079910854,
     "category": "акция РСетиМР ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:POSI": {
     "label": "#POSI (iПозитив)",
     "pct": 6.371784879189386,
     "category": "акция iПозитив",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:ROLO": {
     "label": "#ROLO (Русолово)",
     "pct": 5.027932960893859,
     "category": "акция Русолово",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RTSBP": {
     "label": "#RTSBP (ТНСэнРст-п)",
     "pct": -6.231003039513682,
     "category": "акция ТНСэнРст-п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A0JUR61": {
     "label": "#RU000A0JUR61 (ПИФ КОНСЕР)",
     "pct": -9.63855421686747,
     "category": "акция ПИФ КОНСЕР",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A101UY0": {
     "label": "#RU000A101UY0 (ОПИФ MM)",
     "pct": -12.777777777777777,
     "category": "акция ОПИФ MM",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A109G79": {
     "label": "#RU000A109G79 (ПИФГРИНФЛО)",
     "pct": -20.27027027027027,
     "category": "акция ПИФГРИНФЛО",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:STSB": {
     "label": "#STSB (ЕГП)",
     "pct": -11.436541143654118,
     "category": "акция ЕГП",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VSEH": {
     "label": "#VSEH (ВИ.ру)",
     "pct": 10.062624537432384,
     "category": "акция ВИ.ру",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VSYD": {
     "label": "#VSYD (ВыбСудЗ ао)",
     "pct": -8.796296296296296,
     "category": "акция ВыбСудЗ ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VSYDP": {
     "label": "#VSYDP (ВыбСудЗ ап)",
     "pct": -5.7324840764331215,
     "category": "акция ВыбСудЗ ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:YRSB": {
     "label": "#YRSB (ТНСэнЯр)",
     "pct": -6.303724928366762,
     "category": "акция ТНСэнЯр",
-    "attempts": 1
+    "attempts": 2
   },
   "index:%5EIXIC": {
     "label": "Nasdaq",
     "pct": 1.742552617594681,
     "category": "биржевой индекс США",
-    "attempts": 1
+    "attempts": 2
   }
 }
