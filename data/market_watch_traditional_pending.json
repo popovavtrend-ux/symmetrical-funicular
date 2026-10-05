@@ -1,92 +1,170 @@
 {
-  "stock:BRZL": {
-    "label": "#BRZL (БурЗолото)",
-    "pct": 6.193078324225866,
-    "category": "акция БурЗолото",
-    "attempts": 2
-  },
-  "stock:RU000A107RE5": {
-    "label": "#RU000A107RE5 (ПИФ Коллек)",
-    "pct": -10.0,
-    "category": "акция ПИФ Коллек",
-    "attempts": 2
-  },
-  "stock:BSPBP": {
-    "label": "#BSPBP (БСП ап)",
-    "pct": -5.571847507331374,
-    "category": "акция БСП ап",
-    "attempts": 2
-  },
-  "stock:GAZAP": {
-    "label": "#GAZAP (ГАЗ ап)",
-    "pct": 5.288461538461538,
-    "category": "акция ГАЗ ап",
-    "attempts": 2
-  },
-  "stock:GAZP": {
-    "label": "#GAZP (ГАЗПРОМ ао)",
-    "pct": -6.536203522504899,
-    "category": "акция ГАЗПРОМ ао",
-    "attempts": 2
-  },
-  "stock:KOGK": {
-    "label": "#KOGK (КоршГОК ао)",
-    "pct": 6.133333333333338,
-    "category": "акция КоршГОК ао",
-    "attempts": 2
-  },
-  "stock:KRSB": {
-    "label": "#KRSB (Красэсб ао)",
-    "pct": 7.361963190184056,
-    "category": "акция Красэсб ао",
-    "attempts": 2
-  },
-  "stock:LIFE": {
-    "label": "#LIFE (Фармсинтез)",
-    "pct": -5.810397553516817,
-    "category": "акция Фармсинтез",
-    "attempts": 2
-  },
-  "stock:MRKU": {
-    "label": "#MRKU (Россети Ур)",
-    "pct": 5.506679700228077,
-    "category": "акция Россети Ур",
-    "attempts": 2
-  },
-  "stock:MSNG": {
-    "label": "#MSNG (+МосЭнерго)",
-    "pct": -5.351292318893331,
-    "category": "акция +МосЭнерго",
-    "attempts": 2
-  },
-  "stock:RU000A104M43": {
-    "label": "#RU000A104M43 (ПИФ Аленка)",
-    "pct": -5.188679245283019,
-    "category": "акция ПИФ Аленка",
-    "attempts": 2
-  },
-  "stock:RU000A108VR7": {
-    "label": "#RU000A108VR7 (ПАРУС-МАКС)",
-    "pct": -5.414908579465542,
-    "category": "акция ПАРУС-МАКС",
-    "attempts": 2
-  },
-  "stock:SNGS": {
-    "label": "#SNGS (Сургнфгз)",
-    "pct": -5.130626377085298,
-    "category": "акция Сургнфгз",
-    "attempts": 2
-  },
-  "stock:TNSE": {
-    "label": "#TNSE (ТНСэнрг ао)",
-    "pct": -5.670816044260028,
-    "category": "акция ТНСэнрг ао",
-    "attempts": 2
-  },
   "stock:VGSB": {
     "label": "#VGSB (ВолгЭнСб)",
-    "pct": -5.044510385756685,
+    "pct": -6.562500000000004,
     "category": "акция ВолгЭнСб",
-    "attempts": 2
+    "attempts": 1
+  },
+  "currency:USD000UTSTOM": {
+    "label": "USD/RUB",
+    "pct": 2.886690647482013,
+    "category": "валютная пара",
+    "attempts": 1
+  },
+  "currency:CNYRUB_TOM": {
+    "label": "CNY/RUB",
+    "pct": 2.8476794441975937,
+    "category": "валютная пара",
+    "attempts": 1
+  },
+  "index:IMOEX": {
+    "label": "IMOEX",
+    "pct": 2.6918866695325865,
+    "category": "биржевой индекс",
+    "attempts": 1
+  },
+  "stock:ARSA": {
+    "label": "#ARSA (Арсагера)",
+    "pct": -9.730363423212184,
+    "category": "акция Арсагера",
+    "attempts": 1
+  },
+  "stock:CHMF": {
+    "label": "#CHMF (СевСт-ао)",
+    "pct": 8.118433619866284,
+    "category": "акция СевСт-ао",
+    "attempts": 1
+  },
+  "stock:DVEC": {
+    "label": "#DVEC (ДЭК ао)",
+    "pct": 5.874999999999991,
+    "category": "акция ДЭК ао",
+    "attempts": 1
+  },
+  "stock:GCHE": {
+    "label": "#GCHE (ЧеркизГ-ао)",
+    "pct": 7.148960410139561,
+    "category": "акция ЧеркизГ-ао",
+    "attempts": 1
+  },
+  "stock:KCHE": {
+    "label": "#KCHE (КамчатЭ ао)",
+    "pct": -5.649717514124299,
+    "category": "акция КамчатЭ ао",
+    "attempts": 1
+  },
+  "stock:KCHEP": {
+    "label": "#KCHEP (КамчатЭ ап)",
+    "pct": -6.54205607476636,
+    "category": "акция КамчатЭ ап",
+    "attempts": 1
+  },
+  "stock:KROTP": {
+    "label": "#KROTP (КрасОкт-1п)",
+    "pct": -6.352087114337568,
+    "category": "акция КрасОкт-1п",
+    "attempts": 1
+  },
+  "stock:LKOH": {
+    "label": "#LKOH (ЛУКОЙЛ)",
+    "pct": 5.259660115826451,
+    "category": "акция ЛУКОЙЛ",
+    "attempts": 1
+  },
+  "stock:MAGE": {
+    "label": "#MAGE (МагадЭн ао)",
+    "pct": 8.108108108108107,
+    "category": "акция МагадЭн ао",
+    "attempts": 1
+  },
+  "stock:MRKP": {
+    "label": "#MRKP (РСетиЦП ао)",
+    "pct": 8.596386738137781,
+    "category": "акция РСетиЦП ао",
+    "attempts": 1
+  },
+  "stock:MRKV": {
+    "label": "#MRKV (РсетВол ао)",
+    "pct": 10.809412981639516,
+    "category": "акция РсетВол ао",
+    "attempts": 1
+  },
+  "stock:MSRS": {
+    "label": "#MSRS (РСетиМР ао)",
+    "pct": 5.412289079910854,
+    "category": "акция РСетиМР ао",
+    "attempts": 1
+  },
+  "stock:POSI": {
+    "label": "#POSI (iПозитив)",
+    "pct": 6.371784879189386,
+    "category": "акция iПозитив",
+    "attempts": 1
+  },
+  "stock:ROLO": {
+    "label": "#ROLO (Русолово)",
+    "pct": 5.027932960893859,
+    "category": "акция Русолово",
+    "attempts": 1
+  },
+  "stock:RTSBP": {
+    "label": "#RTSBP (ТНСэнРст-п)",
+    "pct": -6.231003039513682,
+    "category": "акция ТНСэнРст-п",
+    "attempts": 1
+  },
+  "stock:RU000A0JUR61": {
+    "label": "#RU000A0JUR61 (ПИФ КОНСЕР)",
+    "pct": -9.63855421686747,
+    "category": "акция ПИФ КОНСЕР",
+    "attempts": 1
+  },
+  "stock:RU000A101UY0": {
+    "label": "#RU000A101UY0 (ОПИФ MM)",
+    "pct": -12.777777777777777,
+    "category": "акция ОПИФ MM",
+    "attempts": 1
+  },
+  "stock:RU000A109G79": {
+    "label": "#RU000A109G79 (ПИФГРИНФЛО)",
+    "pct": -20.27027027027027,
+    "category": "акция ПИФГРИНФЛО",
+    "attempts": 1
+  },
+  "stock:STSB": {
+    "label": "#STSB (ЕГП)",
+    "pct": -11.436541143654118,
+    "category": "акция ЕГП",
+    "attempts": 1
+  },
+  "stock:VSEH": {
+    "label": "#VSEH (ВИ.ру)",
+    "pct": 10.062624537432384,
+    "category": "акция ВИ.ру",
+    "attempts": 1
+  },
+  "stock:VSYD": {
+    "label": "#VSYD (ВыбСудЗ ао)",
+    "pct": -8.796296296296296,
+    "category": "акция ВыбСудЗ ао",
+    "attempts": 1
+  },
+  "stock:VSYDP": {
+    "label": "#VSYDP (ВыбСудЗ ап)",
+    "pct": -5.7324840764331215,
+    "category": "акция ВыбСудЗ ап",
+    "attempts": 1
+  },
+  "stock:YRSB": {
+    "label": "#YRSB (ТНСэнЯр)",
+    "pct": -6.303724928366762,
+    "category": "акция ТНСэнЯр",
+    "attempts": 1
+  },
+  "index:%5EIXIC": {
+    "label": "Nasdaq",
+    "pct": 1.742552617594681,
+    "category": "биржевой индекс США",
+    "attempts": 1
   }
 }
