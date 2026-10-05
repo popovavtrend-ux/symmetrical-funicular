@@ -73,6 +73,11 @@ SOURCE_NAMES = {
     "ru.beincrypto.com": "BeInCrypto",
     "incrypted.com": "Incrypted",
     "cryptocurrency.tech": "Cryptocurrency.Tech",
+    "newsbtc.com": "NewsBTC",
+    "crypto.news": "Crypto.news",
+    "u.today": "U.Today",
+    "forbes.com": "Forbes",
+    "investing.com": "Investing.com",
 }
 
 
