@@ -3,102 +3,102 @@
     "label": "#RU000A0JUR61 (ПИФ КОНСЕР)",
     "pct": 36.0,
     "category": "акция ПИФ КОНСЕР",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A101UY0": {
     "label": "#RU000A101UY0 (ОПИФ MM)",
     "pct": 15.286624203821656,
     "category": "акция ОПИФ MM",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A109G79": {
     "label": "#RU000A109G79 (ПИФГРИНФЛО)",
     "pct": 21.610169491525426,
     "category": "акция ПИФГРИНФЛО",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VSYDP": {
     "label": "#VSYDP (ВыбСудЗ ап)",
     "pct": -6.081081081081082,
     "category": "акция ВыбСудЗ ап",
-    "attempts": 1
+    "attempts": 2
   },
   "metal:GLDRUB_TOM": {
     "label": "Золото",
     "pct": 2.0575034439852464,
     "category": "драгоценный металл",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:CBOM": {
     "label": "#CBOM (МКБ ао)",
     "pct": 5.133470225872682,
     "category": "акция МКБ ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:CHKZ": {
     "label": "#CHKZ (ЧКПЗ ао)",
     "pct": -5.47112462006079,
     "category": "акция ЧКПЗ ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:DATA": {
     "label": "#DATA (iАренадата)",
     "pct": 5.354220247837267,
     "category": "акция iАренадата",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KAZT": {
     "label": "#KAZT (Куйбазот)",
     "pct": 7.856693903205532,
     "category": "акция Куйбазот",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:PMSBP": {
     "label": "#PMSBP (ПермьЭнС-п)",
     "pct": 7.954545454545454,
     "category": "акция ПермьЭнС-п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:SOFL": {
     "label": "#SOFL (iСофтлайн)",
     "pct": 5.0500653025685684,
     "category": "акция iСофтлайн",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:T": {
     "label": "#T (Т-Техно ао)",
     "pct": 6.31338941740703,
     "category": "акция Т-Техно ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VKCO": {
     "label": "#VKCO (МКПАО \"ВК\")",
     "pct": 7.044137316094508,
     "category": "акция МКПАО \"ВК\"",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:XACCSK": {
     "label": "#XACCSK (Акцент 5)",
     "pct": -5.113636363636364,
     "category": "акция Акцент 5",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:XHOUSE": {
     "label": "#XHOUSE (ЗПИФ ИНВНД)",
     "pct": 8.481262327416173,
     "category": "акция ЗПИФ ИНВНД",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:XXXXXX": {
     "label": "#XXXXXX (Рентал ПРО)",
     "pct": -5.055094854027037,
     "category": "акция Рентал ПРО",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:ZVEZ": {
     "label": "#ZVEZ (ЗВЕЗДА ао)",
     "pct": -5.119453924914687,
     "category": "акция ЗВЕЗДА ао",
-    "attempts": 1
+    "attempts": 2
   }
 }
