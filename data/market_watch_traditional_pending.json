@@ -3,102 +3,102 @@
     "label": "#RU000A101UY0 (ОПИФ MM)",
     "pct": 15.745856353591158,
     "category": "акция ОПИФ MM",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:BAZA": {
     "label": "#BAZA (iБАЗИС)",
     "pct": 8.52465186300339,
     "category": "акция iБАЗИС",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:DIAS": {
     "label": "#DIAS (iДиасофт)",
     "pct": 6.2645011600928076,
     "category": "акция iДиасофт",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:FEES": {
     "label": "#FEES (Россети)",
     "pct": 6.201864612890151,
     "category": "акция Россети",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KZOSP": {
     "label": "#KZOSP (ОргСинт ап)",
     "pct": -5.664062499999996,
     "category": "акция ОргСинт ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:LIFE": {
     "label": "#LIFE (Фармсинтез)",
     "pct": 7.467532467532467,
     "category": "акция Фармсинтез",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MAGN": {
     "label": "#MAGN (ММК)",
     "pct": 6.299952985425482,
     "category": "акция ММК",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MGTSP": {
     "label": "#MGTSP (МГТС-4ап)",
     "pct": -5.2100840336134455,
     "category": "акция МГТС-4ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MTLR": {
     "label": "#MTLR (Мечел ао)",
     "pct": 9.939759036144562,
     "category": "акция Мечел ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MTLRP": {
     "label": "#MTLRP (Мечел ап)",
     "pct": 6.86015831134565,
     "category": "акция Мечел ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:NLMK": {
     "label": "#NLMK (НЛМК ао)",
     "pct": 7.8320090805902325,
     "category": "акция НЛМК ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RASP": {
     "label": "#RASP (Распадская)",
     "pct": 6.067961165048544,
     "category": "акция Распадская",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A104M43": {
     "label": "#RU000A104M43 (ПИФ Аленка)",
     "pct": 5.472636815920398,
     "category": "акция ПИФ Аленка",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A107RE5": {
     "label": "#RU000A107RE5 (ПИФ Коллек)",
     "pct": -8.88888888888889,
     "category": "акция ПИФ Коллек",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A109R27": {
     "label": "#RU000A109R27 (2х Акции)",
     "pct": 6.445993031358885,
     "category": "акция 2х Акции",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:SGZH": {
     "label": "#SGZH (Сегежа)",
     "pct": 5.619707467282539,
     "category": "акция Сегежа",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VSYD": {
     "label": "#VSYD (ВыбСудЗ ао)",
     "pct": -5.0761421319796955,
     "category": "акция ВыбСудЗ ао",
-    "attempts": 1
+    "attempts": 2
   }
 }
