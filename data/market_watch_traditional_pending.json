@@ -3,66 +3,66 @@
     "label": "#MAGN (ММК)",
     "pct": -5.10835913312694,
     "category": "акция ММК",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MTLRP": {
     "label": "#MTLRP (Мечел ап)",
     "pct": -6.419753086419757,
     "category": "акция Мечел ап",
-    "attempts": 1
+    "attempts": 2
   },
   "metal:SLVRUB_TOM": {
     "label": "Серебро",
     "pct": -2.405602923264305,
     "category": "драгоценный металл",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:LSRG": {
     "label": "#LSRG (ЛСР ао)",
     "pct": 5.130361648444066,
     "category": "акция ЛСР ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A0JXP78": {
     "label": "#RU000A0JXP78 (ЗПИФДОМ.РФ)",
     "pct": -5.993690851735016,
     "category": "акция ЗПИФДОМ.РФ",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A108ZB2": {
     "label": "#RU000A108ZB2 (2хОФЗ)",
     "pct": -5.007309941520468,
     "category": "акция 2хОФЗ",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A1092L4": {
     "label": "#RU000A1092L4 (ПИФАКТИВ20)",
     "pct": -5.128205128205128,
     "category": "акция ПИФАКТИВ20",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A109GQ8": {
     "label": "#RU000A109GQ8 (ПИФСкладК2)",
     "pct": 6.382978723404255,
     "category": "акция ПИФСкладК2",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:SLEN": {
     "label": "#SLEN (Сахэнер ао)",
     "pct": -5.701754385964907,
     "category": "акция Сахэнер ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:XIPKSV": {
     "label": "#XIPKSV (ИПИФСтабВл)",
     "pct": -5.0691244239631335,
     "category": "акция ИПИФСтабВл",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:YKEN": {
     "label": "#YKEN (Якутскэнрг)",
     "pct": -6.451612903225799,
     "category": "акция Якутскэнрг",
-    "attempts": 1
+    "attempts": 2
   }
 }
