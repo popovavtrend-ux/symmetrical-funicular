@@ -3,90 +3,96 @@
     "label": "Серебро",
     "pct": 2.059282371294859,
     "category": "драгоценный металл",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:BLNG": {
     "label": "#BLNG (Белон ао)",
     "pct": -5.118110236220468,
     "category": "акция Белон ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:CNTLP": {
     "label": "#CNTLP (Телеграф-п)",
     "pct": -6.013363028953239,
     "category": "акция Телеграф-п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:ETLN": {
     "label": "#ETLN (ЭталонГруп)",
     "pct": 8.378672470076184,
     "category": "акция ЭталонГруп",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:EVRZ": {
     "label": "#EVRZ (ЕВРАЗ)",
     "pct": -6.693711967545633,
     "category": "акция ЕВРАЗ",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:GAZAP": {
     "label": "#GAZAP (ГАЗ ап)",
     "pct": -5.6316590563165905,
     "category": "акция ГАЗ ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:GLRX": {
     "label": "#GLRX (ГЛОРАКС)",
     "pct": 6.545454545454553,
     "category": "акция ГЛОРАКС",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KGKC": {
     "label": "#KGKC (КурганГКао)",
     "pct": -5.291005291005291,
     "category": "акция КурганГКао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MFGSP": {
     "label": "#MFGSP (Мегион-ап)",
     "pct": -5.1440329218107,
     "category": "акция Мегион-ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:OMZZP": {
     "label": "#OMZZP (ОМЗ-ап)",
     "pct": -5.846774193548387,
     "category": "акция ОМЗ-ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:SELG": {
     "label": "#SELG (Селигдар)",
     "pct": 5.664488017429189,
     "category": "акция Селигдар",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:TASB": {
     "label": "#TASB (ТамбЭнСб)",
     "pct": -5.694444444444435,
     "category": "акция ТамбЭнСб",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:TUZA": {
     "label": "#TUZA (ТЗА ао)",
     "pct": 5.2873563218390744,
     "category": "акция ТЗА ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:VSYDP": {
     "label": "#VSYDP (ВыбСудЗ ап)",
     "pct": -5.0359712230215825,
     "category": "акция ВыбСудЗ ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:YKENP": {
     "label": "#YKENP (Якутскэн-п)",
     "pct": -7.92682926829269,
     "category": "акция Якутскэн-п",
+    "attempts": 2
+  },
+  "index:%5EDJI": {
+    "label": "Dow Jones",
+    "pct": 1.6719248300645042,
+    "category": "биржевой индекс США",
     "attempts": 1
   }
 }
