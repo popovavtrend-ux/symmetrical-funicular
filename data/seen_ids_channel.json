@@ -1713,6 +1713,7 @@
     "https://beincrypto.com/?p=871945",
     "https://beincrypto.com/?p=871951",
     "https://beincrypto.com/?p=871954",
+    "https://beincrypto.com/?p=871959",
     "https://beincrypto.com/?p=871960",
     "https://beincrypto.com/?p=871980",
     "https://beincrypto.com/?p=871988",
@@ -1721,7 +1722,11 @@
     "https://beincrypto.com/?p=872000",
     "https://beincrypto.com/?p=872008",
     "https://beincrypto.com/?p=872017",
+    "https://beincrypto.com/?p=872021",
+    "https://beincrypto.com/?p=872030",
     "https://beincrypto.com/?p=872055",
+    "https://beincrypto.com/?p=872082",
+    "https://beincrypto.com/?p=872083",
     "https://beincrypto.com/?p=872085",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
@@ -3498,6 +3503,7 @@
     "https://cryptoslate.com/?p=570898",
     "https://cryptoslate.com/?p=570912",
     "https://cryptoslate.com/?p=570914",
+    "https://cryptoslate.com/?p=570942",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
     "https://decrypt.co/?p=373351",
@@ -4557,6 +4563,7 @@
     "https://thedefiant.io/news/markets/report-links-2-08m-in-laptop-sales-to-wintermute-tagged-wallet",
     "https://thedefiant.io/news/markets/standard-chartered-sets-10-arbitrum-target-on-robinhood-and-tokenization-growth",
     "https://thedefiant.io/news/markets/strk-jumps-30-as-starknet-weighs-layer-1-shift",
+    "https://thedefiant.io/news/markets/sui-gains-54-in-four-weeks-outpacing-bitcoin-and-ether",
     "https://thedefiant.io/news/markets/traders-make-september-rate-increase-favorite-bitcoin-holds-78000",
     "https://thedefiant.io/news/markets/xrp-leads-broad-crypto-bid-senate-vote-fed-decision-sep-14-2026",
     "https://thedefiant.io/news/markets/zcash-clears-1-600-after-21shares-launches-european-etp",
@@ -4640,6 +4647,7 @@
     "https://thedefiant.io/news/tokens/money-mushroom-moved-a-nasdaq-penny-stock-but-its-tokenized-stock-is-a-memecoin-too",
     "https://thedefiant.io/news/tokens/paxos-labs-launches-paxgy-adding-lending-yield-to-tokenized-gold",
     "https://thedefiant.io/news/tokens/polygon-prepares-permissionless-burn-of-100-million-pol",
+    "https://thedefiant.io/news/tokens/pump-fun-to-tie-callout-rewards-to-followers-profits",
     "https://thedefiant.io/news/tokens/variational-sets-q4-var-launch-with-32-airdrop",
     "https://thedefiant.io/news/tradfi-and-fintech/amc-s-ceo-told-robinhood-to-halt-its-stock-token-robinhood-told-him-to-send-lawyers",
     "https://thedefiant.io/news/tradfi-and-fintech/bar-a-mobile-plans-stellar-wallet-with-wirex-and-crossmint",
@@ -4825,6 +4833,7 @@
     "https://u.today/tom-lee-to-stop-stacking-ethereum-upon-securing-5-of-supply",
     "https://u.today/too-late-for-bitcoin-xrp-and-near-wintermute-says-bull-cycle-is-just-starting",
     "https://u.today/top-10-shiba-inu-shib-whales-inject-10-billion-in-24-hours",
+    "https://u.today/top-weekly-crypto-news-big-xrp-day-this-monday-bitcoin-drops-to-october-lows-ripple-advances-xrpl",
     "https://u.today/top-weekly-crypto-news-bitcoin-btc-reclaims-87000-ripple-pushes-xrpl-lending-forward-shiba-inu-shib",
     "https://u.today/us-government-moves-half-a-billion-worth-of-crypto-in-just-few-hours",
     "https://u.today/we-made-it-300x-faster-metallicus-ceo-delivers-on-elon-musks-dogecoin-vision",
@@ -4993,5 +5002,5 @@
     "https://www.investing.com/rss/news_301.rss",
     "https://www.newsbtc.com/feed/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
