@@ -4450,6 +4450,7 @@
     "https://thedefiant.io/news/defi/onchain-perps-close-execution-gap-with-centralized-exchanges",
     "https://thedefiant.io/news/defi/ondo-perps-adds-spot-trading-for-12-tokenized-stocks-and-etfs",
     "https://thedefiant.io/news/defi/papertrade-draws-reported-3-billion-in-positions-in-first-hour",
+    "https://thedefiant.io/news/defi/papertrade-faces-oracle-manipulation-allegation-as-house-pool-shows-3-14-million",
     "https://thedefiant.io/news/defi/papertrade-sets-1000x-perps-launch-with-85-million-deposited",
     "https://thedefiant.io/news/defi/papertrade-shows-10-3-million-in-staker-rewards-hours-after-launch",
     "https://thedefiant.io/news/defi/papertrade-traders-lose-18-2-million-as-staking-rewards-reach-12-6-million",
@@ -4640,6 +4641,7 @@
     "https://thedefiant.io/news/tokens/aptos-reaffirms-210-million-apt-lock-as-insider-unlock-cycle-nears-end",
     "https://thedefiant.io/news/tokens/circle-s-cirbtc-is-live-on-ethereum-but-has-only-40-btc-outstanding",
     "https://thedefiant.io/news/tokens/eric-trump-denies-new-coin-launch-as-trump-jumps-38",
+    "https://thedefiant.io/news/tokens/filecoin-nears-end-of-six-year-vesting-removing-68-million-fil-in-annual-releases",
     "https://thedefiant.io/news/tokens/hunter-biden-confirms-laptop-memecoin-launch-sept-9",
     "https://thedefiant.io/news/tokens/hunter-biden-laptop-falls-99-percent-three-hours-trump-valuation",
     "https://thedefiant.io/news/tokens/hyperliquid-labs-labeled-wallet-distributes-330-million-in-hype",
@@ -5002,5 +5004,5 @@
     "https://www.investing.com/rss/news_301.rss",
     "https://www.newsbtc.com/feed/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
