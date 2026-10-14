@@ -1,662 +1,194 @@
 {
-  "currency:USD000UTSTOM": {
-    "label": "USD/RUB",
-    "pct": -1.887946857792156,
-    "category": "валютная пара",
-    "attempts": 2
-  },
-  "currency:CNYRUB_TOM": {
-    "label": "CNY/RUB",
-    "pct": -1.7948315136281547,
-    "category": "валютная пара",
-    "attempts": 2
-  },
-  "metal:GLDRUB_TOM": {
-    "label": "Золото",
-    "pct": -2.1640686231820956,
-    "category": "драгоценный металл",
-    "attempts": 2
-  },
-  "metal:SLVRUB_TOM": {
-    "label": "Серебро",
-    "pct": -2.415163558544798,
-    "category": "драгоценный металл",
-    "attempts": 2
-  },
-  "index:IMOEX": {
-    "label": "IMOEX",
-    "pct": 4.546101892410922,
-    "category": "биржевой индекс",
-    "attempts": 2
-  },
-  "index:RTSI": {
-    "label": "RTS",
-    "pct": 6.756772611547161,
-    "category": "биржевой индекс",
-    "attempts": 2
-  },
-  "stock:AFKS": {
-    "label": "#AFKS (Система ао)",
-    "pct": 13.160561748950336,
-    "category": "акция Система ао",
-    "attempts": 2
-  },
-  "stock:AFLT": {
-    "label": "#AFLT (Аэрофлот)",
-    "pct": 10.135970333745368,
-    "category": "акция Аэрофлот",
-    "attempts": 2
-  },
-  "stock:AKAI": {
-    "label": "#AKAI (AKAI ETF)",
-    "pct": 5.0786988457502655,
-    "category": "акция AKAI ETF",
-    "attempts": 2
-  },
-  "stock:AKBC": {
-    "label": "#AKBC (AKBC ETF)",
-    "pct": 7.534246575342476,
-    "category": "акция AKBC ETF",
-    "attempts": 2
-  },
-  "stock:AKCN": {
-    "label": "#AKCN (AKCN ETF)",
-    "pct": 7.044198895027616,
-    "category": "акция AKCN ETF",
-    "attempts": 2
-  },
-  "stock:AKHT": {
-    "label": "#AKHT (AKHT ETF)",
-    "pct": 5.932674147316953,
-    "category": "акция AKHT ETF",
-    "attempts": 2
-  },
-  "stock:AKME": {
-    "label": "#AKME (ETF AKME)",
-    "pct": 7.72668469951781,
-    "category": "акция ETF AKME",
-    "attempts": 2
-  },
-  "stock:AKQU": {
-    "label": "#AKQU (AKQU ETF)",
-    "pct": 5.902296193558327,
-    "category": "акция AKQU ETF",
-    "attempts": 2
-  },
-  "stock:ALRS": {
-    "label": "#ALRS (АЛРОСА ао)",
-    "pct": 6.728778467908906,
-    "category": "акция АЛРОСА ао",
-    "attempts": 2
-  },
-  "stock:AMIX": {
-    "label": "#AMIX (AMIX ETF)",
-    "pct": 7.513227513227508,
-    "category": "акция AMIX ETF",
-    "attempts": 2
-  },
-  "stock:AMRE": {
-    "label": "#AMRE (AMRE ETF)",
-    "pct": 7.947686116700192,
-    "category": "акция AMRE ETF",
-    "attempts": 2
-  },
-  "stock:BANE": {
-    "label": "#BANE (Башнефт ао)",
-    "pct": 9.11340206185567,
-    "category": "акция Башнефт ао",
-    "attempts": 2
-  },
-  "stock:BAZA": {
-    "label": "#BAZA (iБАЗИС)",
-    "pct": 7.352176174787576,
-    "category": "акция iБАЗИС",
-    "attempts": 2
-  },
-  "stock:BCSR": {
-    "label": "#BCSR (BCSR ETF)",
-    "pct": 6.586826347305391,
-    "category": "акция BCSR ETF",
-    "attempts": 2
-  },
-  "stock:BELU": {
-    "label": "#BELU (НоваБев ао)",
-    "pct": 9.562398703403552,
-    "category": "акция НоваБев ао",
-    "attempts": 2
-  },
-  "stock:BLNG": {
-    "label": "#BLNG (Белон ао)",
-    "pct": 5.1175656984785505,
-    "category": "акция Белон ао",
-    "attempts": 2
-  },
   "stock:BSPBP": {
     "label": "#BSPBP (БСП ап)",
-    "pct": 5.279503105590049,
+    "pct": 5.604719764011795,
     "category": "акция БСП ап",
-    "attempts": 2
-  },
-  "stock:CARM": {
-    "label": "#CARM (СТГ)",
-    "pct": 7.195301027900136,
-    "category": "акция СТГ",
-    "attempts": 2
-  },
-  "stock:CBOM": {
-    "label": "#CBOM (МКБ ао)",
-    "pct": 6.879340277777782,
-    "category": "акция МКБ ао",
-    "attempts": 2
-  },
-  "stock:CHMF": {
-    "label": "#CHMF (СевСт-ао)",
-    "pct": 6.507656065959942,
-    "category": "акция СевСт-ао",
-    "attempts": 2
-  },
-  "stock:DATA": {
-    "label": "#DATA (iАренадата)",
-    "pct": 10.585885486018633,
-    "category": "акция iАренадата",
-    "attempts": 2
-  },
-  "stock:DIVD": {
-    "label": "#DIVD (ETF DIVD)",
-    "pct": 6.263087759375613,
-    "category": "акция ETF DIVD",
-    "attempts": 2
-  },
-  "stock:ELFV": {
-    "label": "#ELFV (ЭЛ5Энер ао)",
-    "pct": 8.920704845814974,
-    "category": "акция ЭЛ5Энер ао",
-    "attempts": 2
-  },
-  "stock:ENPG": {
-    "label": "#ENPG (ЭН+ГРУП ао)",
-    "pct": 7.74526678141136,
-    "category": "акция ЭН+ГРУП ао",
-    "attempts": 2
-  },
-  "stock:EQMX": {
-    "label": "#EQMX (EQMX ETF)",
-    "pct": 7.102728731942211,
-    "category": "акция EQMX ETF",
-    "attempts": 2
-  },
-  "stock:ESGE": {
-    "label": "#ESGE (ESGE ETF)",
-    "pct": 7.314856883234891,
-    "category": "акция ESGE ETF",
-    "attempts": 2
-  },
-  "stock:ESGR": {
-    "label": "#ESGR (ESGR ETF)",
-    "pct": 6.15,
-    "category": "акция ESGR ETF",
-    "attempts": 2
-  },
-  "stock:ETLN": {
-    "label": "#ETLN (ЭталонГруп)",
-    "pct": 5.220883534136542,
-    "category": "акция ЭталонГруп",
-    "attempts": 2
-  },
-  "stock:FEES": {
-    "label": "#FEES (Россети)",
-    "pct": 6.564885496183203,
-    "category": "акция Россети",
-    "attempts": 2
-  },
-  "stock:FMSA": {
-    "label": "#FMSA (FMSA ETF)",
-    "pct": 6.274348985031783,
-    "category": "акция FMSA ETF",
-    "attempts": 2
-  },
-  "stock:GAZP": {
-    "label": "#GAZP (ГАЗПРОМ ао)",
-    "pct": 8.45896147403685,
-    "category": "акция ГАЗПРОМ ао",
-    "attempts": 2
-  },
-  "stock:GROD": {
-    "label": "#GROD (ETF GROD)",
-    "pct": 7.74385703648548,
-    "category": "акция ETF GROD",
-    "attempts": 2
-  },
-  "stock:HYDR": {
-    "label": "#HYDR (РусГидро)",
-    "pct": 10.965250965250958,
-    "category": "акция РусГидро",
-    "attempts": 2
-  },
-  "stock:IRAO": {
-    "label": "#IRAO (ИнтерРАОао)",
-    "pct": 8.01598990111509,
-    "category": "акция ИнтерРАОао",
-    "attempts": 2
-  },
-  "stock:KAZT": {
-    "label": "#KAZT (Куйбазот)",
-    "pct": 10.023310023310033,
-    "category": "акция Куйбазот",
-    "attempts": 2
-  },
-  "stock:KAZTP": {
-    "label": "#KAZTP (Куйбазот-п)",
-    "pct": 13.943028485757122,
-    "category": "акция Куйбазот-п",
-    "attempts": 2
+    "attempts": 1
   },
   "stock:KCHE": {
     "label": "#KCHE (КамчатЭ ао)",
-    "pct": -10.179640718562872,
+    "pct": 10.222222222222218,
     "category": "акция КамчатЭ ао",
-    "attempts": 2
-  },
-  "stock:KCHEP": {
-    "label": "#KCHEP (КамчатЭ ап)",
-    "pct": -5.000000000000004,
-    "category": "акция КамчатЭ ап",
-    "attempts": 2
-  },
-  "stock:KMAZ": {
-    "label": "#KMAZ (КАМАЗ)",
-    "pct": 7.116788321167894,
-    "category": "акция КАМАЗ",
-    "attempts": 2
-  },
-  "stock:KRKNP": {
-    "label": "#KRKNP (СаратНПЗ-п)",
-    "pct": 5.084745762711865,
-    "category": "акция СаратНПЗ-п",
-    "attempts": 2
+    "attempts": 1
   },
   "stock:KROT": {
     "label": "#KROT (КрасОкт-ао)",
-    "pct": 17.425742574257423,
+    "pct": 12.563237774030354,
     "category": "акция КрасОкт-ао",
-    "attempts": 2
+    "attempts": 1
   },
-  "stock:LKOH": {
-    "label": "#LKOH (ЛУКОЙЛ)",
-    "pct": 9.01055289979255,
-    "category": "акция ЛУКОЙЛ",
-    "attempts": 2
+  "stock:ABIO": {
+    "label": "#ABIO (iАРТГЕН ао)",
+    "pct": 6.923429619440631,
+    "category": "акция iАРТГЕН ао",
+    "attempts": 1
   },
-  "stock:LSRG": {
-    "label": "#LSRG (ЛСР ао)",
-    "pct": 5.959999999999991,
-    "category": "акция ЛСР ао",
-    "attempts": 2
+  "stock:AKFN": {
+    "label": "#AKFN (AKFN ETF)",
+    "pct": 5.172413793103446,
+    "category": "акция AKFN ETF",
+    "attempts": 1
   },
-  "stock:MAGE": {
-    "label": "#MAGE (МагадЭн ао)",
-    "pct": -5.17857142857143,
-    "category": "акция МагадЭн ао",
-    "attempts": 2
+  "stock:AKPP": {
+    "label": "#AKPP (AKPP ETF)",
+    "pct": -5.355594102341735,
+    "category": "акция AKPP ETF",
+    "attempts": 1
   },
-  "stock:MAGN": {
-    "label": "#MAGN (ММК)",
-    "pct": 6.641808436261948,
-    "category": "акция ММК",
-    "attempts": 2
+  "stock:ARSA": {
+    "label": "#ARSA (Арсагера)",
+    "pct": -5.194805194805199,
+    "category": "акция Арсагера",
+    "attempts": 1
   },
-  "stock:MGNT": {
-    "label": "#MGNT (Магнит ао)",
-    "pct": 7.2560975609756095,
-    "category": "акция Магнит ао",
-    "attempts": 2
+  "stock:BANEP": {
+    "label": "#BANEP (Башнефт ап)",
+    "pct": 5.5813953488372094,
+    "category": "акция Башнефт ап",
+    "attempts": 1
   },
-  "stock:MKBD": {
-    "label": "#MKBD (MKBD ETF)",
-    "pct": 7.103825136612022,
-    "category": "акция MKBD ETF",
-    "attempts": 2
+  "stock:EVRZ": {
+    "label": "#EVRZ (ЕВРАЗ)",
+    "pct": 6.521739130434782,
+    "category": "акция ЕВРАЗ",
+    "attempts": 1
   },
-  "stock:MOEX": {
-    "label": "#MOEX (МосБиржа)",
-    "pct": 7.0556309362279555,
-    "category": "акция МосБиржа",
-    "attempts": 2
+  "stock:GLRX": {
+    "label": "#GLRX (ГЛОРАКС)",
+    "pct": -6.1189663578742195,
+    "category": "акция ГЛОРАКС",
+    "attempts": 1
   },
-  "stock:MTLR": {
-    "label": "#MTLR (Мечел ао)",
-    "pct": 6.567745074191202,
-    "category": "акция Мечел ао",
-    "attempts": 2
+  "stock:KROTP": {
+    "label": "#KROTP (КрасОкт-1п)",
+    "pct": 13.372093023255813,
+    "category": "акция КрасОкт-1п",
+    "attempts": 1
   },
-  "stock:MTLRP": {
-    "label": "#MTLRP (Мечел ап)",
-    "pct": 7.9155672823219,
-    "category": "акция Мечел ап",
-    "attempts": 2
+  "stock:LVHK": {
+    "label": "#LVHK (Левенгук)",
+    "pct": 8.933002481389583,
+    "category": "акция Левенгук",
+    "attempts": 1
   },
-  "stock:OKEY": {
-    "label": "#OKEY (OKEY-гдр)",
-    "pct": 9.03157894736842,
-    "category": "акция OKEY-гдр",
-    "attempts": 2
+  "stock:MAGEP": {
+    "label": "#MAGEP (МагадЭн ап)",
+    "pct": -5.2521008403361344,
+    "category": "акция МагадЭн ап",
+    "attempts": 1
   },
-  "stock:OZON": {
-    "label": "#OZON (Озон)",
-    "pct": 10.891566265060241,
-    "category": "акция Озон",
-    "attempts": 2
+  "stock:NKHP": {
+    "label": "#NKHP (НКХП ао)",
+    "pct": 5.27027027027027,
+    "category": "акция НКХП ао",
+    "attempts": 1
   },
-  "stock:OZPH": {
-    "label": "#OZPH (iОзонФарм)",
-    "pct": 6.182486784647219,
-    "category": "акция iОзонФарм",
-    "attempts": 2
+  "stock:NMTP": {
+    "label": "#NMTP (НМТП ао)",
+    "pct": 5.079605761940864,
+    "category": "акция НМТП ао",
+    "attempts": 1
   },
-  "stock:PHOR": {
-    "label": "#PHOR (ФосАгро ао)",
-    "pct": 5.524217078389419,
-    "category": "акция ФосАгро ао",
-    "attempts": 2
+  "stock:RU0005418747": {
+    "label": "#RU0005418747 (ФондПервый)",
+    "pct": 5.070422535211268,
+    "category": "акция ФондПервый",
+    "attempts": 1
   },
-  "stock:PLZL": {
-    "label": "#PLZL (Полюс)",
-    "pct": 9.419277589303517,
-    "category": "акция Полюс",
-    "attempts": 2
+  "stock:RU000A0JPMD2": {
+    "label": "#RU000A0JPMD2 (ПИФАрс6.4)",
+    "pct": 5.117483074472322,
+    "category": "акция ПИФАрс6.4",
+    "attempts": 1
   },
-  "stock:PSRE": {
-    "label": "#PSRE (PSRE ETF)",
-    "pct": 7.056565428474654,
-    "category": "акция PSRE ETF",
-    "attempts": 2
+  "stock:RU000A0JUR61": {
+    "label": "#RU000A0JUR61 (ПИФ КОНСЕР)",
+    "pct": -5.88235294117647,
+    "category": "акция ПИФ КОНСЕР",
+    "attempts": 1
   },
-  "stock:RAGR": {
-    "label": "#RAGR (Русагро)",
-    "pct": 7.076834199884469,
-    "category": "акция Русагро",
-    "attempts": 2
+  "stock:RU000A104172": {
+    "label": "#RU000A104172 (ПАРУС-СБЛ)",
+    "pct": 5.552238805970149,
+    "category": "акция ПАРУС-СБЛ",
+    "attempts": 1
   },
-  "stock:RASP": {
-    "label": "#RASP (Распадская)",
-    "pct": 6.559877955758958,
-    "category": "акция Распадская",
-    "attempts": 2
+  "stock:RU000A104M43": {
+    "label": "#RU000A104M43 (ПИФ Аленка)",
+    "pct": 6.132075471698113,
+    "category": "акция ПИФ Аленка",
+    "attempts": 1
   },
-  "stock:RENI": {
-    "label": "#RENI (Ренессанс)",
-    "pct": 6.792119964716267,
-    "category": "акция Ренессанс",
-    "attempts": 2
+  "stock:RU000A106LC4": {
+    "label": "#RU000A106LC4 (МаксВозм)",
+    "pct": 5.0,
+    "category": "акция МаксВозм",
+    "attempts": 1
   },
-  "stock:RNFT": {
-    "label": "#RNFT (РуссНфт ао)",
-    "pct": 8.963093145869955,
-    "category": "акция РуссНфт ао",
-    "attempts": 2
+  "stock:RU000A108TT7": {
+    "label": "#RU000A108TT7 (БКСДивАкци)",
+    "pct": 6.7538789169455615,
+    "category": "акция БКСДивАкци",
+    "attempts": 1
   },
-  "stock:ROLO": {
-    "label": "#ROLO (Русолово)",
-    "pct": 6.968085106382979,
-    "category": "акция Русолово",
-    "attempts": 2
+  "stock:RU000A109G79": {
+    "label": "#RU000A109G79 (ПИФГРИНФЛО)",
+    "pct": -16.376306620209057,
+    "category": "акция ПИФГРИНФЛО",
+    "attempts": 1
   },
-  "stock:ROSN": {
-    "label": "#ROSN (Роснефть)",
-    "pct": 9.57554686368246,
-    "category": "акция Роснефть",
-    "attempts": 2
+  "stock:RU000A10CKQ9": {
+    "label": "#RU000A10CKQ9 (АлфаКомНед)",
+    "pct": -7.765451664025356,
+    "category": "акция АлфаКомНед",
+    "attempts": 1
   },
-  "stock:RTKM": {
-    "label": "#RTKM (Ростел -ао)",
-    "pct": 7.723372034326104,
-    "category": "акция Ростел -ао",
-    "attempts": 2
+  "stock:SGZH": {
+    "label": "#SGZH (Сегежа)",
+    "pct": 9.91253644314868,
+    "category": "акция Сегежа",
+    "attempts": 1
   },
-  "stock:RTKMP": {
-    "label": "#RTKMP (Ростел -ап)",
-    "pct": 7.06455542021926,
-    "category": "акция Ростел -ап",
-    "attempts": 2
+  "stock:SMLT": {
+    "label": "#SMLT (Самолет ао)",
+    "pct": 7.179487179487184,
+    "category": "акция Самолет ао",
+    "attempts": 1
   },
-  "stock:RU000A0JR282": {
-    "label": "#RU000A0JR282 (ПИФ Акции)",
-    "pct": 7.488986784140966,
-    "category": "акция ПИФ Акции",
-    "attempts": 2
+  "stock:SOFL": {
+    "label": "#SOFL (iСофтлайн)",
+    "pct": 6.133443845835062,
+    "category": "акция iСофтлайн",
+    "attempts": 1
   },
-  "stock:RU000A0JR290": {
-    "label": "#RU000A0JR290 (ПИФИнМосБр)",
-    "pct": 6.191369606003752,
-    "category": "акция ПИФИнМосБр",
-    "attempts": 2
+  "stock:SVAV": {
+    "label": "#SVAV (СОЛЛЕРС)",
+    "pct": 5.970149253731343,
+    "category": "акция СОЛЛЕРС",
+    "attempts": 1
   },
-  "stock:RU000A0ZZMN6": {
-    "label": "#RU000A0ZZMN6 (РСХБ Акции)",
-    "pct": 6.649616368286446,
-    "category": "акция РСХБ Акции",
-    "attempts": 2
+  "stock:SVCB": {
+    "label": "#SVCB (Совкомбанк)",
+    "pct": 5.590062111801234,
+    "category": "акция Совкомбанк",
+    "attempts": 1
   },
-  "stock:RU000A109GQ8": {
-    "label": "#RU000A109GQ8 (ПИФСкладК2)",
-    "pct": -5.3,
-    "category": "акция ПИФСкладК2",
-    "attempts": 2
+  "stock:TNSE": {
+    "label": "#TNSE (ТНСэнрг ао)",
+    "pct": 5.425219941348973,
+    "category": "акция ТНСэнрг ао",
+    "attempts": 1
   },
-  "stock:RU000A109R27": {
-    "label": "#RU000A109R27 (2х Акции)",
-    "pct": 7.6923076923076925,
-    "category": "акция 2х Акции",
-    "attempts": 2
+  "stock:VEON-RX": {
+    "label": "#VEON-RX (VEON)",
+    "pct": 6.5484311050477455,
+    "category": "акция VEON",
+    "attempts": 1
   },
-  "stock:SAGOP": {
-    "label": "#SAGOP (СамарЭн-ап)",
-    "pct": -5.504587155963307,
-    "category": "акция СамарЭн-ап",
-    "attempts": 2
-  },
-  "stock:SBBC": {
-    "label": "#SBBC (SBBC ETF)",
-    "pct": 7.534019249917037,
-    "category": "акция SBBC ETF",
-    "attempts": 2
-  },
-  "stock:SBDS": {
-    "label": "#SBDS (SBDS ETF)",
-    "pct": 5.116279069767442,
-    "category": "акция SBDS ETF",
-    "attempts": 2
-  },
-  "stock:SBHI": {
-    "label": "#SBHI (SBHI ETF)",
-    "pct": 7.8085642317380275,
-    "category": "акция SBHI ETF",
-    "attempts": 2
-  },
-  "stock:SBMX": {
-    "label": "#SBMX (SBMX ETF)",
-    "pct": 7.501695124206388,
-    "category": "акция SBMX ETF",
-    "attempts": 2
-  },
-  "stock:SBPS": {
-    "label": "#SBPS (SBPS ETF)",
-    "pct": 5.118829981718469,
-    "category": "акция SBPS ETF",
-    "attempts": 2
-  },
-  "stock:SBRI": {
-    "label": "#SBRI (SBRI ETF)",
-    "pct": 6.443035385559409,
-    "category": "акция SBRI ETF",
-    "attempts": 2
-  },
-  "stock:SBSC": {
-    "label": "#SBSC (SBSC ETF)",
-    "pct": 5.937548069527753,
-    "category": "акция SBSC ETF",
-    "attempts": 2
-  },
-  "stock:SCFT": {
-    "label": "#SCFT (SCFT ETF)",
-    "pct": 5.552699228791767,
-    "category": "акция SCFT ETF",
-    "attempts": 2
-  },
-  "stock:SELG": {
-    "label": "#SELG (Селигдар)",
-    "pct": 7.860824742268052,
-    "category": "акция Селигдар",
-    "attempts": 2
-  },
-  "stock:SFIN": {
-    "label": "#SFIN (ЭсЭфАй ао)",
-    "pct": 5.192447349310099,
-    "category": "акция ЭсЭфАй ао",
-    "attempts": 2
-  },
-  "stock:SIBN": {
-    "label": "#SIBN (Газпрнефть)",
-    "pct": 7.975405453573338,
-    "category": "акция Газпрнефть",
-    "attempts": 2
-  },
-  "stock:SIPO": {
-    "label": "#SIPO (SIPO ETF)",
-    "pct": 5.213483146067413,
-    "category": "акция SIPO ETF",
-    "attempts": 2
-  },
-  "stock:SNGS": {
-    "label": "#SNGS (Сургнфгз)",
-    "pct": 9.157266091572653,
-    "category": "акция Сургнфгз",
-    "attempts": 2
-  },
-  "stock:SPBE": {
-    "label": "#SPBE (СПБ Биржа)",
-    "pct": 10.393802453195606,
-    "category": "акция СПБ Биржа",
-    "attempts": 2
-  },
-  "stock:STSB": {
-    "label": "#STSB (ЕГП)",
-    "pct": 6.2992125984252025,
-    "category": "акция ЕГП",
-    "attempts": 2
-  },
-  "stock:TATN": {
-    "label": "#TATN (Татнфт 3ао)",
-    "pct": 7.611506140917911,
-    "category": "акция Татнфт 3ао",
-    "attempts": 2
-  },
-  "stock:TATNP": {
-    "label": "#TATNP (Татнфт 3ап)",
-    "pct": 7.465453319851714,
-    "category": "акция Татнфт 3ап",
-    "attempts": 2
-  },
-  "stock:TDIV": {
-    "label": "#TDIV (TDIV ETF)",
-    "pct": 6.334371754932497,
-    "category": "акция TDIV ETF",
-    "attempts": 2
-  },
-  "stock:TGKBP": {
-    "label": "#TGKBP (ТГК-2 ап)",
-    "pct": 8.062234794908065,
-    "category": "акция ТГК-2 ап",
-    "attempts": 2
-  },
-  "stock:TITR": {
-    "label": "#TITR (TITR ETF)",
-    "pct": 6.122448979591827,
-    "category": "акция TITR ETF",
-    "attempts": 2
-  },
-  "stock:TMOS": {
-    "label": "#TMOS (TMOS ETF)",
-    "pct": 7.2310405643739,
-    "category": "акция TMOS ETF",
-    "attempts": 2
-  },
-  "stock:TOPS": {
-    "label": "#TOPS (TOPS ETF)",
-    "pct": 7.106268045077764,
-    "category": "акция TOPS ETF",
-    "attempts": 2
-  },
-  "stock:TRMK": {
-    "label": "#TRMK (ТМК ао)",
-    "pct": 6.375042387249924,
-    "category": "акция ТМК ао",
-    "attempts": 2
-  },
-  "stock:TRND": {
-    "label": "#TRND (TRND ETF)",
-    "pct": 5.330243337195817,
-    "category": "акция TRND ETF",
-    "attempts": 2
-  },
-  "stock:TRNFP": {
-    "label": "#TRNFP (Транснф ап)",
-    "pct": 6.61043546488819,
-    "category": "акция Транснф ап",
-    "attempts": 2
-  },
-  "stock:TTLK": {
-    "label": "#TTLK (Таттел. ао)",
-    "pct": 6.277244986922412,
-    "category": "акция Таттел. ао",
-    "attempts": 2
-  },
-  "stock:UPRO": {
-    "label": "#UPRO (Юнипро ао)",
-    "pct": 12.48751248751249,
-    "category": "акция Юнипро ао",
-    "attempts": 2
-  },
-  "stock:UWGN": {
-    "label": "#UWGN (ОВК ао)",
-    "pct": 8.240081383519843,
-    "category": "акция ОВК ао",
-    "attempts": 2
-  },
-  "stock:VKCO": {
-    "label": "#VKCO (МКПАО \"ВК\")",
-    "pct": 14.03581840899626,
-    "category": "акция МКПАО \"ВК\"",
-    "attempts": 2
-  },
-  "stock:VTBR": {
-    "label": "#VTBR (ВТБ ао)",
-    "pct": 6.017029328287606,
-    "category": "акция ВТБ ао",
-    "attempts": 2
-  },
-  "stock:WILD": {
-    "label": "#WILD (WILD ETF)",
-    "pct": 5.421950153038918,
-    "category": "акция WILD ETF",
-    "attempts": 2
-  },
-  "stock:WUSH": {
-    "label": "#WUSH (iВУШХолднг)",
-    "pct": 9.131469363474123,
-    "category": "акция iВУШХолднг",
-    "attempts": 2
-  },
-  "stock:X5": {
-    "label": "#X5 (КЦ ИКС 5)",
-    "pct": 9.813568099430348,
-    "category": "акция КЦ ИКС 5",
-    "attempts": 2
-  },
-  "stock:XXXXXX": {
-    "label": "#XXXXXX (Рентал ПРО)",
-    "pct": 5.766929887532908,
-    "category": "акция Рентал ПРО",
-    "attempts": 2
+  "stock:VSEH": {
+    "label": "#VSEH (ВИ.ру)",
+    "pct": 7.771886719255147,
+    "category": "акция ВИ.ру",
+    "attempts": 1
   }
 }
