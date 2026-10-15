@@ -1,1 +1,8 @@
-{}
+{
+  "ethereum": {
+    "label": "#Ethereum",
+    "pct": 3.531662085302048,
+    "category": "криптовалюта",
+    "attempts": 1
+  }
+}
