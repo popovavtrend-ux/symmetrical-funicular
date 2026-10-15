@@ -3,12 +3,12 @@
     "label": "#Bitcoin",
     "pct": -3.001959097859327,
     "category": "криптовалюта",
-    "attempts": 1
+    "attempts": 2
   },
   "ethereum": {
     "label": "#Ethereum",
     "pct": -4.9391090738317605,
     "category": "криптовалюта",
-    "attempts": 1
+    "attempts": 2
   }
 }
