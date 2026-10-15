@@ -1,8 +1,98 @@
 {
-  "index:%5EIXIC": {
-    "label": "Nasdaq",
-    "pct": -2.5700234909416984,
-    "category": "биржевой индекс США",
-    "attempts": 2
+  "metal:SLVRUB_TOM": {
+    "label": "Серебро",
+    "pct": -3.6967418546365955,
+    "category": "драгоценный металл",
+    "attempts": 1
+  },
+  "stock:CNRU": {
+    "label": "#CNRU (iЦиан)",
+    "pct": 5.351586807716256,
+    "category": "акция iЦиан",
+    "attempts": 1
+  },
+  "stock:FLOT": {
+    "label": "#FLOT (Совкомфлот)",
+    "pct": 8.582366016300325,
+    "category": "акция Совкомфлот",
+    "attempts": 1
+  },
+  "stock:KFBA": {
+    "label": "#KFBA (ИНГРАД ао)",
+    "pct": 5.592105263157895,
+    "category": "акция ИНГРАД ао",
+    "attempts": 1
+  },
+  "stock:KROT": {
+    "label": "#KROT (КрасОкт-ао)",
+    "pct": 7.715355805243446,
+    "category": "акция КрасОкт-ао",
+    "attempts": 1
+  },
+  "stock:LVHK": {
+    "label": "#LVHK (Левенгук)",
+    "pct": -6.378132118451019,
+    "category": "акция Левенгук",
+    "attempts": 1
+  },
+  "stock:MGTSP": {
+    "label": "#MGTSP (МГТС-4ап)",
+    "pct": 5.673758865248227,
+    "category": "акция МГТС-4ап",
+    "attempts": 1
+  },
+  "stock:MSTT": {
+    "label": "#MSTT (Мостотрест)",
+    "pct": 7.396664249456119,
+    "category": "акция Мостотрест",
+    "attempts": 1
+  },
+  "stock:PMSB": {
+    "label": "#PMSB (ПермьЭнСб)",
+    "pct": 5.600000000000003,
+    "category": "акция ПермьЭнСб",
+    "attempts": 1
+  },
+  "stock:RASP": {
+    "label": "#RASP (Распадская)",
+    "pct": -7.158196134574088,
+    "category": "акция Распадская",
+    "attempts": 1
+  },
+  "stock:RU000A101UY0": {
+    "label": "#RU000A101UY0 (ОПИФ MM)",
+    "pct": -7.637231503579953,
+    "category": "акция ОПИФ MM",
+    "attempts": 1
+  },
+  "stock:SAGO": {
+    "label": "#SAGO (СамарЭн-ао)",
+    "pct": 18.48341232227489,
+    "category": "акция СамарЭн-ао",
+    "attempts": 1
+  },
+  "stock:SAGOP": {
+    "label": "#SAGOP (СамарЭн-ап)",
+    "pct": 19.902912621359228,
+    "category": "акция СамарЭн-ап",
+    "attempts": 1
+  },
+  "stock:SLEN": {
+    "label": "#SLEN (Сахэнер ао)",
+    "pct": 6.0465116279069715,
+    "category": "акция Сахэнер ао",
+    "attempts": 1
+  },
+  "stock:VGSB": {
+    "label": "#VGSB (ВолгЭнСб)",
+    "pct": -6.35451505016722,
+    "category": "акция ВолгЭнСб",
+    "attempts": 1
+  },
+  "stock:VSYDP": {
+    "label": "#VSYDP (ВыбСудЗ ап)",
+    "pct": 6.8181818181818175,
+    "category": "акция ВыбСудЗ ап",
+    "attempts": 1
   }
 }
