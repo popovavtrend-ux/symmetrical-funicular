@@ -3,60 +3,66 @@
     "label": "#KAZT (Куйбазот)",
     "pct": -5.190677966101701,
     "category": "акция Куйбазот",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KROT": {
     "label": "#KROT (КрасОкт-ао)",
     "pct": 12.23922114047288,
     "category": "акция КрасОкт-ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KROTP": {
     "label": "#KROTP (КрасОкт-1п)",
     "pct": 15.042735042735043,
     "category": "акция КрасОкт-1п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MRKU": {
     "label": "#MRKU (Россети Ур)",
     "pct": 5.373687461395932,
     "category": "акция Россети Ур",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A109G79": {
     "label": "#RU000A109G79 (ПИФГРИНФЛО)",
     "pct": -10.833333333333334,
     "category": "акция ПИФГРИНФЛО",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:SAGO": {
     "label": "#SAGO (СамарЭн-ао)",
     "pct": 9.2,
     "category": "акция СамарЭн-ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:SAGOP": {
     "label": "#SAGOP (СамарЭн-ап)",
     "pct": 10.323886639676108,
     "category": "акция СамарЭн-ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:SIBN": {
     "label": "#SIBN (Газпрнефть)",
     "pct": -5.207559626970383,
     "category": "акция Газпрнефть",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:TATN": {
     "label": "#TATN (Татнфт 3ао)",
     "pct": -5.826700705811677,
     "category": "акция Татнфт 3ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:UKUZ": {
     "label": "#UKUZ (ЮжКузб. ао)",
     "pct": 5.033557046979865,
     "category": "акция ЮжКузб. ао",
+    "attempts": 2
+  },
+  "index:%5EIXIC": {
+    "label": "Nasdaq",
+    "pct": -1.5060464170433738,
+    "category": "биржевой индекс США",
     "attempts": 1
   }
 }
