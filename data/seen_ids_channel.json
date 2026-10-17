@@ -1999,7 +1999,9 @@
     "https://beincrypto.com/?p=873641",
     "https://beincrypto.com/?p=873647",
     "https://beincrypto.com/?p=873680",
+    "https://beincrypto.com/?p=873684",
     "https://beincrypto.com/?p=873687",
+    "https://beincrypto.com/?p=873705",
     "https://beincrypto.com/?p=873710",
     "https://beincrypto.com/?p=873722",
     "https://beincrypto.com/?p=873726",
@@ -3488,6 +3490,7 @@
     "https://crypto.news/?p=14486731",
     "https://crypto.news/?p=14486738",
     "https://crypto.news/?p=14486744",
+    "https://crypto.news/?p=14486750",
     "https://cryptoslate.com/?p=557764",
     "https://cryptoslate.com/?p=557774",
     "https://cryptoslate.com/?p=558002",
@@ -4258,6 +4261,7 @@
     "https://cryptoslate.com/?p=573244",
     "https://cryptoslate.com/?p=573265",
     "https://cryptoslate.com/?p=573267",
+    "https://cryptoslate.com/?p=573273",
     "https://cryptoslate.com/?p=573281",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
@@ -5713,6 +5717,7 @@
     "https://u.today/aave-prints-enormous-68-volume-increase-whats-behind-it",
     "https://u.today/ai-agents-emerge-as-dominant-activity-driver-on-xrp-ledger",
     "https://u.today/ai-threat-to-bitcoin-is-blown-out-of-proportion-jameson-lopp-believes",
+    "https://u.today/almost-86-trillion-shib-shiba-inu-eyes-key-support-threshold",
     "https://u.today/almost-like-satoshi-knew-something-adam-back-throws-shade-at-ethereum",
     "https://u.today/always-room-for-more-orange-saylor-teases-next-bitcoin-buy-at-70-billion-milestone",
     "https://u.today/another-spot-solana-etf-set-to-launch-this-month",
@@ -6162,7 +6167,10 @@
     "https://www.newsbtc.com/?p=915218",
     "https://www.newsbtc.com/?p=915219",
     "https://www.newsbtc.com/?p=915220",
-    "https://www.newsbtc.com/?p=915221"
+    "https://www.newsbtc.com/?p=915221",
+    "https://www.newsbtc.com/?p=915222",
+    "https://www.newsbtc.com/?p=915223",
+    "https://www.newsbtc.com/?p=915224"
   ],
   "seeded_feeds": [
     "https://beincrypto.com/feed/",
@@ -6181,5 +6189,5 @@
     "https://www.investing.com/rss/news_301.rss",
     "https://www.newsbtc.com/feed/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
