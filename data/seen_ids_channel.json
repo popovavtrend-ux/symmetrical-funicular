@@ -648,6 +648,7 @@
     "e28854fd-f85d-40bb-a507-d9451dd19eaf",
     "e2aae382-30f2-4d6e-a3ee-db06a8272e55",
     "e2b948aa-7cb3-4bb9-b1ae-376b315563b6",
+    "e3e952c1-a946-4698-8a9a-9ab401c188f2",
     "e4716a25-7c90-4aa1-aaf6-038dc574650f",
     "e4d98b4c-e23e-4efd-a270-193655773ac8",
     "e52f03fe-9a41-47af-aaad-f231377c90c5",
@@ -2000,6 +2001,7 @@
     "https://beincrypto.com/?p=873680",
     "https://beincrypto.com/?p=873687",
     "https://beincrypto.com/?p=873710",
+    "https://beincrypto.com/?p=873722",
     "https://beincrypto.com/?p=873726",
     "https://beincrypto.com/?p=873730",
     "https://bitcoinmagazine.com/?p=54460",
@@ -4181,6 +4183,7 @@
     "https://cryptoslate.com/?p=571387",
     "https://cryptoslate.com/?p=571389",
     "https://cryptoslate.com/?p=571394",
+    "https://cryptoslate.com/?p=571416",
     "https://cryptoslate.com/?p=571460",
     "https://cryptoslate.com/?p=571486",
     "https://cryptoslate.com/?p=571505",
@@ -4254,6 +4257,7 @@
     "https://cryptoslate.com/?p=573178",
     "https://cryptoslate.com/?p=573244",
     "https://cryptoslate.com/?p=573265",
+    "https://cryptoslate.com/?p=573267",
     "https://cryptoslate.com/?p=573281",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
@@ -4850,6 +4854,7 @@
     "https://decrypt.co/?p=381202",
     "https://decrypt.co/?p=381213",
     "https://decrypt.co/?p=381236",
+    "https://decrypt.co/?p=381238",
     "https://decrypt.co/videos/interviews/0y90noNs/a16z-raise-15b-jerome-powell-vs-trump-crypto-remains-flat-special-guest-dudas",
     "https://decrypt.co/videos/interviews/50vopyFa/the-white-whale-up-10x-in-a-week-lighter-tge-saylor-buys-109m-btc",
     "https://decrypt.co/videos/interviews/72tPnqPX/zec-rebounds-11-trump-says-he-wont-pardon-sam-bankman-fried-florida-revisits-its-strategic-bitcoin-reserve",
@@ -5230,6 +5235,7 @@
     "https://thedefiant.io/news/blockchains/ethereum-validator-count-falls-to-863-000-as-staked-eth-edges-higher",
     "https://thedefiant.io/news/blockchains/gnosis-chain-to-abandon-its-validator-set-and-settle-to-ethereum",
     "https://thedefiant.io/news/blockchains/harmony-proposes-sunsetting-network-and-moving-one-to-ethereum",
+    "https://thedefiant.io/news/blockchains/injective-activates-fixed-gas-costs-for-exchange-transactions",
     "https://thedefiant.io/news/blockchains/injective-s-meridian-upgrade-expands-controls-for-tokenized-assets",
     "https://thedefiant.io/news/blockchains/layerzero-unveils-atlas-exchange-engine",
     "https://thedefiant.io/news/blockchains/mantra-halts-chain-blames-cosmos-evm-module",
@@ -5547,6 +5553,7 @@
     "https://thedefiant.io/news/regulation/eba-floats-stablecoin-lending-restrictions-for-eu-crypto-firms",
     "https://thedefiant.io/news/regulation/evercrest-files-bc-civil-claim-against-layerzero-and-pellegrino-ceo-says",
     "https://thedefiant.io/news/regulation/fairshake-plans-30-million-ad-blitz-against-sherrod-brown-in-ohio",
+    "https://thedefiant.io/news/regulation/french-assembly-backs-tax-on-crypto-to-stablecoin-swaps-by-one-vote",
     "https://thedefiant.io/news/regulation/greenfield-files-swiss-regulatory-complaint-over-safe-foundation-governance",
     "https://thedefiant.io/news/regulation/house-oversight-expands-prediction-market-probe-to-hyperliquid",
     "https://thedefiant.io/news/regulation/hyperliquid-confirms-singapore-base-but-says-it-has-no-mas-license",
@@ -5755,6 +5762,7 @@
     "https://u.today/cardano-midnight-scores-key-japan-exchange-listing",
     "https://u.today/cardano-visa-multi-chain-crypto-card-announces-sunset-key-date-for-ada-holders",
     "https://u.today/cftc-eyes-new-crypto-market-rules",
+    "https://u.today/checkmate-satoshi-adam-back-reacts-to-ledger-cofounders-take-on-ais-ecdsa-findings",
     "https://u.today/china-seeks-to-confiscate-billions-in-btc-xrp-doge-bch-btg-and-bsv",
     "https://u.today/coinbase-named-ripple-backed-xrp-treasury-institutional-partner-full-list",
     "https://u.today/coinbase-warns-of-xrp-long-position-risks",
@@ -6070,6 +6078,7 @@
     "https://www.investing.com/news/cryptocurrency-news/eos-climbs-12-as-investors-gain-confidence-4932178",
     "https://www.investing.com/news/cryptocurrency-news/eos-climbs-12-as-investors-gain-confidence-4954029",
     "https://www.investing.com/news/cryptocurrency-news/eos-climbs-17-in-a-green-day-4942011",
+    "https://www.investing.com/news/cryptocurrency-news/eos-climbs-18-in-a-green-day-4955523",
     "https://www.investing.com/news/cryptocurrency-news/eos-falls-10-in-bearish-trade-4937373",
     "https://www.investing.com/news/cryptocurrency-news/eos-falls-10-in-rout-4951244",
     "https://www.investing.com/news/cryptocurrency-news/exit-house-launches-on-ethereum-letting-holders-exit-unwanted-nfts-and-tokens-for-exit-4942590",
@@ -6149,7 +6158,11 @@
     "https://www.newsbtc.com/?p=915214",
     "https://www.newsbtc.com/?p=915215",
     "https://www.newsbtc.com/?p=915216",
-    "https://www.newsbtc.com/?p=915217"
+    "https://www.newsbtc.com/?p=915217",
+    "https://www.newsbtc.com/?p=915218",
+    "https://www.newsbtc.com/?p=915219",
+    "https://www.newsbtc.com/?p=915220",
+    "https://www.newsbtc.com/?p=915221"
   ],
   "seeded_feeds": [
     "https://beincrypto.com/feed/",
@@ -6168,5 +6181,5 @@
     "https://www.investing.com/rss/news_301.rss",
     "https://www.newsbtc.com/feed/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
