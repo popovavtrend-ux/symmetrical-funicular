@@ -589,6 +589,7 @@
     "c8e93c13-3054-45c2-a1bd-8dc2d2c4f85b",
     "c976e4e9-74b4-4e0b-88d2-aac3fd42787b",
     "c9cb27d1-29bc-4f86-93d5-3778eaaa740a",
+    "ca2f6e56-f7a4-4a55-81e5-5768f07db0a1",
     "ca5e5500-b8f6-4275-805b-60265a8fb9b9",
     "ca7c5726-b83c-4cc8-a5e2-461fdcac00e0",
     "cb5b92e2-5944-4ab9-afb5-e97fb50b55a5",
@@ -2023,6 +2024,8 @@
     "https://beincrypto.com/?p=873789",
     "https://beincrypto.com/?p=873798",
     "https://beincrypto.com/?p=873812",
+    "https://beincrypto.com/?p=873851",
+    "https://beincrypto.com/?p=873858",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -4304,6 +4307,8 @@
     "https://cryptoslate.com/?p=573340",
     "https://cryptoslate.com/?p=573391",
     "https://cryptoslate.com/?p=573392",
+    "https://cryptoslate.com/?p=573512",
+    "https://cryptoslate.com/?p=573705",
     "https://cryptoslate.com/?p=573756",
     "https://cryptoslate.com/?p=574090",
     "https://cryptoslate.com/?p=574175",
@@ -5860,6 +5865,7 @@
     "https://u.today/fidelity-adds-438-million-of-bitcoin-ethereum-and-solana-to-its-holdings",
     "https://u.today/fidelity-names-bitcoin-as-key-diversifier-beyond-stocks-and-bonds",
     "https://u.today/five-days-left-for-key-xrp-transaction-upgrade-what-comes-next",
+    "https://u.today/former-mt-gox-ceo-comes-to-ledgers-rescue",
     "https://u.today/former-sec-boss-who-sued-ripple-to-be-named-ai-czar",
     "https://u.today/four-days-left-xrp-ledger-key-fix-upgrade-eyes-october-activation",
     "https://u.today/google-searches-for-bitcoin-plunge-to-multi-year-lows",
@@ -6245,6 +6251,9 @@
     "https://www.newsbtc.com/?p=915300",
     "https://www.newsbtc.com/?p=915301",
     "https://www.newsbtc.com/?p=915302",
+    "https://www.newsbtc.com/?p=915303",
+    "https://www.newsbtc.com/?p=915304",
+    "https://www.newsbtc.com/?p=915305",
     "https://www.newsbtc.com/?p=915317",
     "https://www.newsbtc.com/?p=915320",
     "https://www.newsbtc.com/?p=915323",
@@ -6267,5 +6276,5 @@
     "https://www.investing.com/rss/news_301.rss",
     "https://www.newsbtc.com/feed/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
