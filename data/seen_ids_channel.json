@@ -97,6 +97,7 @@
     "24b20253-8e5e-4314-b739-cf198b0d7887",
     "24eb6f9b-4621-4365-8d12-918a112163c9",
     "2555b0d5-5f30-4722-8dca-4945684434a9",
+    "25f329fb-37cf-42f0-98bf-a20e3d21d6cb",
     "2649d902-8b8c-4742-83a8-f702243d4db4",
     "26719a24-0467-43d9-a51f-7ec134d29bad",
     "26731399-afe0-4f6c-8ca8-a5a2dd0efa53",
@@ -2018,6 +2019,7 @@
     "https://beincrypto.com/?p=873730",
     "https://beincrypto.com/?p=873741",
     "https://beincrypto.com/?p=873767",
+    "https://beincrypto.com/?p=873771",
     "https://beincrypto.com/?p=873775",
     "https://beincrypto.com/?p=873778",
     "https://beincrypto.com/?p=873783",
@@ -2026,6 +2028,8 @@
     "https://beincrypto.com/?p=873812",
     "https://beincrypto.com/?p=873851",
     "https://beincrypto.com/?p=873858",
+    "https://beincrypto.com/?p=873863",
+    "https://beincrypto.com/?p=873870",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -6276,5 +6280,5 @@
     "https://www.investing.com/rss/news_301.rss",
     "https://www.newsbtc.com/feed/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
