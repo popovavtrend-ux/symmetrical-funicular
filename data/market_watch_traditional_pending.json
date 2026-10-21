@@ -1,8 +1,146 @@
 {
-  "index:%5EDJI": {
-    "label": "Dow Jones",
-    "pct": 1.5454147440073156,
-    "category": "биржевой индекс США",
-    "attempts": 2
+  "stock:AKIE": {
+    "label": "#AKIE (ETF AKIE)",
+    "pct": 5.023221423785197,
+    "category": "акция ETF AKIE",
+    "attempts": 1
+  },
+  "stock:DELI": {
+    "label": "#DELI (iКаршеринг)",
+    "pct": 5.286343612334799,
+    "category": "акция iКаршеринг",
+    "attempts": 1
+  },
+  "stock:ENPG": {
+    "label": "#ENPG (ЭН+ГРУП ао)",
+    "pct": 5.207667731629397,
+    "category": "акция ЭН+ГРУП ао",
+    "attempts": 1
+  },
+  "stock:GLRX": {
+    "label": "#GLRX (ГЛОРАКС)",
+    "pct": 5.349259932485075,
+    "category": "акция ГЛОРАКС",
+    "attempts": 1
+  },
+  "stock:IGST": {
+    "label": "#IGST (Ижсталь2ао)",
+    "pct": 5.263157894736842,
+    "category": "акция Ижсталь2ао",
+    "attempts": 1
+  },
+  "stock:IRAO": {
+    "label": "#IRAO (ИнтерРАОао)",
+    "pct": 7.440592130892084,
+    "category": "акция ИнтерРАОао",
+    "attempts": 1
+  },
+  "stock:KGKC": {
+    "label": "#KGKC (КурганГКао)",
+    "pct": 5.0279329608938665,
+    "category": "акция КурганГКао",
+    "attempts": 1
+  },
+  "stock:KLVZ": {
+    "label": "#KLVZ (Кристалл)",
+    "pct": 10.71049840933193,
+    "category": "акция Кристалл",
+    "attempts": 1
+  },
+  "stock:KRKN": {
+    "label": "#KRKN (СаратНПЗ)",
+    "pct": -5.188679245283019,
+    "category": "акция СаратНПЗ",
+    "attempts": 1
+  },
+  "stock:LSNGP": {
+    "label": "#LSNGP (РСетиЛЭ-п)",
+    "pct": 5.37810132224037,
+    "category": "акция РСетиЛЭ-п",
+    "attempts": 1
+  },
+  "stock:LSRG": {
+    "label": "#LSRG (ЛСР ао)",
+    "pct": 7.587768969422433,
+    "category": "акция ЛСР ао",
+    "attempts": 1
+  },
+  "stock:MRKC": {
+    "label": "#MRKC (РоссЦентр)",
+    "pct": 13.060109289617488,
+    "category": "акция РоссЦентр",
+    "attempts": 1
+  },
+  "stock:NKHP": {
+    "label": "#NKHP (НКХП ао)",
+    "pct": 7.702182284980745,
+    "category": "акция НКХП ао",
+    "attempts": 1
+  },
+  "stock:OMZZP": {
+    "label": "#OMZZP (ОМЗ-ап)",
+    "pct": 7.494646680942184,
+    "category": "акция ОМЗ-ап",
+    "attempts": 1
+  },
+  "stock:RU0006922044": {
+    "label": "#RU0006922044 (БКСАкцрост)",
+    "pct": 5.263157894736838,
+    "category": "акция БКСАкцрост",
+    "attempts": 1
+  },
+  "stock:RU000A0JUR61": {
+    "label": "#RU000A0JUR61 (ПИФ КОНСЕР)",
+    "pct": 37.34939759036144,
+    "category": "акция ПИФ КОНСЕР",
+    "attempts": 1
+  },
+  "stock:RU000A101UY0": {
+    "label": "#RU000A101UY0 (ОПИФ MM)",
+    "pct": -9.069212410501192,
+    "category": "акция ОПИФ MM",
+    "attempts": 1
+  },
+  "stock:RU000A109G79": {
+    "label": "#RU000A109G79 (ПИФГРИНФЛО)",
+    "pct": -5.952380952380952,
+    "category": "акция ПИФГРИНФЛО",
+    "attempts": 1
+  },
+  "stock:SFIN": {
+    "label": "#SFIN (ЭсЭфАй ао)",
+    "pct": 6.696582671729387,
+    "category": "акция ЭсЭфАй ао",
+    "attempts": 1
+  },
+  "stock:TGKN": {
+    "label": "#TGKN (ТГК-14)",
+    "pct": 5.585106382978715,
+    "category": "акция ТГК-14",
+    "attempts": 1
+  },
+  "stock:UKUZ": {
+    "label": "#UKUZ (ЮжКузб. ао)",
+    "pct": 9.951456310679612,
+    "category": "акция ЮжКузб. ао",
+    "attempts": 1
+  },
+  "stock:UNKL": {
+    "label": "#UNKL (ЮУНК ао)",
+    "pct": 5.491329479768786,
+    "category": "акция ЮУНК ао",
+    "attempts": 1
+  },
+  "stock:URKZ": {
+    "label": "#URKZ (УрКузница)",
+    "pct": 8.9516129032258,
+    "category": "акция УрКузница",
+    "attempts": 1
+  },
+  "stock:X5": {
+    "label": "#X5 (КЦ ИКС 5)",
+    "pct": 7.592548927139825,
+    "category": "акция КЦ ИКС 5",
+    "attempts": 1
   }
 }
