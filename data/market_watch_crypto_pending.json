@@ -1,1 +1,8 @@
-{}
+{
+  "bitcoin": {
+    "label": "#Bitcoin",
+    "pct": 3.800539415510043,
+    "category": "криптовалюта",
+    "attempts": 1
+  }
+}
