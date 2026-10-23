@@ -1,8 +1,104 @@
 {
-  "index:%5EIXIC": {
-    "label": "Nasdaq",
-    "pct": -2.6329814636559177,
-    "category": "биржевой индекс США",
-    "attempts": 2
+  "metal:SLVRUB_TOM": {
+    "label": "Серебро",
+    "pct": -3.754266211604096,
+    "category": "драгоценный металл",
+    "attempts": 1
+  },
+  "stock:CHMK": {
+    "label": "#CHMK (ЧМК ао)",
+    "pct": -5.466666666666667,
+    "category": "акция ЧМК ао",
+    "attempts": 1
+  },
+  "stock:GEMA": {
+    "label": "#GEMA (iММЦБ ао)",
+    "pct": -5.263157894736842,
+    "category": "акция iММЦБ ао",
+    "attempts": 1
+  },
+  "stock:IGST": {
+    "label": "#IGST (Ижсталь2ао)",
+    "pct": -5.0,
+    "category": "акция Ижсталь2ао",
+    "attempts": 1
+  },
+  "stock:KBSB": {
+    "label": "#KBSB (ТНСэКубань)",
+    "pct": 6.597222222222222,
+    "category": "акция ТНСэКубань",
+    "attempts": 1
+  },
+  "stock:KCHE": {
+    "label": "#KCHE (КамчатЭ ао)",
+    "pct": -8.26612903225806,
+    "category": "акция КамчатЭ ао",
+    "attempts": 1
+  },
+  "stock:MGKL": {
+    "label": "#MGKL (МГКЛ)",
+    "pct": -5.918057663125948,
+    "category": "акция МГКЛ",
+    "attempts": 1
+  },
+  "stock:RENI": {
+    "label": "#RENI (Ренессанс)",
+    "pct": -5.038546255506604,
+    "category": "акция Ренессанс",
+    "attempts": 1
+  },
+  "stock:RU000A100EQ2": {
+    "label": "#RU000A100EQ2 (БКС РосЕвр)",
+    "pct": -5.019607843137259,
+    "category": "акция БКС РосЕвр",
+    "attempts": 1
+  },
+  "stock:RU000A101UY0": {
+    "label": "#RU000A101UY0 (ОПИФ MM)",
+    "pct": -6.036745406824147,
+    "category": "акция ОПИФ MM",
+    "attempts": 1
+  },
+  "stock:RU000A108VR7": {
+    "label": "#RU000A108VR7 (ПАРУС-МАКС)",
+    "pct": 7.881040892193308,
+    "category": "акция ПАРУС-МАКС",
+    "attempts": 1
+  },
+  "stock:RU000A109G79": {
+    "label": "#RU000A109G79 (ПИФГРИНФЛО)",
+    "pct": -6.956521739130435,
+    "category": "акция ПИФГРИНФЛО",
+    "attempts": 1
+  },
+  "stock:RU000A109QR5": {
+    "label": "#RU000A109QR5 (ААА Золото)",
+    "pct": -6.026058631921824,
+    "category": "акция ААА Золото",
+    "attempts": 1
+  },
+  "stock:URKZ": {
+    "label": "#URKZ (УрКузница)",
+    "pct": -5.5514433752775725,
+    "category": "акция УрКузница",
+    "attempts": 1
+  },
+  "stock:UTAR": {
+    "label": "#UTAR (ЮТэйр ао)",
+    "pct": 5.730994152046765,
+    "category": "акция ЮТэйр ао",
+    "attempts": 1
+  },
+  "stock:VRSBP": {
+    "label": "#VRSBP (ТНСэнВор-п)",
+    "pct": 6.331168831168829,
+    "category": "акция ТНСэнВор-п",
+    "attempts": 1
+  },
+  "stock:VSYD": {
+    "label": "#VSYD (ВыбСудЗ ао)",
+    "pct": 6.951871657754011,
+    "category": "акция ВыбСудЗ ао",
+    "attempts": 1
   }
 }
