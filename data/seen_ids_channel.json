@@ -2266,6 +2266,7 @@
     "https://beincrypto.com/?p=875002",
     "https://beincrypto.com/?p=875006",
     "https://beincrypto.com/?p=875015",
+    "https://beincrypto.com/?p=875016",
     "https://beincrypto.com/?p=875025",
     "https://beincrypto.com/?p=875030",
     "https://beincrypto.com/?p=875031",
@@ -5034,6 +5035,7 @@
     "https://cryptoslate.com/?p=575717",
     "https://cryptoslate.com/?p=575739",
     "https://cryptoslate.com/?p=575743",
+    "https://cryptoslate.com/?p=575745",
     "https://cryptoslate.com/?p=575767",
     "https://cryptoslate.com/?p=575800",
     "https://cryptoslate.com/?p=575843",
@@ -7414,8 +7416,10 @@
     "https://www.newsbtc.com/bitcoin-news/strive-adds-1-223-bitcoin-as-corporate-treasury-reaches-36-818-btc/",
     "https://www.newsbtc.com/bitcoin-news/swiss-finma-first-domestic-spot-bitcoin-etf-approval/",
     "https://www.newsbtc.com/bitcoin-news/sygnum-multisyg-bitcoin-loans-shared-collateral-keys/",
+    "https://www.newsbtc.com/business/bcg-ripple-custody-bank-digital-asset-study/",
     "https://www.newsbtc.com/business/bitgo-labs-gokubu-ai-consumer-app-launch/",
     "https://www.newsbtc.com/business/cme-record-q3-2026-revenue-crypto-derivatives/",
+    "https://www.newsbtc.com/business/kraken-payward-kazakhstan-in-principle-approval/",
     "https://www.newsbtc.com/crypto-news/bitwise-bwow-dogecoin-etf-cash-liquidation-october-22/",
     "https://www.newsbtc.com/crypto-news/btcc-387-billion-futures-volume-tradfi-linked-contracts/",
     "https://www.newsbtc.com/crypto-news/chainlink-lg-cns-south-korea-institutional-digital-assets/",
@@ -7427,6 +7431,7 @@
     "https://www.newsbtc.com/crypto-news/moonpay-dunamu-stablecoin-payments-giwa/",
     "https://www.newsbtc.com/crypto-news/sofi-earn-sofie-tokenized-deposit-stablecoin-conversion/",
     "https://www.newsbtc.com/crypto-news/solayer-pay-five-networks-stablecoin-deposits-visa/",
+    "https://www.newsbtc.com/crypto-news/stellar-bell-protocol-30-upgrade-guide-november-votes/",
     "https://www.newsbtc.com/crypto-news/tether-peso-investment-latin-america-usdt-payments/",
     "https://www.newsbtc.com/crypto-news/visa-and-mesh-want-crypto-wallet-balances-to-work-at-175-million-merchants/",
     "https://www.newsbtc.com/crypto-news/zcash-zcsh-fund-inflows-october-21/",
@@ -7479,5 +7484,5 @@
     "https://www.investing.com/rss/news_301.rss",
     "https://www.newsbtc.com/feed/"
   ],
-  "last_style": "opinion"
+  "last_style": "explainer"
 }
