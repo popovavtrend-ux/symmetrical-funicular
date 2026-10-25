@@ -2285,6 +2285,7 @@
     "https://beincrypto.com/?p=875163",
     "https://beincrypto.com/?p=875176",
     "https://beincrypto.com/?p=875187",
+    "https://beincrypto.com/?p=875205",
     "https://bitcoinmagazine.com/?p=54460",
     "https://bitcoinmagazine.com/?p=54466",
     "https://bitcoinmagazine.com/?p=54470",
@@ -5075,6 +5076,7 @@
     "https://cryptoslate.com/?p=575973",
     "https://cryptoslate.com/?p=576128",
     "https://cryptoslate.com/?p=576269",
+    "https://cryptoslate.com/?p=576271",
     "https://cryptoslate.com/?p=576362",
     "https://decrypt.co/?p=300034",
     "https://decrypt.co/?p=340212",
@@ -7491,6 +7493,7 @@
     "https://www.newsbtc.com/crypto-news/circle-gateway-cirbtc-eurc-balances/",
     "https://www.newsbtc.com/crypto-news/cmcc-global-tether-bitfinex-tokenized-bitcoin-funds-el-salvador/",
     "https://www.newsbtc.com/crypto-news/dune-real-time-market-data-feeds-spot-perpetuals/",
+    "https://www.newsbtc.com/crypto-news/grayscale-ai-buildout-data-credit-compute-analysis/",
     "https://www.newsbtc.com/crypto-news/hsbc-redcoin-hong-kong-dollar-stablecoin-payme-retail/",
     "https://www.newsbtc.com/crypto-news/jpmorgan-tokenized-money-market-funds-solana-mony-jltxx/",
     "https://www.newsbtc.com/crypto-news/kraken-13-token-delistings-withdrawal-deadline-january-2027/",
@@ -7519,6 +7522,7 @@
     "https://www.newsbtc.com/ethereum-news/ethereum-etfs-break-outflow-run-october-21/",
     "https://www.newsbtc.com/ethereum-news/ethereum-glamsterdam-hoodi-testnet-delay-eip-8037/",
     "https://www.newsbtc.com/ethereum-news/lido-0x02-csm-higher-balance-validators-launch/",
+    "https://www.newsbtc.com/ethereum-news/lido-ethereum-etp-liquidity-buffers-staking-rewards/",
     "https://www.newsbtc.com/news/cardano/cardano-dijkstra-public-testnet-conway-upgrade-step/",
     "https://www.newsbtc.com/news/cardano/cardano-hydra-v2-midnight-claims-benchmark/",
     "https://www.newsbtc.com/news/cardano/cardano-leios-staged-throughput-governance-roadmap/",
@@ -7539,6 +7543,7 @@
     "https://www.newsbtc.com/regulation/bitwise-sec-form-tr-reliance-supplemental-comment/",
     "https://www.newsbtc.com/regulation/crypto-broker-zuluaga-duque-160-month-sentence/",
     "https://www.newsbtc.com/regulation/google-uae-crypto-advertising-rules-october-21/",
+    "https://www.newsbtc.com/stablecoins/circle-match-usdc-rebate-prefunding-balance/",
     "https://www.newsbtc.com/technology/birdeye-peak-institutional-crypto-terminal-launch/",
     "https://www.newsbtc.com/technology/critical-php-security-fixes-crypto-checkouts/",
     "https://www.newsbtc.com/technology/zcash-zebra-sync-fixes-nu7-engineering-update/",
@@ -7561,5 +7566,5 @@
     "https://www.investing.com/rss/news_301.rss",
     "https://www.newsbtc.com/feed/"
   ],
-  "last_style": "explainer"
+  "last_style": "opinion"
 }
