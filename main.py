@@ -6,6 +6,7 @@ import re
 import time
 from urllib.parse import urlparse
 
+from article_fetch import fetch_article_text
 from fetch_feed import fetch_entries
 from price_chart import generate_price_chart
 from state import load_state, save_state
@@ -375,6 +376,13 @@ def main():
         source_name = get_source_name(entry)
 
         try:
+            # The RSS feed's own summary is often just the lead paragraph -
+            # read the source's full article page instead when possible, so
+            # the rewrite has the actual story to work from rather than its
+            # own teaser. Falls back to the RSS summary when the fetch or
+            # extraction fails (paywall, blocked request, unusual markup).
+            article_text = fetch_article_text(link) or summary
+
             # SKIP_TRANSLATION only means "post as-is" when there's no
             # ANTHROPIC_API_KEY to rewrite it into a unique post - once a
             # key is set, even already-Russian sources get rewritten rather
@@ -384,7 +392,7 @@ def main():
                 picked_style = last_style
             else:
                 picked_style = next_style(last_style)
-                title_ru, summary_ru = translate(title, summary, style=picked_style)
+                title_ru, summary_ru = translate(title, article_text, style=picked_style)
 
             # Telegram can't render caption text above its own photo, so the
             # signature goes as the caption's first line instead - one
@@ -412,7 +420,7 @@ def main():
 
             # A named coin gets its actual price chart rather than an
             # illustrative stock photo that only looks like one.
-            price_chart = generate_price_chart(title, summary=summary)
+            price_chart = generate_price_chart(title, summary=article_text)
             if price_chart:
                 try:
                     send_photo_bytes(BOT_TOKEN, CHAT_ID, price_chart, "chart.png", photo_caption)
@@ -424,7 +432,7 @@ def main():
             if not price_chart:
                 image_url = find_stock_image(
                     title,
-                    summary=summary,
+                    summary=article_text,
                     source_image_url=extract_source_image_url(entry),
                     history_path=IMAGE_HISTORY_FILE,
                 )
