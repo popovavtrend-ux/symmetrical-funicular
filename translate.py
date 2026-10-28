@@ -73,8 +73,11 @@ def translate_via_claude_opinion(title, summary):
         "translation - cover every concrete specific from the source "
         "(numbers, names, dates, dollar amounts, what exactly happened), "
         "not just the general gist. Don't compress it down to a vague "
-        "summary just to keep it short - use as many plain sentences as "
-        f"the actual specifics need, typically 2-4. {HASHTAG_HINT}>\n"
+        "summary just to keep it short - the number of sentences should be "
+        "driven entirely by how much the source actually contains: a short "
+        "story might only need 2-3 sentences, but a detailed one with many "
+        "numbers, names, or dates may need 6 or more. Never drop a "
+        f"concrete detail just to hit a shorter length. {HASHTAG_HINT}>\n"
         "Opinion: <a brief first-person commentary on it - why it matters, "
         "what it means, 2-3 sentences, in a natural conversational tone: "
         "do NOT open with 'Я считаю', "
@@ -88,7 +91,7 @@ def translate_via_claude_opinion(title, summary):
         f"Title: {title}\n"
         f"Summary: {summary}"
     )
-    resp = create_message(client, max_tokens=800, messages=[{"role": "user", "content": prompt}])
+    resp = create_message(client, max_tokens=1000, messages=[{"role": "user", "content": prompt}])
     return _parse_response(extract_text(resp).strip())
 
 
@@ -126,8 +129,11 @@ def translate_via_claude_explainer(title, summary):
         "every concrete specific from the source (numbers, names, dates, "
         "dollar amounts), not just the general gist, and explain any term "
         "you use. Don't compress it down to a vague summary just to keep "
-        "it short - use as many plain sentences as the actual specifics "
-        f"need, typically 3-5. {HASHTAG_HINT}>\n"
+        "it short - the number of sentences should be driven entirely by "
+        "how much the source actually contains: a short story might only "
+        "need 3-4 sentences, but a detailed one with many numbers, names, "
+        "or dates may need 7 or more. Never drop a concrete detail just to "
+        f"hit a shorter length. {HASHTAG_HINT}>\n"
         "Opinion: <your own perspective on why this matters or what it "
         "helps readers understand about crypto in general, in first "
         "person, 2-3 sentences - explanation/context, never a buy/sell "
@@ -143,7 +149,7 @@ def translate_via_claude_explainer(title, summary):
         f"Title: {title}\n"
         f"Summary: {summary}"
     )
-    resp = create_message(client, max_tokens=1000, messages=[{"role": "user", "content": prompt}])
+    resp = create_message(client, max_tokens=1300, messages=[{"role": "user", "content": prompt}])
     return _parse_response(extract_text(resp).strip())
 
 
