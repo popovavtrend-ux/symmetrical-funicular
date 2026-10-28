@@ -1,8 +1,230 @@
 {
-  "index:%5EIXIC": {
-    "label": "Nasdaq",
-    "pct": 1.5740494383995856,
-    "category": "биржевой индекс США",
-    "attempts": 2
+  "stock:AFKS": {
+    "label": "#AFKS (Система ао)",
+    "pct": 5.092118730808605,
+    "category": "акция Система ао",
+    "attempts": 1
+  },
+  "stock:AFLT": {
+    "label": "#AFLT (Аэрофлот)",
+    "pct": 7.800224466891137,
+    "category": "акция Аэрофлот",
+    "attempts": 1
+  },
+  "stock:APTK": {
+    "label": "#APTK (Аптеки36и6)",
+    "pct": 5.385595920968771,
+    "category": "акция Аптеки36и6",
+    "attempts": 1
+  },
+  "stock:BLNG": {
+    "label": "#BLNG (Белон ао)",
+    "pct": 5.134189031505245,
+    "category": "акция Белон ао",
+    "attempts": 1
+  },
+  "stock:CHMK": {
+    "label": "#CHMK (ЧМК ао)",
+    "pct": 13.681241184767279,
+    "category": "акция ЧМК ао",
+    "attempts": 1
+  },
+  "stock:CNRU": {
+    "label": "#CNRU (iЦиан)",
+    "pct": 5.227406969875957,
+    "category": "акция iЦиан",
+    "attempts": 1
+  },
+  "stock:ETLN": {
+    "label": "#ETLN (ЭталонГруп)",
+    "pct": 10.019083969465639,
+    "category": "акция ЭталонГруп",
+    "attempts": 1
+  },
+  "stock:GEMC": {
+    "label": "#GEMC (МКПАО ЮМГ)",
+    "pct": 7.164179104477619,
+    "category": "акция МКПАО ЮМГ",
+    "attempts": 1
+  },
+  "stock:IGST": {
+    "label": "#IGST (Ижсталь2ао)",
+    "pct": 7.655502392344498,
+    "category": "акция Ижсталь2ао",
+    "attempts": 1
+  },
+  "stock:KMEZ": {
+    "label": "#KMEZ (КМЗ)",
+    "pct": 7.088122605363985,
+    "category": "акция КМЗ",
+    "attempts": 1
+  },
+  "stock:KOGK": {
+    "label": "#KOGK (КоршГОК ао)",
+    "pct": 6.9414316702819905,
+    "category": "акция КоршГОК ао",
+    "attempts": 1
+  },
+  "stock:LSRG": {
+    "label": "#LSRG (ЛСР ао)",
+    "pct": 16.186723249469548,
+    "category": "акция ЛСР ао",
+    "attempts": 1
+  },
+  "stock:MAGEP": {
+    "label": "#MAGEP (МагадЭн ап)",
+    "pct": 7.025761124121797,
+    "category": "акция МагадЭн ап",
+    "attempts": 1
+  },
+  "stock:MBNK": {
+    "label": "#MBNK (МТС Банк)",
+    "pct": 5.636070853462158,
+    "category": "акция МТС Банк",
+    "attempts": 1
+  },
+  "stock:MGKL": {
+    "label": "#MGKL (МГКЛ)",
+    "pct": -9.985785358919692,
+    "category": "акция МГКЛ",
+    "attempts": 1
+  },
+  "stock:MRSB": {
+    "label": "#MRSB (МордЭнСб)",
+    "pct": 5.773195876288665,
+    "category": "акция МордЭнСб",
+    "attempts": 1
+  },
+  "stock:NKNC": {
+    "label": "#NKNC (НКНХ ао)",
+    "pct": 5.821205821205815,
+    "category": "акция НКНХ ао",
+    "attempts": 1
+  },
+  "stock:OZON": {
+    "label": "#OZON (Озон)",
+    "pct": 9.03954802259887,
+    "category": "акция Озон",
+    "attempts": 1
+  },
+  "stock:RU000A0HGNG6": {
+    "label": "#RU000A0HGNG6 (АрсагераФА)",
+    "pct": 5.287878787878788,
+    "category": "акция АрсагераФА",
+    "attempts": 1
+  },
+  "stock:RU000A0JRHC0": {
+    "label": "#RU000A0JRHC0 (ПИФ АТРИУМ)",
+    "pct": 5.621805792163544,
+    "category": "акция ПИФ АТРИУМ",
+    "attempts": 1
+  },
+  "stock:RU000A0JUR61": {
+    "label": "#RU000A0JUR61 (ПИФ КОНСЕР)",
+    "pct": 8.24742268041237,
+    "category": "акция ПИФ КОНСЕР",
+    "attempts": 1
+  },
+  "stock:RU000A0ZZCD8": {
+    "label": "#RU000A0ZZCD8 (ИПИФМирИнв)",
+    "pct": -5.88235294117647,
+    "category": "акция ИПИФМирИнв",
+    "attempts": 1
+  },
+  "stock:RU000A0ZZML0": {
+    "label": "#RU000A0ZZML0 (РСХБ Сбал)",
+    "pct": 8.240887480190175,
+    "category": "акция РСХБ Сбал",
+    "attempts": 1
+  },
+  "stock:RU000A108ZB2": {
+    "label": "#RU000A108ZB2 (2хОФЗ)",
+    "pct": 5.117352828010773,
+    "category": "акция 2хОФЗ",
+    "attempts": 1
+  },
+  "stock:RU000A109G79": {
+    "label": "#RU000A109G79 (ПИФГРИНФЛО)",
+    "pct": 12.149532710280374,
+    "category": "акция ПИФГРИНФЛО",
+    "attempts": 1
+  },
+  "stock:SBBC": {
+    "label": "#SBBC (SBBC ETF)",
+    "pct": 5.010288065843622,
+    "category": "акция SBBC ETF",
+    "attempts": 1
+  },
+  "stock:SMLT": {
+    "label": "#SMLT (Самолет ао)",
+    "pct": 10.774410774410773,
+    "category": "акция Самолет ао",
+    "attempts": 1
+  },
+  "stock:STSB": {
+    "label": "#STSB (ЕГП)",
+    "pct": 21.185185185185183,
+    "category": "акция ЕГП",
+    "attempts": 1
+  },
+  "stock:STSBP": {
+    "label": "#STSBP (ЕГП ап)",
+    "pct": 10.668380462724924,
+    "category": "акция ЕГП ап",
+    "attempts": 1
+  },
+  "stock:SVCB": {
+    "label": "#SVCB (Совкомбанк)",
+    "pct": 6.568627450980393,
+    "category": "акция Совкомбанк",
+    "attempts": 1
+  },
+  "stock:TGKA": {
+    "label": "#TGKA (ТГК-1)",
+    "pct": 5.131522207848219,
+    "category": "акция ТГК-1",
+    "attempts": 1
+  },
+  "stock:UKUZ": {
+    "label": "#UKUZ (ЮжКузб. ао)",
+    "pct": 9.914529914529915,
+    "category": "акция ЮжКузб. ао",
+    "attempts": 1
+  },
+  "stock:UNKL": {
+    "label": "#UNKL (ЮУНК ао)",
+    "pct": 5.205479452054795,
+    "category": "акция ЮУНК ао",
+    "attempts": 1
+  },
+  "stock:URKZ": {
+    "label": "#URKZ (УрКузница)",
+    "pct": 5.407523510971791,
+    "category": "акция УрКузница",
+    "attempts": 1
+  },
+  "stock:UTAR": {
+    "label": "#UTAR (ЮТэйр ао)",
+    "pct": 10.508849557522137,
+    "category": "акция ЮТэйр ао",
+    "attempts": 1
+  },
+  "stock:VEON-RX": {
+    "label": "#VEON-RX (VEON)",
+    "pct": 5.633802816901416,
+    "category": "акция VEON",
+    "attempts": 1
+  },
+  "stock:VRSBP": {
+    "label": "#VRSBP (ТНСэнВор-п)",
+    "pct": -5.1908396946564865,
+    "category": "акция ТНСэнВор-п",
+    "attempts": 1
+  },
+  "stock:WILD": {
+    "label": "#WILD (WILD ETF)",
+    "pct": 5.0912484446287865,
+    "category": "акция WILD ETF",
+    "attempts": 1
   }
 }
