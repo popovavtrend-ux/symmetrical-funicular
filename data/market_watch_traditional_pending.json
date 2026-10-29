@@ -3,150 +3,144 @@
     "label": "#ETLN (ЭталонГруп)",
     "pct": -5.030355594102343,
     "category": "акция ЭталонГруп",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KMEZ": {
     "label": "#KMEZ (КМЗ)",
     "pct": 9.30232558139535,
     "category": "акция КМЗ",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:LSRG": {
     "label": "#LSRG (ЛСР ао)",
     "pct": -6.678841638403345,
     "category": "акция ЛСР ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MGKL": {
     "label": "#MGKL (МГКЛ)",
     "pct": -21.98973549151204,
     "category": "акция МГКЛ",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:UKUZ": {
     "label": "#UKUZ (ЮжКузб. ао)",
     "pct": 9.953343701399689,
     "category": "акция ЮжКузб. ао",
-    "attempts": 1
-  },
-  "index:%5EGSPC": {
-    "label": "S&P 500",
-    "pct": 1.5031394601963648,
-    "category": "биржевой индекс США",
     "attempts": 2
   },
   "metal:SLVRUB_TOM": {
     "label": "Серебро",
     "pct": -2.765957446808515,
     "category": "драгоценный металл",
-    "attempts": 1
+    "attempts": 2
   },
   "index:RTSI": {
     "label": "RTS",
     "pct": -1.5905457636036209,
     "category": "биржевой индекс",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:CHMF": {
     "label": "#CHMF (СевСт-ао)",
     "pct": -5.059441526126627,
     "category": "акция СевСт-ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:DZRD": {
     "label": "#DZRD (ДонскЗР)",
     "pct": -8.550185873605948,
     "category": "акция ДонскЗР",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:DZRDP": {
     "label": "#DZRDP (ДонскЗР п)",
     "pct": -6.217616580310881,
     "category": "акция ДонскЗР п",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:EUTR": {
     "label": "#EUTR (ЕвроТранс)",
     "pct": -7.0484581497797265,
     "category": "акция ЕвроТранс",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:GLRX": {
     "label": "#GLRX (ГЛОРАКС)",
     "pct": -6.704461424698049,
     "category": "акция ГЛОРАКС",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:KCHEP": {
     "label": "#KCHEP (КамчатЭ ап)",
     "pct": -6.842105263157889,
     "category": "акция КамчатЭ ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:LPSB": {
     "label": "#LPSB (ЛЭСК ао)",
     "pct": 22.621564482029605,
     "category": "акция ЛЭСК ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MFGSP": {
     "label": "#MFGSP (Мегион-ап)",
     "pct": -5.8350100603621735,
     "category": "акция Мегион-ап",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:MRKU": {
     "label": "#MRKU (Россети Ур)",
     "pct": -5.116796440489425,
     "category": "акция Россети Ур",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:PHOR": {
     "label": "#PHOR (ФосАгро ао)",
     "pct": -6.155950752393981,
     "category": "акция ФосАгро ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A101UY0": {
     "label": "#RU000A101UY0 (ОПИФ MM)",
     "pct": -5.88235294117647,
     "category": "акция ОПИФ MM",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A106XE5": {
     "label": "#RU000A106XE5 (Саммит)",
     "pct": 5.176663927691041,
     "category": "акция Саммит",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RU000A10E3R7": {
     "label": "#RU000A10E3R7 (ПИФАКТИВ22)",
     "pct": 5.825242718446602,
     "category": "акция ПИФАКТИВ22",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:RUAL": {
     "label": "#RUAL (РУСАЛ ао)",
     "pct": -5.1568212430248215,
     "category": "акция РУСАЛ ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:SAGO": {
     "label": "#SAGO (СамарЭн-ао)",
     "pct": 5.8823529411764675,
     "category": "акция СамарЭн-ао",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:UGLD": {
     "label": "#UGLD (ЮГК)",
     "pct": -6.202408971341556,
     "category": "акция ЮГК",
-    "attempts": 1
+    "attempts": 2
   },
   "stock:XIPKSV": {
     "label": "#XIPKSV (ИПИФСтабВл)",
     "pct": -8.563106796116505,
     "category": "акция ИПИФСтабВл",
-    "attempts": 1
+    "attempts": 2
   }
 }
