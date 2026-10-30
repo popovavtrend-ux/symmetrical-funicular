@@ -1,14 +1,8 @@
 {
-  "bitcoin": {
-    "label": "#Bitcoin",
-    "pct": -3.2970393931979447,
-    "category": "криптовалюта",
-    "attempts": 2
-  },
   "ethereum": {
     "label": "#Ethereum",
     "pct": -3.054477068672662,
     "category": "криптовалюта",
-    "attempts": 1
+    "attempts": 2
   }
 }
